@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-text"><span>Our</span>SQL Foundation</span>
+      <span class="logo-badge">Nonprofit</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('open'); document.querySelector('.site-nav').classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav">
+      <a href="/blog/" {{ if hasPrefix .RelPermalink "/blog" }}class="active"{{ end }}>Blog</a>
+      <a href="/about/" {{ if hasPrefix .RelPermalink "/about" }}class="active"{{ end }}>About</a>
+      <a href="/blog/oursql-foundation-announcement/" class="nav-cta">Announcement</a>
+    </nav>
+  </div>
+</header>

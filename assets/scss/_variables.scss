@@ -1,0 +1,32 @@
+// Colors
+$black:        #000000;
+$dark-bg:      #0a0a0f;
+$dark-surface: #111118;
+$dark-card:    #16161f;
+$dark-border:  #1e1e2a;
+$white:        #ffffff;
+$off-white:    #e8e8f0;
+$muted:        #6b6b80;
+
+// Accent — electric blue-cyan
+$accent:       #00c8ff;
+$accent-dim:   #0099cc;
+$accent-glow:  rgba(0, 200, 255, 0.15);
+
+// MySQL-ish secondary warm tone
+$warm:         #ff6b35;
+
+// Typography
+$font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+// Breakpoints
+$break-sm:  576px;
+$break-md:  768px;
+$break-lg:  1024px;
+$break-xl:  1280px;
+$break-2xl: 1440px;
+
+// Spacing
+$container-max: 1200px;
+$section-pad:   80px;

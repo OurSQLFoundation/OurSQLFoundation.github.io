@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<article class="post-layout">
+
+  <header class="post-header">
+    {{ with .Params.tags }}
+    <div class="post-tags">
+      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Section "blog" }}
+    <div class="post-meta">
+      <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
+      <span class="dot" style="width:3px;height:3px;border-radius:50%;background:#1e1e2a;display:inline-block;"></span>
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ if eq .Section "blog" }}
+  <footer class="post-footer">
+    <a href="/blog/" class="back-link">← Back to Blog</a>
+  </footer>
+  {{ end }}
+
+</article>
+
+{{ end }}

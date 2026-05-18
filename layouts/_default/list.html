@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<div class="blog-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</div>
+
+{{ if .Pages }}
+<div class="blog-grid">
+  {{ range .Pages }}
+  <a href="{{ .RelPermalink }}" class="post-card">
+    <div class="post-card-body">
+      <span class="post-card-tag">{{ with .Params.tags }}{{ index . 0 }}{{ else }}News{{ end }}</span>
+      <div class="post-card-title">{{ .Title }}</div>
+      <div class="post-card-excerpt">{{ .Summary | truncate 140 }}</div>
+      <div class="post-card-meta">
+        <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
+        <span class="dot"></span>
+        <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+      </div>
+    </div>
+  </a>
+  {{ end }}
+</div>
+{{ else }}
+<div class="empty-state">
+  <h3>No posts yet</h3>
+  <p>Check back soon — content is coming.</p>
+</div>
+{{ end }}
+
+{{ end }}

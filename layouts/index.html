@@ -1,0 +1,117 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">Announcing OurSQL Foundation</div>
+  <h1 class="hero-title">
+    The Future of the<br>
+    <span class="gradient-text">MySQL Ecosystem</span>
+  </h1>
+  <p class="hero-description">
+    A vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies.
+  </p>
+  <div class="hero-actions">
+    <a href="/blog/oursql-foundation-announcement/" class="btn btn-primary">Read the Announcement</a>
+    <a href="/about/" class="btn btn-outline">About the Foundation</a>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-stat">
+      <div class="stat-value">Open</div>
+      <div class="stat-label">Vendor-neutral</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-value">MySQL</div>
+      <div class="stat-label">Compatible</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-value">OSS</div>
+      <div class="stat-label">Nonprofit</div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Mission</span>
+      <h2>No single company owns this</h2>
+      <p>OurSQL Foundation exists so the MySQL-compatible ecosystem has a home that no vendor controls.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Vendor neutral</h3>
+        <p>No single company sets the direction. Decisions happen in the open, with the community at the table.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔓</div>
+        <h3>Open source first</h3>
+        <p>Permissive licensing matters. We advocate for it and work to keep MySQL-compatible software freely available.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Ecosystem sustainability</h3>
+        <p>Maintainers burn out. Infrastructure costs money. We fund the work that keeps the ecosystem running.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Community governance</h3>
+        <p>Membership is open. Decisions are documented. You can see exactly how the foundation operates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Letter CTA -->
+<section class="section section-darker">
+  <div class="container">
+    <div class="announcement-banner">
+      <div>
+        <div class="announcement-meta">Open Letter · letter.3306-db.org</div>
+        <h3>The MySQL community is asking for change. Add your name.</h3>
+        <p>An open letter to Oracle calling for vendor-neutral governance of the MySQL ecosystem is collecting signatures from developers, DBAs, and organizations. If you run MySQL-compatible databases and want a say in their future, this is a concrete place to start.</p>
+      </div>
+      <a href="https://letter.3306-db.org/" class="btn btn-primary" target="_blank" rel="noopener">Sign the Letter →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest posts -->
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ if $posts }}
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Blog</span>
+      <h2>From the foundation</h2>
+    </div>
+    <div class="blog-grid" style="padding: 0; max-width: 100%;">
+      {{ range first 3 $posts }}
+      <a href="{{ .RelPermalink }}" class="post-card">
+        <div class="post-card-body">
+          <span class="post-card-tag">{{ with .Params.tags }}{{ index . 0 }}{{ else }}News{{ end }}</span>
+          <div class="post-card-title">{{ .Title }}</div>
+          <div class="post-card-excerpt">{{ .Summary | truncate 120 }}</div>
+          <div class="post-card-meta">
+            <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
+            <span class="dot"></span>
+            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Get involved</h2>
+  <p>Tell us who you are, what you work on, and how you'd like to contribute. Every kind of participation — code, governance, advocacy, or just staying informed — is useful.</p>
+  <a href="https://github.com/OurSQLFoundation/OurSQLFoundation/issues/new?template=get-involved.yml" class="btn btn-primary" target="_blank" rel="noopener">Open an issue on GitHub →</a>
+</div>
+
+{{ end }}
