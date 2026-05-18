@@ -1,0 +1,91 @@
+name: "👋 Get Involved"
+description: "Introduce yourself and tell us how you'd like to contribute to OurSQL Foundation."
+title: "Get Involved: [Your Name / Organization]"
+labels: ["get-involved"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Welcome to OurSQL Foundation 👋
+
+        Thanks for your interest in getting involved! This form helps us understand who you are and how we can work together. There are no wrong answers — every kind of participation matters.
+
+        Fill in as much or as little as you're comfortable sharing. We'll follow up in this issue.
+
+  - type: dropdown
+    id: role
+    attributes:
+      label: "Who are you?"
+      description: "Pick the description that fits best."
+      options:
+        - Developer / Software Engineer
+        - Database Administrator (DBA)
+        - DevOps / SRE / Platform Engineer
+        - Architect / Tech Lead
+        - Engineering Manager / CTO
+        - Researcher / Academic
+        - Open Source Maintainer
+        - Company / Organization representative
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: participation
+    attributes:
+      label: "How would you like to participate?"
+      description: "Check everything that interests you — you can always change your mind later."
+      options:
+        - label: "Contributing code or technical work"
+        - label: "Testing and quality assurance"
+        - label: "Writing documentation or blog posts"
+        - label: "Community building and outreach"
+        - label: "Advocating for open source MySQL licensing"
+        - label: "Representing my company or organization"
+        - label: "Sponsoring or funding foundation work"
+        - label: "Participating in governance discussions"
+        - label: "Just staying informed for now"
+
+  - type: textarea
+    id: background
+    attributes:
+      label: "Tell us a bit about yourself"
+      description: "What do you work on? What's your history with MySQL-compatible databases?"
+      placeholder: "I've been running MySQL in production for X years, currently working on..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: interest
+    attributes:
+      label: "What brought you here?"
+      description: "What problem or opportunity made you interested in OurSQL Foundation?"
+      placeholder: "I care about this because..."
+    validations:
+      required: false
+
+  - type: input
+    id: organization
+    attributes:
+      label: "Organization (optional)"
+      description: "Company, project, or community you represent or want to mention."
+      placeholder: "Acme Corp / my-oss-project / independent"
+    validations:
+      required: false
+
+  - type: input
+    id: links
+    attributes:
+      label: "Links (optional)"
+      description: "GitHub profile, LinkedIn, personal site — whatever you'd like to share."
+      placeholder: "https://github.com/yourhandle"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        By submitting this issue, your name and any information you provide will be publicly visible on GitHub. Only share what you're comfortable making public.
+
+        We'll respond in this thread. You can also reach us at [hello@oursql.org](mailto:hello@oursql.org).

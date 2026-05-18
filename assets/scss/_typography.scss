@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-sans;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $off-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: $white;
+  margin: 0 0 1rem;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 1.25rem;
+  color: $off-white;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: lighten($accent, 15%);
+  }
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  background: $dark-card;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: $accent;
+}
+
+pre {
+  font-family: $font-mono;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+
+  code {
+    background: none;
+    padding: 0;
+    color: $off-white;
+  }
+}
+
+blockquote {
+  border-left: 3px solid $accent;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.5rem;
+  background: $dark-card;
+  border-radius: 0 8px 8px 0;
+  color: $muted;
+  font-style: italic;
+}
+
+strong { color: $white; font-weight: 600; }

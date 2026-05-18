@@ -1,0 +1,146 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  background: rgba($dark-bg, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid $dark-border;
+  transition: background 0.3s ease;
+
+  .header-inner {
+    max-width: $container-max;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: $white;
+    line-height: 1;
+
+    span {
+      color: $accent;
+    }
+  }
+
+  .logo-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $muted;
+    border: 1px solid $dark-border;
+    border-radius: 4px;
+    padding: 0.15em 0.5em;
+    line-height: 1.4;
+  }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $muted;
+    padding: 0.5rem 0.875rem;
+    border-radius: 6px;
+    transition: color 0.2s ease, background 0.2s ease;
+    text-decoration: none;
+
+    &:hover, &.active {
+      color: $white;
+      background: $dark-card;
+    }
+  }
+
+  .nav-cta {
+    margin-left: 0.5rem;
+    color: $accent;
+    border: 1px solid rgba($accent, 0.3);
+    background: $accent-glow;
+
+    &:hover {
+      background: rgba($accent, 0.2);
+      border-color: $accent;
+      color: $accent;
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: $white;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+}
+
+@media (max-width: $break-md) {
+  .site-header {
+    padding: 0 1rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: $dark-surface;
+    border-bottom: 1px solid $dark-border;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.25rem;
+
+    &.open {
+      display: flex;
+    }
+
+    a {
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-cta {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+}

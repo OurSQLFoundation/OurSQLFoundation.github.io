@@ -1,0 +1,236 @@
+.blog-header {
+  padding: 140px 2rem 60px;
+  text-align: center;
+  border-bottom: 1px solid $dark-border;
+
+  p {
+    color: $muted;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  padding: 4rem 2rem;
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.post-card {
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.35);
+    background: lighten($dark-card, 3%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba($accent, 0.08);
+
+    .post-card-title {
+      color: $accent;
+    }
+  }
+
+  .post-card-body {
+    padding: 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .post-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+  }
+
+  .post-card-excerpt {
+    font-size: 0.9rem;
+    color: $muted;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    color: darken($muted, 10%);
+    padding-top: 1.25rem;
+    border-top: 1px solid $dark-border;
+
+    .post-author {
+      color: $muted;
+    }
+
+    .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: $dark-border;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Single post
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr #{"min(700px, 100%)"} 1fr;
+  padding: 120px 0 80px;
+
+  & > * {
+    grid-column: 2;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $dark-border;
+
+    .post-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+
+      .tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $accent;
+        background: $accent-glow;
+        border: 1px solid rgba($accent, 0.2);
+        padding: 0.25rem 0.625rem;
+        border-radius: 100px;
+      }
+    }
+
+    h1 {
+      margin-bottom: 1.25rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: $muted;
+      flex-wrap: wrap;
+
+      .post-author {
+        color: $off-white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .post-content {
+    h2 {
+      font-size: 1.625rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid $dark-border;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 2rem 0 0.75rem;
+      color: $off-white;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+
+      li {
+        margin-bottom: 0.4rem;
+        color: $off-white;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+      text-decoration-color: rgba($accent, 0.4);
+      text-underline-offset: 2px;
+
+      &:hover {
+        text-decoration-color: $accent;
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid $dark-border;
+      margin: 2.5rem 0;
+    }
+
+    .post-hero-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 2.5rem;
+      border: 1px solid $dark-border;
+      display: block;
+    }
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid $dark-border;
+
+    .back-link {
+      color: $muted;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+}
+
+@media (max-width: $break-md) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .post-layout {
+    grid-template-columns: 1fr;
+    padding: 100px 1.25rem 60px;
+
+    & > * {
+      grid-column: 1;
+    }
+  }
+}

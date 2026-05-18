@@ -1,0 +1,28 @@
+baseURL: "https://oursqlfoundation.com/"
+languageCode: "en-us"
+title: "OurSQL Foundation"
+
+params:
+  description: "A vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies."
+  tagline: "The Future of MySQL Ecosystem"
+  social:
+    twitter: "oursqlfoundation"
+    github: "oursql"
+
+buildFuture: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+taxonomies:
+  tag: tags
+
+outputs:
+  home: ["HTML"]
+  section: ["HTML"]
+  page: ["HTML"]
+
+pagination:
+  pagerSize: 10
