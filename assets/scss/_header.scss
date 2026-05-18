@@ -27,8 +27,8 @@
 .site-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
+  outline: none;
 
   .logo-text {
     font-size: 1.25rem;
@@ -40,18 +40,6 @@
     span {
       color: $accent;
     }
-  }
-
-  .logo-badge {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: $muted;
-    border: 1px solid $dark-border;
-    border-radius: 4px;
-    padding: 0.15em 0.5em;
-    line-height: 1.4;
   }
 }
 
