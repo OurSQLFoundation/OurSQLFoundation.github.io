@@ -2,31 +2,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+{{/* ── Title ── */}}
 <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
-{{/* Resolve og:image from front matter */}}
+{{/* ── Description ── */}}
+{{ $desc := .Site.Params.description }}
+{{ with .Description }}{{ $desc = . }}{{ end }}
+<meta name="description" content="{{ $desc }}">
+
+{{/* ── Author ── */}}
+{{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+{{/* ── Robots ── */}}
+<meta name="robots" content="index, follow">
+
+{{/* ── OG image: front matter → default social cover ── */}}
 {{ $ogImage := "" }}
 {{ with .Params.image }}
   {{ $ogImage = absURL . }}
+{{ else }}
+  {{ $cover := resources.Get "images/social_cover.png" }}
+  {{ if $cover }}
+    {{ $ogImage = ($cover | fingerprint).Permalink }}
+  {{ end }}
 {{ end }}
 
+{{/* ── Open Graph ── */}}
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
-{{ with $ogImage }}<meta property="og:image" content="{{ . }}">{{ end }}
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+{{ with $ogImage }}
+<meta property="og:image" content="{{ . }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{{ end }}
 
+{{/* ── Article meta (blog posts only) ── */}}
+{{ if and .IsPage (eq .Section "blog") }}
+{{ with .Date }}<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ with .Params.author }}<meta property="article:author" content="{{ . }}">{{ end }}
+{{ range .Params.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
+{{ end }}
+
+{{/* ── Twitter Card ── */}}
 <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc }}">
 {{ with $ogImage }}<meta name="twitter:image" content="{{ . }}">{{ end }}
 {{ with .Site.Params.social.twitter }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
 
+{{/* ── Canonical ── */}}
 <link rel="canonical" href="{{ .Permalink }}">
 
+{{/* ── Styles ── */}}
 {{ $scss := resources.Get "scss/main.scss" | toCSS (dict "targetPath" "css/main.css" "enableSourceMap" false "outputStyle" "compressed") | fingerprint }}
 <link rel="stylesheet" href="{{ $scss.RelPermalink }}">
 
+{{/* ── Favicon ── */}}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
