@@ -18,7 +18,7 @@ brew install hugo
 Clone the repository:
 
 ```bash
-git clone git@github.com:OurSQLFoundation/OurSQLFoundation.git
+git clone git@github.com:OurSQLFoundation/OurSQLFoundation.github.io.git
 cd OurSQLFoundation
 ```
 
@@ -56,4 +56,4 @@ Open a pull request on GitHub. Keep PRs focused — one change per PR makes revi
 
 ## Get involved
 
-Not sure where to start? [Open an issue](https://github.com/OurSQLFoundation/OurSQLFoundation/issues/new?template=get-involved.yml) and tell us who you are and what you'd like to work on.
+Not sure where to start? [Open an issue](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml) and tell us who you are and what you'd like to work on.

@@ -163,7 +163,47 @@
   }
 }
 
+.hero--minimal {
+  .hero-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-description {
+    margin-bottom: 2rem;
+  }
+}
+
+.hero-contact {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  font-weight: 500;
+  color: $off-white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($off-white, 0.25);
+  padding-bottom: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: $accent;
+    border-color: rgba($accent, 0.6);
+  }
+}
+
 @media (max-width: $break-md) {
+  .hero {
+    padding: 100px 1.5rem 60px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-description {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: lighten($muted, 12%);
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     max-width: 320px;
