@@ -3,49 +3,45 @@ title: "OurSQL Foundation: The Future of the MySQL Ecosystem"
 date: 2026-05-17
 author: "OurSQL Foundation"
 tags: ["Announcement", "MySQL"]
-description: "Announcing OurSQL Foundation — a vendor-neutral nonprofit dedicated to the long-term advancement and sustainability of open source MySQL-compatible database technologies."
+description: "OurSQL Foundation is a vendor-neutral nonprofit for the MySQL-compatible open source ecosystem. Here is what it is, why it exists, and how you can get involved."
 image: "/blog/oursql-foundation-announcement.png"
 ---
 
 {{< figure src="/blog/oursql-foundation-announcement.png" alt="OurSQL Foundation — The Future of MySQL Ecosystem" class="post-hero-image" >}}
 
-We are announcing **OurSQL Foundation** — a vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies.
+**OurSQL Foundation** is a vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies.
 
-The foundation was [introduced at an open source database conference](https://perconalive.com/2026-usa/talks/oursql-foundation-the-future-of-mysql-ecosystem/) in the Bay Area on May 27, 2026, as a keynote laying out the vision for a truly community-owned MySQL-compatible ecosystem.
+It was [announced at an open source database conference](https://perconalive.com/2026-usa/talks/oursql-foundation-the-future-of-mysql-ecosystem/) in the Bay Area on May 27, 2026 — a keynote making the case for a MySQL ecosystem that the community actually controls.
 
-## The Problem
+## The problem
 
-The MySQL-compatible ecosystem is vast. Projects like MySQL, MariaDB, Vitess, TiDB, and dozens of surrounding tools collectively power billions of production workloads. But despite their scale and importance, this ecosystem shares a set of structural vulnerabilities:
+MySQL, MariaDB, Vitess, TiDB, and dozens of surrounding tools run billions of production workloads. The ecosystem is large and important. Its governance is not.
 
-- **Fragmented governance** — critical decisions are often made by single vendors with commercial interests
-- **Sustainability gaps** — maintainers burn out, funding is inconsistent, and infrastructure costs fall on a few shoulders
-- **License risk** — repeated shifts in licensing terms undermine trust and long-term planning for users and contributors alike
-- **Coordination overhead** — there is no neutral space where projects can collaborate across organizational lines
+- **Fragmented governance** — critical decisions are made by individual vendors with commercial interests, not by the community using the software
+- **Sustainability gaps** — maintainers burn out; funding is inconsistent; infrastructure costs land on a few organizations
+- **License risk** — repeated licensing shifts undermine the planning horizon for anyone building on MySQL-compatible technology
+- **No neutral coordination layer** — there is nowhere for projects to collaborate across organizational lines without one party having the upper hand
 
-## The Foundation
+## What the foundation does
 
-OurSQL Foundation is designed to be that neutral space.
+OurSQL Foundation is structured to be that neutral layer.
 
-As a nonprofit, it is structurally independent from any single vendor. No one company controls the board, the roadmap, or the treasury. Membership and governance are open to the community — individuals, companies, and projects alike.
+No single company controls the board, the roadmap, or the treasury. Membership is open to individuals, companies, and projects. Governance decisions are documented and public.
 
-Initial focus areas include:
+Initial focus areas:
 
 - **Advocacy** for permissive, stable open source licensing across the ecosystem
-- **Infrastructure support** for critical shared tooling and testing environments
-- **Maintainer sustainability** programs to support key contributors
-- **Coordination** between MySQL-compatible projects on shared standards and interoperability
+- **Infrastructure support** for shared tooling and testing environments
+- **Maintainer sustainability** — funding and coordinating support for key contributors
+- **Cross-project coordination** on shared standards and interoperability
 
-## Why Now?
+## Why now
 
-The timing reflects a broader moment of reckoning in the open source database world. License changes at major projects have forced users, contributors, and companies to reconsider their dependencies. The question of who truly controls the future of MySQL-compatible technology — and in whose interest — has never been more pressing.
+License changes at several major projects have forced users, contributors, and organizations to reconsider what they're depending on. The question of who controls MySQL-compatible technology — and in whose interest — is no longer theoretical.
 
-OurSQL Foundation is the community's answer: *ours*.
+The foundation exists because the community decided to stop waiting for someone else to answer it.
 
-## Get Involved
-
-The foundation is in its earliest stages. If you are a developer, DBA, company, or community member who cares about the long-term health of the MySQL ecosystem, we want to hear from you.
+## Get involved
 
 - **Follow the conversation** on [Twitter/X](https://twitter.com/oursqlfoundation)
-- **Get involved** — [open an issue on GitHub](https://github.com/OurSQLFoundation/OurSQLFoundation/issues/new?template=get-involved.yml) and tell us who you are
-
-The MySQL ecosystem has always been ours. Now we're making it official.
+- **Tell us who you are** — [open an issue on GitHub](https://github.com/OurSQLFoundation/OurSQLFoundation/issues/new?template=get-involved.yml) with your background and how you'd like to contribute

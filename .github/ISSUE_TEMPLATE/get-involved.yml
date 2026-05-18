@@ -1,22 +1,19 @@
-name: "👋 Get Involved"
-description: "Introduce yourself and tell us how you'd like to contribute to OurSQL Foundation."
-title: "Get Involved: [Your Name / Organization]"
+name: "Get Involved"
+description: "Tell us who you are and what you'd like to work on."
+title: "Get involved: [your name or org]"
 labels: ["get-involved"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## Welcome to OurSQL Foundation 👋
+        Open this issue, fill in what's relevant, and we'll pick up the conversation here.
 
-        Thanks for your interest in getting involved! This form helps us understand who you are and how we can work together. There are no wrong answers — every kind of participation matters.
-
-        Fill in as much or as little as you're comfortable sharing. We'll follow up in this issue.
+        You don't need a finished proposal. "I run MySQL at $company and want to understand what the foundation is doing" is a perfectly good starting point.
 
   - type: dropdown
     id: role
     attributes:
-      label: "Who are you?"
-      description: "Pick the description that fits best."
+      label: "What do you do?"
       options:
         - Developer / Software Engineer
         - Database Administrator (DBA)
@@ -24,8 +21,8 @@ body:
         - Architect / Tech Lead
         - Engineering Manager / CTO
         - Researcher / Academic
-        - Open Source Maintainer
-        - Company / Organization representative
+        - Open source maintainer
+        - Company or organization representative
         - Other
     validations:
       required: true
@@ -33,23 +30,23 @@ body:
   - type: checkboxes
     id: participation
     attributes:
-      label: "How would you like to participate?"
-      description: "Check everything that interests you — you can always change your mind later."
+      label: "How do you want to contribute?"
+      description: "Check whatever applies. You can change direction later."
       options:
-        - label: "Contributing code or technical work"
-        - label: "Testing and quality assurance"
+        - label: "Writing code or doing technical work"
+        - label: "Testing"
         - label: "Writing documentation or blog posts"
-        - label: "Community building and outreach"
+        - label: "Community work and outreach"
         - label: "Advocating for open source MySQL licensing"
         - label: "Representing my company or organization"
         - label: "Sponsoring or funding foundation work"
-        - label: "Participating in governance discussions"
-        - label: "Just staying informed for now"
+        - label: "Participating in governance"
+        - label: "Staying informed for now"
 
   - type: textarea
     id: background
     attributes:
-      label: "Tell us a bit about yourself"
+      label: "Background"
       description: "What do you work on? What's your history with MySQL-compatible databases?"
       placeholder: "I've been running MySQL in production for X years, currently working on..."
     validations:
@@ -59,7 +56,7 @@ body:
     id: interest
     attributes:
       label: "What brought you here?"
-      description: "What problem or opportunity made you interested in OurSQL Foundation?"
+      description: "A specific problem, a licensing concern, a project you maintain — whatever it is."
       placeholder: "I care about this because..."
     validations:
       required: false
@@ -67,8 +64,8 @@ body:
   - type: input
     id: organization
     attributes:
-      label: "Organization (optional)"
-      description: "Company, project, or community you represent or want to mention."
+      label: "Organization"
+      description: "Company, project, or community — if relevant."
       placeholder: "Acme Corp / my-oss-project / independent"
     validations:
       required: false
@@ -76,8 +73,8 @@ body:
   - type: input
     id: links
     attributes:
-      label: "Links (optional)"
-      description: "GitHub profile, LinkedIn, personal site — whatever you'd like to share."
+      label: "Links"
+      description: "GitHub profile, personal site, anything useful."
       placeholder: "https://github.com/yourhandle"
     validations:
       required: false
@@ -86,6 +83,4 @@ body:
     attributes:
       value: |
         ---
-        By submitting this issue, your name and any information you provide will be publicly visible on GitHub. Only share what you're comfortable making public.
-
-        We'll respond in this thread. You can also reach us at [hello@oursql.org](mailto:hello@oursql.org).
+        This issue is public. Only share what you're comfortable with. You can also reach us at [hello@oursql.org](mailto:hello@oursql.org).

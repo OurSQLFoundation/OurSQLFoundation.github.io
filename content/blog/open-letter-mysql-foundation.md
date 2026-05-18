@@ -3,54 +3,48 @@ title: "An Open Letter to Oracle: The MySQL Community Speaks"
 date: 2026-05-10
 author: "OurSQL Foundation"
 tags: ["Open Letter", "MySQL", "Community"]
-description: "Members of the MySQL community have addressed Oracle with an open letter calling for a vendor-neutral foundation to govern the MySQL ecosystem. Here is what it says and why it matters."
+description: "Members of the MySQL community sent Oracle a formal letter asking for vendor-neutral governance of the MySQL ecosystem. Here is what it says and what happened next."
 image: "/blog/open-letter.png"
 ---
 
 {{< figure src="/blog/open-letter.png" alt="Open Letter to Oracle: Invitation to Discuss the Future of the MySQL Ecosystem" class="post-hero-image" >}}
 
-In early March 2026, members of the MySQL community formally presented Oracle with an open letter proposing the establishment of a vendor-neutral, nonprofit foundation to support the MySQL ecosystem. Oracle declined to participate but reaffirmed its "commitment to transparency and community engagement."
+In March 2026, members of the MySQL community formally presented Oracle with an open letter proposing a vendor-neutral, nonprofit foundation to support the MySQL ecosystem. Oracle declined to participate but reaffirmed its "commitment to transparency and community engagement."
 
-The letter, now open for community signatures at [letter.3306-db.org](https://letter.3306-db.org/), makes a case that has been building quietly for years.
+The letter is now open for signatures at [letter.3306-db.org](https://letter.3306-db.org/).
 
-## What the Letter Says
+## What the letter says
 
-The letter identifies five structural challenges facing MySQL today:
+Five problems. All of them real if you've worked with MySQL-compatible databases at any scale.
 
-**1. Declining competitiveness.** PostgreSQL is attracting a growing share of new projects, driven by its open development model, active community, and modern feature set. MySQL risks being seen as legacy technology not by technical merit, but by governance and momentum.
+**Declining competitiveness.** PostgreSQL is taking a growing share of new projects. Not because of raw technical superiority — because its development model is open, its community is active, and contributors can see their work land. MySQL risks looking like legacy technology by governance, not by merit.
 
-**2. Transparency deficit.** MySQL development happens largely behind closed doors. The public roadmap is minimal. Security bugs go untracked in public. Contributors have little visibility into what is being worked on, or why.
+**Transparency deficit.** MySQL development happens behind closed doors. The public roadmap is thin. Security bugs go untracked in public. If you contribute, you have little visibility into whether or when your work moves forward.
 
-**3. Contribution barriers.** The process for submitting and reviewing code is described as opaque and discouraging. Talented contributors walk away. Work gets duplicated across forks instead of flowing upstream.
+**Contribution barriers.** The code review and merge process is opaque. Talented contributors walk away. Work gets duplicated across forks instead of flowing upstream where it would benefit everyone.
 
-**4. Technical gaps.** MySQL lacks capabilities that have become table stakes for modern applications — native vector search being a clear example as AI workloads become central to new development.
+**Technical gaps.** Native vector search is one example. As AI workloads become central to new development, MySQL is missing capabilities that users now expect from a modern database.
 
-**5. Community stagnation.** The developer community around MySQL is aging. New developers are not being drawn in at the rate needed to sustain long-term ecosystem health. Fragmentation across competing distributions makes the problem worse.
+**Community stagnation.** The developer base is aging. New developers are not joining fast enough to sustain the ecosystem long-term. Fragmentation across distributions makes coordination harder than it needs to be.
 
-## Three Paths Forward
+## Three paths forward
 
-The letter proposes three governance models, ranging in Oracle's involvement:
+The letter proposed three governance models, ranging by how much Oracle participates:
 
-- **Oracle-led** — Oracle establishes a trade association following established open source governance patterns, maintaining strategic control while distributing operational responsibility
-- **Collaborative** — Industry partners manage operations while Oracle holds a principal board position, with trademark licensing for nonprofit advocacy and community work
-- **Independent** — Community partners form a separate entity focused on advocacy and ecosystem coordination, with optional Oracle participation
+- **Oracle-led** — Oracle establishes a trade association following established open source patterns, maintaining strategic control while sharing operational responsibility
+- **Collaborative** — industry partners manage operations; Oracle holds a principal board seat and licenses the trademark for nonprofit advocacy work
+- **Independent** — community partners build a separate entity focused on advocacy and ecosystem coordination; Oracle can join or not
 
-The request was simple: align on a direction by end of March.
+The ask was simple: align on a direction by end of March.
 
-## Where Things Stand
+## What happened
 
-Oracle said no. Or more precisely, Oracle said not yet — reaffirming commitment to the community without committing to structural change.
+Oracle said no. Or more precisely: not yet — reaffirming community commitment without committing to structural change.
 
-That answer, while not surprising, clarifies something important: if the MySQL ecosystem is going to have the governance structures it needs, the community will have to build them.
+That answer clarifies something. If the MySQL ecosystem is going to have the governance structures it needs, the community will build them without waiting for permission.
 
-## Why This Matters
+## Why this matters to you
 
-The letter is not an attack on MySQL. It is a defense of it. The people who signed it and the people continuing to sign it are MySQL users, operators, contributors, and advocates who want to see the ecosystem thrive for the next twenty years — not decline quietly.
-
-A vendor-neutral foundation does not replace Oracle's stewardship of MySQL. It complements it. It provides a home for the community work, the advocacy, the contribution infrastructure, and the coordination that no single company — including Oracle — should own alone.
-
-## Sign the Letter
-
-The letter is open for signatures from individuals and organizations. If you work with MySQL-compatible databases and you believe the ecosystem deserves stronger community governance, add your name.
+If you run MySQL-compatible databases in production, the governance of those projects affects your licensing options, your ability to contribute upstream, and the long-term health of the tools you depend on. The letter is one place to make that stake visible.
 
 [**Sign the open letter →**](https://letter.3306-db.org/)
