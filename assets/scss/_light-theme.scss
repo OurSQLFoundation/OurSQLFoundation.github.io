@@ -118,6 +118,22 @@
     background: #eef2f7;
     border-top-color: #dde3ed;
 
+    .footer-logos {
+      border-bottom-color: #dde3ed;
+
+      .footer-logos-label { color: #94a3b8; }
+
+      .footer-logos-links a {
+        color: #64748b;
+        border-color: #dde3ed;
+
+        &:hover {
+          color: #0272a5;
+          border-color: rgba(0, 200, 255, 0.4);
+        }
+      }
+    }
+
     .footer-bottom p { color: #94a3b8; }
   }
 }

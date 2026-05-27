@@ -78,6 +78,46 @@
     }
   }
 
+  .footer-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid $dark-border;
+    flex-wrap: wrap;
+
+    .footer-logos-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $muted;
+      white-space: nowrap;
+    }
+
+    .footer-logos-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      a {
+        font-size: 0.8125rem;
+        color: $muted;
+        text-decoration: none;
+        border: 1px solid $dark-border;
+        border-radius: 6px;
+        padding: 0.25rem 0.625rem;
+        transition: color 0.2s ease, border-color 0.2s ease;
+
+        &:hover {
+          color: $off-white;
+          border-color: rgba($accent, 0.3);
+        }
+      }
+    }
+  }
+
   .footer-bottom {
     display: flex;
     align-items: center;
