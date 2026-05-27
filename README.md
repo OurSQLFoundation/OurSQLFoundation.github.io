@@ -1,42 +1,41 @@
 # OurSQL Foundation
 
-OurSQL Foundation is a vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies.
+OurSQL Foundation is an independent, community-led 501(c)(6) nonprofit supporting the users, developers, and companies invested in MySQL and compatible technologies.
 
-This repository contains the source for [oursqlfoundation.com](https://oursqlfoundation.com) — a Hugo static site published via GitHub Pages.
+**Website:** [oursqlfoundation.org](https://oursqlfoundation.org) · **Contact:** [contact@oursqlfoundation.org](mailto:contact@oursqlfoundation.org)
 
-## Run it locally
+---
 
-The site uses Hugo (extended version). Install it first.
+## About
 
-**macOS:**
-```bash
-brew install hugo
-```
+OurSQL Foundation was launched on May 27, 2026, to provide a venue for the MySQL community — those using, building, and deploying applications on MySQL or compatible software — to share knowledge, collaborate, and have a collective voice on the future of the ecosystem.
 
-**Other platforms:** see [gohugo.io/installation](https://gohugo.io/installation/).
+The Foundation is a separate legal entity, independent of any single vendor, that will support the community through:
 
-Clone the repository:
+- **Governance** — a vendor-neutral model where participation is evaluated on merit
+- **Shared community assets** — public bug database, tools portal, security transparency log
+- **Events** — virtual and in-person collaboration around MySQL's future
+- **Education** — training materials, certification, and academic partnerships
 
-```bash
-git clone git@github.com:OurSQLFoundation/OurSQLFoundation.github.io.git
-cd OurSQLFoundation
-```
+### Founding Board
 
-Start the dev server:
+- **Vadim Tkachenko**, Technology Fellow and Co-Founder, Percona — President
+- **Matt Lord**, Software Engineer, PlanetScale — Secretary
+- **Sunny Bains**, Software Architect, PingCAP
+- **Tomas Ulin**, VillageSQL — Treasurer
+- **Zongzhi Chen**, Manager, Cloud RDS Team, Alibaba
+- **Jean-François Gagné**, MySQL Expert and Independent Consultant
+- **Peter Zaitsev**, Co-Founder, Percona
 
-```bash
-hugo server -D
-```
+## Get involved
 
-Open [localhost:1313](http://localhost:1313) in your browser.
+[Open an issue](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml) and tell us who you are — we'll take it from there.
 
-## Make changes with Claude Code
+---
 
-Add the project folder to [Claude Code](https://claude.ai/code). Then describe what you want changed — a new blog post, a copy edit, a layout tweak. Claude reads the Hugo project structure directly and edits the right files.
+## Contributing to this site
 
-Run `hugo server -D` to verify the result at [localhost:1313](http://localhost:1313) before committing.
-
-## Contribute
+This repository contains the source for [oursqlfoundation.org](https://oursqlfoundation.org) — a Hugo static site published via GitHub Pages.
 
 Work in a branch, not on `main`:
 
@@ -44,16 +43,29 @@ Work in a branch, not on `main`:
 git checkout -b your-branch-name
 ```
 
-Make your changes, then commit and push:
+Make your changes, commit, push, and open a pull request. Keep PRs focused — one change per PR makes review faster.
 
+## Running locally
+
+The site uses Hugo extended. Install it first.
+
+**macOS:**
 ```bash
-git add .
-git commit -m "describe what you changed"
-git push origin your-branch-name
+brew install hugo
 ```
 
-Open a pull request on GitHub. Keep PRs focused — one change per PR makes review faster.
+**Other platforms:** [gohugo.io/installation](https://gohugo.io/installation/)
 
-## Get involved
+Clone and start the dev server:
 
-Not sure where to start? [Open an issue](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml) and tell us who you are and what you'd like to work on.
+```bash
+git clone git@github.com:OurSQLFoundation/OurSQLFoundation.github.io.git
+cd OurSQLFoundation.github.io
+hugo server -D
+```
+
+Open [localhost:1313](http://localhost:1313) in your browser.
+
+---
+
+*Oracle and MySQL are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.*
