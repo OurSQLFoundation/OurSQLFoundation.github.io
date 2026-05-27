@@ -1,11 +1,11 @@
 .hero {
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 2rem 80px;
+  padding: 50px 2rem 30px;
   position: relative;
   overflow: hidden;
 
@@ -121,6 +121,7 @@
     border: 1px solid $dark-border;
     color: $off-white;
     background: transparent;
+    font-size: 1.0625rem;
 
     &:hover {
       border-color: rgba($accent, 0.4);
@@ -190,7 +191,8 @@
 
 @media (max-width: $break-md) {
   .hero {
-    padding: 100px 1.5rem 60px;
+    min-height: unset;
+    padding: 60px 1.5rem 40px;
   }
 
   .hero-title {

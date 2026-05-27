@@ -29,18 +29,39 @@
   align-items: center;
   text-decoration: none;
   outline: none;
+}
 
-  .logo-text {
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: $white;
-    line-height: 1;
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
 
-    span {
-      color: $accent;
-    }
+.logo-img--light { display: none; }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $muted;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+
+  &:hover {
+    border-color: rgba($accent, 0.4);
+    color: $accent;
+    background: $accent-glow;
   }
+
+  .icon-moon { display: none; }
+  svg { display: flex; }
 }
 
 .site-nav {
