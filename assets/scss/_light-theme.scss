@@ -1,0 +1,123 @@
+// ── Light theme overrides ──────────────────────────────────────────────────
+// Applied when <html data-theme="light">
+
+[data-theme="light"] {
+
+  body {
+    background: #f8f9fc;
+    color: #0f172a;
+  }
+
+  // Header
+  .site-header {
+    background: rgba(#fff, 0.92);
+    border-bottom-color: #dde3ed;
+  }
+
+  // Logo
+  .logo-img--dark { display: none; }
+  .logo-img--light { display: block; }
+
+  // Theme toggle button
+  .theme-toggle {
+    border-color: #dde3ed;
+    color: #64748b;
+
+    &:hover {
+      border-color: rgba(0, 200, 255, 0.5);
+      color: #0272a5;
+      background: rgba(0, 200, 255, 0.06);
+    }
+
+    .icon-sun  { display: none; }
+    .icon-moon { display: flex; }
+  }
+
+  // Hero
+  .hero {
+    &::before {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 200, 255, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 60%, rgba(0, 153, 204, 0.03) 0%, transparent 60%);
+    }
+    &::after {
+      background: linear-gradient(90deg, transparent, #dde3ed, transparent);
+    }
+  }
+
+  // Global typography overrides
+  h1, h2, h3, h4, h5, h6 { color: #0f172a; }
+  p      { color: #334155; }
+  strong { color: #0f172a; }
+
+  .hero-title       { color: #0f172a; }
+  .hero-description { color: #64748b; }
+
+  .btn-outline {
+    border-color: #cbd5e1;
+    color: #334155;
+    background: transparent;
+
+    &:hover {
+      border-color: rgba(0, 200, 255, 0.5);
+      color: #0272a5;
+      background: rgba(0, 200, 255, 0.05);
+    }
+  }
+
+  // Press release — match dark-theme specificity (.press-release .press-release-inner …)
+  .press-release {
+    background: #ffffff;
+    border-top-color: #dde3ed;
+
+    .press-release-inner {
+      h2 { color: #0f172a; }
+
+      h3 {
+        color: #0f172a;
+        border-bottom-color: #dde3ed;
+      }
+
+      h4 { color: #0272a5; }
+
+      p { color: #334155; }
+
+      ul li { color: #334155; }
+
+      blockquote {
+        background: #f1f5f9;
+        border-color: #dde3ed;
+        border-left-color: #00c8ff;
+
+        p    { color: #334155; }
+        cite { color: #1e293b; }
+      }
+
+      .faq-item { border-bottom-color: #dde3ed; }
+    }
+  }
+
+  .press-date { color: #64748b; }
+  .press-lead { color: #1e293b !important; }
+  .press-note {
+    color: #94a3b8 !important;
+    border-top-color: #dde3ed;
+  }
+
+  // CTA strip
+  .cta-strip {
+    background: #eef2f7;
+    border-top-color: #dde3ed;
+
+    h2 { color: #0f172a; }
+    p  { color: #64748b; }
+  }
+
+  // Footer
+  .site-footer {
+    background: #eef2f7;
+    border-top-color: #dde3ed;
+
+    .footer-bottom p { color: #94a3b8; }
+  }
+}

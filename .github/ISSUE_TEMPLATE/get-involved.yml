@@ -1,86 +1,23 @@
 name: "Get Involved"
-description: "Tell us who you are and what you'd like to work on."
-title: "Get involved: [your name or org]"
+description: "Say hello — we'll take it from there."
+title: "Get involved: [your name]"
 labels: ["get-involved"]
 body:
   - type: markdown
     attributes:
       value: |
-        Open this issue, fill in what's relevant, and we'll pick up the conversation here.
+        No form to fill out, just say hi. Tell us who you are and what's on your mind — we'll take it from there.
 
-        You don't need a finished proposal. "I run MySQL at $company and want to understand what the foundation is doing" is a perfectly good starting point.
-
-  - type: dropdown
-    id: role
+  - type: textarea
+    id: message
     attributes:
-      label: "What do you do?"
-      options:
-        - Developer / Software Engineer
-        - Database Administrator (DBA)
-        - DevOps / SRE / Platform Engineer
-        - Architect / Tech Lead
-        - Engineering Manager / CTO
-        - Researcher / Academic
-        - Open source maintainer
-        - Company or organization representative
-        - Other
+      label: "Who are you and what brings you here?"
+      placeholder: "Hey, I'm [name] from [company/project]. I've been working with MySQL for X years and I'm interested in..."
     validations:
       required: true
-
-  - type: checkboxes
-    id: participation
-    attributes:
-      label: "How do you want to contribute?"
-      description: "Check whatever applies. You can change direction later."
-      options:
-        - label: "Writing code or doing technical work"
-        - label: "Testing"
-        - label: "Writing documentation or blog posts"
-        - label: "Community work and outreach"
-        - label: "Advocating for open source MySQL licensing"
-        - label: "Representing my company or organization"
-        - label: "Sponsoring or funding foundation work"
-        - label: "Participating in governance"
-        - label: "Staying informed for now"
-
-  - type: textarea
-    id: background
-    attributes:
-      label: "Background"
-      description: "What do you work on? What's your history with MySQL-compatible databases?"
-      placeholder: "I've been running MySQL in production for X years, currently working on..."
-    validations:
-      required: false
-
-  - type: textarea
-    id: interest
-    attributes:
-      label: "What brought you here?"
-      description: "A specific problem, a licensing concern, a project you maintain — whatever it is."
-      placeholder: "I care about this because..."
-    validations:
-      required: false
-
-  - type: input
-    id: organization
-    attributes:
-      label: "Organization"
-      description: "Company, project, or community — if relevant."
-      placeholder: "Acme Corp / my-oss-project / independent"
-    validations:
-      required: false
-
-  - type: input
-    id: links
-    attributes:
-      label: "Links"
-      description: "GitHub profile, personal site, anything useful."
-      placeholder: "https://github.com/yourhandle"
-    validations:
-      required: false
 
   - type: markdown
     attributes:
       value: |
         ---
-        This issue is public. Only share what you're comfortable with. You can also reach us at [hello@oursql.org](mailto:hello@oursql.org).
+        This issue is public. You can also reach us at [contact@oursqlfoundation.org](mailto:contact@oursqlfoundation.org).
