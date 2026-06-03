@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="resource-single">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/resources/">Resources</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <div class="resource-single-card">
+    <h1 class="resource-single-title">{{ .Title }}</h1>
+
+    {{ with .Description }}<p class="resource-single-desc">{{ . }}</p>{{ end }}
+
+    {{ with .Date }}{{ if not .IsZero }}
+    <p class="resource-single-date">{{ .Format "January 2, 2006" }}</p>
+    {{ end }}{{ end }}
+
+    {{ with .Params.tags }}
+    <div class="resource-tags">
+      {{ range . }}<span class="resource-tag">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Content }}<div class="resource-single-content">{{ . }}</div>{{ end }}
+
+    {{ with .Params.link }}
+    <a href="{{ . }}" class="resource-visit-btn resource-visit-btn--large" target="_blank" rel="noopener noreferrer">
+      Visit resource <span aria-hidden="true">→</span>
+    </a>
+    {{ end }}
+  </div>
+
+  <a href="{{ .Parent.RelPermalink }}" class="resource-back-link">
+    <span aria-hidden="true">←</span> Back to {{ .Parent.Title }}
+  </a>
+</div>
+{{ end }}

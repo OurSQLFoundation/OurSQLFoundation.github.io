@@ -1,0 +1,167 @@
+{{ define "main" }}
+
+{{ if .Sections }}
+{{/* ── Hub view: category cards ── */}}
+<div class="resources-hub">
+  <div class="resources-hub-header">
+    <h1 class="resources-hub-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="resources-hub-desc">{{ . }}</p>{{ end }}
+  </div>
+
+  <div class="resources-hub-actions">
+    <a href="/resources/contribute/" class="btn btn-outline">Suggest a resource</a>
+  </div>
+
+  <div class="resources-hub-grid">
+    {{ range .Sections.ByTitle }}
+    <a href="{{ .RelPermalink }}" class="resource-hub-card">
+      {{ with .Params.icon }}
+      <div class="resource-hub-icon">
+        {{ partial (printf "icons/%s.html" .) $ }}
+      </div>
+      {{ end }}
+      <div class="resource-hub-card-body">
+        <h2 class="resource-hub-card-title">{{ .Title }}</h2>
+        {{ with .Description }}<p class="resource-hub-card-desc">{{ . }}</p>{{ end }}
+      </div>
+      <span class="resource-count">{{ .Pages | len }}</span>
+    </a>
+    {{ end }}
+  </div>
+</div>
+
+{{ else }}
+{{/* ── Subsection view: resource item cards ── */}}
+<div class="resources-section">
+  <div class="resources-section-header">
+    <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+      <a href="/resources/">Resources</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>{{ .Title }}</span>
+    </nav>
+    <h1 class="resources-section-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="resources-section-desc">{{ . }}</p>{{ end }}
+  </div>
+
+  {{ $pages := .Pages }}
+  {{ if eq .Params.sort "date" }}
+    {{ $pages = $pages.ByDate.Reverse }}
+  {{ else }}
+    {{ $pages = $pages.ByTitle }}
+  {{ end }}
+
+  {{/* ── Collect unique tags, countries, years from pages ── */}}
+  {{ $allTags     := slice }}
+  {{ $allCountries := slice }}
+  {{ $allYears    := slice }}
+  {{ range $pages }}
+    {{ range .Params.tags }}{{ $allTags = $allTags | append . }}{{ end }}
+    {{ range .Params.event_country }}{{ $allCountries = $allCountries | append . }}{{ end }}
+    {{ range .Params.event_year }}{{ $allYears = $allYears | append (string .) }}{{ end }}
+  {{ end }}
+  {{ $allTags      = $allTags      | uniq | sort }}
+  {{ $allCountries = $allCountries | uniq | sort }}
+  {{ $allYears     = $allYears     | uniq | sort }}
+
+  <div class="resource-filters">
+    {{/* Tags row */}}
+    {{ if gt (len $allTags) 0 }}
+    <div class="resource-filter-row">
+      <span class="resource-filter-label">Tags</span>
+      <div class="resource-filter-pills">
+        <a href="{{ $.RelPermalink }}" class="resource-filter-pill{{ if not $.Params.currentTag }} active{{ end }}">All</a>
+        {{ range $allTags }}
+        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="resource-filter-pill">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+    {{/* Countries row (events) */}}
+    {{ if gt (len $allCountries) 1 }}
+    <div class="resource-filter-row">
+      <span class="resource-filter-label">Country</span>
+      <div class="resource-filter-pills">
+        <a href="{{ $.RelPermalink }}" class="resource-filter-pill active">All</a>
+        {{ range $allCountries }}
+        <a href="{{ "/event_country/" | relURL }}{{ . | urlize }}/" class="resource-filter-pill">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+    {{/* Years row (events) */}}
+    {{ if gt (len $allYears) 1 }}
+    <div class="resource-filter-row">
+      <span class="resource-filter-label">Year</span>
+      <div class="resource-filter-pills">
+        <a href="{{ $.RelPermalink }}" class="resource-filter-pill active">All</a>
+        {{ range $allYears }}
+        <a href="{{ "/event_year/" | relURL }}{{ . | urlize }}/" class="resource-filter-pill">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+    <div class="resource-filter-actions">
+      {{ $vowels := slice "a" "e" "i" "o" "u" }}
+      {{ $firstChar := .Title | lower | truncate 1 "" }}
+      {{ $article := "a" }}{{ if in $vowels $firstChar }}{{ $article = "an" }}{{ end }}
+      <a href="/resources/contribute/" class="resource-suggest-btn">Suggest {{ $article }} {{ .Title | lower }} resource</a>
+    </div>
+  </div>
+
+  {{ if $pages }}
+
+  {{/* ── Card grid view ── */}}
+  <div class="resources-list-grid" id="resources-cards-grid">
+    {{ range $pages }}
+    {{ $format := .Params.format }}
+    <div class="resource-card"
+      data-tags="{{ delimit .Params.tags "," }}"
+      data-title="{{ .Title }}"
+      data-description="{{ .Description }}"
+      data-link="{{ .Params.link }}"
+      data-date="{{ with .Date }}{{ if not .IsZero }}{{ .Format "Jan 2006" }}{{ end }}{{ end }}"
+      data-format="{{ .Params.format }}"
+      data-location="{{ $loc := slice }}{{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}{{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}{{ delimit $loc ", " }}"
+    >
+      <div class="resource-card-body">
+        <h2 class="resource-card-title">{{ .Title }}</h2>
+        {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
+        {{ if or .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
+        <div class="resource-card-meta">
+          {{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}
+          {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
+          {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
+          {{ $loc := slice }}
+          {{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}
+          {{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}
+          {{ if $loc }}<span class="resource-meta-location">{{ delimit $loc ", " }}</span>{{ end }}
+          {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "2 January 2006" }}</span>{{ end }}{{ end }}
+        </div>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="resource-tags">
+          {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="resource-tag">{{ . }}</a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      {{ with .Params.link }}
+      <div class="resource-card-footer">
+        <a href="{{ . }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>
+        {{ with $format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  {{ else }}
+  <div class="empty-state">
+    <h3>No resources yet</h3>
+    <p>Check back soon — the community is adding resources.</p>
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,136 @@
+{{ define "main" }}
+<div class="contribute-page">
+
+  <div class="contribute-header">
+    <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+      <a href="/resources/">Resources</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Suggest a Resource</span>
+    </nav>
+    <h1>Suggest a Resource</h1>
+    <p class="contribute-lead">The resource directory is maintained by the community. If you know of a tool, service, event, or resource that belongs here — add it. You can either open a pull request directly in the <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io" target="_blank" rel="noopener">repository</a>, or submit an issue and someone will take care of the rest.</p>
+
+    <div class="contribute-types">
+      <div class="contribute-type-item"><strong>Software</strong> — open source tools, databases, proxies</div>
+      <div class="contribute-type-item"><strong>SaaS Solutions</strong> — managed cloud database services</div>
+      <div class="contribute-type-item"><strong>Services</strong> — consulting, support, managed services</div>
+      <div class="contribute-type-item"><strong>Training</strong> — courses, tutorials, certifications, videos</div>
+      <div class="contribute-type-item"><strong>Books</strong> — MySQL books and reference material</div>
+      <div class="contribute-type-item"><strong>Events</strong> — conferences, meetups, community events</div>
+      <div class="contribute-type-item"><strong>Community</strong> — blogs, forums, aggregators, chat spaces</div>
+      <div class="contribute-type-item"><strong>Press & News</strong> — articles, press releases, coverage</div>
+    </div>
+  </div>
+
+  <div class="contribute-methods">
+
+    {{/* Method 1: PR */}}
+    <div class="contribute-method">
+      <div class="contribute-method-badge">Option 1</div>
+      <h2>Open a Pull Request</h2>
+      <p>The fastest way if you're comfortable with GitHub. Each resource is a single Markdown file in the repository.</p>
+
+      <h3>Where to add the file</h3>
+      <p>Open the repository and go to <code>content/resources/</code> — you'll find a folder for each resource type. Place your file in the folder that matches.</p>
+
+      <h3>File naming</h3>
+      <p>Use lowercase letters and hyphens. No spaces, no special characters.</p>
+      <div class="contribute-example">
+        <span class="contribute-example-good">✓ percona-server-for-mysql.md</span>
+        <span class="contribute-example-bad">✗ Percona Server.md</span>
+      </div>
+
+      <h3>Front matter</h3>
+      <p>Every resource file needs these fields at the top. Copy an existing file as a starting point.</p>
+
+      <div class="contribute-frontmatter">
+        <div class="contribute-fm-block">
+          <div class="contribute-fm-label">All types</div>
+<pre><code>---
+title: "Resource Name"
+link: "https://example.com"
+description: "One or two sentences describing what it is."
+tags: ["tag1", "tag2"]
+---</code></pre>
+        </div>
+        <div class="contribute-fm-block">
+          <div class="contribute-fm-label">Events (additional fields)</div>
+<pre><code>date: 2027-06-01
+format: "in-person"   # or "online"
+city: "Amsterdam"
+country: "Netherlands"
+event_country: ["Netherlands"]
+event_year: ["2027"]</code></pre>
+        </div>
+        <div class="contribute-fm-block">
+          <div class="contribute-fm-label">Press & News (additional fields)</div>
+<pre><code>date: 2026-05-27
+source: "Publication Name"</code></pre>
+        </div>
+      </div>
+
+
+<a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io" class="btn btn-primary" target="_blank" rel="noopener">Open the repository →</a>
+    </div>
+
+    {{/* Method 2: Issue */}}
+    <div class="contribute-method">
+      <div class="contribute-method-badge">Option 2</div>
+      <h2>Open an Issue</h2>
+      <p>Not comfortable with Git? Just open an issue and describe the resource — someone from the community will add it.</p>
+      <p>Pick the type that matches what you're suggesting:</p>
+
+      <div class="contribute-issue-list">
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-software.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Software</span>
+          <span class="contribute-issue-desc">Open source tools, databases, proxies</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-saas.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">SaaS Solutions</span>
+          <span class="contribute-issue-desc">Managed cloud database services</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-services.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Services</span>
+          <span class="contribute-issue-desc">Consulting, support, managed services</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-training.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Training</span>
+          <span class="contribute-issue-desc">Courses, tutorials, certifications</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-books.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Books</span>
+          <span class="contribute-issue-desc">MySQL books and reference material</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-events.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Events</span>
+          <span class="contribute-issue-desc">Conferences, meetups, community events</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-community.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Community</span>
+          <span class="contribute-issue-desc">Blogs, forums, Slack, aggregators</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-press.yml" class="contribute-issue-card" target="_blank" rel="noopener">
+          <span class="contribute-issue-type">Press & News</span>
+          <span class="contribute-issue-desc">Articles, press releases, coverage</span>
+          <span class="contribute-issue-arrow">→</span>
+        </a>
+      </div>
+
+      <p class="contribute-note">Not sure which type fits? <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new" target="_blank" rel="noopener">Open a general issue</a> and describe it in your own words.</p>
+    </div>
+
+  </div>
+
+  <div class="contribute-contact">
+    Questions? Reach us at <a href="mailto:contact@oursqlfoundation.org">contact@oursqlfoundation.org</a>
+  </div>
+
+</div>
+{{ end }}
