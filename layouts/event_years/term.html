@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div class="resources-section">
+
+  <div class="resources-section-header">
+    <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+      <a href="/resources/">Resources</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>{{ .Data.Singular | title }}: {{ .Title }}</span>
+    </nav>
+    <h1 class="resources-section-title">{{ .Title }}</h1>
+    <p class="resources-section-desc">{{ .Pages | len }} resource{{ if ne (.Pages | len) 1 }}s{{ end }} tagged <em>{{ .Title }}</em></p>
+  </div>
+
+  {{ if .Pages }}
+  <div class="resources-list-grid">
+    {{ range .Pages.ByTitle }}
+    {{ if .Params.link }}
+    <div class="resource-card"
+      data-tags="{{ delimit .Params.tags "," }}"
+      data-title="{{ .Title }}"
+      data-description="{{ .Description }}"
+      data-link="{{ .Params.link }}"
+      data-date="{{ with .Date }}{{ if not .IsZero }}{{ .Format "Jan 2006" }}{{ end }}{{ end }}"
+      data-format="{{ .Params.format }}"
+      data-location="{{ $loc := slice }}{{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}{{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}{{ delimit $loc ", " }}"
+    >
+      <div class="resource-card-body">
+        <h2 class="resource-card-title">{{ .Title }}</h2>
+        {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
+        {{ if or .Params.source .Params.format .Params.city .Params.country .Date }}
+        <div class="resource-card-meta">
+          {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
+          {{ with .Params.format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+          {{ $loc := slice }}
+          {{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}
+          {{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}
+          {{ if $loc }}<span class="resource-meta-location">{{ delimit $loc ", " }}</span>{{ end }}
+          {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "January 2006" }}</span>{{ end }}{{ end }}
+        </div>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="resource-tags">
+          {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="resource-tag">{{ . }}</a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="resource-card-footer">
+        <a href="{{ .Params.link }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="empty-state">
+    <h3>No resources found</h3>
+    <p><a href="/resources/">Browse all resources →</a></p>
+  </div>
+  {{ end }}
+
+</div>
+{{ end }}

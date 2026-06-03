@@ -1,0 +1,33 @@
+name: "Add Resource: Software"
+description: "Suggest a software tool to add to the directory."
+title: "Resource (Software): [name]"
+labels: ["resource", "software"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Name"
+      placeholder: "e.g. MyTool"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it is and why it belongs here."
+      placeholder: "A drop-in MySQL replacement that..."
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: open-source, server, proxy, sharding"
+      placeholder: "open-source, server"

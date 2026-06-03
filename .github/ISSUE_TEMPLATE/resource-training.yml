@@ -1,0 +1,37 @@
+name: "Add Resource: Training"
+description: "Suggest a MySQL course, tutorial series, or certification program."
+title: "Resource (Training): [name]"
+labels: ["resource", "training"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Name"
+      placeholder: "e.g. MySQL for Developers"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it covers and who it's for."
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: "Author or organization"
+      placeholder: "e.g. Kedar Vaijanapurkar"
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: free, online, video, dba, developer, certification"
+      placeholder: "free, online, developer"

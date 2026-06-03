@@ -1,0 +1,32 @@
+name: "Add Resource: Community"
+description: "Suggest a forum, blog, Slack workspace, or community space."
+title: "Resource (Community): [name]"
+labels: ["resource", "community"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Name"
+      placeholder: "e.g. My MySQL Blog"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it is."
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: blogs, news, forums, chat, support"
+      placeholder: "blogs, news"

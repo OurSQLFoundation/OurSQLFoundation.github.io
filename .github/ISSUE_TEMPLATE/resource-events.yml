@@ -1,0 +1,50 @@
+name: "Add Resource: Event"
+description: "Suggest a MySQL-related conference, meetup, or community event."
+title: "Resource (Events): [name]"
+labels: ["resource", "events"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Event name"
+      placeholder: "e.g. MySQL Conference 2027"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it is."
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: "Date"
+      placeholder: "e.g. 2027-06-15"
+  - type: dropdown
+    id: format
+    attributes:
+      label: "Format"
+      options:
+        - in-person
+        - online
+        - hybrid
+  - type: input
+    id: location
+    attributes:
+      label: "City, Country"
+      placeholder: "e.g. Amsterdam, Netherlands"
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: conference, free, open-source"
+      placeholder: "conference, free"

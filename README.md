@@ -31,6 +31,12 @@ The Foundation is a separate legal entity, independent of any single vendor, tha
 
 [Open an issue](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml) and tell us who you are — we'll take it from there.
 
+## Adding a resource to the directory
+
+The resource directory at [oursqlfoundation.org/resources/](https://oursqlfoundation.org/resources/) is community-maintained. Each resource is a single Markdown file under `content/resources/`.
+
+You can contribute via a pull request or by opening an issue — see [`content/resources/README.md`](content/resources/README.md) for full instructions.
+
 ---
 
 ## Contributing to this site

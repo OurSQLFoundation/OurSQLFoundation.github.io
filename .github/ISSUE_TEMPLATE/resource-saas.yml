@@ -1,0 +1,32 @@
+name: "Add Resource: SaaS Solution"
+description: "Suggest a managed or cloud MySQL service to add to the directory."
+title: "Resource (SaaS): [name]"
+labels: ["resource", "saas"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Name"
+      placeholder: "e.g. Acme Cloud MySQL"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it is and why it belongs here."
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: managed, cloud, serverless"
+      placeholder: "managed, cloud"

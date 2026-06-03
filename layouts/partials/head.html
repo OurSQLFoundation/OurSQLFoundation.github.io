@@ -64,3 +64,8 @@
 
 {{/* ── Favicon ── */}}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+{{/* ── Resources JS ── */}}
+{{ if eq .Section "resources" }}
+<script src="/js/resources.js" defer></script>
+{{ end }}

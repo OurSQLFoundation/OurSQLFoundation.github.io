@@ -1,0 +1,32 @@
+name: "Add Resource: Service or Consultancy"
+description: "Suggest a MySQL consulting firm, managed service provider, or support service."
+title: "Resource (Services): [name]"
+labels: ["resource", "services"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Name"
+      placeholder: "e.g. Acme Database Consulting"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what they offer."
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: consulting, support, enterprise"
+      placeholder: "consulting, support"

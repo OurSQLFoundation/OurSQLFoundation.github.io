@@ -1,0 +1,43 @@
+name: "Add Resource: Book"
+description: "Suggest a book about MySQL or compatible technologies."
+title: "Resource (Books): [title]"
+labels: ["resource", "books"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Title and edition"
+      placeholder: "e.g. MySQL Cookbook, 4th Edition"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      description: "Publisher page, O'Reilly, Amazon, etc."
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1–2 sentences on what it covers and who it's for."
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: "Author(s)"
+      placeholder: "e.g. Silvia Botros, Jeremy Tinley"
+  - type: input
+    id: year
+    attributes:
+      label: "Publication year"
+      placeholder: "e.g. 2022"
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Comma-separated. Suggested: beginner, advanced, practical, performance"
+      placeholder: "advanced, performance"

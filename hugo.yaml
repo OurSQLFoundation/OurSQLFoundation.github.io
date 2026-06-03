@@ -18,11 +18,15 @@ markup:
 
 taxonomies:
   tag: tags
+  event_country: event_country
+  event_year: event_year
 
 outputs:
   home: ["HTML"]
   section: ["HTML"]
   page: ["HTML"]
+  taxonomy: ["HTML"]
+  term: ["HTML"]
 
 pagination:
   pagerSize: 10

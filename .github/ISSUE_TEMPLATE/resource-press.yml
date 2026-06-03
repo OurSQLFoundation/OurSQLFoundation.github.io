@@ -1,0 +1,36 @@
+name: "Add Resource: Press & News"
+description: "Suggest a news article, blog post, or press release about OurSQL Foundation."
+title: "Resource (Press): [title]"
+labels: ["resource", "press"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: "Title"
+      placeholder: "e.g. OurSQL Foundation launches..."
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "URL"
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "1 sentence on what the article covers."
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: "Publication"
+      placeholder: "e.g. DBTA, TechCrunch"
+  - type: input
+    id: date
+    attributes:
+      label: "Publication date"
+      placeholder: "e.g. 2026-05-27"
