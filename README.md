@@ -35,7 +35,7 @@ The Foundation is a separate legal entity, independent of any single vendor, tha
 
 The resource directory at [oursqlfoundation.org/resources/](https://oursqlfoundation.org/resources/) is community-maintained. Each resource is a single Markdown file under `content/resources/`.
 
-You can contribute via a pull request or by opening an issue — see [`content/resources/README.md`](content/resources/README.md) for full instructions.
+You can contribute via a pull request or by opening an issue — see [`RESOURCES.md`](RESOURCES.md) for full instructions.
 
 ---
 
