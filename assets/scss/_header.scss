@@ -40,28 +40,46 @@
 .logo-img--light { display: none; }
 
 .theme-toggle {
-  background: none;
-  border: 1px solid $dark-border;
-  border-radius: 8px;
-  width: 36px;
-  height: 36px;
+  background: rgba(255, 210, 40, 0.08);
+  border: 1px solid rgba(255, 210, 40, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: $muted;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  color: #ffd028;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   flex-shrink: 0;
   padding: 0;
+  position: relative;
 
-  &:hover {
-    border-color: rgba($accent, 0.4);
-    color: $accent;
-    background: $accent-glow;
+  // Glow effect in dark mode — wide, soft
+  box-shadow:
+    0 0 10px rgba(255, 210, 40, 0.2),
+    0 0 40px rgba(255, 210, 40, 0.1),
+    0 0 80px rgba(255, 210, 40, 0.05);
+
+  // Radial light spill behind the button
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 210, 40, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .icon-moon { display: none; }
-  svg { display: flex; }
+  &:hover {
+    background: rgba(255, 210, 40, 0.12);
+    border-color: rgba(255, 210, 40, 0.5);
+    box-shadow:
+      0 0 14px rgba(255, 210, 40, 0.3),
+      0 0 60px rgba(255, 210, 40, 0.15),
+      0 0 120px rgba(255, 210, 40, 0.06);
+  }
 }
 
 .header-right {
@@ -69,6 +87,10 @@
   align-items: center;
   gap: 0.5rem;
   margin-left: auto;
+
+  @media (max-width: $break-md) {
+    gap: 1rem;
+  }
 }
 
 .site-nav {

@@ -28,19 +28,21 @@
   .logo-img--dark { display: none; }
   .logo-img--light { display: block; }
 
-  // Theme toggle button
+  // Theme toggle button — unlit bulb in light mode
   .theme-toggle {
+    background: #f1f5f9;
     border-color: #dde3ed;
-    color: #64748b;
+    color: #94a3b8;
+    box-shadow: none;
+
+    &::before { display: none; }
 
     &:hover {
-      border-color: rgba(0, 200, 255, 0.5);
-      color: #0272a5;
-      background: rgba(0, 200, 255, 0.06);
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+      color: #64748b;
+      box-shadow: none;
     }
-
-    .icon-sun  { display: none; }
-    .icon-moon { display: flex; }
   }
 
   // Hero
