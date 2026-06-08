@@ -61,15 +61,6 @@
 
   </div><!-- /.resource-single-layout -->
 
-  {{/* Social share preview */}}
-  {{ $social := .Resources.Get "social_1200x630.png" }}
-  {{ with $social }}
-  <div class="resource-single-social">
-    <p class="resource-single-social-label">Share preview</p>
-    <img src="{{ .RelPermalink }}" alt="Share preview" class="resource-single-social-img" loading="lazy" width="1200" height="630">
-  </div>
-  {{ end }}
-
-  <a href="{{ .Parent.RelPermalink }}" class="resource-back-link">← Back to {{ .Parent.Title }}</a>
+<a href="{{ .Parent.RelPermalink }}" class="resource-back-link">← Back to {{ .Parent.Title }}</a>
 </div>
 {{ end }}
