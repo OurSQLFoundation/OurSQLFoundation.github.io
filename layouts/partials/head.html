@@ -18,10 +18,17 @@
 
 {{/* ── OG image: front matter → default social cover ── */}}
 {{ $ogImage := "" }}
-{{ with .Params.image }}
-  {{ $ogImage = absURL . }}
+{{ if .Params.image }}
+  {{ $res := .Resources.Get .Params.image }}
+  {{ if $res }}
+    {{ $ogImage = $res.Permalink }}
+  {{ else }}
+    {{ $ogImage = absURL .Params.image }}
+  {{ end }}
+{{ else if .Params.images }}
+  {{ $ogImage = absURL (index .Params.images 0) }}
 {{ else }}
-  {{ $cover := resources.Get "images/social_cover.png" }}
+  {{ $cover := resources.Get "images/social_cover.jpg" }}
   {{ if $cover }}
     {{ $ogImage = ($cover | fingerprint).Permalink }}
   {{ end }}

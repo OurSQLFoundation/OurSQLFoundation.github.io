@@ -26,9 +26,10 @@ body:
     validations:
       required: true
   - type: input
-    id: author
+    id: authors
     attributes:
-      label: "Author(s)"
+      label: "Authors"
+      description: "Comma-separated list of authors."
       placeholder: "e.g. Silvia Botros, Jeremy Tinley"
   - type: input
     id: year

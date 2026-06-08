@@ -1,12 +1,18 @@
 ---
-title: "Percona Live 2026 Amsterdam"
-link: "https://perconalive.com/2026-amsterdam/"
-description: "Percona Live 2026 in Amsterdam — an open source database conference featuring talks, tutorials, and networking for MySQL, PostgreSQL, MongoDB, and cloud-native database practitioners."
-tags: ["conference", "open-source"]
+city: Amsterdam
+country: Netherlands
 date: 2026-09-11
-format: "in-person"
-city: "Amsterdam"
-country: "Netherlands"
-event_country: ["Netherlands"]
-event_year: ["2026"]
+description: Percona Live 2026 in Amsterdam — an open source database conference featuring
+  talks, tutorials, and networking for MySQL, PostgreSQL, MongoDB, and cloud-native
+  database practitioners.
+event_country:
+- Netherlands
+event_year:
+- '2026'
+format: in-person
+link: https://perconalive.com/2026-amsterdam/
+tags:
+- conference
+- open-source
+title: Percona Live 2026 Amsterdam
 ---

@@ -1,6 +1,9 @@
 ---
-title: "Percona"
-link: "https://www.percona.com/services"
-description: "Open source database consulting, managed services, and support for MySQL and compatible technologies."
-tags: ["consulting", "support"]
+description: Open source database consulting, managed services, and support for MySQL
+  and compatible technologies.
+link: https://www.percona.com/services
+tags:
+- consulting
+- support
+title: Percona
 ---

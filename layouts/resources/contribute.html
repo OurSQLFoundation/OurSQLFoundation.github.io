@@ -49,24 +49,44 @@
 <pre><code>---
 title: "Resource Name"
 link: "https://example.com"
-description: "One or two sentences describing what it is."
+description: "One or two sentences."
 tags: ["tag1", "tag2"]
 ---</code></pre>
         </div>
         <div class="contribute-fm-block">
+          <div class="contribute-fm-label">Books (with cover image)</div>
+<pre><code># Use a folder: books/my-book/index.md
+# Place cover.jpeg in the same folder
+authors: ["Author One", "Author Two"]
+year: 2022
+images:
+  - cover.jpeg</code></pre>
+        </div>
+        <div class="contribute-fm-block">
+          <div class="contribute-fm-label">Training (optional)</div>
+<pre><code>author: "Organization or Author"</code></pre>
+        </div>
+        <div class="contribute-fm-block">
           <div class="contribute-fm-label">Events (additional fields)</div>
-<pre><code>date: 2027-06-01
+<pre><code>date: 2026-09-11
 format: "in-person"   # or "online"
 city: "Amsterdam"
 country: "Netherlands"
 event_country: ["Netherlands"]
-event_year: ["2027"]</code></pre>
+event_year: ["2026"]</code></pre>
         </div>
         <div class="contribute-fm-block">
           <div class="contribute-fm-label">Press & News (additional fields)</div>
 <pre><code>date: 2026-05-27
 source: "Publication Name"</code></pre>
         </div>
+      </div>
+
+      <h3>Event file naming</h3>
+      <p>Prefix dated events with the date, aggregator pages with <code>aggregator-</code>:</p>
+      <div class="contribute-example">
+        <span class="contribute-example-good">✓ 2026-09-11-percona-live-amsterdam.md</span>
+        <span class="contribute-example-good">✓ aggregator-mysql-events.md</span>
       </div>
 
 

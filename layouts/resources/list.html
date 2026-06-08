@@ -114,7 +114,11 @@
   <div class="resources-list-grid" id="resources-cards-grid">
     {{ range $pages }}
     {{ $format := .Params.format }}
-    <div class="resource-card"
+    {{ $images := .Params.images }}
+    {{ $pageURL := .RelPermalink }}
+    {{ $pageTitle := .Title }}
+    {{ $pageRes := .Resources }}
+    <div class="resource-card{{ if $images }} resource-card--has-image{{ end }}"
       data-tags="{{ delimit .Params.tags "," }}"
       data-title="{{ .Title }}"
       data-description="{{ .Description }}"
@@ -123,12 +127,23 @@
       data-format="{{ .Params.format }}"
       data-location="{{ $loc := slice }}{{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}{{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}{{ delimit $loc ", " }}"
     >
+      {{ with $images }}
+      {{ $imgFile := index . 0 }}
+      {{ $imgRes := $pageRes.Get $imgFile }}
+      {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" $imgFile) }}{{ end }}
+      {{ with $imgRes }}
+      {{ $thumb := .Fit "320x480 jpg" }}
+      <a href="{{ $pageURL }}" class="resource-card-image-wrap resource-card-image-wrap--portrait">
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $pageTitle }}" class="resource-card-image" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+      </a>
+      {{ end }}
+      {{ end }}
       <div class="resource-card-body">
         <h2 class="resource-card-title">{{ .Title }}</h2>
         {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
-        {{ if or .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
+        {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
         <div class="resource-card-meta">
-          {{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}
+          {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
           {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
           {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
           {{ $loc := slice }}
@@ -144,12 +159,13 @@
         </div>
         {{ end }}
       </div>
-      {{ with .Params.link }}
       <div class="resource-card-footer">
+        {{ with .Params.link }}
         <a href="{{ . }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>
+        {{ end }}
         {{ with $format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+        <a href="{{ .RelPermalink }}" class="resource-details-btn">Details</a>
       </div>
-      {{ end }}
     </div>
     {{ end }}
   </div>

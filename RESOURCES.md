@@ -1,6 +1,6 @@
 # Resources directory
 
-The resource directory at [oursqlfoundation.org/resources/](https://oursqlfoundation.org/resources/) is maintained by the community. Each resource is a single Markdown file in this folder.
+The resource directory at [oursqlfoundation.org/resources/](https://oursqlfoundation.org/resources/) is maintained by the community. Each resource is a single Markdown file — or a folder with a Markdown file and images.
 
 There are two ways to contribute.
 
@@ -23,6 +23,20 @@ content/resources/community/    — blogs, forums, aggregators, chat
 content/resources/press/        — articles, press releases, coverage
 ```
 
+### Two formats: single file vs folder (leaf bundle)
+
+**Single file** — for most resources:
+```
+content/resources/software/proxysql.md
+```
+
+**Folder (leaf bundle)** — use this when you have a cover image, PDF, or other files to include alongside the resource (recommended for books):
+```
+content/resources/books/high-performance-mysql/
+  index.md
+  cover.jpeg
+```
+
 ### File naming
 
 Lowercase letters and hyphens only. No spaces or special characters.
@@ -32,11 +46,15 @@ percona-server-for-mysql.md   ✓
 Percona Server.md             ✗
 ```
 
+**Events** — prefix the file with the date:
+```
+2026-09-11-percona-live-amsterdam.md
+aggregator-mysql-events.md       ← for aggregator pages without a specific date
+```
+
 ### Front matter
 
-Every file needs these fields. Copy an existing file as a starting point.
-
-**All types:**
+**All types (single file):**
 ```yaml
 ---
 title: "Resource Name"
@@ -46,14 +64,33 @@ tags: ["tag1", "tag2"]
 ---
 ```
 
+**Books (leaf bundle with cover image):**
+```yaml
+---
+title: "High Performance MySQL, 4th Edition"
+link: "https://..."
+description: "One or two sentences."
+authors: ["Silvia Botros", "Jeremy Tinley"]
+year: 2021
+tags: ["advanced", "performance"]
+images:
+  - cover.jpeg
+---
+```
+
+**Training — optional author field:**
+```yaml
+author: "Percona"
+```
+
 **Events — additional fields:**
 ```yaml
-date: 2027-06-01
+date: 2026-09-11
 format: "in-person"   # or "online"
 city: "Amsterdam"
 country: "Netherlands"
 event_country: ["Netherlands"]
-event_year: ["2027"]
+event_year: ["2026"]
 ```
 
 **Press & News — additional fields:**
@@ -61,19 +98,6 @@ event_year: ["2027"]
 date: 2026-05-27
 source: "Publication Name"
 ```
-
-### Available tags
-
-| Type | Tags |
-|------|------|
-| Software | `open-source` `server` `proxy` `sharding` |
-| SaaS | `managed` `cloud` `serverless` |
-| Services | `consulting` `support` `enterprise` |
-| Training | `free` `online` `video` `dba` `developer` `certification` |
-| Books | `beginner` `advanced` `practical` `performance` |
-| Events | `conference` `free` `open-source` |
-| Community | `blogs` `news` `forums` `chat` `support` |
-| Press | `news` `press-release` `launch` |
 
 ---
 

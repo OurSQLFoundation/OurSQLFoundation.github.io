@@ -30,9 +30,9 @@
       <div class="resource-card-body">
         <h2 class="resource-card-title">{{ .Title }}</h2>
         {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
-        {{ if or .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
+        {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
         <div class="resource-card-meta">
-          {{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}
+          {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
           {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
           {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
           {{ $loc := slice }}
@@ -49,8 +49,9 @@
         {{ end }}
       </div>
       <div class="resource-card-footer">
-        <a href="{{ .Params.link }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>
+        {{ with .Params.link }}<a href="{{ . }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>{{ end }}
         {{ with $format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+        <a href="{{ .RelPermalink }}" class="resource-details-btn">Details</a>
       </div>
     </div>
     {{ end }}

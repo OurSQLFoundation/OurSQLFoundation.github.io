@@ -190,6 +190,43 @@
   }
 }
 
+.resource-card-image-wrap {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid $dark-border;
+  background: $dark-surface;
+
+  // Portrait (book covers)
+  &--portrait {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: $dark-card;
+  }
+}
+
+.resource-card-image {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  .resource-card:hover & {
+    transform: scale(1.02);
+  }
+
+  .resource-card-image-wrap--portrait & {
+    width: auto;
+    height: 300px;
+    object-fit: contain;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+  }
+}
+
 .resource-card-body {
   flex: 1;
   padding: 1.25rem 1.25rem 0;
@@ -435,6 +472,82 @@
 }
 
 // ── CSV download button ─────────────────────────────────────────────────────
+.resource-details-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $muted;
+  text-decoration: none;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid $dark-border;
+  border-radius: 6px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: $off-white;
+    border-color: rgba($accent, 0.35);
+  }
+}
+
+// ── Social share preview ────────────────────────────────────────────────────
+.resource-single-social {
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.resource-single-social-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $muted;
+  margin-bottom: 0.75rem;
+}
+
+.resource-single-social-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid $dark-border;
+}
+
+// ── Single resource page ────────────────────────────────────────────────────
+.resource-single-layout {
+  &--with-image {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 3rem;
+    align-items: start;
+
+    @media (max-width: $break-md) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
+
+.resource-single-image-col {
+  position: sticky;
+  top: 88px;
+
+  @media (max-width: $break-md) {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.resource-single-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid $dark-border;
+  display: block;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
 .resource-csv-btn {
   display: inline-flex;
   align-items: center;
@@ -461,7 +574,7 @@
 // ── Single resource page ───────────────────────────────────────────────────
 
 .resource-single {
-  max-width: 720px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 120px 2rem $section-pad;
 }

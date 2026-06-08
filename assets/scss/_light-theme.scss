@@ -164,6 +164,30 @@
 
   .resource-meta-source { color: #64748b; }
 
+  .resource-visit-btn {
+    &:hover {
+      color: #0272a5;
+      background: rgba(0, 200, 255, 0.1);
+      border-color: rgba(0, 200, 255, 0.5);
+    }
+  }
+
+  .resource-card-image-wrap { border-bottom-color: #dde3ed; }
+
+  .resource-details-btn {
+    color: #64748b;
+    border-color: #dde3ed;
+    &:hover { color: #334155; border-color: rgba(0,200,255,0.35); }
+  }
+
+  .resource-single-social-img { border-color: #dde3ed; }
+  .resource-single-social-label { color: #94a3b8; }
+
+  .resource-single-img {
+    border-color: #dde3ed;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
   .resource-tag {
     background: #f1f5f9;
     border-color: #dde3ed;

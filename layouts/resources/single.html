@@ -8,18 +8,45 @@
     <span>{{ .Title }}</span>
   </nav>
 
+  <div class="resource-single-layout{{ with .Params.images }} resource-single-layout--with-image{{ end }}">
+
+  {{/* Image column — leaf bundle first, fallback to global assets */}}
+  {{ with .Params.images }}
+  {{ $imgFile := index . 0 }}
+  {{ $imgRes := $.Resources.Get $imgFile }}
+  {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" $imgFile) }}{{ end }}
+  {{ with $imgRes }}
+  <div class="resource-single-image-col">
+    {{ $img := .Fit "600x900 jpg" }}
+    <img src="{{ $img.RelPermalink }}" alt="" class="resource-single-img" loading="lazy" width="{{ $img.Width }}" height="{{ $img.Height }}">
+  </div>
+  {{ end }}
+  {{ end }}
+
+  {{/* Content column */}}
   <div class="resource-single-card">
     <h1 class="resource-single-title">{{ .Title }}</h1>
 
     {{ with .Description }}<p class="resource-single-desc">{{ . }}</p>{{ end }}
 
-    {{ with .Date }}{{ if not .IsZero }}
-    <p class="resource-single-date">{{ .Format "January 2, 2006" }}</p>
-    {{ end }}{{ end }}
+    {{/* Metadata */}}
+    {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.format .Params.city .Params.country .Date }}
+    <div class="resource-card-meta">
+      {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
+      {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
+      {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
+      {{ with .Params.format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+      {{ $loc := slice }}
+      {{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}
+      {{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}
+      {{ if $loc }}<span class="resource-meta-location">{{ delimit $loc ", " }}</span>{{ end }}
+      {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "2 January 2006" }}</span>{{ end }}{{ end }}
+    </div>
+    {{ end }}
 
     {{ with .Params.tags }}
     <div class="resource-tags">
-      {{ range . }}<span class="resource-tag">{{ . }}</span>{{ end }}
+      {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="resource-tag">{{ . }}</a>{{ end }}
     </div>
     {{ end }}
 
@@ -27,13 +54,22 @@
 
     {{ with .Params.link }}
     <a href="{{ . }}" class="resource-visit-btn resource-visit-btn--large" target="_blank" rel="noopener noreferrer">
-      Visit resource <span aria-hidden="true">→</span>
+      Visit resource →
     </a>
     {{ end }}
-  </div>
+  </div><!-- /.resource-single-card -->
 
-  <a href="{{ .Parent.RelPermalink }}" class="resource-back-link">
-    <span aria-hidden="true">←</span> Back to {{ .Parent.Title }}
-  </a>
+  </div><!-- /.resource-single-layout -->
+
+  {{/* Social share preview */}}
+  {{ $social := .Resources.Get "social_1200x630.png" }}
+  {{ with $social }}
+  <div class="resource-single-social">
+    <p class="resource-single-social-label">Share preview</p>
+    <img src="{{ .RelPermalink }}" alt="Share preview" class="resource-single-social-img" loading="lazy" width="1200" height="630">
+  </div>
+  {{ end }}
+
+  <a href="{{ .Parent.RelPermalink }}" class="resource-back-link">← Back to {{ .Parent.Title }}</a>
 </div>
 {{ end }}

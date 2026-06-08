@@ -2,19 +2,22 @@
 <div class="resources-section">
 
   <div class="resources-section-header">
+    {{ $labels := dict "tag" "Tag" "event_country" "Country" "event_year" "Year" }}
+    {{ $label := index $labels .Data.Singular | default (.Data.Singular | title) }}
     <nav class="resources-breadcrumb" aria-label="Breadcrumb">
       <a href="/resources/">Resources</a>
       <span class="breadcrumb-sep" aria-hidden="true">/</span>
-      <span>{{ .Data.Singular | title }}: {{ .Title }}</span>
+      <span>{{ $label }}: {{ .Title }}</span>
     </nav>
     <h1 class="resources-section-title">{{ .Title }}</h1>
-    <p class="resources-section-desc">{{ .Pages | len }} resource{{ if ne (.Pages | len) 1 }}s{{ end }} tagged <em>{{ .Title }}</em></p>
+    <p class="resources-section-desc">{{ .Pages | len }} resource{{ if ne (.Pages | len) 1 }}s{{ end }} — {{ $label | lower }} <em>{{ .Title }}</em></p>
   </div>
 
   {{ if .Pages }}
   <div class="resources-list-grid">
     {{ range .Pages.ByTitle }}
     {{ if .Params.link }}
+    {{ $format := .Params.format }}
     <div class="resource-card"
       data-tags="{{ delimit .Params.tags "," }}"
       data-title="{{ .Title }}"
@@ -27,15 +30,16 @@
       <div class="resource-card-body">
         <h2 class="resource-card-title">{{ .Title }}</h2>
         {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
-        {{ if or .Params.source .Params.format .Params.city .Params.country .Date }}
+        {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.city .Params.country .Date }}
         <div class="resource-card-meta">
+          {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
+          {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
           {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
-          {{ with .Params.format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
           {{ $loc := slice }}
           {{ with .Params.city }}{{ $loc = $loc | append . }}{{ end }}
           {{ with .Params.country }}{{ $loc = $loc | append . }}{{ end }}
           {{ if $loc }}<span class="resource-meta-location">{{ delimit $loc ", " }}</span>{{ end }}
-          {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "January 2006" }}</span>{{ end }}{{ end }}
+          {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "2 January 2006" }}</span>{{ end }}{{ end }}
         </div>
         {{ end }}
         {{ with .Params.tags }}
@@ -45,7 +49,9 @@
         {{ end }}
       </div>
       <div class="resource-card-footer">
-        <a href="{{ .Params.link }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>
+        {{ with .Params.link }}<a href="{{ . }}" class="resource-visit-btn" target="_blank" rel="noopener noreferrer">Visit →</a>{{ end }}
+        {{ with $format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
+        <a href="{{ .RelPermalink }}" class="resource-details-btn">Details</a>
       </div>
     </div>
     {{ end }}
