@@ -11,5 +11,5 @@ link: https://mariadb.org/planet/
 tags:
 - blogs
 - news
-title: Planet MariaDB
+title: Planet MariaDB Server
 ---
