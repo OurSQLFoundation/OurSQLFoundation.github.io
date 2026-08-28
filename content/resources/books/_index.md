@@ -4,5 +4,6 @@ description: Essential reading for MySQL database administrators, developers, an
 icon: book
 image: images/og/resources-books-1200x630.png
 sort: title
-title: Books
+title: Books & Publications
+weight: 5
 ---
