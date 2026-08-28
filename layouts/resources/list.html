@@ -55,7 +55,7 @@
   </div>
 
   {{/* ── Recently added ── */}}
-  {{ $dates := hugo.Data.resource_added }}
+  {{ $dates := .Site.Data.resource_added }}
   {{ $recentItems := slice }}
   {{ range .Sections }}
     {{ if not .Params.hidden_from_hub }}
