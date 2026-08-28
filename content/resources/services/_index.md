@@ -4,5 +4,6 @@ description: Consulting, support, and managed services from MySQL experts and da
 icon: wrench
 image: images/og/resources-services-1200x630.png
 sort: title
-title: Professional Services
+title: Services
+weight: 3
 ---

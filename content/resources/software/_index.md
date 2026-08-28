@@ -4,5 +4,6 @@ description: Open-source and commercial MySQL-compatible database engines, proxi
 icon: software
 image: images/og/resources-software-1200x630.png
 sort: title
-title: Software
+title: Software & Tools
+weight: 1
 ---

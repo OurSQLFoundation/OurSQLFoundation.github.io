@@ -4,4 +4,5 @@ icon: newspaper
 image: images/og/resources-press-1200x630.png
 sort: date
 title: Press & News
+hidden_from_hub: true
 ---

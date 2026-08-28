@@ -13,7 +13,8 @@
   </div>
 
   <div class="resources-hub-grid">
-    {{ range .Sections.ByTitle }}
+    {{ range .Sections.ByWeight }}
+    {{ if .Params.hidden_from_hub }}{{ continue }}{{ end }}
     <a href="{{ .RelPermalink }}" class="resource-hub-card">
       {{ with .Params.icon }}
       <div class="resource-hub-icon">
