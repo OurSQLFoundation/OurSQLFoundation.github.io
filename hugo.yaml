@@ -22,7 +22,7 @@ taxonomies:
   event_year: event_year
 
 outputs:
-  home: ["HTML"]
+  home: ["HTML", "JSON"]
   section: ["HTML"]
   page: ["HTML"]
   taxonomy: ["HTML"]

@@ -283,6 +283,51 @@
     border-color: rgba(0, 200, 255, 0.15);
   }
 
+  // OurSQL Universe hub — search
+  .resources-search-input {
+    background: #ffffff;
+    border-color: #dde3ed;
+    color: #0f172a;
+
+    &::placeholder { color: #94a3b8; }
+
+    &:focus { border-color: rgba(0, 200, 255, 0.45); }
+  }
+
+  .resources-search-results {
+    background: #ffffff;
+    border-color: #dde3ed;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+  }
+
+  .resources-search-result {
+    border-bottom-color: #dde3ed;
+    &:hover { background: #f8f9fc; }
+  }
+
+  .resources-search-result-title { color: #0f172a; }
+  .resources-search-result-desc  { color: #64748b; }
+  .resources-search-result-category,
+  .resources-category-eyebrow,
+  .resources-recent-eyebrow,
+  .resources-recent-card-category { color: #0272a5; }
+
+  .resources-search-empty { color: #64748b; }
+
+  // OurSQL Universe hub — bottom CTA row
+  .resources-cta-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+
+    h3 { color: #0f172a; }
+    p  { color: #64748b; }
+
+    &--primary {
+      background: linear-gradient(180deg, rgba(0, 200, 255, 0.05), #ffffff 60%);
+      border-color: rgba(0, 200, 255, 0.3);
+    }
+  }
+
   .resource-filter-select {
     background-color: #ffffff;
     border-color: #dde3ed;

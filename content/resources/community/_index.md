@@ -6,4 +6,5 @@ image: images/og/resources-community-1200x630.png
 sort: title
 title: Community
 weight: 7
+count_unit: spaces
 ---

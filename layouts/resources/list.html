@@ -8,10 +8,25 @@
     {{ with .Description }}<p class="resources-hub-desc">{{ . }}</p>{{ end }}
   </div>
 
-  <div class="resources-hub-actions">
-    <a href="/resources/contribute/" class="btn btn-outline">Suggest a resource</a>
+  {{/* ── Search ── */}}
+  <div class="resources-search">
+    <input
+      type="search"
+      id="resources-search-input"
+      class="resources-search-input"
+      placeholder="Search tools, services, events, companies…"
+      autocomplete="off"
+      aria-label="Search the resource directory"
+    >
+    <button type="button" id="resources-search-btn" class="btn btn-primary resources-search-btn">Search</button>
+    <div id="resources-search-results" class="resources-search-results" hidden></div>
   </div>
 
+  {{/* ── Category cards ── */}}
+  <div class="resources-category-header">
+    <span class="resources-category-eyebrow">Browse by category</span>
+    <h2 class="resources-category-title">What are you looking for?</h2>
+  </div>
   <div class="resources-hub-grid">
     {{ range .Sections.ByWeight }}
     {{ if .Params.hidden_from_hub }}{{ continue }}{{ end }}
@@ -25,11 +40,79 @@
         <h2 class="resource-hub-card-title">{{ .Title }}</h2>
         {{ with .Description }}<p class="resource-hub-card-desc">{{ . }}</p>{{ end }}
       </div>
-      <span class="resource-count">{{ .Pages | len }}</span>
+      {{ if .Params.count_label }}
+      <span class="resource-count resource-count--label">{{ .Params.count_label }}</span>
+      {{ else }}
+      {{ $n := len .Pages }}
+      {{ if eq .Params.count_mode "upcoming" }}
+        {{ $n = 0 }}
+        {{ range .Pages }}{{ if ge .Date now }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+      {{ end }}
+      <span class="resource-count">{{ $n }} {{ .Params.count_unit | default "listings" }}</span>
+      {{ end }}
     </a>
     {{ end }}
   </div>
+
+  {{/* ── Recently added ── */}}
+  {{ $dates := hugo.Data.resource_added }}
+  {{ $recentItems := slice }}
+  {{ range .Sections }}
+    {{ if not .Params.hidden_from_hub }}
+      {{ $category := .Title }}
+      {{ range .Pages }}
+        {{ $added := index $dates .File.Path }}
+        {{ if $added }}
+          {{ $recentItems = $recentItems | append (dict "page" . "added" $added "category" $category) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $recentItems = sort $recentItems "added" "desc" }}
+  {{ $recentItems = first 3 $recentItems }}
+
+  {{ if $recentItems }}
+  <div class="resources-recent">
+    <div class="resources-recent-header">
+      <span class="resources-recent-eyebrow">Recently added</span>
+      <h2>New to OurSQL Universe</h2>
+    </div>
+    <div class="resources-recent-grid">
+      {{ range $recentItems }}
+      {{ $p := .page }}
+      <a href="{{ $p.RelPermalink }}" class="resource-card resource-recent-card">
+        <div class="resource-card-body">
+          <span class="resources-recent-card-category">{{ .category }}</span>
+          <h3 class="resource-card-title">{{ $p.Title }}</h3>
+          {{ with $p.Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
+          {{ with $p.Params.tags }}
+          <div class="resource-tags">
+            {{ range first 3 . }}<span class="resource-tag">{{ . }}</span>{{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{/* ── Bottom CTA ── */}}
+  <div class="resources-cta-row">
+    <div class="resources-cta-card">
+      <h3>Suggest a resource</h3>
+      <p>Know a tool, project, blog, or community that belongs here? Help keep the directory complete and up to date.</p>
+      <a href="/resources/contribute/" class="btn btn-outline">Suggest a resource →</a>
+    </div>
+    <div class="resources-cta-card resources-cta-card--primary">
+      <h3>Get listed as a member</h3>
+      <p>Foundation members get enhanced visibility — featured badge, extended profile, and priority placement across the Universe.</p>
+      <a href="https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA" class="btn btn-primary" target="_blank" rel="noopener">Join OurSQL Foundation →</a>
+    </div>
+  </div>
 </div>
+
+<script src="{{ "js/search.js" | relURL }}" defer></script>
 
 {{ else }}
 {{/* ── Subsection view: resource item cards ── */}}

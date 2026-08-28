@@ -6,4 +6,5 @@ image: images/og/resources-services-1200x630.png
 sort: title
 title: Services
 weight: 3
+count_unit: listings
 ---

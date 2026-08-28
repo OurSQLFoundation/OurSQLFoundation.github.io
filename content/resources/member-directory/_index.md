@@ -6,4 +6,5 @@ url: /member-directory/
 sort: title
 title: Member Directory
 weight: 8
+count_label: "Members · Adopters · People"
 ---
