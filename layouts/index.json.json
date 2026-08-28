@@ -1,0 +1,24 @@
+{{- /*
+  Search index for the client-side search on /resources/.
+  Served at /index.json. Lists every resource under /resources/ that's
+  surfaced in the hub (sections flagged hidden_from_hub, e.g. Press & News,
+  are excluded — same scope as the catalog itself).
+*/ -}}
+{{- $items := slice -}}
+{{- with .Site.GetPage "/resources" -}}
+  {{- range .Sections -}}
+    {{- if not .Params.hidden_from_hub -}}
+      {{- $category := .Title -}}
+      {{- range .Pages -}}
+        {{- $items = $items | append (dict
+          "title" .Title
+          "description" .Description
+          "url" .RelPermalink
+          "category" $category
+          "tags" (.Params.tags | default slice)
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $items | jsonify -}}

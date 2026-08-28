@@ -6,4 +6,5 @@ image: images/og/resources-books-1200x630.png
 sort: title
 title: Books & Publications
 weight: 5
+count_unit: listings
 ---

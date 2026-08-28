@@ -28,6 +28,117 @@
   line-height: 1.7;
 }
 
+// ── Search ──────────────────────────────────────────────────────────────────
+.resources-search {
+  position: relative;
+  max-width: 640px;
+  margin: 2.5rem auto 3rem;
+}
+
+.resources-search-input {
+  width: 100%;
+  padding: 0.875rem 7.5rem 0.875rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: $off-white;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
+
+  &::placeholder { color: $muted; }
+
+  &:focus {
+    outline: none;
+    border-color: rgba($accent, 0.45);
+  }
+}
+
+.resources-search-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 0.5rem 1.25rem;
+}
+
+.resources-search-results {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.resources-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  border-bottom: 1px solid $dark-border;
+  transition: background 0.15s ease;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: $dark-surface; }
+}
+
+.resources-search-result-category {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.resources-search-result-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+}
+
+.resources-search-result-desc {
+  font-size: 0.8125rem;
+  color: $muted;
+  line-height: 1.5;
+}
+
+.resources-search-empty {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: $muted;
+  margin: 0;
+  text-align: left;
+}
+
+.resources-category-header {
+  margin-bottom: 2rem;
+}
+
+.resources-category-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 0.5rem;
+}
+
+.resources-category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0;
+}
+
 // Hub category card grid
 .resources-hub-grid {
   display: grid;
@@ -102,6 +213,94 @@
   padding: 0.2rem 0.6rem;
   align-self: flex-start;
   line-height: 1;
+
+  &--label {
+    text-transform: none;
+    letter-spacing: 0;
+  }
+}
+
+// ── Recently added ─────────────────────────────────────────────────────────
+.resources-recent {
+  margin-top: 4rem;
+}
+
+.resources-recent-header {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $off-white;
+    margin: 0.35rem 0 0;
+  }
+}
+
+.resources-recent-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.resources-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+
+  @media (min-width: $break-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.resource-recent-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.resources-recent-card-category {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 0.5rem;
+}
+
+// ── Bottom CTA ──────────────────────────────────────────────────────────────
+.resources-cta-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 4rem;
+}
+
+.resources-cta-card {
+  padding: 2rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $off-white;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  &--primary {
+    border-color: rgba($accent, 0.3);
+    background: linear-gradient(180deg, rgba($accent, 0.06), $dark-card 60%);
+  }
 }
 
 // ── Subsection list page ───────────────────────────────────────────────────
@@ -640,12 +839,25 @@
     padding-right: 1rem;
   }
 
-  .resources-hub-grid {
+  .resources-hub-grid,
+  .resources-recent-grid,
+  .resources-cta-row {
     grid-template-columns: 1fr;
   }
 
   .resources-list-grid {
     grid-template-columns: 1fr;
+  }
+
+  .resources-search-input {
+    padding-right: 1.25rem;
+  }
+
+  .resources-search-btn {
+    position: static;
+    display: block;
+    width: 100%;
+    margin-top: 0.75rem;
   }
 
   .resource-single-card {
@@ -672,10 +884,6 @@
   }
 }
 
-.resources-hub-actions {
-  text-align: right;
-  margin-bottom: 1.5rem;
-}
 
 // ── Contribute page ─────────────────────────────────────────────────────────
 .contribute-page {

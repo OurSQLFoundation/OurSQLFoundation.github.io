@@ -6,4 +6,5 @@ image: images/og/resources-software-1200x630.png
 sort: title
 title: Software & Tools
 weight: 1
+count_unit: listings
 ---

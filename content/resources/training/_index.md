@@ -6,4 +6,5 @@ image: images/og/resources-training-1200x630.png
 sort: date
 title: Training & Education
 weight: 4
+count_unit: listings
 ---

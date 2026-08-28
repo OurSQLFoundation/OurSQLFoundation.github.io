@@ -67,8 +67,11 @@ Clone and start the dev server:
 ```bash
 git clone git@github.com:OurSQLFoundation/OurSQLFoundation.github.io.git
 cd OurSQLFoundation.github.io
+tools/generate-resource-dates.sh
 hugo server -D
 ```
+
+`tools/generate-resource-dates.sh` builds `data/resource_added.yaml` — the "date added" for each resource, read from git history, used by the Recently Added section on `/resources/`. Re-run it any time you want that section to reflect the latest history; it also runs automatically in CI before every deploy.
 
 Open [localhost:1313](http://localhost:1313) in your browser.
 
