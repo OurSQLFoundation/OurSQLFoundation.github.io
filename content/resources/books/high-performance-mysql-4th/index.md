@@ -8,9 +8,17 @@ image: social_1200x630.png
 images:
 - cover.jpeg
 link: https://www.oreilly.com/library/view/high-performance-mysql/9781492080503/
-tags:
-- advanced
-- performance
+subcategories:
+- Books
+topics:
+- Performance
+- Replication
+- Scaling
+audiences:
+- DBA
+- Advanced
+pricing:
+- Paid
 title: High Performance MySQL, 4th Edition
 year: 2021
 ---

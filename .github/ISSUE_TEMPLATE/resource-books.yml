@@ -36,9 +36,24 @@ body:
     attributes:
       label: "Publication year"
       placeholder: "e.g. 2022"
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Books
+        - Blogs
+        - Newsletters
+        - Reports & Research
+        - Whitepapers
+        - Case Studies
+        - Podcasts & Videos
+        - Documentation Portals
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: beginner, advanced, practical, performance"
-      placeholder: "advanced, performance"
+      label: "Additional tags (optional)"
+      description: "Topic, audience, pricing — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "Performance, DBA, Paid"

@@ -7,8 +7,13 @@ description: The community blog aggregator for the MariaDB ecosystem —
   Hyperscalers and more (as long as their subject relates to MySQL or its
   Variants).
 link: https://mariadb.org/planet/
-tags:
-- blogs
-- news
+subcategories:
+- Blog Aggregators
+languages:
+- English
+access:
+- Open
+listing-status:
+- Active
 title: Planet MariaDB Server
 ---

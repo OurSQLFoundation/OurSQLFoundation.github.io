@@ -25,9 +25,28 @@ body:
       placeholder: "A drop-in MySQL replacement that..."
     validations:
       required: true
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Database Software
+        - Monitoring & Observability
+        - Backup & Recovery
+        - Replication & High Availability
+        - Proxies & Traffic Management
+        - Connectors & Drivers
+        - Database Management & GUI
+        - DevOps & Deployment
+        - Schema Management & Migration
+        - Testing & Benchmarking
+        - Security
+        - AI & Ecosystem Skills
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: open-source, server, proxy, sharding"
-      placeholder: "open-source, server"
+      label: "Additional tags (optional)"
+      description: "Compatibility, deployment, license — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "MySQL, Kubernetes, Open Source"

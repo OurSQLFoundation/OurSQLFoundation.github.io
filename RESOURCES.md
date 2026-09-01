@@ -60,11 +60,47 @@ aggregator-mysql-events.md       ← for aggregator pages without a specific dat
 title: "Resource Name"
 link: "https://example.com"
 description: "One or two sentences describing what it is."
-tags: ["tag1", "tag2"]
+subcategories: ["Database Software"]   # pick from the list for this section, see below
 ---
 ```
 
-**Books (leaf bundle with cover image):**
+Every resource also carries a handful of **tag facets** — small, controlled sets of values (not free text) used to power the filters on each category page. The field name in front matter must be the **plural** shown below — Hugo taxonomies require it. The full machine-readable list (including which URL each one filters to) lives in [`data/taxonomy_schema.yaml`](data/taxonomy_schema.yaml); this is the human-readable version of the same thing.
+
+Pick a `subcategories` value from your section's list, and set whichever facets apply — all are optional and multi-value (a resource can carry more than one).
+
+**`content/resources/software/`** — subcategories: Database Software · Monitoring & Observability · Backup & Recovery · Replication & High Availability · Proxies & Traffic Management · Connectors & Drivers · Database Management & GUI · DevOps & Deployment · Schema Management & Migration · Testing & Benchmarking · Security · AI & Ecosystem Skills
+```yaml
+compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication
+deployment: ["Self-Hosted"]     # Self-Hosted, Kubernetes, Docker, Cloud-Native, On-Premises
+pricing: ["Open Source"]        # Open Source, Commercial, Free, Paid, Enterprise
+```
+
+**`content/resources/saas/`** — subcategories: Managed Databases · Monitoring SaaS · Backup & Recovery SaaS · Migration & Replication SaaS · Developer Platforms · Security & Compliance SaaS
+```yaml
+cloud-providers: ["AWS"]        # AWS, Azure, GCP, Multi-Cloud, Private Cloud
+compliance: ["SOC 2"]           # SOC 2, HIPAA, GDPR, PCI DSS
+pricing: ["Pay-as-you-go"]      # Pay-as-you-go, Subscription, Free Tier Available
+compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess
+```
+
+**`content/resources/services/`** — subcategories: Consulting · Support · Managed Services · Migration Services · Performance Tuning · Architecture & HA Design · Cloud & Kubernetes · Security & Compliance · Training Providers
+```yaml
+delivery: ["Remote"]            # Remote, On-Site, Hybrid
+countries: ["Global"]           # a country name (e.g. "Germany"), or "Global" if not region-specific
+compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess, Galera
+foundation-status: ["Sponsor"]  # Foundation Member, Sponsor, Partner — only if it actually applies
+```
+
+**`content/resources/training/`** — subcategories: Courses · Workshops · Certifications · Academic Resources · Training Providers
+```yaml
+training-formats: ["Self-Paced"] # Self-Paced, Instructor-Led, Workshop, Certification, Practice Lab
+levels: ["Beginner"]             # Beginner, Intermediate, Advanced
+pricing: ["Free"]                # Free, Paid, Free Trial Available
+languages: ["English"]           # English, Spanish, Portuguese, German, Chinese, Other
+author: "Percona"                # optional
+```
+
+**`content/resources/books/`** (leaf bundle with cover image) — subcategories: Books · Blogs · Newsletters · Reports & Research · Whitepapers · Case Studies · Podcasts & Videos · Documentation Portals
 ```yaml
 ---
 title: "High Performance MySQL, 4th Edition"
@@ -72,32 +108,41 @@ link: "https://..."
 description: "One or two sentences."
 authors: ["Silvia Botros", "Jeremy Tinley"]
 year: 2021
-tags: ["advanced", "performance"]
+subcategories: ["Books"]
+topics: ["Performance"]         # Administration, Development, Architecture, Replication, Performance, Security, Migration, Scaling, Other
+audiences: ["Advanced"]         # DBA, Developer, Architect, Beginner, Advanced
+pricing: ["Paid"]               # Free, Paid
 images:
   - cover.jpeg
 ---
 ```
 
-**Training — optional author field:**
-```yaml
-author: "Percona"
-```
-
-**Events — additional fields:**
+**`content/resources/events/`** — subcategories: Foundation Events · Community Calls · Webinars · Meetups · Conferences · Partner & Member Events · Past Events & Recordings — prefix the filename with the date
 ```yaml
 date: 2026-09-11
-format: "in-person"   # or "online"
-city: "Amsterdam"
-country: "Netherlands"
-event_country: ["Netherlands"]
+format: "in-person"             # or "online" — drives the card's Online/In-person badge
+city: "Amsterdam"                # optional, only for in-person events
+countries: ["Netherlands"]       # a country name, or "Global" for an online/worldwide event
 event_year: ["2026"]
+event-formats: ["In-Person"]     # In-Person, Online, Hybrid
+organizers: ["Community"]        # OurSQL Foundation, Community, Member & Partner
 ```
 
-**Press & News — additional fields:**
+**`content/resources/community/`** — subcategories: Forums · Slack, Discord & IRC · Mailing Lists · Reddit & Social · Blog Aggregators · Podcasts & Videos
+```yaml
+platforms: ["Forum"]             # Forum, Slack, Discord, Mailing List, Reddit, Meetup, YouTube, Podcast
+languages: ["English"]           # English, Spanish, Portuguese, German, Chinese, Other
+access: ["Open"]                 # Open, Registration Required
+listing-status: ["Active"]       # Active, Archived
+```
+
+**`content/resources/press/`** — additional fields:
 ```yaml
 date: 2026-05-27
 source: "Publication Name"
 ```
+
+> Slashes ("/") aren't safe inside a facet value — Hugo treats them as URL path separators and breaks the filter link. Use "&" or "," instead (e.g. "Slack, Discord & IRC", not "Slack / Discord / IRC").
 
 ---
 

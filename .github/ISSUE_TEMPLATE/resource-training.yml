@@ -29,9 +29,21 @@ body:
     attributes:
       label: "Author or organization"
       placeholder: "e.g. Kedar Vaijanapurkar"
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Courses
+        - Workshops
+        - Certifications
+        - Academic Resources
+        - Training Providers
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: free, online, video, dba, developer, certification"
-      placeholder: "free, online, developer"
+      label: "Additional tags (optional)"
+      description: "Format, level, pricing, language — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "Self-Paced, Beginner, Free"

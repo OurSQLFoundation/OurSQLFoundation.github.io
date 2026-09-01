@@ -4,18 +4,33 @@
   surfaced in the hub (sections flagged hidden_from_hub, e.g. Press & News,
   are excluded — same scope as the catalog itself).
 */ -}}
+{{- $data := .Site.Data.taxonomy_schema -}}
 {{- $items := slice -}}
 {{- with .Site.GetPage "/resources" -}}
   {{- range .Sections -}}
     {{- if not .Params.hidden_from_hub -}}
       {{- $category := .Title -}}
+      {{- $sectionKey := path.Base (strings.TrimSuffix "/" .RelPermalink) -}}
+      {{- $schema := index $data $sectionKey -}}
+      {{- $facetPaths := slice -}}
+      {{- with $schema -}}
+        {{- if .facets -}}
+          {{- range .facets -}}{{- $facetPaths = $facetPaths | append .path -}}{{- end -}}
+        {{- else if .facets_by_subcategory -}}
+          {{- range .facets_by_subcategory -}}{{- range . -}}{{- $facetPaths = $facetPaths | append .path -}}{{- end -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
       {{- range .Pages -}}
+        {{- $tags := slice -}}
+        {{- range .Params.subcategories -}}{{- $tags = $tags | append . -}}{{- end -}}
+        {{- $page := . -}}
+        {{- range $facetPaths -}}{{- range (index $page.Params .) -}}{{- $tags = $tags | append . -}}{{- end -}}{{- end -}}
         {{- $items = $items | append (dict
           "title" .Title
           "description" .Description
           "url" .RelPermalink
           "category" $category
-          "tags" (.Params.tags | default slice)
+          "tags" ($tags | uniq)
         ) -}}
       {{- end -}}
     {{- end -}}

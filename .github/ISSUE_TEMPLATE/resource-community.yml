@@ -24,9 +24,22 @@ body:
       description: "1–2 sentences on what it is."
     validations:
       required: true
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Forums
+        - "Slack, Discord & IRC"
+        - Mailing Lists
+        - Reddit & Social
+        - Blog Aggregators
+        - Podcasts & Videos
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: blogs, news, forums, chat, support"
-      placeholder: "blogs, news"
+      label: "Additional tags (optional)"
+      description: "Platform, language, access — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "Forum, English, Open"
