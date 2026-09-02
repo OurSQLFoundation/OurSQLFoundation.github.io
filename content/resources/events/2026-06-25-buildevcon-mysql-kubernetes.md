@@ -6,8 +6,13 @@ event_year:
 - '2026'
 format: online
 link: https://buildevcon.com/events/mariadb-mysql-on-kubernetes
-tags:
-- conference
-- online
+countries:
+- Global
+subcategories:
+- Webinars
+event-formats:
+- Online
+organizers:
+- Community
 title: MariaDB & MySQL on Kubernetes
 ---

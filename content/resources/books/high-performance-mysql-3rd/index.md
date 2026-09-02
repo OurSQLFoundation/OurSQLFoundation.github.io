@@ -9,9 +9,17 @@ image: social_1200x630.png
 images:
 - cover.jpeg
 link: https://www.oreilly.com/library/view/high-performance-mysql/9781449332471/
-tags:
-- advanced
-- performance
+subcategories:
+- Books
+topics:
+- Performance
+- Replication
+- Architecture
+audiences:
+- DBA
+- Advanced
+pricing:
+- Paid
 title: High Performance MySQL, 3rd Edition
 year: 2012
 ---

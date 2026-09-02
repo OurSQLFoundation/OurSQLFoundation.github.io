@@ -1,0 +1,26 @@
+{{/*
+  Renders the "Browse category" list: an "All" row plus one row per
+  subcategory, each with a static resource count for this section.
+  Used inside both the desktop sidebar and the mobile category sheet —
+  identical markup, positioned differently by CSS. Clicking a row is
+  handled by static/js/resource-filters.js (no page navigation).
+
+  Context: the section page (must have $schema.subcategories and $pages
+  passed in via dict).
+*/}}
+{{ $schema := .schema }}
+{{ $pages := .pages }}
+{{ $total := len $pages }}
+<button type="button" class="cat-item cat-item-active" data-cat-value="">
+  <span>All</span><span class="cat-count">{{ $total }}</span>
+</button>
+{{ range $schema.subcategories }}
+{{ $value := . }}
+{{ $count := 0 }}
+{{ range $pages }}{{ if in .Params.subcategories $value }}{{ $count = add $count 1 }}{{ end }}{{ end }}
+{{ if gt $count 0 }}
+<button type="button" class="cat-item" data-cat-value="{{ $value }}">
+  <span>{{ $value }}</span><span class="cat-count">{{ $count }}</span>
+</button>
+{{ end }}
+{{ end }}

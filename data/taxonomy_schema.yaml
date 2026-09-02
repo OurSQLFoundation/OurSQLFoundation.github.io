@@ -1,0 +1,251 @@
+# ── OurSQL Universe taxonomy schema ─────────────────────────────────────────
+# Single source of truth for each category's subcategory list and facet
+# (tag) groups. Read by layouts/resources/list.html to render the filter UI
+# and by RESOURCES.md / the issue templates to document the controlled
+# vocabulary. Keyed by section directory name under content/resources/.
+#
+# Each facet's `key` is the taxonomy's singular identifier in hugo.yaml
+# (documentation only — not used for lookups). `path` is that taxonomy's
+# plural name from hugo.yaml, and is what actually matters in three places:
+# it's the front matter field name content authors use (Hugo taxonomies
+# require the PLURAL form in front matter, e.g. `cloud_provider: cloud-providers`
+# in hugo.yaml means pages set `cloud-providers: [AWS]`, not `cloud_provider:`),
+# the key templates use for `.Params` lookups, and the URL segment filter
+# links point to (/cloud-providers/aws/). Some facets are shared across
+# sections (e.g. `compatibility`, `pricing`, `language`, `country`) so the
+# same term page aggregates matching resources from every section that uses
+# it. `label` is what's shown in this section's filter row — it can read
+# differently per section even when the underlying taxonomy is shared (e.g.
+# `compatibility` shows as "Technology" under Services and "Stack" under
+# Member Adopters).
+
+software:
+  subcategories:
+    - Database Software
+    - Monitoring & Observability
+    - Backup & Recovery
+    - Replication & High Availability
+    - Proxies & Traffic Management
+    - Connectors & Drivers
+    - Database Management & GUI
+    - DevOps & Deployment
+    - Schema Management & Migration
+    - Testing & Benchmarking
+    - Security
+    - AI & Ecosystem Skills
+  facets:
+    - key: compatibility
+      path: compatibility
+      label: Compatibility
+      values: [MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication]
+    - key: deployment
+      path: deployment
+      label: Deployment
+      values: [Self-Hosted, Kubernetes, Docker, Cloud-Native, On-Premises]
+    - key: pricing
+      path: pricing
+      label: License
+      values: [Open Source, Commercial, Free, Paid, Enterprise]
+
+saas:
+  subcategories:
+    - Managed Databases
+    - Monitoring SaaS
+    - Backup & Recovery SaaS
+    - Migration & Replication SaaS
+    - Developer Platforms
+    - Security & Compliance SaaS
+  facets:
+    - key: cloud_provider
+      path: cloud-providers
+      label: Cloud provider
+      values: [AWS, Azure, GCP, Multi-Cloud, Private Cloud]
+    - key: compliance
+      path: compliance
+      label: Compliance
+      values: [SOC 2, HIPAA, GDPR, PCI DSS]
+    - key: pricing
+      path: pricing
+      label: Pricing
+      values: [Pay-as-you-go, Subscription, Free Tier Available]
+    - key: compatibility
+      path: compatibility
+      label: Compatibility
+      values: [MySQL, MariaDB, Percona Server, TiDB, Vitess]
+
+services:
+  subcategories:
+    - Consulting
+    - Support
+    - Managed Services
+    - Migration Services
+    - Performance Tuning
+    - Architecture & HA Design
+    - Cloud & Kubernetes
+    - Security & Compliance
+    - Training Providers
+  facets:
+    - key: delivery
+      path: delivery
+      label: Delivery
+      values: [Remote, On-Site, Hybrid]
+    - key: country
+      path: countries
+      label: Geography
+      values: [Global]   # open-ended — actual country pills are derived from resource content at build time, this is just the always-present option
+    - key: compatibility
+      path: compatibility
+      label: Technology
+      values: [MySQL, MariaDB, Percona Server, TiDB, Vitess, Galera]
+    - key: foundation_status
+      path: foundation-status
+      label: Status
+      values: [Foundation Member, Sponsor, Partner]
+
+training:
+  subcategories:
+    - Courses
+    - Workshops
+    - Certifications
+    - Academic Resources
+    - Training Providers
+  facets:
+    - key: training_format
+      path: training-formats
+      label: Format
+      values: [Self-Paced, Instructor-Led, Workshop, Certification, Practice Lab]
+    - key: level
+      path: levels
+      label: Level
+      values: [Beginner, Intermediate, Advanced]
+    - key: pricing
+      path: pricing
+      label: Pricing
+      values: [Free, Paid, Free Trial Available]
+    - key: language
+      path: languages
+      label: Language
+      values: [English, Spanish, Portuguese, German, Chinese, Other]
+
+books:
+  subcategories:
+    - Books
+    - Blogs
+    - Newsletters
+    - Reports & Research
+    - Whitepapers
+    - Case Studies
+    - Podcasts & Videos
+    - Documentation Portals
+  facets:
+    - key: topic
+      path: topics
+      label: Topic
+      values: [Administration, Development, Architecture, Replication, Performance, Security, Migration, Scaling, Other]
+    - key: audience
+      path: audiences
+      label: Audience
+      values: [DBA, Developer, Architect, Beginner, Advanced]
+    - key: pricing
+      path: pricing
+      label: Access
+      values: [Free, Paid]
+
+events:
+  subcategories:
+    - Foundation Events
+    - Community Calls
+    - Webinars
+    - Meetups
+    - Conferences
+    - Partner & Member Events
+    - Past Events & Recordings
+  facets:
+    - key: event_format
+      path: event-formats
+      label: Format
+      values: [In-Person, Online, Hybrid]
+    - key: country
+      path: countries
+      label: Geography
+      values: [Global]   # open-ended — actual country pills are derived from resource content at build time, this is just the always-present option
+    - key: organizer
+      path: organizers
+      label: Organizer
+      values: [OurSQL Foundation, Community, Member & Partner]
+
+community:
+  subcategories:
+    - Forums
+    - Slack, Discord & IRC
+    - Mailing Lists
+    - Reddit & Social
+    - Blog Aggregators
+    - Podcasts & Videos
+  facets:
+    - key: platform
+      path: platforms
+      label: Platform
+      values: [Forum, Slack, Discord, Mailing List, Reddit, Meetup, YouTube, Podcast]
+    - key: language
+      path: languages
+      label: Language
+      values: [English, Spanish, Portuguese, German, Chinese, Other]
+    - key: access
+      path: access
+      label: Access
+      values: [Open, Registration Required]
+    - key: listing_status
+      path: listing-status
+      label: Status
+      values: [Active, Archived]
+
+member-directory:
+  subcategories:
+    - Members
+    - Sponsors
+    - Partners
+    - Adopters
+    - People
+    - Awards
+  # Facets differ per subcategory rather than applying to the whole
+  # section — keyed by the subcategory value above.
+  facets_by_subcategory:
+    Members: &member_facets
+      - key: org_type
+        path: org-types
+        label: Org type
+        values: [Vendor, Consulting, Cloud, ISV, Non-Profit, Individual]
+    Sponsors: *member_facets
+    Partners: *member_facets
+    Adopters:
+      - key: industry
+        path: industries
+        label: Industry
+        values: [Technology, Finance, E-Commerce, Media, Healthcare, Education, Logistics, Telecom, Gaming]
+      - key: scale
+        path: scale
+        label: Scale
+        values: [Startup, Mid-Market, Enterprise]
+      - key: compatibility
+        path: compatibility
+        label: Stack
+        values: [MySQL, MariaDB, Percona Server, TiDB, Vitess, Aurora]
+    People:
+      - key: role
+        path: roles
+        label: Role
+        values: [Contributor, Speaker, Author, DBA, Developer, Architect, Consultant, Educator]
+      - key: recognition
+        path: recognition
+        label: Recognition
+        values: [Individual Supporter, OurSQL Contributor, Award Recipient]
+    Awards:
+      - key: award_category
+        path: award-categories
+        label: Category
+        values: [Community, Open Source, Adoption, Technical Excellence, Rising Star]
+      - key: award_year
+        path: award-years
+        label: Year
+        values: []   # populated per award cycle

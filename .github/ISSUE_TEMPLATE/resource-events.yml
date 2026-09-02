@@ -42,9 +42,31 @@ body:
     attributes:
       label: "City, Country"
       placeholder: "e.g. Amsterdam, Netherlands"
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Foundation Events
+        - Community Calls
+        - Webinars
+        - Meetups
+        - Conferences
+        - Partner & Member Events
+        - Past Events & Recordings
+    validations:
+      required: true
+  - type: dropdown
+    id: organizer
+    attributes:
+      label: "Organizer"
+      options:
+        - OurSQL Foundation
+        - Community
+        - Member & Partner
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: conference, free, open-source"
-      placeholder: "conference, free"
+      label: "Additional tags (optional)"
+      description: "Comma-separated."
+      placeholder: "Free"

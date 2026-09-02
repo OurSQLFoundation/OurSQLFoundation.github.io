@@ -7,8 +7,13 @@ description: The original but controversial MySQL blog / news aggregator —
   because it is managed opaquely by Oracle).  An Open, Vendor-Neural, Inclusive
   and Community-Friendly alternative is Planet for the MySQL Community.
 link: https://planet.mysql.com/
-tags:
-- blogs
-- news
+subcategories:
+- Blog Aggregators
+languages:
+- English
+access:
+- Open
+listing-status:
+- Active
 title: Planet MySQL
 ---

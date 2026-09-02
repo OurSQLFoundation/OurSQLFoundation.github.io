@@ -24,9 +24,22 @@ body:
       description: "1–2 sentences on what it is and why it belongs here."
     validations:
       required: true
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Managed Databases
+        - Monitoring SaaS
+        - Backup & Recovery SaaS
+        - Migration & Replication SaaS
+        - Developer Platforms
+        - Security & Compliance SaaS
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: managed, cloud, serverless"
-      placeholder: "managed, cloud"
+      label: "Additional tags (optional)"
+      description: "Cloud provider, compliance, pricing — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "AWS, SOC 2, Pay-as-you-go"

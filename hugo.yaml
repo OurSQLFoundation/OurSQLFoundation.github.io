@@ -17,9 +17,37 @@ markup:
       unsafe: true
 
 taxonomies:
-  tag: tags
-  event_country: event_country
   event_year: event_year
+
+  # ── Shared facets (cross-category — same field name/vocabulary everywhere) ──
+  subcategory: subcategories       # per-category "type" classification
+  country: countries                # country-level geography (was Events-only "event_country"); now available to any section. Always has a "Global" option for non-region-specific resources.
+  compatibility: compatibility      # DB engine/compatibility — Software, SaaS, Services, Member Adopters
+  pricing: pricing                  # cost model — Software, SaaS, Training, Books & Publications
+  language: languages               # Training, Community
+
+  # ── Category-specific facets ──
+  deployment: deployment            # Software & Tools
+  cloud_provider: cloud-providers   # SaaS & Cloud Solutions
+  compliance: compliance            # SaaS & Cloud Solutions
+  delivery: delivery                # Services
+  foundation_status: foundation-status  # Services (Foundation Member / Sponsor / Partner)
+  training_format: training-formats # Training & Education
+  level: levels                     # Training & Education
+  event_format: event-formats       # Events
+  organizer: organizers             # Events
+  topic: topics                     # Books & Publications
+  audience: audiences               # Books & Publications
+  platform: platforms               # Community
+  access: access                    # Community (Open / Registration Required)
+  listing_status: listing-status    # Community (Active / Archived)
+  org_type: org-types               # Member Directory — Members/Sponsors/Partners
+  industry: industries              # Member Directory — Adopters
+  scale: scale                      # Member Directory — Adopters
+  role: roles                       # Member Directory — People
+  recognition: recognition          # Member Directory — People
+  award_category: award-categories  # Member Directory — Awards
+  award_year: award-years           # Member Directory — Awards
 
 outputs:
   home: ["HTML", "JSON"]

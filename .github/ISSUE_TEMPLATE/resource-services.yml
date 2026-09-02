@@ -24,9 +24,25 @@ body:
       description: "1–2 sentences on what they offer."
     validations:
       required: true
+  - type: dropdown
+    id: subcategory
+    attributes:
+      label: "Subcategory"
+      options:
+        - Consulting
+        - Support
+        - Managed Services
+        - Migration Services
+        - Performance Tuning
+        - Architecture & HA Design
+        - Cloud & Kubernetes
+        - Security & Compliance
+        - Training Providers
+    validations:
+      required: true
   - type: input
     id: tags
     attributes:
-      label: "Tags"
-      description: "Comma-separated. Suggested: consulting, support, enterprise"
-      placeholder: "consulting, support"
+      label: "Additional tags (optional)"
+      description: "Delivery, geography, technology — see the full list in RESOURCES.md. Comma-separated."
+      placeholder: "Remote, Global, MySQL"

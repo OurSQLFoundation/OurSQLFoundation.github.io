@@ -73,6 +73,8 @@ hugo server -D
 
 `tools/generate-resource-dates.sh` builds `data/resource_added.yaml` — the "date added" for each resource, read from git history, used by the Recently Added section on `/resources/`. Re-run it any time you want that section to reflect the latest history; it also runs automatically in CI before every deploy.
 
+If you add a new taxonomy to `hugo.yaml`'s `taxonomies:` map, also run `tools/generate-taxonomy-term-layouts.sh` (and add the new plural name to the list inside it first) — Hugo doesn't reliably fall back to `layouts/_default/term.html` for individual term pages in this setup, so each taxonomy needs its own `layouts/<plural>/term.html`. These are committed to the repo, not generated in CI.
+
 Open [localhost:1313](http://localhost:1313) in your browser.
 
 ---

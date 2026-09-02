@@ -8,8 +8,13 @@ description: A blog / news aggregator for the MySQL Community / Ecosystem —
   Percona, Vitess, TiDB, Hyperscalers and more (as long as their subject
   relates to MySQL or its Variants).
 link: https://planet.oursqlcommunity.org/
-tags:
-- blogs
-- news
+subcategories:
+- Blog Aggregators
+languages:
+- English
+access:
+- Open
+listing-status:
+- Active
 title: Planet for the MySQL Community
 ---
