@@ -1,5 +1,9 @@
 {{ define "main" }}
 
+{{ $isBlog := eq .Section "blog" }}
+{{ $authorPage := "" }}
+{{ if $isBlog }}{{ with .Params.author_page }}{{ $authorPage = $.Site.GetPage . }}{{ end }}{{ end }}
+
 <article class="post-layout">
 
   <header class="post-header">
@@ -9,20 +13,55 @@
     </div>
     {{ end }}
     <h1>{{ .Title }}</h1>
-    {{ if eq .Section "blog" }}
+    {{ if $isBlog }}
     <div class="post-meta">
+      {{ with $authorPage }}
+      <a href="{{ .RelPermalink }}" class="post-author">{{ .Title }}</a>
+      {{ else }}
       <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
-      <span class="dot" style="width:3px;height:3px;border-radius:50%;background:#1e1e2a;display:inline-block;"></span>
+      {{ end }}
+      <span class="dot"></span>
       <span>{{ .Date.Format "January 2, 2006" }}</span>
+      <span class="dot"></span>
+      <span>{{ .ReadingTime }} min read</span>
     </div>
     {{ end }}
   </header>
 
   <div class="post-content">
+    {{ if and $isBlog (ne .Params.hero_image false) }}
+    {{ with .Params.image }}
+    {{ $imgRes := $.Resources.Get . }}
+    {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
+    {{ with $imgRes }}
+    {{ $hero := .Fill "1400x788 jpg q85" }}
+    <img src="{{ $hero.RelPermalink }}" alt="" class="post-hero-image" width="{{ $hero.Width }}" height="{{ $hero.Height }}">
+    {{ end }}
+    {{ end }}
+    {{ end }}
     {{ .Content }}
   </div>
 
-  {{ if eq .Section "blog" }}
+  {{ with $authorPage }}
+  <a href="{{ .RelPermalink }}" class="author-card">
+    {{ with .Params.images }}
+    {{ $imgFile := index . 0 }}
+    {{ with $authorPage.Resources.Get $imgFile }}
+    {{ $avatar := .Fill "96x96 jpg" }}
+    <img src="{{ $avatar.RelPermalink }}" alt="" class="author-card-photo" width="96" height="96" loading="lazy">
+    {{ end }}
+    {{ end }}
+    <div class="author-card-body">
+      <span class="author-card-label">Written by</span>
+      <span class="author-card-name">{{ .Title }}</span>
+      {{ with .Params.role }}<span class="author-card-role">{{ . }}</span>{{ end }}
+      {{ with .Description }}<p class="author-card-desc">{{ . }}</p>{{ end }}
+      <span class="author-card-link">View profile in the Member Directory →</span>
+    </div>
+  </a>
+  {{ end }}
+
+  {{ if $isBlog }}
   <footer class="post-footer">
     <a href="/blog/" class="back-link">← Back to Blog</a>
   </footer>

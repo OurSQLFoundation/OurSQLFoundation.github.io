@@ -142,6 +142,19 @@ date: 2026-05-27
 source: "Publication Name"
 ```
 
+**`content/resources/member-directory/`** (leaf bundle with photo) — subcategories: Members · Sponsors · Partners · Adopters · People · Awards. Every entry needs a `url` override so its address stays under `/resources/member-directory/<subcategory-slug>/`, not the flat content path:
+```yaml
+---
+title: "Full Name"
+url: "/resources/member-directory/people/full-name/"   # subcategory-slug matches the subcategories value, lowercased
+description: "One line — role, company."
+role: "Job title, Company · other affiliation"          # optional, shown on the profile and any author card
+subcategories: ["People"]
+images:
+  - photo.jpg
+---
+```
+
 > Slashes ("/") aren't safe inside a facet value — Hugo treats them as URL path separators and breaks the filter link. Use "&" or "," instead (e.g. "Slack, Discord & IRC", not "Slack / Discord / IRC").
 
 ---
