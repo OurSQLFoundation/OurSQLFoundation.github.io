@@ -16,6 +16,11 @@
 {{/* ── Robots ── */}}
 <meta name="robots" content="index, follow">
 
+{{/* ── Feed auto-discovery (only present on pages that actually have one, e.g. /blog/) ── */}}
+{{ range .AlternativeOutputFormats }}
+<link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }} — {{ $.Title }}">
+{{ end }}
+
 {{/* ── OG image: front matter → default social cover ── */}}
 {{ $ogImage := "" }}
 {{ if .Params.image }}
