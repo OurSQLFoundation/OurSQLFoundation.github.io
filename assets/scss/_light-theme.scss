@@ -260,13 +260,82 @@
   .taxonomy-term-name { color: #334155; }
   .taxonomy-term-count { color: #0272a5; background: rgba(0,200,255,0.08); }
 
-  .resource-filter-pill {
-    border-color: transparent;
+  // Category sidebar + faceted filters (redesign)
+  .cat-item {
     color: #64748b;
-    background: #eef2f7;
-    &:hover { color: #334155; background: #e2e8f0; border-color: transparent; }
-    &.active { color: #0272a5; background: rgba(0, 200, 255, 0.1); border-color: transparent; }
+    &:hover { background: #f1f5f9; color: #0f172a; }
+    &.cat-item--active { background: rgba(0, 200, 255, 0.08); color: #0272a5; }
   }
+  .cat-count { color: #94a3b8; }
+  .cat-item--active .cat-count { color: #0272a5; }
+
+  .filter-toolbar-count,
+  .mobile-count { color: #64748b; }
+
+  .filter-btn,
+  .toolbar-btn {
+    background: #ffffff;
+    border-color: #dde3ed;
+    color: #0f172a;
+    &:hover { border-color: rgba(0, 200, 255, 0.35); }
+    &.filter-btn--active {
+      border-color: rgba(0, 200, 255, 0.5);
+      color: #0272a5;
+      background: rgba(0, 200, 255, 0.08);
+    }
+  }
+
+  .badge { background: #0ea5e9; color: #ffffff; }
+
+  .applied-chip {
+    border-color: rgba(0, 200, 255, 0.35);
+    background: rgba(0, 200, 255, 0.08);
+    color: #0272a5;
+  }
+  .applied-chips-clear {
+    color: #64748b;
+    &:hover { color: #0f172a; }
+  }
+
+  .filters-popover,
+  .bottom-sheet {
+    background: #ffffff;
+    border-color: #dde3ed;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+  }
+
+  .filters-popover-header,
+  .sheet-header { color: #0f172a; }
+
+  .popover-close {
+    color: #94a3b8;
+    &:hover { color: #0f172a; }
+  }
+
+  .filters-clear-link {
+    color: #64748b;
+    &:hover { color: #0f172a; }
+  }
+
+  .facet-group { border-bottom-color: #dde3ed; }
+  .accordion-row { color: #0f172a; }
+  .accordion-title { color: #94a3b8; }
+  .accordion-chevron { color: #94a3b8; }
+
+  .chip {
+    border-color: #dde3ed;
+    color: #64748b;
+    background: #ffffff;
+    &:hover { color: #0f172a; border-color: rgba(0, 200, 255, 0.3); }
+    &.chip--selected {
+      border-color: rgba(0, 200, 255, 0.5);
+      background: rgba(0, 200, 255, 0.08);
+      color: #0272a5;
+    }
+  }
+
+  .sheet-handle { background: #dde3ed; }
+  .sheet-footer { border-top-color: #dde3ed; }
 
   .resource-count {
     background: rgba(0, 200, 255, 0.08);
