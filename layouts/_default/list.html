@@ -8,18 +8,38 @@
 {{ if .Pages }}
 <div class="blog-grid">
   {{ range .Pages }}
-  <a href="{{ .RelPermalink }}" class="post-card">
+  {{ $page := . }}
+  {{ $authorPage := "" }}
+  {{ with .Params.author_page }}{{ $authorPage = $.Site.GetPage . }}{{ end }}
+  <div class="post-card">
+    <a href="{{ .RelPermalink }}" class="post-card-link-overlay" aria-label="{{ .Title }}"></a>
+    {{ with $page.Params.image }}
+    {{ $imgRes := $page.Resources.Get . }}
+    {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
+    {{ with $imgRes }}
+    {{ $thumb := .Fill "680x382 jpg q85" }}
+    <div class="post-card-image-wrap">
+      <img src="{{ $thumb.RelPermalink }}" alt="" class="post-card-image" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+    </div>
+    {{ end }}
+    {{ end }}
     <div class="post-card-body">
       <span class="post-card-tag">{{ with .Params.tags }}{{ index . 0 }}{{ else }}News{{ end }}</span>
       <div class="post-card-title">{{ .Title }}</div>
       <div class="post-card-excerpt">{{ .Summary | truncate 140 }}</div>
       <div class="post-card-meta">
+        {{ with $authorPage }}
+        <a href="{{ .RelPermalink }}" class="post-author post-author--link">{{ .Title }}</a>
+        {{ else }}
         <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
+        {{ end }}
         <span class="dot"></span>
         <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        <span class="dot"></span>
+        <span>{{ .ReadingTime }} min read</span>
       </div>
     </div>
-  </a>
+  </div>
   {{ end }}
 </div>
 {{ else }}
