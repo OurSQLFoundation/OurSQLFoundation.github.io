@@ -75,6 +75,20 @@ deployment: ["Self-Hosted"]     # Self-Hosted, Kubernetes, Docker, Cloud-Native,
 pricing: ["Open Source"]        # Open Source, Commercial, Free, Paid, Enterprise, Open Source & Open Core
 ```
 
+**Software & Tools / SaaS & Cloud Solutions / Services also get a structured detail page** (hero, actions row, sticky "Details" panel) with a few extra optional fields on top of the usual ones:
+```yaml
+github: "owner/repo"          # optional — shorthand, or a full https://github.com/... URL. Adds
+                               # a "View on GitHub" button and a Repository row. Only set it when
+                               # it's a genuinely separate URL from `link` — skip it if `link`
+                               # already points at the repo.
+member: true                  # optional — shows the "OurSQL Member" badge. Only set this when the
+                               # resource's org is an actual OurSQL Foundation member/sponsor/partner;
+                               # leave it unset otherwise (the row/badge is just omitted, no placeholder).
+last_reviewed: 2026-08-14     # optional — shows a "Last reviewed" row, credited to the editorial
+                               # team. Only set it once someone has actually reviewed the listing.
+```
+The full description (Markdown body, under the front matter) renders as the "About" section — plain-text `description` still serves as the short hero subtitle. "Suggest an update" always appears (top-right and in the Details panel) and links straight to editing the resource's own file on GitHub.
+
 **`content/resources/saas/`** — subcategories: Managed Databases · Monitoring SaaS · Backup & Recovery SaaS · Migration & Replication SaaS · Developer Platforms · Security & Compliance SaaS
 ```yaml
 cloud-providers: ["AWS"]        # AWS, Azure, GCP, Multi-Cloud, Private Cloud

@@ -195,6 +195,62 @@
     &:hover { color: #0272a5; border-color: rgba(0,200,255,0.4); }
   }
 
+  // Resource detail card (Software & Tools / SaaS & Cloud Solutions / Services)
+  .resource-detail-logo {
+    background: #f1f5f9;
+    border-color: #dde3ed;
+    color: #0272a5;
+
+    &--img { background: #ffffff; }
+  }
+
+  .resource-detail-title { color: #0f172a; }
+  .resource-detail-desc { color: #64748b; }
+
+  .resource-detail-member-badge,
+  .resource-detail-panel-yes {
+    color: #0272a5;
+    background: rgba(0, 200, 255, 0.08);
+    border-color: rgba(0, 200, 255, 0.3);
+  }
+
+  .resource-detail-btn {
+    &--primary {
+      background: #0ea5e9;
+      border-color: #0ea5e9;
+      color: #ffffff;
+      &:hover { background: #0284c7; }
+    }
+    &--secondary {
+      color: #0f172a;
+      border-color: #dde3ed;
+      &:hover { color: #0272a5; border-color: rgba(0, 200, 255, 0.4); }
+    }
+  }
+
+  .resource-detail-divider { border-top-color: #dde3ed; }
+
+  .resource-detail-content { color: #334155; }
+
+  .resource-detail-readmore-btn { color: #0272a5; }
+
+  .resource-detail-panel {
+    background: #ffffff;
+    border-color: #dde3ed;
+  }
+
+  .resource-detail-panel-row { border-bottom-color: #dde3ed; }
+  .resource-detail-panel-label { color: #94a3b8; }
+  .resource-detail-panel-value { color: #0f172a; }
+  .resource-detail-panel-subvalue { color: #94a3b8; }
+  .resource-detail-panel-link { color: #0272a5; }
+
+  .resource-suggest-btn {
+    color: #64748b;
+    border-color: #dde3ed;
+    &:hover { color: #0f172a; border-color: rgba(0, 200, 255, 0.4); }
+  }
+
   // Contribute page
   .contribute-method {
     background: #ffffff;
