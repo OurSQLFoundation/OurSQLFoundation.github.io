@@ -68,11 +68,11 @@ Every resource also carries a handful of **tag facets** — small, controlled se
 
 Pick a `subcategories` value from your section's list, and set whichever facets apply — all are optional and multi-value (a resource can carry more than one).
 
-**`content/resources/software/`** — subcategories: Database Software · Monitoring & Observability · Backup & Recovery · Replication & High Availability · Proxies & Traffic Management · Connectors & Drivers · Database Management & GUI · DevOps & Deployment · Schema Management & Migration · Testing & Benchmarking · Security · AI & Ecosystem Skills
+**`content/resources/software/`** — subcategories: Database Software · Monitoring & Observability · Backup & Recovery · Data Warehouse & Analytics · Replication & High Availability · Proxies & Traffic Management · Connectors & Drivers · Database Management & GUI · DevOps & Deployment · Schema Management & Migration · Testing & Benchmarking · Security · AI & Ecosystem Skills (a resource can carry more than one subcategory, e.g. a backup tool that's also a data lakehouse)
 ```yaml
-compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication
+compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication, RDS MySQL, DuckDB
 deployment: ["Self-Hosted"]     # Self-Hosted, Kubernetes, Docker, Cloud-Native, On-Premises
-pricing: ["Open Source"]        # Open Source, Commercial, Free, Paid, Enterprise
+pricing: ["Open Source"]        # Open Source, Commercial, Free, Paid, Enterprise, Open Source & Open Core
 ```
 
 **`content/resources/saas/`** — subcategories: Managed Databases · Monitoring SaaS · Backup & Recovery SaaS · Migration & Replication SaaS · Developer Platforms · Security & Compliance SaaS
