@@ -1,8 +1,9 @@
 ---
-description: Data recovery, Backup Solution and Data LakeHouse for MySQL with DuckDB.
+description: Data recovery, backup solution, and data lakehouse for MySQL with DuckDB.
 link: https://www.dbtrail.com/
 subcategories:
-- Data recovery & Data warehouse
+- Backup & Recovery
+- Data Warehouse & Analytics
 compatibility:
 - MySQL
 - MariaDB

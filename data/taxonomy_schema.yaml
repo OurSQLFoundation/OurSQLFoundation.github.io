@@ -24,6 +24,7 @@ software:
     - Database Software
     - Monitoring & Observability
     - Backup & Recovery
+    - Data Warehouse & Analytics
     - Replication & High Availability
     - Proxies & Traffic Management
     - Connectors & Drivers
@@ -37,7 +38,7 @@ software:
     - key: compatibility
       path: compatibility
       label: Compatibility
-      values: [MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication]
+      values: [MySQL, MariaDB, Percona Server, TiDB, Vitess, HeatWave, Galera, Group Replication, RDS MySQL, DuckDB]
     - key: deployment
       path: deployment
       label: Deployment
@@ -45,7 +46,7 @@ software:
     - key: pricing
       path: pricing
       label: License
-      values: [Open Source, Commercial, Free, Paid, Enterprise]
+      values: [Open Source, Commercial, Free, Paid, Enterprise, Open Source & Open Core]
 
 saas:
   subcategories:
