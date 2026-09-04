@@ -1,0 +1,94 @@
+# ── Resource detail-page config ─────────────────────────────────────────────
+# Drives layouts/partials/resources/detail-card.html: the hero media shape,
+# what the primary/secondary action buttons say and link to, and which rows
+# appear in the sticky "Details" panel — in order, per resources subsection.
+#
+# Every field is optional at the CONTENT level: a field whose param has no
+# value for a given resource just doesn't render (no placeholder row) — that
+# is the whole point of driving this from data instead of hardcoding a fixed
+# column list per category (a 5th category is a new entry here, not new
+# template code). `only_if: past` is the one row gated on something other
+# than "value present" (Events' Recording row — see detail-card.html).
+#
+# Field types the template understands:
+#   category      — always .Parent.Title
+#   subcategory   — .Params.subcategories, comma-joined
+#   text          — .Params.<param> as-is (comma-joined if it's a list)
+#   domain_link   — .Params.<param> is a URL; shown as its bare domain,
+#                   optionally prefixed with `prefix` (e.g. "Watch on ")
+#   github_link   — .Params.<param>, "owner/repo" shorthand or full URL
+#   link          — .Params.<param> is a URL; shown as this field's `text`
+#   member_badge  — only when .Params.member is exactly `true`
+#   last_reviewed — .Params.<param>, a date; shown with "by OurSQL editorial team"
+#   date_range    — .Date (start) plus optional .Params.date_end
+
+software: &standard_fields
+  media: square
+  primary_action: {label: "Visit website", param: link}
+  secondary_action: {label: "View on GitHub", param: github, type: github}
+  fields:
+    - {key: category, label: Category, type: category}
+    - {key: subcategory, label: Subcategory, type: subcategory}
+    - {key: website, label: Website, type: domain_link, param: link}
+    - {key: repository, label: Repository, type: github_link, param: github}
+    - {key: member, label: "OurSQL Member", type: member_badge, param: member}
+    - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}
+
+saas: *standard_fields
+services: *standard_fields
+
+community:
+  media: square
+  primary_action: {label: "Join the community", param: link}
+  fields:
+    - {key: category, label: Category, type: category}
+    - {key: subcategory, label: Subcategory, type: subcategory}
+    - {key: website, label: Website, type: domain_link, param: link}
+    - {key: member, label: "OurSQL Member", type: member_badge, param: member}
+    - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}
+
+training:
+  media: square
+  primary_action: {label: "Visit website", param: link}
+  fields:
+    - {key: category, label: Category, type: category}
+    - {key: subcategory, label: Subcategory, type: subcategory}
+    - {key: organization, label: Organization, type: text, param: author}
+    # require_end: the training section's own `date` front matter has long
+    # meant "sort/reference date" (see content/resources/training/_index.md's
+    # `sort: date`), not "this specific cohort runs on this day" — showing it
+    # here unqualified would misrepresent every self-paced/evergreen course as
+    # a one-day event. Only a genuinely dated delivery (start AND end set)
+    # shows this row; see RESOURCES.md.
+    - {key: dates, label: "Date(s)", type: date_range, icon: calendar, require_end: true}
+    - {key: website, label: Website, type: domain_link, param: link}
+    - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}
+
+events:
+  media: square
+  # Primary action swaps by event state — handled directly in detail-card.html
+  # (past → Watch recording / recording_url, future → Register / registration_url,
+  # falling back to Visit website / link when neither applies) rather than as
+  # config, since it's the one section where the action itself is conditional.
+  secondary_action: {label: "Event website", param: link, type: link}
+  fields:
+    - {key: category, label: Category, type: category}
+    - {key: subcategory, label: Subcategory, type: subcategory}
+    - {key: dates, label: "Date(s)", type: date_range, icon: calendar}
+    - {key: location, label: Location, type: location, icon: location}
+    - {key: online, label: Online, type: domain_link, param: online_url}
+    - {key: organizer, label: Organizer, type: text, param: organizers, list: true}
+    - {key: registration, label: Registration, type: link, param: registration_url, text: Register}
+    - {key: recording, label: Recording, type: domain_link, param: recording_url, prefix: "Watch on ", only_if: past}
+    - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}
+
+books:
+  media: portrait
+  primary_action: {label: "Find the book", param: link}
+  fields:
+    - {key: category, label: Category, type: category}
+    - {key: subcategory, label: Subcategory, type: subcategory}
+    - {key: authors, label: Authors, type: text, param: authors, list: true}
+    - {key: year, label: Year, type: text, param: year}
+    - {key: website, label: Website, type: domain_link, param: link}
+    - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}

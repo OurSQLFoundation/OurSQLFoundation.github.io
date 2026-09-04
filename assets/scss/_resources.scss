@@ -1539,6 +1539,18 @@ body.sheet-open {
     padding: 10px;
     background: $white;
   }
+
+  // Books & Publications: cover art stands in for the logo, so the media
+  // placeholder itself needs a portrait (book-cover) aspect ratio instead of
+  // the square used everywhere else.
+  &--portrait {
+    width: 90px;
+    height: 130px;
+    border-radius: 8px;
+    font-size: 1.0625rem;
+
+    &.resource-detail-logo--img { padding: 0; }
+  }
 }
 
 .resource-detail-titlerow {
@@ -1553,6 +1565,20 @@ body.sheet-open {
   font-weight: 700;
   color: $off-white;
   margin: 0;
+}
+
+// Events: computed "Past event" chip next to the title — never hand-authored.
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $muted;
+  background: rgba($off-white, 0.06);
+  border: 1px solid $dark-border;
+  border-radius: 100px;
+  padding: 0.25rem 0.7rem;
+  white-space: nowrap;
 }
 
 .resource-detail-member-badge {
@@ -1685,11 +1711,16 @@ body.sheet-open {
 }
 
 .resource-detail-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $muted;
+
+  svg { flex-shrink: 0; }
 }
 
 .resource-detail-panel-value {
