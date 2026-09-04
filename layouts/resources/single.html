@@ -45,39 +45,7 @@
     {{ end }}
 
     {{/* Subcategory + facet chips, driven by data/taxonomy_schema.yaml */}}
-    {{ $sectionKey := path.Base (strings.TrimSuffix "/" .Parent.RelPermalink) }}
-    {{ $schema := index .Site.Data.taxonomy_schema $sectionKey }}
-    {{ $facets := slice }}
-    {{ with $schema }}
-      {{ if .facets }}
-        {{ $facets = .facets }}
-      {{ else if .facets_by_subcategory }}
-        {{ $seenKeys := slice }}
-        {{ range .facets_by_subcategory }}
-          {{ range . }}
-            {{ if not (in $seenKeys .key) }}
-              {{ $facets = $facets | append . }}
-              {{ $seenKeys = $seenKeys | append .key }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-    {{ $chips := slice }}
-    {{ range .Params.subcategories }}{{ $chips = $chips | append (dict "value" . "path" "subcategories") }}{{ end }}
-    {{ $page := . }}
-    {{ range $facets }}
-      {{ $fk := .key }}
-      {{ $fp := .path }}
-      {{ if ne $fk "country" }}
-        {{ range (index $page.Params $fp) }}{{ $chips = $chips | append (dict "value" . "path" $fp) }}{{ end }}
-      {{ end }}
-    {{ end }}
-    {{ with $chips }}
-    <div class="resource-tags">
-      {{ range . }}<a href="{{ printf "/%s/" .path | relURL }}{{ .value | urlize }}/" class="resource-tag">{{ .value }}</a>{{ end }}
-    </div>
-    {{ end }}
+    {{ partial "resources/tag-chips.html" . }}
 
     {{ with .Content }}<div class="resource-single-content">{{ . }}</div>{{ end }}
 
