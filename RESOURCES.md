@@ -75,17 +75,19 @@ deployment: ["Self-Hosted"]     # Self-Hosted, Kubernetes, Docker, Cloud-Native,
 pricing: ["Open Source"]        # Open Source, Commercial, Free, Paid, Enterprise, Open Source & Open Core
 ```
 
-**Software & Tools / SaaS & Cloud Solutions / Services also get a structured detail page** (hero, actions row, sticky "Details" panel) with a few extra optional fields on top of the usual ones:
+**Every one of these seven sections gets the same structured detail page** (hero, actions row, sticky "Details" panel) — which fields the panel shows, in what order, and what the primary action button says is configured per section in [`data/resource_detail.yaml`](data/resource_detail.yaml), not hardcoded per template. A field with no value for a given resource just doesn't render — no placeholder row — so it's always safe to leave any of these unset.
+
+Fields shared by every section:
 ```yaml
-github: "owner/repo"          # optional — shorthand, or a full https://github.com/... URL. Adds
-                               # a "View on GitHub" button and a Repository row. Only set it when
-                               # it's a genuinely separate URL from `link` — skip it if `link`
-                               # already points at the repo.
-member: true                  # optional — shows the "OurSQL Member" badge. Only set this when the
-                               # resource's org is an actual OurSQL Foundation member/sponsor/partner;
-                               # leave it unset otherwise (the row/badge is just omitted, no placeholder).
+member: true                  # optional (software/saas/services/community only) — shows the
+                               # "OurSQL Member" badge. Only set this when the resource's org is
+                               # an actual OurSQL Foundation member/sponsor/partner.
 last_reviewed: 2026-08-14     # optional — shows a "Last reviewed" row, credited to the editorial
                                # team. Only set it once someone has actually reviewed the listing.
+github: "owner/repo"          # optional (software/saas/services only) — shorthand, or a full
+                               # https://github.com/... URL. Adds a "View on GitHub" button and a
+                               # Repository row. Only set it when it's a genuinely separate URL
+                               # from `link` — skip it if `link` already points at the repo.
 ```
 The full description (Markdown body, under the front matter) renders as the "About" section — plain-text `description` still serves as the short hero subtitle. "Suggest an update" always appears (top-right and in the Details panel) and links straight to editing the resource's own file on GitHub.
 
@@ -111,7 +113,13 @@ training-formats: ["Self-Paced"] # Self-Paced, Instructor-Led, Workshop, Certifi
 levels: ["Beginner"]             # Beginner, Intermediate, Advanced
 pricing: ["Free"]                # Free, Paid, Free Trial Available
 languages: ["English"]           # English, Spanish, Portuguese, German, Chinese, Other
-author: "Percona"                # optional
+author: "Percona"                # optional — shown as "Organization" on the detail page
+date: 2026-10-06                 # optional — start of a specific dated delivery (a workshop
+                                  # cohort, a bootcamp). Leave unset for self-paced / evergreen
+                                  # courses — the "Date(s)" row only shows once BOTH `date` and
+                                  # `date_end` are set, specifically so it never turns an ongoing
+                                  # course into what looks like a one-day event.
+date_end: 2026-10-08              # optional — end of that same range
 ```
 
 **`content/resources/books/`** (leaf bundle with cover image) — subcategories: Books · Blogs · Newsletters · Reports & Research · Whitepapers · Case Studies · Podcasts & Videos · Documentation Portals
@@ -130,17 +138,29 @@ images:
   - cover.jpeg
 ---
 ```
+`images[0]` (the cover) replaces the usual square logo in the hero with a portrait book-cover shape — the only section where the hero media isn't square. `authors` and `year` show as their own Details-panel rows.
 
 **`content/resources/events/`** — subcategories: Foundation Events · Community Calls · Webinars · Meetups · Conferences · Partner & Member Events · Past Events & Recordings — prefix the filename with the date
 ```yaml
 date: 2026-09-11
-format: "in-person"             # or "online" — drives the card's Online/In-person badge
-city: "Amsterdam"                # optional, only for in-person events
+date_end: 2026-09-13             # optional — end date, for a multi-day conference
+format: "in-person"              # or "online" — drives the card's Online/In-person badge
+city: "Amsterdam"                 # optional, only for in-person events — omit for online-only,
+                                  # the Details panel's Location row is skipped when there's no
+                                  # city and countries is just ["Global"]
 countries: ["Netherlands"]       # a country name, or "Global" for an online/worldwide event
 event_year: ["2026"]
 event-formats: ["In-Person"]     # In-Person, Online, Hybrid
-organizers: ["Community"]        # OurSQL Foundation, Community, Member & Partner
+organizers: ["Community"]        # OurSQL Foundation, Community, Member & Partner — also the
+                                  # detail page's "Organizer" row
+online_url: "https://..."        # optional — shown as a Details-panel "Online" link
+registration_url: "https://..."  # optional — becomes the primary "Register" button for an
+                                  # upcoming event, and a "Registration" row either way
+recording_url: "https://..."     # optional — becomes the primary "Watch recording" button and a
+                                  # "Recording" row, but ONLY once the event's `date` has passed —
+                                  # never set this for something that hasn't happened yet
 ```
+Whether an event is upcoming or past is computed from `date` (compared to today), never a field you set by hand — it drives the "Past event" badge in the hero and which of the fields above are actually shown.
 
 **`content/resources/community/`** — subcategories: Forums · Slack, Discord & IRC · Mailing Lists · Reddit & Social · Blog Aggregators · Podcasts & Videos
 ```yaml
