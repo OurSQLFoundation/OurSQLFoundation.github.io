@@ -278,15 +278,34 @@
     }
   }
 
-  .contribute-fm-block {
-    background: #f8f9fc;
+  .contribute-list,
+  .contribute-subcat-list { color: #334155; }
+
+  .contribute-tags-table {
     border-color: #dde3ed;
   }
 
-  .contribute-fm-label {
-    color: #94a3b8;
+  .contribute-tags-row {
     border-bottom-color: #dde3ed;
+
+    > span:first-child { color: #64748b; }
   }
+
+  .contribute-category-item {
+    background: #f8f9fc;
+    border-color: #dde3ed;
+
+    &[open] { border-color: rgba(0, 200, 255, 0.35); }
+
+    summary {
+      color: #0f172a;
+      &:hover { color: #0272a5; }
+    }
+
+    &[open] summary { border-bottom-color: #dde3ed; }
+  }
+
+  .contribute-accordion-chevron { color: #94a3b8; }
 
   .contribute-method-badge {
     color: #0272a5;
