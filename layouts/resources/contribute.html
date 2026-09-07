@@ -8,148 +8,433 @@
       <span>Suggest a Resource</span>
     </nav>
     <h1>Suggest a Resource</h1>
-    <p class="contribute-lead">The resource directory is maintained by the community. If you know of a tool, service, event, or resource that belongs here — add it. You can either open a pull request directly in the <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io" target="_blank" rel="noopener">repository</a>, or submit an issue and someone will take care of the rest.</p>
-
-    <div class="contribute-types">
-      <div class="contribute-type-item"><strong>Software</strong> — open source tools, databases, proxies</div>
-      <div class="contribute-type-item"><strong>SaaS Solutions</strong> — managed cloud database services</div>
-      <div class="contribute-type-item"><strong>Services</strong> — consulting, support, managed services</div>
-      <div class="contribute-type-item"><strong>Training</strong> — courses, tutorials, certifications, videos</div>
-      <div class="contribute-type-item"><strong>Books</strong> — MySQL books and reference material</div>
-      <div class="contribute-type-item"><strong>Events</strong> — conferences, meetups, community events</div>
-      <div class="contribute-type-item"><strong>Community</strong> — blogs, forums, aggregators, chat spaces</div>
-      <div class="contribute-type-item"><strong>Press & News</strong> — articles, press releases, coverage</div>
-    </div>
+    <p class="contribute-lead">OurSQL Universe is maintained by the community. Know a useful MySQL-related tool, service, course, book, event, or community resource? Add it.</p>
+    <p class="contribute-lead">The easiest way is to open a GitHub issue using the template for your resource type. If you prefer to contribute directly, you can also submit a pull request.</p>
   </div>
 
   <div class="contribute-methods">
 
-    {{/* Method 1: PR */}}
+    {{/* Option 1: Open an Issue */}}
     <div class="contribute-method">
       <div class="contribute-method-badge">Option 1</div>
-      <h2>Open a Pull Request</h2>
-      <p>The fastest way if you're comfortable with GitHub. Each resource is a single Markdown file in the repository.</p>
-
-      <h3>Where to add the file</h3>
-      <p>Open the repository and go to <code>content/resources/</code> — you'll find a folder for each resource type. Place your file in the folder that matches.</p>
-
-      <h3>File naming</h3>
-      <p>Use lowercase letters and hyphens. No spaces, no special characters.</p>
-      <div class="contribute-example">
-        <span class="contribute-example-good">✓ percona-server-for-mysql.md</span>
-        <span class="contribute-example-bad">✗ Percona Server.md</span>
-      </div>
-
-      <h3>Front matter</h3>
-      <p>Every resource file needs these fields at the top. Copy an existing file as a starting point.</p>
-
-      <div class="contribute-frontmatter">
-        <div class="contribute-fm-block">
-          <div class="contribute-fm-label">All types</div>
-<pre><code>---
-title: "Resource Name"
-link: "https://example.com"
-description: "One or two sentences."
-tags: ["tag1", "tag2"]
----</code></pre>
-        </div>
-        <div class="contribute-fm-block">
-          <div class="contribute-fm-label">Books (with cover image)</div>
-<pre><code># Use a folder: books/my-book/index.md
-# Place cover.jpeg in the same folder
-authors: ["Author One", "Author Two"]
-year: 2022
-images:
-  - cover.jpeg</code></pre>
-        </div>
-        <div class="contribute-fm-block">
-          <div class="contribute-fm-label">Training (optional)</div>
-<pre><code>author: "Organization or Author"</code></pre>
-        </div>
-        <div class="contribute-fm-block">
-          <div class="contribute-fm-label">Events (additional fields)</div>
-<pre><code>date: 2026-09-11
-format: "in-person"   # or "online"
-city: "Amsterdam"
-country: "Netherlands"
-event_country: ["Netherlands"]
-event_year: ["2026"]</code></pre>
-        </div>
-        <div class="contribute-fm-block">
-          <div class="contribute-fm-label">Press & News (additional fields)</div>
-<pre><code>date: 2026-05-27
-source: "Publication Name"</code></pre>
-        </div>
-      </div>
-
-      <h3>Event file naming</h3>
-      <p>Prefix dated events with the date, aggregator pages with <code>aggregator-</code>:</p>
-      <div class="contribute-example">
-        <span class="contribute-example-good">✓ 2026-09-11-percona-live-amsterdam.md</span>
-        <span class="contribute-example-good">✓ aggregator-mysql-events.md</span>
-      </div>
-
-
-<a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io" class="btn btn-primary" target="_blank" rel="noopener">Open the repository →</a>
-    </div>
-
-    {{/* Method 2: Issue */}}
-    <div class="contribute-method">
-      <div class="contribute-method-badge">Option 2</div>
       <h2>Open an Issue</h2>
-      <p>Not comfortable with Git? Just open an issue and describe the resource — someone from the community will add it.</p>
-      <p>Pick the type that matches what you're suggesting:</p>
+      <p>The quickest way to add a resource. Pick the category that matches what you're suggesting, fill in the template, and we'll take care of the rest.</p>
 
       <div class="contribute-issue-list">
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-software.yml" class="contribute-issue-card" target="_blank" rel="noopener">
-          <span class="contribute-issue-type">Software</span>
-          <span class="contribute-issue-desc">Open source tools, databases, proxies</span>
+          <span class="contribute-issue-type">Software & Tools</span>
+          <span class="contribute-issue-desc">Database software, monitoring, backup, replication, DevOps tools, connectors, security, benchmarking, and more.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-saas.yml" class="contribute-issue-card" target="_blank" rel="noopener">
-          <span class="contribute-issue-type">SaaS Solutions</span>
-          <span class="contribute-issue-desc">Managed cloud database services</span>
+          <span class="contribute-issue-type">SaaS & Cloud Solutions</span>
+          <span class="contribute-issue-desc">Managed databases, monitoring SaaS, backup, migration, developer platforms, and cloud services.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-services.yml" class="contribute-issue-card" target="_blank" rel="noopener">
           <span class="contribute-issue-type">Services</span>
-          <span class="contribute-issue-desc">Consulting, support, managed services</span>
+          <span class="contribute-issue-desc">Consulting, support, managed services, migration, performance, architecture, security, and training providers.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-training.yml" class="contribute-issue-card" target="_blank" rel="noopener">
-          <span class="contribute-issue-type">Training</span>
-          <span class="contribute-issue-desc">Courses, tutorials, certifications</span>
+          <span class="contribute-issue-type">Training & Education</span>
+          <span class="contribute-issue-desc">Courses, workshops, certifications, learning resources, and training programs.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-books.yml" class="contribute-issue-card" target="_blank" rel="noopener">
-          <span class="contribute-issue-type">Books</span>
-          <span class="contribute-issue-desc">MySQL books and reference material</span>
+          <span class="contribute-issue-type">Books & Publications</span>
+          <span class="contribute-issue-desc">Books, blogs, newsletters, research, podcasts, documentation, and other publications.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-events.yml" class="contribute-issue-card" target="_blank" rel="noopener">
           <span class="contribute-issue-type">Events</span>
-          <span class="contribute-issue-desc">Conferences, meetups, community events</span>
+          <span class="contribute-issue-desc">Conferences, meetups, webinars, community calls, and other MySQL ecosystem events.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
         <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-community.yml" class="contribute-issue-card" target="_blank" rel="noopener">
           <span class="contribute-issue-type">Community</span>
-          <span class="contribute-issue-desc">Blogs, forums, Slack, aggregators</span>
-          <span class="contribute-issue-arrow">→</span>
-        </a>
-        <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-press.yml" class="contribute-issue-card" target="_blank" rel="noopener">
-          <span class="contribute-issue-type">Press & News</span>
-          <span class="contribute-issue-desc">Articles, press releases, coverage</span>
+          <span class="contribute-issue-desc">Forums, chat spaces, mailing lists, user groups, social communities, and media channels.</span>
           <span class="contribute-issue-arrow">→</span>
         </a>
       </div>
 
-      <p class="contribute-note">Not sure which type fits? <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new" target="_blank" rel="noopener">Open a general issue</a> and describe it in your own words.</p>
+      <p class="contribute-note">Not sure which category fits? <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new" target="_blank" rel="noopener">Open a general issue</a> and describe the resource in your own words.</p>
+    </div>
+
+    {{/* Option 2: Submit a Pull Request (Advanced) */}}
+    <div class="contribute-method">
+      <div class="contribute-method-badge">Option 2 — Advanced</div>
+      <h2>Submit a Pull Request</h2>
+      <p>Comfortable with GitHub? You can add the entry directly to the OurSQL Universe repository.</p>
+      <p>Each resource is stored as a Markdown entry under <code>content/resources/</code>.</p>
+
+      <h3>Before you start</h3>
+      <p>Every entry should have:</p>
+      <ul class="contribute-list">
+        <li>a clear name</li>
+        <li>a working website or primary link</li>
+        <li>a short, factual description</li>
+        <li>one existing <strong>subcategory</strong></li>
+        <li>the relevant <strong>tags</strong> for that category</li>
+      </ul>
+      <p><strong>Categories and subcategories are fixed.</strong> The category is set by which folder you place the file in; choose the matching subcategory from the list below.</p>
+      <p><strong>Tags are extensible.</strong> Reuse an existing value whenever possible — if the right one doesn't exist yet for your category, you may add a new one to that field.</p>
+      <p>Only include fields that are relevant to the entry. Optional fields should be omitted rather than left empty. <code>member</code> and <code>last_reviewed</code> are usually left for the OurSQL editorial team to set later.</p>
+
+      <h3>File naming</h3>
+      <p>Use lowercase letters and hyphens. No spaces or special characters.</p>
+      <div class="contribute-example">
+        <span class="contribute-example-good">✓ percona-server-for-mysql.md</span>
+        <span class="contribute-example-bad">✗ Percona Server.md</span>
+      </div>
+      <p>For dated events, prefix the filename with the date:</p>
+      <div class="contribute-example">
+        <span class="contribute-example-good">✓ 2026-09-11-percona-live-amsterdam.md</span>
+      </div>
+
+      <h3>Choose a category</h3>
+      <p>Select a category to see its subcategories, recommended tags, and fields.</p>
+
+      <div class="contribute-category-accordion">
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Software & Tools</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Database Software</li>
+              <li>Monitoring & Observability</li>
+              <li>Backup & Recovery</li>
+              <li>Data Warehouse & Analytics</li>
+              <li>Replication & High Availability</li>
+              <li>Proxies & Traffic Management</li>
+              <li>Connectors & Drivers</li>
+              <li>Database Management & GUI</li>
+              <li>DevOps & Deployment</li>
+              <li>Schema Management & Migration</li>
+              <li>Testing & Benchmarking</li>
+              <li>Security</li>
+              <li>AI & Ecosystem Skills</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Compatibility</span><span>MySQL · MariaDB · Percona Server · TiDB · Vitess · HeatWave · Galera · Group Replication · RDS MySQL · DuckDB</span></div>
+              <div class="contribute-tags-row"><span>Deployment</span><span>Self-Hosted · Kubernetes · Docker · Cloud-Native · On-Premises</span></div>
+              <div class="contribute-tags-row"><span>License</span><span>Open Source · Commercial · Free · Paid · Enterprise · Open Source & Open Core</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Resource Name"
+link: "https://example.com"
+github: "owner/repo"          # optional — omit if not applicable
+description: "A concise one-sentence description."
+subcategories:
+  - "Monitoring & Observability"
+compatibility:
+  - MySQL
+deployment:
+  - Kubernetes
+pricing:
+  - Open Source
+---
+
+A fuller, factual description goes here as the Markdown body.</code></pre>
+            <p class="contribute-note"><code>github</code> is optional — only set it when it's a genuinely separate URL from <code>link</code>.</p>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>SaaS & Cloud Solutions</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Managed Databases</li>
+              <li>Monitoring SaaS</li>
+              <li>Backup & Recovery SaaS</li>
+              <li>Migration & Replication SaaS</li>
+              <li>Developer Platforms</li>
+              <li>Security & Compliance SaaS</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Cloud provider</span><span>AWS · Azure · GCP · Multi-Cloud · Private Cloud</span></div>
+              <div class="contribute-tags-row"><span>Compliance</span><span>SOC 2 · HIPAA · GDPR · PCI DSS</span></div>
+              <div class="contribute-tags-row"><span>Pricing</span><span>Pay-as-you-go · Subscription · Free Tier Available</span></div>
+              <div class="contribute-tags-row"><span>Compatibility</span><span>MySQL · MariaDB · Percona Server · TiDB · Vitess</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Resource Name"
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - "Managed Databases"
+cloud-providers:
+  - AWS
+pricing:
+  - Pay-as-you-go
+compatibility:
+  - MySQL
+---</code></pre>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Services</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Consulting</li>
+              <li>Support</li>
+              <li>Managed Services</li>
+              <li>Migration Services</li>
+              <li>Performance Tuning</li>
+              <li>Architecture & HA Design</li>
+              <li>Cloud & Kubernetes</li>
+              <li>Security & Compliance</li>
+              <li>Training Providers</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Delivery</span><span>Remote · On-Site · Hybrid</span></div>
+              <div class="contribute-tags-row"><span>Geography</span><span>A country name, or Global</span></div>
+              <div class="contribute-tags-row"><span>Technology</span><span>MySQL · MariaDB · Percona Server · TiDB · Vitess · Galera</span></div>
+              <div class="contribute-tags-row"><span>Status</span><span>Foundation Member · Sponsor · Partner</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Service or Company Name"
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - Consulting
+delivery:
+  - Remote
+countries:
+  - Global
+compatibility:
+  - MySQL
+---</code></pre>
+            <p class="contribute-note">Add <code>foundation-status</code> only if your organization is actually a Foundation Member, Sponsor, or Partner.</p>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Training & Education</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Courses</li>
+              <li>Workshops</li>
+              <li>Certifications</li>
+              <li>Academic Resources</li>
+              <li>Training Providers</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Format</span><span>Self-Paced · Instructor-Led · Workshop · Certification · Practice Lab</span></div>
+              <div class="contribute-tags-row"><span>Level</span><span>Beginner · Intermediate · Advanced</span></div>
+              <div class="contribute-tags-row"><span>Pricing</span><span>Free · Paid · Free Trial Available</span></div>
+              <div class="contribute-tags-row"><span>Language</span><span>English · Spanish · Portuguese · German · Chinese · Other</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Training Resource Name"
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - Courses
+author: "Organization or Author"
+training-formats:
+  - Instructor-Led
+levels:
+  - Intermediate
+languages:
+  - English
+pricing:
+  - Paid
+---</code></pre>
+            <p class="contribute-note">For a specific dated delivery (a workshop cohort, a bootcamp), also add <code>date</code> and <code>date_end</code>. Leave both out for self-paced or ongoing courses.</p>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Books & Publications</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Books</li>
+              <li>Blogs</li>
+              <li>Newsletters</li>
+              <li>Reports & Research</li>
+              <li>Whitepapers</li>
+              <li>Case Studies</li>
+              <li>Podcasts & Videos</li>
+              <li>Documentation Portals</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Topic</span><span>Administration · Development · Architecture · Replication · Performance · Security · Migration · Scaling · Other</span></div>
+              <div class="contribute-tags-row"><span>Audience</span><span>DBA · Developer · Architect · Beginner · Advanced</span></div>
+              <div class="contribute-tags-row"><span>Access</span><span>Free · Paid</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Book or Publication Title"
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - Books
+authors:
+  - "Author One"
+  - "Author Two"
+year: 2026
+topics:
+  - Performance
+audiences:
+  - DBA
+pricing:
+  - Paid
+---</code></pre>
+            <p class="contribute-note">For an entry with a cover image, use a folder instead of a single file:</p>
+<pre><code>books/my-book/index.md
+books/my-book/cover.jpeg</code></pre>
+            <p class="contribute-note">The cover becomes the entry's primary image.</p>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Events</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Foundation Events</li>
+              <li>Community Calls</li>
+              <li>Webinars</li>
+              <li>Meetups</li>
+              <li>Conferences</li>
+              <li>Partner & Member Events</li>
+              <li>Past Events & Recordings</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Format</span><span>In-Person · Online · Hybrid</span></div>
+              <div class="contribute-tags-row"><span>Geography</span><span>A country name, or Global</span></div>
+              <div class="contribute-tags-row"><span>Organizer</span><span>OurSQL Foundation · Community · Member & Partner</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Event Name"
+date: 2026-09-11
+date_end: 2026-09-13          # optional — for a multi-day event
+city: "Amsterdam"              # optional — omit for an online-only event
+countries:
+  - Netherlands
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - Conferences
+event-formats:
+  - Hybrid
+organizers:
+  - Community
+online_url: "https://example.com/watch"           # optional
+registration_url: "https://example.com/register"  # optional
+recording_url: "https://example.com/recording"    # optional
+---</code></pre>
+            <p class="contribute-note">Events can be in-person, online, or hybrid — set whichever of <code>city</code>/<code>countries</code>/<code>online_url</code> actually apply. Only add <code>recording_url</code> once a recording actually exists, typically for a past event.</p>
+          </div>
+        </details>
+
+        <details class="contribute-category-item">
+          <summary>
+            <span>Community</span>
+            <svg class="contribute-accordion-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="contribute-category-body">
+            <h3>Subcategories</h3>
+            <ul class="contribute-subcat-list">
+              <li>Forums</li>
+              <li>Slack, Discord & IRC</li>
+              <li>Mailing Lists</li>
+              <li>Reddit & Social</li>
+              <li>Blog Aggregators</li>
+              <li>Podcasts & Videos</li>
+            </ul>
+
+            <h3>Recommended tags</h3>
+            <div class="contribute-tags-table">
+              <div class="contribute-tags-row"><span>Platform</span><span>Forum · Slack · Discord · Mailing List · Reddit · Meetup · YouTube · Podcast</span></div>
+              <div class="contribute-tags-row"><span>Language</span><span>English · Spanish · Portuguese · German · Chinese · Other</span></div>
+              <div class="contribute-tags-row"><span>Access</span><span>Open · Registration Required</span></div>
+              <div class="contribute-tags-row"><span>Status</span><span>Active · Archived</span></div>
+            </div>
+            <p class="contribute-note">You may add another tag if an appropriate one does not exist.</p>
+
+            <h3>Fields</h3>
+<pre><code>---
+title: "Community Name"
+link: "https://example.com"
+description: "A concise one-sentence description."
+subcategories:
+  - Forums
+platforms:
+  - Forum
+languages:
+  - English
+access:
+  - Open
+listing-status:
+  - Active
+---</code></pre>
+          </div>
+        </details>
+
+      </div>
+
+      <a href="https://github.com/OurSQLFoundation/OurSQLFoundation.github.io" class="btn btn-primary" target="_blank" rel="noopener">Open the repository →</a>
     </div>
 
   </div>
 
   <div class="contribute-contact">
-    Questions? Reach us at <a href="mailto:contact@oursqlfoundation.org">contact@oursqlfoundation.org</a>
+    We review submissions for relevance, classification, and accuracy before adding them to OurSQL Universe. Questions? Reach us at <a href="mailto:contact@oursqlfoundation.org">contact@oursqlfoundation.org</a>
   </div>
 
 </div>
