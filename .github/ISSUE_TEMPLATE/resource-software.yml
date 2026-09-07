@@ -17,6 +17,12 @@ body:
       placeholder: "https://..."
     validations:
       required: true
+  - type: input
+    id: github
+    attributes:
+      label: "Repository (optional)"
+      description: "Only if there's a public GitHub repo separate from the URL above."
+      placeholder: "https://github.com/owner/repo"
   - type: textarea
     id: description
     attributes:
@@ -33,6 +39,7 @@ body:
         - Database Software
         - Monitoring & Observability
         - Backup & Recovery
+        - Data Warehouse & Analytics
         - Replication & High Availability
         - Proxies & Traffic Management
         - Connectors & Drivers

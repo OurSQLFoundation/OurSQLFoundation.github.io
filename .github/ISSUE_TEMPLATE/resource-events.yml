@@ -29,6 +29,12 @@ body:
     attributes:
       label: "Date"
       placeholder: "e.g. 2027-06-15"
+  - type: input
+    id: date_end
+    attributes:
+      label: "End date (optional)"
+      description: "Only for a multi-day event."
+      placeholder: "e.g. 2027-06-17"
   - type: dropdown
     id: format
     attributes:
@@ -41,7 +47,25 @@ body:
     id: location
     attributes:
       label: "City, Country"
+      description: "Leave blank for an online-only event."
       placeholder: "e.g. Amsterdam, Netherlands"
+  - type: input
+    id: online_url
+    attributes:
+      label: "Online link (optional)"
+      description: "Livestream or virtual-attendance URL, for an online or hybrid event."
+      placeholder: "https://..."
+  - type: input
+    id: registration_url
+    attributes:
+      label: "Registration link (optional)"
+      placeholder: "https://..."
+  - type: input
+    id: recording_url
+    attributes:
+      label: "Recording link (optional)"
+      description: "Only once a recording actually exists — typically for a past event."
+      placeholder: "https://..."
   - type: dropdown
     id: subcategory
     attributes:
