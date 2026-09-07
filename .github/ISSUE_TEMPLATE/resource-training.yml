@@ -29,6 +29,18 @@ body:
     attributes:
       label: "Author or organization"
       placeholder: "e.g. Kedar Vaijanapurkar"
+  - type: input
+    id: date
+    attributes:
+      label: "Start date (optional)"
+      description: "Only for a specific dated delivery — a workshop cohort, a bootcamp. Leave blank for self-paced or ongoing courses."
+      placeholder: "e.g. 2027-06-15"
+  - type: input
+    id: date_end
+    attributes:
+      label: "End date (optional)"
+      description: "Only if you set a start date above."
+      placeholder: "e.g. 2027-06-17"
   - type: dropdown
     id: subcategory
     attributes:
