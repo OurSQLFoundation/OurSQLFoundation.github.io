@@ -528,6 +528,14 @@
   font-size: 0.75rem;
   color: $muted;
   line-height: 1.6;
+
+  a {
+    color: $accent;
+    text-decoration: underline;
+    text-decoration-color: rgba($accent, 0.4);
+
+    &:hover { text-decoration-color: $accent; }
+  }
 }
 
 .contact-form-submit {

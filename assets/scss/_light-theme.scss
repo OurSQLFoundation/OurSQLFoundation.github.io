@@ -387,7 +387,10 @@
     }
   }
 
-  .contact-consent-text { color: #64748b; }
+  .contact-consent-text {
+    color: #64748b;
+    a { color: #0272a5; }
+  }
   .contact-form-status { color: #64748b; }
 
   .contact-channel {
@@ -793,6 +796,11 @@
     }
 
     .footer-bottom p { color: #94a3b8; }
+
+    .footer-legal a {
+      color: #94a3b8;
+      &:hover { color: #334155; }
+    }
 
     .footer-social a {
       color: #64748b;

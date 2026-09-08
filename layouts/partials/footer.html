@@ -18,6 +18,11 @@
     </div>
     <div class="footer-bottom">
       <p>© {{ now.Year }} OurSQL Foundation. A vendor-neutral nonprofit.</p>
+      <nav class="footer-legal" aria-label="Legal">
+        <a href="/code-of-conduct/">Code of Conduct</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+      </nav>
       <div class="footer-social" aria-label="OurSQL Foundation on social media">
         {{ with .Site.Params.social.linkedin }}
         <a href="{{ . }}" target="_blank" rel="noopener me" aria-label="LinkedIn">
