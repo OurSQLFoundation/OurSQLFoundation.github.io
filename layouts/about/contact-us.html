@@ -1,0 +1,179 @@
+{{ define "main" }}
+{{ $getInvolvedURL := "https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml" }}
+{{ $formspreeID := .Site.Params.formspree_id }}
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/">About</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Contact Us</span>
+  </nav>
+
+  {{/* ── Hero ── */}}
+  <div class="about-hero about-prose">
+    <h1>Contact us</h1>
+    <p class="about-hero-sub">Whether you're a journalist, a potential member, or simply curious about MySQL's next chapter — we'd love to hear from you.</p>
+  </div>
+
+  {{/* ── Get in touch ── */}}
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Get in touch</span>
+    <div class="contact-cards-grid">
+      <div class="contact-card">
+        <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+        <p class="contact-card-title">General inquiries</p>
+        <p class="contact-card-desc">Questions about the Foundation, partnerships, or anything else</p>
+        <a href="mailto:contact@oursqlfoundation.org" class="contact-card-email">contact@oursqlfoundation.org</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8z"></path></svg></div>
+        <p class="contact-card-title">Press & media</p>
+        <p class="contact-card-desc">Interview requests, press kits, quotes for coverage</p>
+        <a href="mailto:press@oursqlfoundation.org" class="contact-card-email">press@oursqlfoundation.org</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <p class="contact-card-title">Membership & sponsorship</p>
+        <p class="contact-card-desc">Joining as a member, contributor, or adopter</p>
+        <a href="mailto:membership@oursqlfoundation.org" class="contact-card-email">membership@oursqlfoundation.org</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"></path><path d="m16 16 6-6"></path><path d="m8 8 6-6"></path><path d="m9 7 8 8"></path><path d="m21 11-8-8"></path></svg></div>
+        <p class="contact-card-title">Board & governance</p>
+        <p class="contact-card-desc">Questions for the founding board</p>
+        <a href="mailto:board@oursqlfoundation.org" class="contact-card-email">board@oursqlfoundation.org</a>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── Form ── */}}
+  <div class="about-block about-prose">
+    <div class="contact-form-card">
+      <p class="contact-form-title">For general inquiries</p>
+      <p class="contact-form-sub">We'll get back to you within a few business days</p>
+
+      <form id="contact-form" action="https://formspree.io/f/{{ $formspreeID }}" method="POST">
+        <div class="contact-form-row">
+          <div class="contact-field">
+            <label for="cf-name">Name*</label>
+            <input type="text" id="cf-name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="contact-field">
+            <label for="cf-email">Email*</label>
+            <input type="email" id="cf-email" name="email" placeholder="jane@example.com" required>
+          </div>
+        </div>
+        <div class="contact-form-row">
+          <div class="contact-field">
+            <label for="cf-company">Company name</label>
+            <input type="text" id="cf-company" name="company" placeholder="Acme Inc.">
+          </div>
+          <div class="contact-field">
+            <label for="cf-title">Job title</label>
+            <input type="text" id="cf-title" name="job_title" placeholder="Database engineer">
+          </div>
+        </div>
+        <div class="contact-field">
+          <label for="cf-topic">Topic of contact*</label>
+          <select id="cf-topic" name="topic" required>
+            <option value="" selected disabled>Please select</option>
+            <option>Operations</option>
+            <option>Events</option>
+            <option>Membership</option>
+            <option>Media</option>
+            <option>Blog</option>
+          </select>
+        </div>
+        <div class="contact-field">
+          <label for="cf-message">Message*</label>
+          <textarea id="cf-message" name="message" placeholder="How can we help?" required></textarea>
+        </div>
+        <div class="contact-consent-row">
+          <input type="checkbox" id="cf-consent" required>
+          <label for="cf-consent" class="contact-consent-text">By submitting this form, I consent to receive marketing emails from the OurSQL Foundation and its projects regarding their events, training, research, developments, and related announcements. I understand that I can unsubscribe at any time using the links in the footers of the emails you receive. Privacy Policy.</label>
+        </div>
+        <input type="hidden" name="_subject" value="New message from oursqlfoundation.org/about/contact-us/">
+        <div class="contact-form-submit">
+          <button type="submit" class="about-btn about-btn--primary">Send message</button>
+          <p class="contact-form-status" data-status hidden></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {{/* ── Join the conversation ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">Join the conversation</span>
+    <p class="about-block-text" style="margin-top: 0.5rem;">For day-to-day discussion, our Slack is the fastest way to reach the community.</p>
+    <div class="contact-channels">
+      {{ with .Site.Params.social.slack }}
+      <a href="{{ . }}" class="contact-channel" target="_blank" rel="noopener">
+        {{ partial "social-icon.html" "slack" }}
+        <div>
+          <p class="contact-channel-title">Slack community</p>
+          <p class="contact-channel-sub">Join us on Slack ↗</p>
+        </div>
+      </a>
+      {{ end }}
+      <div class="contact-channel contact-channel--soon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z" opacity="0"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+        <div>
+          <p class="contact-channel-title">Newsletter</p>
+          <p class="contact-channel-sub">Coming soon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── Follow us ── */}}
+  <div class="about-block about-prose contact-social-row">
+    <span class="contact-social-label">Follow us</span>
+    <div class="contact-social-icons">
+      {{ with .Site.Params.social.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener me" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>{{ end }}
+      {{ with .Site.Params.social.x }}<a href="{{ . }}" target="_blank" rel="noopener me" aria-label="X (Twitter)">{{ partial "social-icon.html" "x" }}</a>{{ end }}
+      {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener me" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>{{ end }}
+      {{ with .Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="Slack">{{ partial "social-icon.html" "slack" }}</a>{{ end }}
+    </div>
+  </div>
+
+  {{/* ── CTA ── */}}
+  <div class="about-block about-prose">
+    <div class="about-cta-row">
+      <a href="{{ $getInvolvedURL }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">Get Involved</a>
+      <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Become a Member</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = form.querySelector('[data-status]');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.hidden = false;
+    status.textContent = 'Sending…';
+    status.className = 'contact-form-status';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        status.textContent = "Thanks — your message is on its way. We'll get back to you within a few business days.";
+        status.className = 'contact-form-status contact-form-status--ok';
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong sending that. Please try again, or email us directly.";
+        status.className = 'contact-form-status contact-form-status--error';
+      }
+    }).catch(function () {
+      status.textContent = "Something went wrong sending that. Please try again, or email us directly.";
+      status.className = 'contact-form-status contact-form-status--error';
+    });
+  });
+})();
+</script>
+{{ end }}

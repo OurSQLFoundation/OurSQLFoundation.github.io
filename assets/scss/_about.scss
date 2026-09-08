@@ -1,0 +1,646 @@
+// ── About section (Mission & Vision / Founding Board / Contact Us) ─────────
+
+.about-page {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 120px 2rem $section-pad;
+}
+
+// Prose (paragraphs, quote, FAQ) stays a comfortable reading width even
+// though the page shell now matches the rest of the site's container —
+// only the card grids (Values, Board, Dive Deeper) use the full width.
+.about-prose {
+  max-width: 720px;
+}
+
+.about-hero {
+  margin: 1.5rem 0 3rem;
+
+  h1 {
+    font-size: clamp(1.875rem, 4.5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: $off-white;
+    margin: 0 0 1rem;
+  }
+}
+
+.about-hero-sub {
+  font-size: 1.125rem;
+  color: $muted;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 620px;
+}
+
+.about-hero--center {
+  text-align: center;
+
+  .about-hero-sub {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+// ── Founding Board ──
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: $break-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $break-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.board-card {
+  display: flex;
+  flex-direction: column;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.board-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: $dark-card;
+
+  &--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $accent;
+    background: $accent-glow;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+}
+
+.board-card-body {
+  padding: 1.5rem;
+}
+
+.board-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0;
+}
+
+.board-role {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin: 0.2rem 0 0;
+}
+
+// Company affiliation — shown apart from the Foundation role, as social
+// proof ("backed by these companies"), not as if it were the same title.
+.board-org {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 100px;
+  padding: 0.2rem 0.7rem;
+  margin-top: 0.625rem;
+}
+
+.board-bio {
+  font-size: 0.875rem;
+  color: $muted;
+  line-height: 1.7;
+  margin: 0.875rem 0 1rem;
+}
+
+.board-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  border-top: 1px solid $dark-border;
+  padding-top: 0.875rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: $muted;
+
+    &:hover { color: $accent; }
+
+    svg { flex-shrink: 0; }
+  }
+}
+
+.about-block {
+  margin-bottom: 3rem;
+}
+
+.about-block-text {
+  font-size: 1.0625rem;
+  color: $off-white;
+  line-height: 1.75;
+  margin: 0.5rem 0 0;
+}
+
+// ── Values ──
+.about-values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: $break-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-value-card {
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-left: 3px solid $accent;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $off-white;
+    margin: 0 0 0.5rem;
+  }
+}
+
+.about-value-claim {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: $accent;
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+
+.about-value-desc {
+  font-size: 0.875rem;
+  color: $muted;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ── Quote ──
+.about-quote {
+  border-top: 1px solid $dark-border;
+  border-bottom: 1px solid $dark-border;
+  border-left: none;
+  background: none;
+  padding: 2rem 0;
+  margin: 0 0 3rem;
+  border-radius: 0;
+  font-style: normal;
+
+  p {
+    font-size: 1.375rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: $off-white;
+    margin: 0 0 0.75rem;
+  }
+
+  cite {
+    font-style: normal;
+    font-size: 0.9375rem;
+    color: $muted;
+  }
+}
+
+// ── Dive Deeper ──
+.about-dive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+
+  @media (max-width: $break-lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: $break-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-dive-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.35);
+    background: $dark-card;
+    transform: translateY(-1px);
+  }
+
+  &--soon {
+    opacity: 0.6;
+    cursor: default;
+
+    &:hover {
+      border-color: $dark-border;
+      background: $dark-surface;
+      transform: none;
+    }
+  }
+}
+
+.about-dive-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  margin-bottom: 0.2rem;
+}
+
+.about-dive-desc {
+  font-size: 0.8125rem;
+  color: $muted;
+  line-height: 1.4;
+}
+
+.about-dive-arrow {
+  color: $accent;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.about-dive-soon {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $muted;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// ── CTA row (shared across About pages) ──
+.about-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 1.5rem;
+}
+
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.75rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  &--primary {
+    background: $accent;
+    color: $black;
+    border: 1px solid $accent;
+
+    &:hover { background: lighten($accent, 8%); transform: translateY(-1px); }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $off-white;
+    border: 1px solid $dark-border;
+
+    &:hover { border-color: rgba($accent, 0.4); color: $accent; }
+  }
+
+  &--disabled {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+// ── FAQ ──
+.about-faq-list {
+  margin-top: 0.5rem;
+}
+
+.about-faq-item {
+  border-bottom: 1px solid $dark-border;
+  padding: 1.125rem 0;
+
+  &:first-child { border-top: 1px solid $dark-border; }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $off-white;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+  }
+
+  .about-faq-chevron {
+    flex-shrink: 0;
+    color: $muted;
+    transition: transform 0.15s ease;
+  }
+
+  &[open] .about-faq-chevron { transform: rotate(180deg); }
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    line-height: 1.7;
+    margin: 0.875rem 0 0;
+  }
+}
+
+// ── Contact Us ──
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: $break-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  padding: 1.25rem 1.375rem;
+}
+
+.contact-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $accent-glow;
+  color: $accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.875rem;
+}
+
+.contact-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0 0 0.25rem;
+}
+
+.contact-card-desc {
+  font-size: 0.8125rem;
+  color: $muted;
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+}
+
+.contact-card-email {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+
+  &:hover { text-decoration: underline; }
+}
+
+// Form
+.contact-form-card {
+  background: $dark-surface;
+  border-radius: 14px;
+  padding: 1.75rem 1.75rem 2rem;
+}
+
+.contact-form-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0 0 0.15rem;
+}
+
+.contact-form-sub {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin: 0 0 1.25rem;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: $break-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-field {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    font-size: 0.8125rem;
+    color: $muted;
+    margin-bottom: 0.375rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: $off-white;
+    background: $dark-card;
+    border: 1px solid $dark-border;
+    border-radius: 8px;
+    padding: 0.625rem 0.875rem;
+    transition: border-color 0.2s ease;
+
+    &::placeholder { color: darken($muted, 8%); }
+
+    &:focus {
+      outline: none;
+      border-color: rgba($accent, 0.45);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b6b80' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.25rem;
+
+    &:invalid { color: darken($muted, 8%); }
+  }
+}
+
+.contact-consent-row {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+
+  input {
+    width: 16px;
+    height: 16px;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    accent-color: $accent;
+  }
+}
+
+.contact-consent-text {
+  font-size: 0.75rem;
+  color: $muted;
+  line-height: 1.6;
+}
+
+.contact-form-submit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-form-status {
+  font-size: 0.875rem;
+  color: $muted;
+  margin: 0;
+
+  &--ok { color: #34d399; }
+  &--error { color: #f87171; }
+}
+
+// Channels
+.contact-channels {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+
+  @media (max-width: $break-sm) {
+    flex-direction: column;
+  }
+}
+
+.contact-channel {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  svg { flex-shrink: 0; color: $accent; }
+
+  &:hover { border-color: rgba($accent, 0.35); background: $dark-card; }
+
+  &--soon {
+    opacity: 0.6;
+
+    svg { color: $muted; }
+
+    &:hover { border-color: $dark-border; background: $dark-surface; }
+  }
+}
+
+.contact-channel-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0;
+}
+
+.contact-channel-sub {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin: 0.1rem 0 0;
+}
+
+// Follow us — reuses the footer's .footer-social icon-circle styling
+.contact-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid $dark-border;
+  border-bottom: 1px solid $dark-border;
+  padding: 1.25rem 0;
+}
+
+.contact-social-label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: $off-white;
+}
+
+.contact-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: $muted;
+    border: 1px solid $dark-border;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      color: $off-white;
+      border-color: rgba($accent, 0.35);
+      background: $dark-card;
+    }
+  }
+}
+
+@media (max-width: $break-md) {
+  .about-page {
+    padding: 30px 1.25rem $section-pad;
+  }
+}

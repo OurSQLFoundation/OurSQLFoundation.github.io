@@ -1,0 +1,132 @@
+{{ define "main" }}
+{{ $members := slice
+  (dict
+    "name" "Vadim Tkachenko"
+    "photo" "vadim-tkachenko.jpeg"
+    "role" "President"
+    "org" "Percona"
+    "bio" "Vadim Tkachenko is Technology Fellow and Co-Founder of Percona, a company he co-founded in 2006 to support open source database users. He has spent his career working on database performance, scalability, benchmarking, and technology research across MySQL and other open source database systems. At Percona, he has led research and performance evaluation efforts focused on databases, storage engines, filesystems, and infrastructure design. Vadim is also widely recognized in the MySQL community as a long-time technical leader and co-author of High Performance MySQL."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/vadimtk/")
+      (dict "type" "x" "label" "X" "url" "https://x.com/VadimTk")
+    )
+  )
+  (dict
+    "name" "Matt Lord"
+    "photo" "matt-lord.jpeg"
+    "role" "Secretary"
+    "org" "PlanetScale"
+    "bio" "Matt Lord is the lead maintainer for the Vitess project — the open source database clustering system used to scale some of the world's largest MySQL deployments — and a Software Engineer at PlanetScale, where he works on the MySQL/Vitess database service. His work focuses on helping developers and companies operate MySQL at scale, with an emphasis on Vitess, database reliability, and developer experience. Matt is an active voice in the MySQL and Vitess communities through talks, technical content, and community support."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://linkedin.com/in/mattallenlord")
+      (dict "type" "x" "label" "X" "url" "https://x.com/mattalord")
+      (dict "type" "github" "label" "GitHub" "url" "https://github.com/mattlord")
+    )
+  )
+  (dict
+    "name" "Tomas Ulin"
+    "photo" "tomas-ulin.png"
+    "role" "Treasurer"
+    "org" "VillageSQL"
+    "bio" "Tomas Ulin is Village Oracle at VillageSQL and a long-time database leader with more than 20 years of experience in the MySQL ecosystem. He previously worked with MySQL at MySQL AB, Sun Microsystems, and Oracle, including serving as Vice President of MySQL Development at Oracle. His career has focused on database engineering, product direction, and the long-term evolution of MySQL as a widely used open source database technology."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/tomasulin/")
+    )
+  )
+  (dict
+    "name" "Sunny Bains"
+    "photo" "sunny-bains.jpeg"
+    "role" "Board Member"
+    "org" "PingCAP"
+    "bio" "Sunny Bains is a Software Architect at PingCAP, the company behind TiDB, an open source, MySQL-compatible distributed SQL database. He has been working on database internals and storage engines since 2001. Before joining PingCAP, Sunny worked at Oracle, where he led the MySQL/InnoDB team and contributed to major InnoDB scalability and performance improvements. His work includes core optimizations and features such as InnoDB full-text search, parallel DDL, and B-tree performance improvements."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/bainssunny/")
+      (dict "type" "x" "label" "X" "url" "https://x.com/sunbains")
+    )
+  )
+  (dict
+    "name" "Zongzhi Chen"
+    "photo" "zongzhi-chen.png"
+    "role" "Board Member"
+    "org" "Alibaba"
+    "bio" "Zongzhi Chen is Manager of the Cloud RDS Team at Alibaba, where he works on cloud database technologies and managed database services. His work is connected to the design, operation, and evolution of large-scale cloud database systems, including RDS and cloud-native database infrastructure. He is one of the primary authors of PolarDB. His main contribution was optimizing PolarDB to be cloud-native database — the specific details are in the CloudJump I/II/III papers. He brings the perspective of a major cloud provider to the OurSQL Foundation board and to discussions about the future of MySQL-compatible technologies in cloud environments."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/zongzhi-chen-35a77a40/")
+      (dict "type" "x" "label" "X" "url" "https://x.com/baotiao")
+      (dict "type" "github" "label" "GitHub" "url" "https://github.com/baotiao")
+    )
+  )
+  (dict
+    "name" "Jean-François Gagné"
+    "photo" "jean-francois-gagne.jpeg"
+    "role" "Board Member"
+    "org" "Independent Consultant"
+    "bio" "Jean-François Gagné is a System Engineer with deep experience in MySQL infrastructure, reliability, replication, automation, and large-scale operations. He worked on growing and operating major MySQL and MariaDB environments, and is now an Independent Consultant with some experience as a MySQL Open Source Developer. Jeff is known for his technical writing, speaking, and broad MySQL Community contribution. He also maintains Planet for the MySQL Community, a news and blog aggregator that helps surface activity across the MySQL ecosystem. JF is a MySQL Rockstar (2024) and recipient of a MySQL Community Contributor Award (2018)."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/jfg956/")
+      (dict "type" "x" "label" "X" "url" "https://x.com/jfg956")
+      (dict "type" "github" "label" "GitHub" "url" "https://github.com/jfg956/")
+      (dict "type" "bluesky" "label" "Bluesky" "url" "https://bsky.app/profile/jfg956.bsky.social")
+      (dict "type" "mastodon" "label" "Mastodon" "url" "https://fosstodon.org/@jfg956")
+    )
+  )
+  (dict
+    "name" "Peter Zaitsev"
+    "photo" "peter-zaitsev.jpeg"
+    "role" "Board Member"
+    "org" "Percona"
+    "bio" "Peter Zaitsev is Co-Founder of Percona, entrepreneur, advisor, and one of the best-known experts in open source database strategy and MySQL performance optimization. Before founding Percona in 2006, he worked at MySQL AB, where he led the High Performance Group. Peter helped grow Percona from a small consulting company into one of the most respected open source database companies, and he has continued to advise and support open source database startups and communities. He is also co-author of High Performance MySQL."
+    "links" (slice
+      (dict "type" "linkedin" "label" "LinkedIn" "url" "https://www.linkedin.com/in/peterzaitsev/")
+      (dict "type" "x" "label" "X" "url" "https://x.com/PeterZaitsev")
+    )
+  )
+}}
+
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/">About</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Founding Board</span>
+  </nav>
+
+  <div class="about-hero about-hero--center">
+    <h1>Founding Board</h1>
+    <p class="about-hero-sub">The OurSQL Foundation is led by an independent founding board — individuals from across the MySQL community who came together to build a vendor-neutral home for the ecosystem.</p>
+  </div>
+
+  <div class="board-grid">
+    {{ $page := . }}
+    {{ range $members }}
+    {{ $initials := "" }}
+    {{ $parts := split .name " " }}
+    {{ range $parts }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+    {{ $photoRes := "" }}
+    {{ with .photo }}{{ $photoRes = $page.Resources.Get . }}{{ end }}
+    <div class="board-card">
+      {{ with $photoRes }}
+      {{ $photo := .Fill "600x600 jpg q85" }}
+      <img src="{{ $photo.RelPermalink }}" alt="" class="board-photo" width="600" height="600" loading="lazy">
+      {{ else }}
+      <div class="board-photo board-photo--placeholder" aria-hidden="true">{{ $initials }}</div>
+      {{ end }}
+      <div class="board-card-body">
+        <p class="board-name">{{ .name }}</p>
+        <p class="board-role">{{ .role }}, OurSQL Foundation</p>
+        {{ with .org }}<span class="board-org">{{ . }}</span>{{ end }}
+        <p class="board-bio">{{ .bio }}</p>
+        {{ with .links }}
+        <div class="board-links">
+          {{ range . }}
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ partial "social-icon.html" .type }}{{ .label }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+</div>
+{{ end }}
