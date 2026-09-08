@@ -6,8 +6,14 @@ params:
   description: "A vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies."
   tagline: "The Future of MySQL Ecosystem"
   social:
-    twitter: "oursqlfoundation"
-    github: "oursql"
+    twitter: "OurSQLFdn"
+    linkedin: "https://www.linkedin.com/company/oursql-foundation"
+    x: "https://x.com/OurSQLFdn"
+    github: "https://github.com/OurSQLFoundation"
+    mastodon: "https://mastodon.social/@oursqlfoundation"
+    slack: "https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA"
+  # Contact page's "For general inquiries" form posts here (Formspree).
+  formspree_id: "mbgjpyed"
 
 buildFuture: true
 

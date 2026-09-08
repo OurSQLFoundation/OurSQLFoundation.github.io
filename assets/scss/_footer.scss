@@ -166,6 +166,30 @@
       margin: 0;
     }
 
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        color: $muted;
+        border: 1px solid $dark-border;
+        transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+        &:hover {
+          color: $off-white;
+          border-color: rgba($accent, 0.35);
+          background: $dark-card;
+        }
+      }
+    }
+
     .footer-legal {
       display: flex;
       gap: 1.5rem;

@@ -128,46 +128,6 @@
   }
 }
 
-// Founding board grid
-.board-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1px;
-  background: $dark-border;
-  border: 1px solid $dark-border;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.board-member {
-  background: $dark-card;
-  padding: 1.5rem;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: lighten($dark-card, 3%);
-  }
-
-  .board-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: $white;
-    margin-bottom: 0.25rem;
-  }
-
-  .board-role {
-    font-size: 0.8125rem;
-    color: $accent;
-    font-weight: 500;
-    margin-bottom: 0.2rem;
-  }
-
-  .board-org {
-    font-size: 0.8125rem;
-    color: $muted;
-  }
-}
-
 // Quotes grid
 .quotes-grid {
   display: grid;
