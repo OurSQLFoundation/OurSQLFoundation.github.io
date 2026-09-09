@@ -14,6 +14,19 @@ params:
     slack: "https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA"
   # Contact page's "For general inquiries" form posts here (Formspree).
   formspree_id: "mbgjpyed"
+  # Reviews & Discussion widget on resource detail pages (Giscus, backed by
+  # GitHub Discussions — no custom backend/auth to run ourselves, visitors
+  # sign in with their own GitHub account). Discussions is enabled on the
+  # repo and the "Announcements" category (Announcement format — only
+  # giscus itself opens new threads, one per resource page) already exists.
+  # One manual step left: install the giscus GitHub App on this repo —
+  # https://github.com/apps/giscus → Install → OurSQLFoundation.github.io.
+  # Until that's done, the widget renders but can't post new discussions.
+  giscus:
+    repo: "OurSQLFoundation/OurSQLFoundation.github.io"
+    repo_id: "R_kgDOSeSzsg"
+    category: "Announcements"
+    category_id: "DIC_kwDOSeSzss4DFPF-"
 
 buildFuture: true
 

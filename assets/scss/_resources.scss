@@ -1808,6 +1808,24 @@ body.sheet-open {
   text-align: center;
 }
 
+.resource-detail-reviews {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid $dark-border;
+}
+
+.resource-detail-reviews-sub {
+  font-size: 0.9375rem;
+  color: $muted;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.resource-detail-reviews-widget {
+  // Giscus sizes its own iframe to 100% width of this element; height is
+  // set by the widget itself once it loads.
+  min-height: 100px;
+}
+
 @media (max-width: $break-md) {
   .resource-detail {
     padding: 30px 1rem $section-pad;
