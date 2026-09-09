@@ -6,6 +6,14 @@
     </a>
 
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <div class="nav-item nav-item--dropdown{{ if hasPrefix .RelPermalink "/about" }} active{{ end }}">
+        <button type="button" class="nav-dropdown-trigger" aria-expanded="false">About</button>
+        <div class="nav-dropdown-menu">
+          <a href="/about/mission-vision/">Mission & Vision</a>
+          <a href="/about/founding-board/">Founding Board</a>
+          <a href="/about/contact-us/">Contact Us</a>
+        </div>
+      </div>
       <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/press")) (not (hasPrefix .RelPermalink "/resources/contribute")) }}active{{ end }}">Resources</a>
       <a href="/blog/" class="{{ if hasPrefix .RelPermalink "/blog" }}active{{ end }}">Blog</a>
       <a href="/resources/contribute/" class="nav-cta">Suggest a resource</a>

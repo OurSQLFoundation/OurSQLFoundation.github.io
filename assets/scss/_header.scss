@@ -128,6 +128,61 @@
   }
 }
 
+.nav-item--dropdown {
+  position: relative;
+
+  &.active > .nav-dropdown-trigger {
+    color: $white;
+    background: $dark-card;
+  }
+
+  &:hover > .nav-dropdown-menu,
+  &:focus-within > .nav-dropdown-menu {
+    display: flex;
+  }
+}
+
+.nav-dropdown-trigger {
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $muted;
+  background: none;
+  border: none;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+
+  &:hover { color: $white; background: $dark-card; }
+}
+
+.nav-dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+
+  a {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $muted;
+
+    &:hover { color: $white; background: $dark-surface; }
+  }
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -190,6 +245,34 @@
       margin-left: 0;
       text-align: center;
       margin-top: 0.5rem;
+    }
+  }
+
+  // No hover on touch — the dropdown is always expanded, flat in the stack.
+  .nav-item--dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-dropdown-trigger {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .nav-dropdown-menu {
+    display: flex;
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: none;
+    padding: 0 0 0 1rem;
+    margin: 0;
+
+    a {
+      padding: 0.625rem 1rem;
+      font-size: 0.9375rem;
+      color: darken($muted, 5%);
     }
   }
 }

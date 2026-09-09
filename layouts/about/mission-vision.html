@@ -1,0 +1,131 @@
+{{ define "main" }}
+{{ $getInvolvedURL := "https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml" }}
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/">About</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Mission & Vision</span>
+  </nav>
+
+  {{/* ── Hero ── */}}
+  <div class="about-hero about-prose">
+    <h1>Neutral infrastructure for trust across the MySQL-compatible ecosystem.</h1>
+    <p class="about-hero-sub">We're not a vendor, and we don't compete with one. We're the layer of trust between everyone who builds, sells, and depends on MySQL.</p>
+  </div>
+
+  {{/* ── Mission / Vision ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">Mission</span>
+    <p class="about-block-text">Our mission is to strengthen the MySQL-compatible ecosystem as neutral infrastructure for trust — an open, collaborative home where users, vendors, and the communities and projects around them can connect, contribute, gain visibility, and shape MySQL's future together, free from any single company's commercial interest.</p>
+  </div>
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">Vision</span>
+    <p class="about-block-text">A MySQL-compatible ecosystem with an independent voice of its own — where the community, not any single company, drives the tools, standards, and pipeline of new developers that keep MySQL competitive for decades to come.</p>
+  </div>
+
+  {{/* ── Values ── */}}
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Values</span>
+    <div class="about-values-grid">
+      <div class="about-value-card">
+        <h3>Neutral by Design</h3>
+        <p class="about-value-claim">"We don't belong to any vendor."</p>
+        <p class="about-value-desc">Decisions are made for the benefit of the ecosystem, not any single company's roadmap. It's the only reason vendors can be visible here without it reading as a sales pitch, and the only reason users can share real-world experience without expecting a follow-up call.</p>
+      </div>
+      <div class="about-value-card">
+        <h3>Merit-Based Governance</h3>
+        <p class="about-value-claim">"Participation is evaluated on merit — open to companies and individuals alike."</p>
+        <p class="about-value-desc">The Foundation follows a vendor-neutral governance model where getting involved and shaping the ecosystem isn't gated by size or seniority. It's a door, not a velvet rope.</p>
+      </div>
+      <div class="about-value-card">
+        <h3>Open by Default</h3>
+        <p class="about-value-claim">"The ecosystem works better when knowledge is shared."</p>
+        <p class="about-value-desc">We support open, searchable, and accessible information across the MySQL-compatible ecosystem, helping community knowledge, resources, projects, events, and participation become easier to discover and build on.</p>
+      </div>
+      <div class="about-value-card">
+        <h3>Built for MySQL's Next Chapter</h3>
+        <p class="about-value-claim">"We exist so MySQL has a future, not just a legacy."</p>
+        <p class="about-value-desc">Training, certification, and AI-era initiatives exist to keep the next generation of developers choosing MySQL — not just maintaining it.</p>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── Quote ── */}}
+  <blockquote class="about-quote about-prose">
+    <p>"By bringing the community together under the banner of an independent foundation, we can demonstrate that MySQL has a valid and vibrant future ahead of it."</p>
+    <cite>Vadim Tkachenko, President, OurSQL Foundation</cite>
+  </blockquote>
+
+  {{/* ── Dive Deeper ── */}}
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Dive Deeper</span>
+    <div class="about-dive-grid">
+      <a href="/about/founding-board/" class="about-dive-card">
+        <div>
+          <div class="about-dive-title">Founding Board</div>
+          <div class="about-dive-desc">Who's governing the Foundation, and how to reach them.</div>
+        </div>
+        <span class="about-dive-arrow">→</span>
+      </a>
+      <a href="/blog/" class="about-dive-card">
+        <div>
+          <div class="about-dive-title">News & Events</div>
+          <div class="about-dive-desc">Announcements, talks, and what's coming up.</div>
+        </div>
+        <span class="about-dive-arrow">→</span>
+      </a>
+      <a href="/code-of-conduct/" class="about-dive-card">
+        <div>
+          <div class="about-dive-title">Code of Conduct</div>
+          <div class="about-dive-desc">How we expect everyone in this community to show up.</div>
+        </div>
+        <span class="about-dive-arrow">→</span>
+      </a>
+      <div class="about-dive-card about-dive-card--soon">
+        <div>
+          <div class="about-dive-title">Brand Guidelines for Media</div>
+          <div class="about-dive-desc">Logo, name usage, and assets for press and partners.</div>
+        </div>
+        <span class="about-dive-soon">Coming soon</span>
+      </div>
+    </div>
+    <div class="about-cta-row">
+      <a href="{{ $getInvolvedURL }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">Get Involved</a>
+      <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Become a Member</span>
+    </div>
+  </div>
+
+  {{/* ── FAQ ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">FAQ</span>
+    <div class="about-faq-list">
+      <details class="about-faq-item" open>
+        <summary>What does The OurSQL Foundation support?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>The OurSQL Foundation supports users, customers, partners, and providers as they collaborate around MySQL as a database technology, as well as their own goals and objectives — bringing companies and organizations together in one place to give the community a future voice on the issues and opportunities it cares about.</p>
+      </details>
+      <details class="about-faq-item">
+        <summary>Why is The OurSQL Foundation necessary?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>It's a 501(c)(6) non-profit created to represent the MySQL community and provide a voice for everyone using, developing, or building products and services around it. With millions of installations worldwide, the Foundation acts as an independent home to host content, support community development, and grow involvement — independent of any one vendor, so it can support the whole community rather than any single product or strategy.</p>
+      </details>
+      <details class="about-faq-item">
+        <summary>Who is behind the OurSQL Foundation?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>It was created by a group of individuals from across the MySQL ecosystem and is governed by a board representing companies in the ecosystem and some of the largest MySQL deployments globally — not led by any single vendor. Oracle is not a member; the Foundation is supportive of Oracle's goals around MySQL while remaining independent, so it can take a long-term view regardless of changes in the wider market.</p>
+      </details>
+      <details class="about-faq-item">
+        <summary>How does The OurSQL Foundation compare to the MariaDB Foundation?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>The OurSQL Foundation is fully independent of any specific technology vendor, while the MariaDB Foundation is focused on MariaDB specifically. Any company in the MySQL ecosystem can get involved, so MySQL and compatible products compete on their merits — keeping user choice and user needs at the center, rather than any one vendor.</p>
+      </details>
+      <details class="about-faq-item">
+        <summary>What is the future for MySQL?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>We believe MySQL has a valid long-term future as long as it keeps providing value to the people who use it — value that hasn't always been voiced outside the close-knit open source community. The Foundation gives users, customers, partners, and vendors a shared place to surface where MySQL fits today, and to respond as new needs and developments arise.</p>
+      </details>
+      <details class="about-faq-item">
+        <summary>How can I get involved?<svg class="about-faq-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary>
+        <p>Membership and contribution are open to individuals and companies alike, evaluated on merit rather than size. Start on the Get Involved or Join / Membership page to find the track that fits — contributing code and content, joining a committee, or becoming a member organization.</p>
+      </details>
+    </div>
+  </div>
+
+</div>
+{{ end }}
