@@ -1,0 +1,47 @@
+{{/*
+  Reviews & Discussion — Giscus widget, one thread per resource page.
+
+  Deliberately not a custom comments system: this is a static site with no
+  backend of its own, and Giscus gives real auth (GitHub sign-in) and
+  storage (GitHub Discussions) for free, matching what the original
+  detail-card mockup called for. See hugo.yaml (params.giscus) for the
+  repo/category wiring and the one-time GitHub App install this depends on.
+
+  data-mapping="pathname" keys each resource's discussion to its own URL,
+  so every resource gets its own thread automatically — no per-resource
+  front matter needed. Theme starts from whatever the visitor already has
+  set (dark/light) and stays in sync afterwards via the postMessage call
+  in baseof.html's theme-toggle handler.
+*/}}
+{{ $g := .Site.Params.giscus }}
+{{ if $g }}
+<div class="resource-detail-reviews">
+  <span class="resources-category-eyebrow">Reviews &amp; Discussion</span>
+  <p class="resource-detail-reviews-sub">Used this? Sign in with GitHub to leave a comment or reaction.</p>
+  <div class="resource-detail-reviews-widget" id="giscus-mount"></div>
+  <script>
+  (function () {
+    // Built at runtime (not a static data-theme attribute) so the widget
+    // opens in whichever theme the visitor already has, dark or light —
+    // baseof.html's theme-toggle handler keeps it in sync afterwards.
+    var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.setAttribute('data-repo', {{ $g.repo }});
+    s.setAttribute('data-repo-id', {{ $g.repo_id }});
+    s.setAttribute('data-category', {{ $g.category }});
+    s.setAttribute('data-category-id', {{ $g.category_id }});
+    s.setAttribute('data-mapping', 'pathname');
+    s.setAttribute('data-strict', '0');
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'top');
+    s.setAttribute('data-theme', theme);
+    s.setAttribute('data-lang', 'en');
+    s.setAttribute('crossorigin', 'anonymous');
+    s.async = true;
+    document.getElementById('giscus-mount').appendChild(s);
+  })();
+  </script>
+</div>
+{{ end }}

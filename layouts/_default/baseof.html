@@ -27,6 +27,16 @@
           var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
           html.setAttribute('data-theme', next);
           try { localStorage.setItem('theme', next); } catch (e) {}
+
+          // Keep an embedded Giscus reviews widget (if this page has one)
+          // in sync with the site's own theme toggle.
+          var giscusFrame = document.querySelector('iframe.giscus-frame');
+          if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage(
+              { giscus: { setConfig: { theme: next } } },
+              'https://giscus.app'
+            );
+          }
         });
       }
 
