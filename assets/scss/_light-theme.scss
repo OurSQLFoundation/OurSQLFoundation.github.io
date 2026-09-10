@@ -943,10 +943,7 @@
   .press-media-kit-title { color: #0f172a; }
   .press-media-kit-desc { color: #64748b; }
 
-  .press-coverage {
-    border-top-color: #dde3ed;
-    h2 { color: #0f172a; }
-  }
+  .press-coverage { border-top-color: #dde3ed; }
   .press-coverage-sub { color: #64748b; }
 
   .press-release--detail {
@@ -955,8 +952,6 @@
       background: rgba(0, 200, 255, 0.08);
       border-color: rgba(0, 200, 255, 0.3);
     }
-
-    .press-release-inner h1 { color: #0f172a; }
 
     .press-board-row { border-bottom-color: #dde3ed; }
     .press-board-name { color: #0f172a; }

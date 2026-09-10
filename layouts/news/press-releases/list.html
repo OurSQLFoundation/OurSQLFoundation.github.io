@@ -16,7 +16,7 @@
 {{ $releases = $releases.ByDate.Reverse }}
 {{ $clippings = $clippings.ByDate.Reverse }}
 
-<div class="page-layout news-page press-newsroom">
+<div class="page-layout news-page">
   <nav class="resources-breadcrumb" aria-label="Breadcrumb">
     <a href="/news/">News</a>
     <span class="breadcrumb-sep" aria-hidden="true">/</span>
@@ -42,10 +42,6 @@
     </a>
     {{ end }}
   </div>
-
-  {{ if lt (len $releases) 2 }}
-  <p class="press-more-note">More releases will appear here as they are published.</p>
-  {{ end }}
 
   <div class="press-media-kit">
     <div>
