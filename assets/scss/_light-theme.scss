@@ -460,6 +460,93 @@
     strong { color: #0f172a; }
   }
 
+  // Community (Get Involved / Join · Membership)
+  .step-number {
+    color: #0272a5;
+    background: rgba(0, 200, 255, 0.08);
+    border-color: rgba(0, 200, 255, 0.3);
+  }
+  .step-item { border-bottom-color: #dde3ed; }
+  .step-title { color: #0f172a; }
+  .step-desc {
+    color: #64748b;
+    li { color: #64748b; }
+  }
+
+  .contribute-way-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+    h3 { color: #0f172a; }
+    p  { color: #64748b; }
+  }
+
+  .community-cta-band {
+    background: #ffffff;
+    border-color: #dde3ed;
+    p { color: #0f172a; }
+  }
+
+  .join-hero {
+    background: #eef2f7;
+    border-color: #dde3ed;
+  }
+  .join-hero-sub { color: #64748b; }
+
+  .reasons-list { border-color: #dde3ed; }
+  .reason-item { border-bottom-color: #dde3ed; }
+  .reason-number { color: #94a3b8; }
+  .reason-title { color: #0f172a; }
+  .reason-desc { color: #64748b; }
+
+  .individual-supporter-box {
+    background: #ffffff;
+    border-color: #dde3ed;
+    border-left-color: #00c8ff;
+  }
+  .individual-supporter-title { color: #0f172a; }
+  .individual-supporter-desc { color: #64748b; }
+
+  .benefit-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+  }
+  .benefit-icon {
+    color: #0272a5;
+    background: rgba(0, 200, 255, 0.08);
+  }
+  .benefit-title { color: #0f172a; }
+
+  .support-option-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+  }
+  .support-option-title { color: #0f172a; }
+  .support-option-desc { color: #64748b; }
+  .support-option-link { color: #0272a5; }
+
+  .no-cost-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+    h3 { color: #0f172a; }
+    p  { color: #64748b; }
+  }
+  .no-cost-link { color: #0272a5; }
+  .no-cost-link--disabled { color: #94a3b8; }
+
+  // Deliberately kept dark/inverted in light theme too — an accent closing
+  // band, matches join_membership_styled.pdf.
+  .join-closing-band {
+    h2 { color: #ffffff; }
+    p  { color: #94a3b8; }
+
+    .about-btn--secondary {
+      color: #e8e8f0;
+      border-color: #3b3f5c;
+
+      &:hover { color: #00c8ff; border-color: rgba(0, 200, 255, 0.4); }
+    }
+  }
+
   // Contribute page
   .contribute-method {
     background: #ffffff;
