@@ -431,6 +431,41 @@
     }
   }
 
+  // Brand Guidelines
+  .brand-logo-card { border-color: #dde3ed; }
+  .brand-logo-card-footer {
+    background: #ffffff;
+    border-top-color: #dde3ed;
+  }
+  .brand-logo-card-label { color: #0f172a; }
+  .brand-logo-card-links { color: #94a3b8; }
+
+  .brand-spec-label { color: #0f172a; }
+  .brand-spec-value { color: #64748b; }
+
+  .brand-swatch-fill,
+  .brand-theme-split { border-color: #dde3ed; }
+  .brand-swatch-label { color: #0f172a; }
+  .brand-swatch-value { color: #64748b; }
+
+  .brand-type-card {
+    background: #ffffff;
+    border-color: #dde3ed;
+  }
+  .brand-type-headline { color: #0f172a; }
+  .brand-type-caption { color: #64748b; }
+  .brand-type-body { color: #0f172a; }
+  .brand-type-weights {
+    color: #64748b;
+    strong { color: #0f172a; }
+  }
+
+  .brand-footnote {
+    color: #64748b;
+    border-top-color: #dde3ed;
+    strong { color: #0f172a; }
+  }
+
   // Contribute page
   .contribute-method {
     background: #ffffff;
