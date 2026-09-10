@@ -22,11 +22,20 @@
           <a href="/news/press-releases/">Press Releases</a>
         </div>
       </div>
+      <div class="nav-item nav-item--dropdown{{ if hasPrefix .RelPermalink "/community" }} active{{ end }}">
+        <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Community</button>
+        <div class="nav-dropdown-menu">
+          <a href="/community/get-involved/">Get Involved</a>
+          <a href="/community/join-membership/">Join / Membership</a>
+          {{ with .Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener">Slack ↗</a>{{ end }}
+        </div>
+      </div>
       <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) }}active{{ end }}">Resources</a>
       <a href="/resources/contribute/" class="nav-cta">Suggest a resource</a>
     </nav>
 
     <div class="header-right">
+      <a href="/community/get-involved/" class="header-cta">Get Involved</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span>
         <span></span>

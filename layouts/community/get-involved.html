@@ -1,0 +1,125 @@
+{{/*
+  Get Involved — text and block structure from Get_Involved_page_mockup.pdf,
+  styled entirely with the site's own existing components (about-hero,
+  about-value-card, about-btn, resources-category-eyebrow) rather than the
+  mockup's own look.
+*/}}
+{{ define "main" }}
+{{ $slack := .Site.Params.social.slack }}
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/community/">Community</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Get Involved</span>
+  </nav>
+
+  {{/* ── Hero ── */}}
+  <div class="about-hero about-prose">
+    <h1>Get involved</h1>
+    <p class="about-hero-sub">The MySQL ecosystem runs on people who show up — answering a question, filing a good bug report, writing a blog post, reviewing a doc. There's a place for you here, whatever time you have to give.</p>
+    <div class="about-cta-row">
+      <a href="#the-path" class="about-btn about-btn--primary">See how to start</a>
+    </div>
+  </div>
+
+  {{/* ── Individuals note ── */}}
+  <div class="about-block about-prose">
+    <div class="about-value-card">
+      <p class="about-value-desc">This page is for <strong>individuals</strong> — DBAs, developers, consultants, writers, speakers, students, or simply long-time MySQL users — who want to contribute personally, separately from any company affiliation. Looking to get your organization involved instead? See <a href="/community/join-membership/">Join / Membership</a>.</p>
+    </div>
+  </div>
+
+  {{/* ── The path, step by step ── */}}
+  <div id="the-path" class="about-block about-prose">
+    <span class="resources-category-eyebrow">The path, step by step</span>
+    <ol class="steps-list">
+      <li class="step-item">
+        <span class="step-number">1</span>
+        <div class="step-body">
+          <p class="step-title">Show up where the conversation is</p>
+          <p class="step-desc">{{ with $slack }}Join us on <a href="{{ . }}" target="_blank" rel="noopener">Slack</a>{{ else }}Join us on Slack{{ end }} and introduce yourself. No commitment required yet, just be present.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-number">2</span>
+        <div class="step-body">
+          <p class="step-title">Make your first contribution</p>
+          <p class="step-desc">
+            Pick whatever matches your time and interests:
+            <ul>
+              <li>Answer a question from another community member</li>
+              <li>Share a blog post, talk, or tutorial about MySQL or the ecosystem</li>
+              <li>Browse the <a href="/resources/">Resource Hub</a> and help us keep it current — software, services, training, events</li>
+            </ul>
+          </p>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-number">3</span>
+        <div class="step-body">
+          <p class="step-title">Take on a bigger role</p>
+          <p class="step-desc">Join one of the Foundation's Committee Groups — starting with the Security Committee, the first of several Committees the Foundation will stand up over time — or move toward a more technical, editorial, or governance role.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-number">4</span>
+        <div class="step-body">
+          <p class="step-title">Become an Individual Supporter</p>
+          <p class="step-desc">Make a donation that helps fund the Foundation's work — a direct way to back the community, whatever role you take on.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-number">5</span>
+        <div class="step-body">
+          <p class="step-title">Get recognized</p>
+          <p class="step-desc">Active contributors are featured on their community profile with badges reflecting what they've done.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  {{/* ── Ways to contribute right now ── */}}
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Ways to contribute right now</span>
+    <div class="contribute-ways-grid">
+      <div class="contribute-way-card">
+        <h3>Knowledge sharing</h3>
+        <p>Slack, answering questions</p>
+      </div>
+      <div class="contribute-way-card">
+        <h3>Content</h3>
+        <p>Blog posts, tutorials, talks</p>
+      </div>
+      <div class="contribute-way-card">
+        <h3>Resource Hub</h3>
+        <p>Software, services, training, events</p>
+      </div>
+      <div class="contribute-way-card">
+        <h3>Events</h3>
+        <p>Speaking, organizing, helping run meetups</p>
+      </div>
+      <div class="contribute-way-card">
+        <h3>Committees</h3>
+        <p>Security Committee, our first — more to come</p>
+      </div>
+      <div class="contribute-way-card">
+        <h3>Support</h3>
+        <p>Become an Individual Supporter</p>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── Bottom CTA ── */}}
+  <div class="about-block about-prose">
+    <div class="community-cta-band">
+      <p>Ready to start? Join the conversation today — your first contribution can be as small as introducing yourself.</p>
+      <div class="about-cta-row">
+        {{ with $slack }}<a href="{{ . }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">Join Slack</a>{{ end }}
+        <a href="/community/join-membership/" class="about-btn about-btn--secondary">Join / Membership</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{{ end }}

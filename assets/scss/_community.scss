@@ -1,0 +1,371 @@
+// Community section (Get Involved, Join / Membership)
+// Built from the site's existing component language (about-hero, about-block,
+// about-value-card, about-dive-card, about-btn, resources-category-eyebrow) —
+// only the mockups' text and block structure carried over, not their look.
+
+// ── Get Involved: numbered step list ──
+.steps-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.step-item {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $dark-border;
+
+  &:first-child { padding-top: 0; }
+  &:last-child { padding-bottom: 0; border-bottom: none; }
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba($accent, 0.35);
+  background: $accent-glow;
+  color: $accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.step-body { min-width: 0; }
+
+.step-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.375rem;
+}
+
+.step-desc {
+  font-size: 0.9375rem;
+  color: $muted;
+  line-height: 1.65;
+  margin: 0;
+
+  ul {
+    margin: 0.625rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    color: $muted;
+    margin-bottom: 0.375rem;
+  }
+}
+
+// ── Get Involved: "Ways to contribute" card grid ──
+.contribute-ways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: $break-sm) { grid-template-columns: 1fr; }
+}
+
+.contribute-way-card {
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+
+  h3 {
+    font-size: 0.9375rem;
+    color: $off-white;
+    margin: 0 0 0.375rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: $muted;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// ── Shared: centered CTA band (Get Involved bottom, reused wherever a
+// full-width "ready to act" strip fits) ──
+.community-cta-band {
+  text-align: center;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 1rem;
+
+  p {
+    font-size: 1rem;
+    color: $off-white;
+    max-width: 560px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .about-cta-row {
+    justify-content: center;
+    margin-top: 0;
+  }
+}
+
+// ── Join / Membership: dark hero band ──
+.join-hero {
+  background: $dark-surface;
+  border-top: 1px solid $dark-border;
+  border-bottom: 1px solid $dark-border;
+  padding: 3rem 2rem;
+  margin: 0 -2rem 3rem;
+
+  @media (max-width: $break-md) { margin: 0 -1.25rem 2.5rem; }
+}
+
+.join-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.join-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: $off-white;
+  margin: 0 0 1rem;
+}
+
+.join-hero-sub {
+  font-size: 1.0625rem;
+  color: $muted;
+  line-height: 1.65;
+  max-width: 620px;
+  margin: 0 0 1.5rem;
+}
+
+// ── Join / Membership: numbered reason rows ("Why companies join") ──
+.reasons-list {
+  margin-top: 1.5rem;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.reason-item {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid $dark-border;
+
+  &:last-child { border-bottom: none; }
+}
+
+.reason-number {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $muted;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.reason-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.375rem;
+}
+
+.reason-desc {
+  font-size: 0.9375rem;
+  color: $muted;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ── Join / Membership: Individual Supporter callout ──
+.individual-supporter-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-left: 3px solid $accent;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.individual-supporter-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.375rem;
+}
+
+.individual-supporter-desc {
+  font-size: 0.9375rem;
+  color: $muted;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px;
+}
+
+// ── Join / Membership: benefit cards ("What members get") ──
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.benefit-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.benefit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $accent-glow;
+  color: $accent;
+  margin-bottom: 0.875rem;
+}
+
+.benefit-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0;
+}
+
+// ── Join / Membership: "Other ways to support" ──
+.support-option-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 1rem;
+}
+
+.support-option-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.375rem;
+}
+
+.support-option-desc {
+  font-size: 0.9375rem;
+  color: $muted;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px;
+}
+
+.support-option-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover { text-decoration: underline; }
+}
+
+// ── Join / Membership: no-cost options grid ──
+.no-cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: $break-sm) { grid-template-columns: 1fr; }
+}
+
+.no-cost-card {
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+
+  h3 {
+    font-size: 1rem;
+    color: $off-white;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    line-height: 1.6;
+    margin: 0 0 0.875rem;
+  }
+}
+
+.no-cost-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+.no-cost-link--disabled {
+  color: $muted;
+  cursor: default;
+  pointer-events: none;
+}
+
+// ── Join / Membership: closing CTA band ──
+.join-closing-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: $dark-bg;
+  border: 1px solid $dark-border;
+  border-radius: 14px;
+  padding: 2rem;
+  margin-top: 1rem;
+
+  h2 {
+    font-size: 1.375rem;
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    margin: 0;
+    max-width: 420px;
+  }
+}
+
+// .join-closing-actions reuses .about-cta-row's own flex/wrap behavior —
+// this just removes the margin-top that class normally adds after a
+// paragraph, since here it sits inside a flex row of its own.
+.join-closing-actions {
+  margin-top: 0;
+}

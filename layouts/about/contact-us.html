@@ -1,5 +1,4 @@
 {{ define "main" }}
-{{ $getInvolvedURL := "https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=get-involved.yml" }}
 {{ $formspreeID := .Site.Params.formspree_id }}
 <div class="about-page">
 
@@ -139,8 +138,8 @@
   {{/* ── CTA ── */}}
   <div class="about-block about-prose">
     <div class="about-cta-row">
-      <a href="{{ $getInvolvedURL }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">Get Involved</a>
-      <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Become a Member</span>
+      <a href="/community/get-involved/" class="about-btn about-btn--primary">Get Involved</a>
+      <a href="/community/join-membership/" class="about-btn about-btn--secondary">Become a Member</a>
     </div>
   </div>
 
