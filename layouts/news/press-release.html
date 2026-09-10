@@ -1,0 +1,24 @@
+{{/*
+  A Foundation-authored press release, published in full. Reuses the exact
+  .press-release/.press-release-inner markup and CSS the homepage uses for
+  its own embedded press release (assets/scss/_sections.scss), so this page
+  matches that formatting exactly rather than approximating it with the
+  site's other prose styles. The body is raw HTML (goldmark's `unsafe: true`
+  passes it straight through) copied verbatim from layouts/index.html.
+*/}}
+{{ define "main" }}
+<div class="press-release-page">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/news/">News</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="/news/press-releases/">Press Releases</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+</div>
+<div class="press-release">
+  <div class="press-release-inner">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

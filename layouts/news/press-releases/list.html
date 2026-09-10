@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="page-layout news-page">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/news/">News</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="page-intro">{{ . }}</p>{{ end }}
+
+  <div class="news-list">
+    {{ range .Pages.ByDate.Reverse }}
+    {{ $external := .Params.link }}
+    <article class="news-item">
+      <time class="news-item-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      <div class="news-item-body">
+        <h2 class="news-item-title">
+          {{ if $external }}
+          <a href="{{ $external }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a>
+          {{ else }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ end }}
+        </h2>
+        {{ with .Description }}<p class="news-item-desc">{{ . }}</p>{{ end }}
+        <div class="news-item-meta">
+          {{ with .Params.source }}<span class="news-item-source">{{ . }}</span>{{ end }}
+          {{ if $external }}
+          <a href="{{ $external }}" class="news-item-link" target="_blank" rel="noopener noreferrer">Read article ↗</a>
+          {{ else }}
+          <a href="{{ .RelPermalink }}" class="news-item-link">Read press release →</a>
+          {{ end }}
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

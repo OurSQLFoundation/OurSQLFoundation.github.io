@@ -85,6 +85,11 @@
   .hero-title       { color: #0f172a; }
   .hero-description { color: #64748b; }
 
+  .page-layout {
+    .page-intro { color: #64748b; border-bottom-color: #dde3ed; }
+    ul { color: #334155; }
+  }
+
   .btn-outline {
     border-color: #cbd5e1;
     color: #334155;
@@ -901,4 +906,15 @@
   .author-card-role,
   .author-card-desc { color: #64748b; }
   .author-card-link { color: #0272a5; }
+
+  // News (Press Releases list)
+  .news-item { border-bottom-color: #dde3ed; }
+  .news-item-date { color: #94a3b8; }
+  .news-item-title a {
+    color: #0f172a;
+    &:hover { color: #0272a5; }
+  }
+  .news-item-desc { color: #64748b; }
+  .news-item-source { color: #94a3b8; }
+  .news-item-link { color: #0272a5; }
 }

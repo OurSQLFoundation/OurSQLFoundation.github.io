@@ -1,0 +1,109 @@
+// News section (Press Releases list + standalone full-text release wrapper)
+
+// Top spacing + breadcrumb width for a standalone .press-release page (on
+// the homepage the section sits right below the hero, which already
+// supplies its own top offset — a standalone page needs its own).
+.press-release-page {
+  padding-top: 120px;
+
+  .resources-breadcrumb {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+}
+
+.news-page .page-intro {
+  margin-bottom: 2.5rem;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid $dark-border;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.news-item-date {
+  flex-shrink: 0;
+  width: 130px;
+  font-size: 0.8125rem;
+  color: $muted;
+  padding-top: 0.2rem;
+}
+
+.news-item-body {
+  min-width: 0;
+}
+
+.news-item-title {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+
+  a {
+    color: $off-white;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.news-item-desc {
+  font-size: 0.9375rem;
+  color: $muted;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.news-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.news-item-source {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $muted;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.news-item-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: $break-sm) {
+  .news-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .news-item-date {
+    width: auto;
+  }
+}
