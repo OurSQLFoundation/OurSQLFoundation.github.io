@@ -1,0 +1,40 @@
+{{/*
+  Press clipping — a single piece of external media coverage about the
+  Foundation (source, date, link out). Reuses the generic
+  .resource-single/-card styling from Resources (no image column needed
+  here), just with a News-rooted breadcrumb instead of a Resources one.
+  The Foundation's own full-text releases use layout: "press-release"
+  (layouts/news/press-release.html) instead of this one.
+*/}}
+{{ define "main" }}
+<div class="resource-single">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/news/">News</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="/news/press-releases/">Press Releases</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <div class="resource-single-card">
+    <h1 class="resource-single-title">{{ .Title }}</h1>
+
+    {{ with .Description }}<p class="resource-single-desc">{{ . }}</p>{{ end }}
+
+    {{ if or .Params.source .Date }}
+    <div class="resource-card-meta">
+      {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
+      {{ with .Date }}{{ if not .IsZero }}<span class="resource-card-date">{{ .Format "2 January 2006" }}</span>{{ end }}{{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Content }}<div class="resource-single-content">{{ . }}</div>{{ end }}
+
+    {{ with .Params.link }}
+    <a href="{{ . }}" class="resource-visit-btn resource-visit-btn--large" target="_blank" rel="noopener noreferrer">
+      Read article →
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

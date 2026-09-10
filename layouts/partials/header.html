@@ -14,8 +14,14 @@
           <a href="/about/contact-us/">Contact Us</a>
         </div>
       </div>
-      <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/press")) (not (hasPrefix .RelPermalink "/resources/contribute")) }}active{{ end }}">Resources</a>
-      <a href="/blog/" class="{{ if hasPrefix .RelPermalink "/blog" }}active{{ end }}">Blog</a>
+      <div class="nav-item nav-item--dropdown{{ if or (hasPrefix .RelPermalink "/news") (hasPrefix .RelPermalink "/blog") }} active{{ end }}">
+        <button type="button" class="nav-dropdown-trigger" aria-expanded="false">News</button>
+        <div class="nav-dropdown-menu">
+          <a href="/blog/">Blog</a>
+          <a href="/news/press-releases/">Press Releases</a>
+        </div>
+      </div>
+      <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) }}active{{ end }}">Resources</a>
       <a href="/resources/contribute/" class="nav-cta">Suggest a resource</a>
     </nav>
 

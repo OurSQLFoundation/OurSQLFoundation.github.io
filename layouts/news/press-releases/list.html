@@ -1,0 +1,76 @@
+{{/*
+  Press Releases hub. Per press_releases_mockup.pdf, this page is framed as
+  the Foundation's own official statements only ("For community articles
+  and updates, see the blog") — third-party media coverage (the five
+  existing press-clipping entries) is real content that still needs a home,
+  so it's kept on this same page as a separate "In the news" section below,
+  rather than folded into the same list or dropped.
+
+  A page here is a release (this Foundation's own, layout: "press-release")
+  when it has no `link` front matter, or a clipping (someone else's
+  coverage, layout: "press-clipping") when it does.
+*/}}
+{{ define "main" }}
+{{ $releases := where .Pages "Params.link" "==" nil }}
+{{ $clippings := where .Pages "Params.link" "!=" nil }}
+{{ $releases = $releases.ByDate.Reverse }}
+{{ $clippings = $clippings.ByDate.Reverse }}
+
+<div class="page-layout news-page">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/news/">News</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <span class="newsroom-eyebrow">Newsroom</span>
+  <h1>{{ .Title }}</h1>
+  <p class="page-intro">Official statements and announcements from The OurSQL Foundation. For community articles and updates, see <a href="/blog/">the blog</a>.</p>
+
+  <div class="press-card-list">
+    {{ range $releases }}
+    {{ $displayDate := .Date }}
+    {{ with .Params.press_date }}{{ $displayDate = time.AsTime . }}{{ end }}
+    <a href="{{ .RelPermalink }}" class="press-card">
+      <div class="press-card-meta">
+        <time datetime="{{ $displayDate.Format "2006-01-02" }}">{{ $displayDate.Format "January 2, 2006" }}</time>
+        {{ with .Params.location }}<span class="press-card-meta-sep">·</span><span>{{ . }}</span>{{ end }}
+      </div>
+      <h2 class="press-card-title">{{ .Title }}</h2>
+      {{ with .Description }}<p class="press-card-desc">{{ . }}</p>{{ end }}
+      <span class="press-card-link">Read full release →</span>
+    </a>
+    {{ end }}
+  </div>
+
+  <div class="press-media-kit">
+    <div>
+      <p class="press-media-kit-title">Media kit</p>
+      <p class="press-media-kit-desc">Logos, name usage, and brand guidelines for journalists</p>
+    </div>
+    <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Brand guidelines ↗</span>
+  </div>
+
+  {{ if $clippings }}
+  <div class="press-coverage">
+    <h2>In the news</h2>
+    <p class="press-coverage-sub">Media coverage of The OurSQL Foundation from across the MySQL ecosystem.</p>
+    <div class="news-list">
+      {{ range $clippings }}
+      <article class="news-item">
+        <time class="news-item-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        <div class="news-item-body">
+          <h3 class="news-item-title"><a href="{{ .Params.link }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a></h3>
+          {{ with .Description }}<p class="news-item-desc">{{ . }}</p>{{ end }}
+          <div class="news-item-meta">
+            {{ with .Params.source }}<span class="news-item-source">{{ . }}</span>{{ end }}
+            <a href="{{ .Params.link }}" class="news-item-link" target="_blank" rel="noopener noreferrer">Read article ↗</a>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

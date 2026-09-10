@@ -1,8 +1,10 @@
 {{- /*
   Search index for the client-side search on /resources/.
   Served at /index.json. Lists every resource under /resources/ that's
-  surfaced in the hub (sections flagged hidden_from_hub, e.g. Press & News,
-  are excluded — same scope as the catalog itself).
+  surfaced in the hub (sections flagged hidden_from_hub are excluded — same
+  scope as the catalog itself; Press & News used to be one of these before
+  it moved to /news/press-releases/, now it's just outside /resources/
+  entirely and this loop never sees it).
 */ -}}
 {{- $data := .Site.Data.taxonomy_schema -}}
 {{- $items := slice -}}

@@ -1,4 +1,7 @@
 ---
+layout: "press-clipping"
+aliases:
+  - /resources/press/techzine-percona-live/
 date: 2026-05-28
 description: Techzine's take on Percona Live 2026 — DBA culture, candid conversations,
   and the state of the MySQL ecosystem.

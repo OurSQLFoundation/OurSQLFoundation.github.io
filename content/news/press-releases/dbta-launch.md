@@ -1,4 +1,7 @@
 ---
+layout: "press-clipping"
+aliases:
+  - /resources/press/dbta-launch/
 date: 2026-05-27
 description: DBTA covers the OurSQL Foundation launch and its mission to provide a
   vendor-neutral community for the MySQL ecosystem.

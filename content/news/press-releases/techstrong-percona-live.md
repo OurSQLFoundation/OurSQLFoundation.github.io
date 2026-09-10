@@ -1,4 +1,7 @@
 ---
+layout: "press-clipping"
+aliases:
+  - /resources/press/techstrong-percona-live/
 date: 2026-05-28
 description: TechStrong covers Percona Live 2026 and the emergence of OurSQL Foundation
   as a new champion for the open source database community.

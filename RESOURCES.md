@@ -20,7 +20,6 @@ content/resources/training/     — courses, tutorials, certifications
 content/resources/books/        — MySQL books and reference material
 content/resources/events/       — conferences, meetups, community events
 content/resources/community/    — blogs, forums, aggregators, chat
-content/resources/press/        — articles, press releases, coverage
 ```
 
 ### Two formats: single file vs folder (leaf bundle)
@@ -170,12 +169,6 @@ access: ["Open"]                 # Open, Registration Required
 listing-status: ["Active"]       # Active, Archived
 ```
 
-**`content/resources/press/`** — additional fields:
-```yaml
-date: 2026-05-27
-source: "Publication Name"
-```
-
 **`content/resources/member-directory/`** (leaf bundle with photo) — subcategories: Members · Sponsors · Partners · Adopters · People · Awards. Every entry needs a `url` override so its address stays under `/resources/member-directory/<subcategory-slug>/`, not the flat content path:
 ```yaml
 ---
@@ -206,7 +199,6 @@ Not comfortable with Git? Open an issue and describe the resource — someone fr
 | Books | [Add Book](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-books.yml) |
 | Events | [Add Event](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-events.yml) |
 | Community | [Add Community resource](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-community.yml) |
-| Press & News | [Add Press item](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new?template=resource-press.yml) |
 
 Not sure which type fits? [Open a general issue](https://github.com/OurSQLFoundation/OurSQLFoundation.github.io/issues/new) and describe it in your own words.
 

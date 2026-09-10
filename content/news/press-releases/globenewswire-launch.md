@@ -1,4 +1,7 @@
 ---
+layout: "press-clipping"
+aliases:
+  - /resources/press/globenewswire-launch/
 date: 2026-05-27
 description: Official press release announcing the launch of OurSQL Foundation as
   an independent, community-led 501(c)(6) nonprofit.
