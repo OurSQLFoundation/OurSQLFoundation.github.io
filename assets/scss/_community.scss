@@ -116,19 +116,20 @@
 }
 
 // ── Join / Membership: dark hero band ──
+// A normal bordered/rounded panel within .about-page's own column (same
+// pattern as every other card on the site), not a full-bleed break-out —
+// that kept independently re-centering a narrower inner column, which put
+// its left edge out of line with the breadcrumb and every block below it.
 .join-hero {
   background: $dark-surface;
-  border-top: 1px solid $dark-border;
-  border-bottom: 1px solid $dark-border;
-  padding: 3rem 2rem;
-  margin: 0 -2rem 3rem;
-
-  @media (max-width: $break-md) { margin: 0 -1.25rem 2.5rem; }
+  border: 1px solid $dark-border;
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 3rem;
 }
 
 .join-hero-inner {
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 620px;
 }
 
 .join-hero h1 {
@@ -217,10 +218,13 @@
 
 // ── Join / Membership: benefit cards ("What members get") ──
 .benefits-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 1rem;
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: $break-sm) { grid-template-columns: 1fr; }
 }
 
 .benefit-card {
@@ -231,7 +235,7 @@
   background: $dark-surface;
   border: 1px solid $dark-border;
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: 1.5rem 1.25rem;
 }
 
 .benefit-icon {
