@@ -652,3 +652,219 @@
     padding: 30px 1.25rem $section-pad;
   }
 }
+
+// ── Brand Guidelines ──
+.brand-gradient-text {
+  background: linear-gradient(135deg, $accent 0%, #60a5fa 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// 01 — Logo
+.brand-logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.brand-logo-card {
+  border-radius: 12px;
+  border: 1px solid $dark-border;
+  overflow: hidden;
+}
+
+.brand-logo-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+
+  img { height: 28px; width: auto; }
+}
+
+.brand-logo-card--dark .brand-logo-preview { background: $dark-bg; }
+.brand-logo-card--light .brand-logo-preview { background: #f8f9fc; }
+
+.brand-logo-card-footer {
+  padding: 1rem 1.25rem;
+  background: $dark-card;
+  border-top: 1px solid $dark-border;
+}
+
+.brand-logo-card-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0 0 0.375rem;
+}
+
+.brand-logo-card-links {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: $muted;
+
+  a {
+    color: $accent;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.brand-spec-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.brand-spec-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.25rem;
+}
+
+.brand-spec-value {
+  font-size: 0.875rem;
+  color: $muted;
+  margin: 0;
+}
+
+// 02 — Color
+.brand-color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.brand-swatch-fill {
+  height: 72px;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  border: 1px solid $dark-border;
+}
+
+.brand-swatch-fill--gradient {
+  background: linear-gradient(90deg, $accent 0%, #60a5fa 50%, #a78bfa 100%);
+}
+
+.brand-swatch-fill--accent {
+  background: $accent;
+}
+
+.brand-swatch-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $off-white;
+  margin: 0 0 0.25rem;
+}
+
+.brand-swatch-value {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin: 0;
+  font-family: $font-mono;
+}
+
+.brand-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.brand-theme-split {
+  display: flex;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid $dark-border;
+  margin-bottom: 0.75rem;
+
+  span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+}
+
+.brand-theme-bg--dark  { background: $dark-bg;  color: $off-white; }
+.brand-theme-text--dark { background: $dark-card; color: $off-white; }
+.brand-theme-bg--light  { background: #f8f9fc; color: #0f172a; }
+.brand-theme-text--light { background: #ffffff; color: #0f172a; border-left: 1px solid $dark-border; }
+
+.brand-theme-split--muted {
+  background: #64748b;
+}
+
+// 03 — Typography
+.brand-type-card {
+  padding: 1.75rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.brand-type-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 1rem;
+}
+
+.brand-type-headline {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: $white;
+  margin: 0 0 0.75rem;
+}
+
+.brand-type-caption {
+  font-size: 0.875rem;
+  color: $muted;
+  margin: 0;
+}
+
+.brand-type-body {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: $off-white;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.brand-type-weights {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin: 0;
+
+  strong { color: $off-white; }
+}
+
+@media (max-width: $break-sm) {
+  .brand-logo-grid,
+  .brand-color-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-spec-row,
+  .brand-theme-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

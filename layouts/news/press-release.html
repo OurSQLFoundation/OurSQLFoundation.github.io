@@ -1,17 +1,15 @@
 {{/*
   A Foundation-authored press release, published in full. Per
   press_releases_mockup.pdf: "← All press releases" back-link instead of a
-  breadcrumb, a PRESS RELEASE badge + dateline + serif headline above the
-  body, and a Media contact box + footer (back-link, Brand guidelines —
-  disabled until that page exists, same "Coming soon" treatment as the
-  Mission & Vision page's Dive Deeper card).
+  breadcrumb, a PRESS RELEASE badge + dateline + headline above the body,
+  and a Media contact box + footer (back-link, Brand guidelines).
 
   Reuses the homepage's .press-release/.press-release-inner markup and CSS
   (assets/scss/_sections.scss) for the body itself — the content is raw
   HTML (goldmark's `unsafe: true` passes it straight through). The
-  mockup-specific additions (badge, serif h1/h3, board table, contact box)
-  are scoped under the .press-release--detail modifier in _news.scss so
-  they never touch the homepage's own copy of this component.
+  mockup-specific additions (badge, board table, contact box) are scoped
+  under the .press-release--detail modifier in _news.scss so they never
+  touch the homepage's own copy of this component.
 
   Front matter this template understands:
     location:    "Raleigh, NC" — dateline city, also shown on the list card
@@ -44,7 +42,7 @@
 
   <div class="press-release-footer-row">
     <a href="/news/press-releases/" class="about-btn about-btn--secondary">← All press releases</a>
-    <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Brand guidelines ↗</span>
+    <a href="/about/brand-guidelines/" class="about-btn about-btn--secondary">Brand guidelines ↗</a>
   </div>
 </div>
 {{ end }}

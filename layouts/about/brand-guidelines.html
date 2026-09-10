@@ -1,0 +1,139 @@
+{{/*
+  Brand Guidelines — per OurSQL-Brand-Guidelines.pdf, but restyled with the
+  site's own existing components (about-hero, about-block,
+  resources-category-eyebrow, dark-card panels) rather than the mockup's
+  own look, matching how the Press Releases mockup was later corrected.
+  Every value below (colors, weights, logo files) is read off the real
+  site — assets/scss/_variables.scss and the footer's own logo links —
+  not retyped from the mockup, so this page can't drift from what's
+  actually shipping.
+*/}}
+{{ define "main" }}
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/">About</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Brand Guidelines</span>
+  </nav>
+
+  {{/* ── Hero ── */}}
+  <div class="about-hero about-prose">
+    <span class="resources-category-eyebrow">oursqlfoundation.org</span>
+    <h1>Brand <span class="brand-gradient-text">Guidelines</span></h1>
+    <p class="about-hero-sub">The logo, color, and type already live on the site today. This page collects them in one place so anyone writing a deck, a flyer, or a new page starts from what's actually shipping — not a guess.</p>
+  </div>
+
+  {{/* ── 01 Logo ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">01 · Logo</span>
+    <p class="about-block-text">One wordmark, two color variants — picked automatically by the site's light/dark theme toggle. Use the matching variant for the background it sits on; don't recolor or rebuild it by hand.</p>
+  </div>
+  <div class="about-block">
+    <div class="brand-logo-grid">
+      <div class="brand-logo-card brand-logo-card--dark">
+        <div class="brand-logo-preview">
+          <img src="/oursql-foundation-logo-dark.svg" alt="OurSQL Foundation wordmark, dark-background variant">
+        </div>
+        <div class="brand-logo-card-footer">
+          <p class="brand-logo-card-label">For dark backgrounds</p>
+          <div class="brand-logo-card-links">
+            <a href="/oursql-foundation-logo-dark.svg" download>Dark SVG</a>
+            <span>·</span>
+            <a href="/oursql-foundation-logo-dark.png" download>Dark PNG</a>
+          </div>
+        </div>
+      </div>
+      <div class="brand-logo-card brand-logo-card--light">
+        <div class="brand-logo-preview">
+          <img src="/oursql-foundation-logo-light.svg" alt="OurSQL Foundation wordmark, light-background variant">
+        </div>
+        <div class="brand-logo-card-footer">
+          <p class="brand-logo-card-label">For light backgrounds</p>
+          <div class="brand-logo-card-links">
+            <a href="/oursql-foundation-logo-light.svg" download>Light SVG</a>
+            <span>·</span>
+            <a href="/oursql-foundation-logo-light.png" download>Light PNG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-spec-row">
+      <div class="brand-spec">
+        <p class="brand-spec-label">Minimum size</p>
+        <p class="brand-spec-value">120px wide on screen</p>
+      </div>
+      <div class="brand-spec">
+        <p class="brand-spec-label">Clear space</p>
+        <p class="brand-spec-value">Height of the "O" on all sides, minimum</p>
+      </div>
+      <div class="brand-spec">
+        <p class="brand-spec-label">Don't</p>
+        <p class="brand-spec-value">Stretch, recolor, or add effects</p>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 02 Color ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">02 · Color</span>
+    <p class="about-block-text">One accent gradient carries the brand — used on headline highlights and the wordmark's "Our." Everything else is the site's two working themes: dark by default, light on toggle.</p>
+  </div>
+  <div class="about-block">
+    <div class="brand-color-grid">
+      <div class="brand-swatch">
+        <div class="brand-swatch-fill brand-swatch-fill--gradient"></div>
+        <p class="brand-swatch-label">Accent gradient</p>
+        <p class="brand-swatch-value">#00C8FF → #60A5FA → #A78BFA</p>
+      </div>
+      <div class="brand-swatch">
+        <div class="brand-swatch-fill brand-swatch-fill--accent"></div>
+        <p class="brand-swatch-label">Accent solid (links, CTAs)</p>
+        <p class="brand-swatch-value">#00C8FF</p>
+      </div>
+    </div>
+    <div class="brand-theme-grid">
+      <div class="brand-theme-swatch">
+        <div class="brand-theme-split">
+          <span class="brand-theme-bg--dark">BG</span>
+          <span class="brand-theme-text--dark">TEXT</span>
+        </div>
+        <p class="brand-swatch-label">Dark theme (default)</p>
+        <p class="brand-swatch-value">#0D0F1A · #E8E8F0</p>
+      </div>
+      <div class="brand-theme-swatch">
+        <div class="brand-theme-split">
+          <span class="brand-theme-bg--light">BG</span>
+          <span class="brand-theme-text--light">TEXT</span>
+        </div>
+        <p class="brand-swatch-label">Light theme</p>
+        <p class="brand-swatch-value">#F8F9FC · #0F172A</p>
+      </div>
+      <div class="brand-theme-swatch">
+        <div class="brand-theme-split brand-theme-split--muted"></div>
+        <p class="brand-swatch-label">Muted text</p>
+        <p class="brand-swatch-value">Dark #6B6B80 · Light #64748B</p>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── 03 Typography ── */}}
+  <div class="about-block about-prose">
+    <span class="resources-category-eyebrow">03 · Typography</span>
+    <p class="about-block-text">Inter, one family for everything. Headlines lean on its heaviest weight for contrast; body copy stays light and roomy.</p>
+  </div>
+  <div class="about-block about-prose">
+    <div class="brand-type-card">
+      <span class="brand-type-eyebrow">Headline — Inter 900</span>
+      <p class="brand-type-headline">The Future of the <span class="brand-gradient-text">MySQL Ecosystem</span></p>
+      <p class="brand-type-caption">Exactly as set on the homepage — the gradient is reserved for the one phrase that should catch the eye.</p>
+    </div>
+    <div class="brand-type-card">
+      <span class="brand-type-eyebrow">Body — Inter 400–500</span>
+      <p class="brand-type-body">A vendor-neutral nonprofit dedicated to the advancement and sustainability of open source MySQL-compatible database technologies.</p>
+      <p class="brand-type-weights"><strong>400</strong> Body copy &nbsp; <strong>500</strong> Nav, buttons &nbsp; <strong>700</strong> Subheads &nbsp; <strong>900</strong> Display headlines</p>
+    </div>
+  </div>
+
+</div>
+{{ end }}
