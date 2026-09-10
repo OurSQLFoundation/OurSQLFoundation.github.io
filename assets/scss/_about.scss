@@ -856,17 +856,6 @@
   strong { color: $off-white; }
 }
 
-.brand-footnote {
-  font-size: 0.875rem;
-  color: $muted;
-  line-height: 1.6;
-  padding-top: 1.5rem;
-  border-top: 1px solid $dark-border;
-  margin: 0;
-
-  strong { color: $off-white; }
-}
-
 @media (max-width: $break-sm) {
   .brand-logo-grid,
   .brand-color-grid {
