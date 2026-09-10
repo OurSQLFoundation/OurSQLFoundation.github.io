@@ -29,11 +29,15 @@
           try { localStorage.setItem('theme', next); } catch (e) {}
 
           // Keep an embedded Giscus reviews widget (if this page has one)
-          // in sync with the site's own theme toggle.
+          // in sync with the site's own theme toggle — same custom theme
+          // URLs the widget is mounted with (see resources/reviews.html).
           var giscusFrame = document.querySelector('iframe.giscus-frame');
           if (giscusFrame) {
+            var giscusTheme = next === 'light'
+              ? {{ "giscus/theme-light.css" | absURL }}
+              : {{ "giscus/theme-dark.css" | absURL }};
             giscusFrame.contentWindow.postMessage(
-              { giscus: { setConfig: { theme: next } } },
+              { giscus: { setConfig: { theme: giscusTheme } } },
               'https://giscus.app'
             );
           }

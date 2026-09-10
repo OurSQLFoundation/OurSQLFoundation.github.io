@@ -1814,10 +1814,19 @@ body.sheet-open {
   border-top: 1px solid $dark-border;
 }
 
+.resource-detail-reviews-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0;
+}
+
 .resource-detail-reviews-sub {
+  max-width: 640px;
   font-size: 0.9375rem;
   color: $muted;
-  margin: 0.5rem 0 1.5rem;
+  line-height: 1.6;
+  margin: 0.625rem 0 1.5rem;
 }
 
 .resource-detail-reviews-widget {

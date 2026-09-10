@@ -1,11 +1,16 @@
 {{/*
-  Reviews & Discussion — Giscus widget, one thread per resource page.
+  Community feedback — Giscus widget, one thread per resource page.
 
   Deliberately not a custom comments system: this is a static site with no
   backend of its own, and Giscus gives real auth (GitHub sign-in) and
-  storage (GitHub Discussions) for free, matching what the original
-  detail-card mockup called for. See hugo.yaml (params.giscus) for the
-  repo/category wiring and the one-time GitHub App install this depends on.
+  storage (GitHub Discussions) for free. The heading/intro copy below
+  matches the OurSQL Universe catalog-card mockup verbatim; the widget
+  itself is giscus's own comment UI reskinned to the site's palette via
+  static/giscus/theme-{dark,light}.css — giscus doesn't expose per-review
+  structured fields (tags, "Your context", Helpful/Report voting) or
+  Google/X sign-in, so those parts of the mockup aren't reproducible on
+  top of it. See hugo.yaml (params.giscus) for the repo/category wiring
+  and the one-time GitHub App install this depends on.
 
   data-mapping="pathname" keys each resource's discussion to its own URL,
   so every resource gets its own thread automatically — no per-resource
@@ -15,16 +20,20 @@
 */}}
 {{ $g := .Site.Params.giscus }}
 {{ if $g }}
+{{ $themeDark := "giscus/theme-dark.css" | absURL }}
+{{ $themeLight := "giscus/theme-light.css" | absURL }}
 <div class="resource-detail-reviews">
-  <span class="resources-category-eyebrow">Reviews &amp; Discussion</span>
-  <p class="resource-detail-reviews-sub">Used this? Sign in with GitHub to leave a comment or reaction.</p>
+  <h2 class="resource-detail-reviews-title">Community feedback</h2>
+  <p class="resource-detail-reviews-sub">This space is for grounded, evaluable experience — versions used, environments, what you measured or observed, and how it behaves alongside other software. General impressions without supporting detail may be removed. Sign in to write one; posts are tied to a verified identity, not anonymous.</p>
   <div class="resource-detail-reviews-widget" id="giscus-mount"></div>
   <script>
   (function () {
     // Built at runtime (not a static data-theme attribute) so the widget
     // opens in whichever theme the visitor already has, dark or light —
     // baseof.html's theme-toggle handler keeps it in sync afterwards.
-    var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var themeDark = {{ $themeDark }};
+    var themeLight = {{ $themeLight }};
+    var theme = document.documentElement.getAttribute('data-theme') === 'light' ? themeLight : themeDark;
     var s = document.createElement('script');
     s.src = 'https://giscus.app/client.js';
     s.setAttribute('data-repo', {{ $g.repo }});
