@@ -19,6 +19,9 @@ $warm:         #ff6b35;
 // Typography
 $font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 $font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+// Editorial serif — Press Releases headings only (newsroom feel, per the
+// press_releases_mockup.pdf), not used anywhere else on the site.
+$font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
 
 // Breakpoints
 $break-sm:  576px;

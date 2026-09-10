@@ -1,24 +1,50 @@
 {{/*
-  A Foundation-authored press release, published in full. Reuses the exact
-  .press-release/.press-release-inner markup and CSS the homepage uses for
-  its own embedded press release (assets/scss/_sections.scss), so this page
-  matches that formatting exactly rather than approximating it with the
-  site's other prose styles. The body is raw HTML (goldmark's `unsafe: true`
-  passes it straight through) copied verbatim from layouts/index.html.
+  A Foundation-authored press release, published in full. Per
+  press_releases_mockup.pdf: "← All press releases" back-link instead of a
+  breadcrumb, a PRESS RELEASE badge + dateline + serif headline above the
+  body, and a Media contact box + footer (back-link, Brand guidelines —
+  disabled until that page exists, same "Coming soon" treatment as the
+  Mission & Vision page's Dive Deeper card).
+
+  Reuses the homepage's .press-release/.press-release-inner markup and CSS
+  (assets/scss/_sections.scss) for the body itself — the content is raw
+  HTML (goldmark's `unsafe: true` passes it straight through). The
+  mockup-specific additions (badge, serif h1/h3, board table, contact box)
+  are scoped under the .press-release--detail modifier in _news.scss so
+  they never touch the homepage's own copy of this component.
+
+  Front matter this template understands:
+    location:    "Raleigh, NC" — dateline city, also shown on the list card
+    press_date:  optional override for the *displayed* date, when it needs
+                 to differ from the page's own `date` (which drives sort
+                 order) — see the comment in this release's own .md file.
 */}}
 {{ define "main" }}
+{{ $displayDate := .Date }}
+{{ with .Params.press_date }}{{ $displayDate = time.AsTime . }}{{ end }}
 <div class="press-release-page">
-  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
-    <a href="/news/">News</a>
-    <span class="breadcrumb-sep" aria-hidden="true">/</span>
-    <a href="/news/press-releases/">Press Releases</a>
-    <span class="breadcrumb-sep" aria-hidden="true">/</span>
-    <span>{{ .Title }}</span>
-  </nav>
-</div>
-<div class="press-release">
-  <div class="press-release-inner">
-    {{ .Content }}
+  <a href="/news/press-releases/" class="press-back-link">← All press releases</a>
+
+  <div class="press-release press-release--detail">
+    <div class="press-release-inner">
+      <span class="press-badge">Press Release</span>
+      <p class="press-date">{{ with .Params.location }}{{ . }} — {{ end }}{{ $displayDate.Format "January 2, 2006" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="press-lead">{{ . }}</p>{{ end }}
+
+      {{ .Content }}
+
+      <div class="press-contact-box">
+        <p class="press-contact-label">Media contact</p>
+        <a href="mailto:press@oursqlfoundation.org" class="press-contact-email">press@oursqlfoundation.org</a>
+        <p class="press-contact-desc">For interview requests, quotes, or additional background.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="press-release-footer-row">
+    <a href="/news/press-releases/" class="about-btn about-btn--secondary">← All press releases</a>
+    <span class="about-btn about-btn--secondary about-btn--disabled" title="Coming soon">Brand guidelines ↗</span>
   </div>
 </div>
 {{ end }}

@@ -1,13 +1,18 @@
 ---
 layout: "press-release"
 date: 2026-05-26
+# The page's own `date` drives chronological placement in the Press
+# Releases list (set to May 26 per an explicit earlier request). The dateline
+# actually printed on the release itself has always read May 27 — both in
+# this site's own homepage excerpt and in the real GlobeNewswire syndication
+# — so `press_date` overrides just the displayed date, without touching sort
+# order. Future releases don't need this field unless the same split ever
+# recurs.
+press_date: 2026-05-27
+location: "Raleigh, NC"
 title: "OurSQL Foundation launches to support MySQL users, developers, and companies"
 description: "New community initiative aims to support MySQL users around best practices, future developments, and knowledge sharing."
 ---
-
-<h2>OurSQL Foundation launches to support MySQL users, developers, and companies</h2>
-<p class="press-date">Raleigh, NC — May 27, 2026</p>
-<p class="press-lead">New community initiative aims to support MySQL users around best practices, future developments, and knowledge sharing.</p>
 
 <p>Today marks the launch of The OurSQL Foundation, an open organisation that will support the community of users, developers, and companies that are invested in the success of MySQL. The new Foundation will provide a venue for those involved in the MySQL community — using, building, and deploying applications that use MySQL or the broad range of compatible software — to share with their peers, to access knowledge, and to provide feedback on future development in a transparent and consistent way. This community organisation will support the growth and use of MySQL as an open source database and collaborate with all players in the market, including Oracle, to see MySQL succeed with the next generation of developers and applications.</p>
 
@@ -31,15 +36,15 @@ description: "New community initiative aims to support MySQL users around best p
 
 <p>The organisation is an independent community led by a founding board, made up of the following individuals from the MySQL community:</p>
 
-<ul>
-  <li><strong>Vadim Tkachenko</strong>, Technology Fellow and Co-Founder, Percona — President</li>
-  <li><strong>Matt Lord</strong>, Software Engineer, PlanetScale — Secretary</li>
-  <li><strong>Sunny Bains</strong>, Software Architect, PingCAP</li>
-  <li><strong>Tomas Ulin</strong>, Village Historian, VillageSQL — Treasurer</li>
-  <li><strong>Zongzhi Chen</strong>, Manager, Cloud RDS Team, Alibaba</li>
-  <li><strong>Jean-François Gagné</strong>, MySQL Expert and Independent Consultant</li>
-  <li><strong>Peter Zaitsev</strong>, Co-Founder, Percona</li>
-</ul>
+<div class="press-board-table">
+  <div class="press-board-row"><span class="press-board-name">Vadim Tkachenko</span><span class="press-board-role">Technology Fellow and Co-Founder, Percona — President</span></div>
+  <div class="press-board-row"><span class="press-board-name">Matt Lord</span><span class="press-board-role">Software Engineer, PlanetScale — Secretary</span></div>
+  <div class="press-board-row"><span class="press-board-name">Sunny Bains</span><span class="press-board-role">Software Architect, PingCAP</span></div>
+  <div class="press-board-row"><span class="press-board-name">Tomas Ulin</span><span class="press-board-role">Village Historian, VillageSQL — Treasurer</span></div>
+  <div class="press-board-row"><span class="press-board-name">Zongzhi Chen</span><span class="press-board-role">Manager, Cloud RDS Team, Alibaba</span></div>
+  <div class="press-board-row"><span class="press-board-name">Jean-François Gagné</span><span class="press-board-role">MySQL Expert and Independent Consultant</span></div>
+  <div class="press-board-row"><span class="press-board-name">Peter Zaitsev</span><span class="press-board-role">Co-Founder, Percona</span></div>
+</div>
 
 <p>The Foundation will follow the model that other open source foundations have taken to provide an independent, vendor-neutral space for mutual collaboration and assistance. The Foundation will be a separate legal entity that manages events, resource repositories, and adoption efforts on behalf of the community, growing the number of individuals that use and interact around MySQL, as well as providing a collective voice on the MySQL roadmap and future developments. The Foundation will start by creating Committee Groups to support the organisation's work around events, collaboration and support for using MySQL.</p>
 

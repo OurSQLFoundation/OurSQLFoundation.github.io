@@ -917,4 +917,57 @@
   .news-item-desc { color: #64748b; }
   .news-item-source { color: #94a3b8; }
   .news-item-link { color: #0272a5; }
+
+  // Press Releases hub + detail page (press_releases_mockup.pdf)
+  .newsroom-eyebrow { color: #0272a5; }
+
+  .press-back-link {
+    color: #64748b;
+    &:hover { color: #0272a5; }
+  }
+
+  .press-card {
+    border-color: #dde3ed;
+    &:hover { border-color: rgba(0, 200, 255, 0.4); }
+  }
+  .press-card-meta { color: #94a3b8; }
+  .press-card-title { color: #0f172a; }
+  .press-card-desc { color: #64748b; }
+  .press-card-link { color: #0272a5; }
+  .press-more-note { color: #94a3b8; }
+
+  .press-media-kit {
+    background: #ffffff;
+    border-color: #dde3ed;
+  }
+  .press-media-kit-title { color: #0f172a; }
+  .press-media-kit-desc { color: #64748b; }
+
+  .press-coverage {
+    border-top-color: #dde3ed;
+    h2 { color: #0f172a; }
+  }
+  .press-coverage-sub { color: #64748b; }
+
+  .press-release--detail {
+    .press-badge {
+      color: #0272a5;
+      background: rgba(0, 200, 255, 0.08);
+      border-color: rgba(0, 200, 255, 0.3);
+    }
+
+    .press-release-inner h1 { color: #0f172a; }
+
+    .press-board-row { border-bottom-color: #dde3ed; }
+    .press-board-name { color: #0f172a; }
+    .press-board-role { color: #64748b; }
+
+    .press-contact-box {
+      background: #ffffff;
+      border-color: #dde3ed;
+    }
+    .press-contact-label { color: #0f172a; }
+    .press-contact-email { color: #0272a5; }
+    .press-contact-desc { color: #64748b; }
+  }
 }
