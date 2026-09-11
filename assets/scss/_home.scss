@@ -1,0 +1,319 @@
+// Homepage — built on top of the pre-existing but previously-unused
+// .section/.section-header/.cards-grid/.card/.launch-quote components in
+// _sections.scss, plus the new components below for parts that didn't
+// already have one (the "How to Join" cards, the Universe category grid
+// and contribute callout, the News & Events cards).
+//
+// $accent (cyan) is the site's one working accent everywhere else, but for
+// this page specifically the brief asked for more visual variety — so
+// card/badge icons here cycle through all three stops of the site's own
+// hero-title gradient (cyan → blue → purple) instead of introducing new,
+// off-system colors.
+$c-blue: #60a5fa;
+$c-purple: #a78bfa;
+
+.home-divider {
+  border: none;
+  border-top: 1px solid $dark-border;
+  margin: 0;
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+// Left-aligned variant of the existing (centered) .section-header
+.section-header--left {
+  text-align: left;
+  margin-bottom: 2.5rem;
+
+  p { margin: 0.75rem 0 0; max-width: 620px; }
+}
+
+// ── What We Do ──
+.cards-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: $break-sm) { grid-template-columns: 1fr; }
+}
+
+.card-link--soon {
+  color: $muted;
+  cursor: default;
+}
+
+// Cycle the card-icon color through the hero gradient's 3 stops instead of
+// every card sharing the same (colorless — .card-icon sets no `color` of
+// its own) icon tint.
+.card--cyan .card-icon { color: $accent; }
+.card--blue .card-icon { color: $c-blue; background: rgba($c-blue, 0.12); border-color: rgba($c-blue, 0.3); }
+.card--purple .card-icon { color: $c-purple; background: rgba($c-purple, 0.12); border-color: rgba($c-purple, 0.3); }
+
+// ── How to Join ──
+.join-path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr; }
+}
+
+.join-path-card {
+  display: flex;
+  flex-direction: column;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  padding: 1.75rem;
+
+  h3 {
+    font-size: 1.0625rem;
+    margin: 0 0 0.625rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+}
+
+.join-path-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.join-path-card--blue .join-path-badge {
+  color: $c-blue;
+  background: rgba($c-blue, 0.12);
+  border-color: rgba($c-blue, 0.3);
+}
+
+.join-path-card--purple .join-path-badge {
+  color: $c-purple;
+  background: rgba($c-purple, 0.12);
+  border-color: rgba($c-purple, 0.3);
+}
+
+.join-path-cta {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $off-white;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid $dark-border;
+
+  &:hover { color: $accent; }
+}
+
+// ── OurSQL Universe ──
+.universe-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: $break-sm) { grid-template-columns: 1fr; }
+}
+
+.universe-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1.125rem 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover { border-color: rgba($accent, 0.35); transform: translateY(-2px); }
+}
+
+.universe-cat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  margin-bottom: 0.5rem;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.25);
+}
+
+.universe-cat--blue .universe-cat-icon { color: $c-blue; background: rgba($c-blue, 0.12); border-color: rgba($c-blue, 0.3); }
+.universe-cat--purple .universe-cat-icon { color: $c-purple; background: rgba($c-purple, 0.12); border-color: rgba($c-purple, 0.3); }
+
+.universe-cat-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+}
+
+.universe-cat-desc {
+  font-size: 0.8125rem;
+  color: $muted;
+}
+
+.universe-contribute {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.25);
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.universe-contribute-text {
+  font-size: 0.9375rem;
+  color: $off-white;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px;
+
+  strong {
+    display: block;
+    color: $off-white;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.section-link-cta {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $accent;
+
+  &:hover { text-decoration: underline; }
+}
+
+// ── News & Events ──
+.home-subhead-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &:not(:first-child) { margin-top: 2rem; }
+}
+
+.home-subhead {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $off-white;
+}
+
+.home-subhead-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  flex-shrink: 0;
+
+  &:hover { text-decoration: underline; }
+}
+
+.home-card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr; }
+}
+
+.home-dash-divider {
+  border: none;
+  border-top: 1px dashed $dark-border;
+  margin: 2rem 0 0;
+}
+
+.home-event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: $dark-card;
+  border-left: 2px solid $accent;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.125rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover { background: $dark-surface; }
+}
+
+.home-event-date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $accent;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.home-event-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  line-height: 1.4;
+}
+
+.home-event-meta {
+  font-size: 0.8125rem;
+  color: $muted;
+}
+
+.home-news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  padding: 1rem 1.125rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  &:hover { border-color: rgba($accent, 0.3); }
+}
+
+.home-news-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: $accent;
+  background: $accent-glow;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+}
+
+.home-news-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  line-height: 1.4;
+}
