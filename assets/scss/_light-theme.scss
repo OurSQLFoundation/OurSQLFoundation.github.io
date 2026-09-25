@@ -1035,12 +1035,28 @@
       span { color: #64748b; }
     }
 
-    .footer-newsletter-form input {
+    .footer-newsletter-form input#EMAIL {
       background: #f8f9fc;
       border-color: rgba(0, 200, 255, 0.4);
       color: #0f172a;
       &::placeholder { color: #94a3b8; }
     }
+
+    .footer-newsletter-message {
+      &--error {
+        color: #b91c1c;
+        background: rgba(#ff4949, 0.08);
+        border-color: rgba(#ff4949, 0.25);
+      }
+
+      &--success {
+        color: #087f43;
+        background: rgba(#13ce66, 0.1);
+        border-color: rgba(#13ce66, 0.3);
+      }
+    }
+
+    .footer-newsletter-field-error { color: #b91c1c; }
 
     .footer-main { border-bottom-color: #dde3ed; }
 

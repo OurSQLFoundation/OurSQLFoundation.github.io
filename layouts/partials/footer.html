@@ -1,19 +1,46 @@
 <footer class="site-footer">
   <div class="footer-inner">
 
-    {{/* Newsletter isn't wired to a real list yet (Privacy Policy already
-         commits to Mailchimp for this) — shown disabled rather than faking
-         a signup, same "Coming soon" treatment as the Press Releases page's
-         Newsletter channel card. */}}
+    {{/* Newsletter signup, wired to Brevo. The form posts directly to Brevo's
+         hosted endpoint (no API key on the frontend); Brevo's own script
+         (loaded at the bottom of this partial) intercepts the submit and
+         shows #error-message / #success-message inline instead of
+         navigating away. Structural ids/classes below (sib-form, EMAIL,
+         email_address_check, locale, sib-form-block__button-with-loader,
+         sib-hide-loader-icon) come straight from Brevo's generated embed
+         code and must stay as-is for that script to find the field. */}}
     <div class="footer-newsletter">
       <div class="footer-newsletter-text">
         <strong>Stay in the loop</strong>
         <span>One email, every so often. No noise — just what matters for MySQL.</span>
       </div>
-      <form class="footer-newsletter-form" title="Coming soon">
-        <input type="email" placeholder="you@email.com" disabled>
-        <button type="submit" class="about-btn about-btn--primary about-btn--disabled" disabled>Subscribe</button>
-      </form>
+
+      <div id="sib-form-container" class="footer-newsletter-form-container">
+        {{/* Brevo's script overwrites this inner text with its own copy once
+             a submit resolves, so the strings here only matter for the
+             instant before that happens — kept identical to avoid a flash
+             of different text. */}}
+        <div id="error-message" class="sib-form-message-panel footer-newsletter-message footer-newsletter-message--error">
+          <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+        </div>
+        <div id="success-message" class="sib-form-message-panel footer-newsletter-message footer-newsletter-message--success">
+          <span class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
+        </div>
+
+        <form id="sib-form" method="POST" action="https://64f8c957.sibforms.com/serve/MUIFAJ9Hor_z_M6MDKVaoYCTLL191egrhA0H-adYyLsYs26X-XB5NlRM0VoLjVPWLLLwN2VbHg4TmYyTlcBbVXtPX6fEYgO8uH1g2N9S0RDkBdRVtd_SY2BwyCz3FnKaBzq1g-75lcnWlGAffahgO1K1UwVMa0C1B2N8xaY-l3vuxgxy5OjEbkvdmqFIYOEoH0xwvCkNaiScMi5zZA==" data-type="subscription" class="footer-newsletter-form">
+          <div class="footer-newsletter-field">
+            <label for="EMAIL" class="footer-newsletter-label">Email address</label>
+            <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="email" inputmode="email" placeholder="you@email.com" data-required="true" required>
+            <label class="entry__error entry__error--primary footer-newsletter-field-error"></label>
+          </div>
+          <button class="sib-form-block__button sib-form-block__button-with-loader about-btn about-btn--primary" form="sib-form" type="submit">
+            <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+            Subscribe
+          </button>
+          <input type="text" name="email_address_check" value="" class="footer-newsletter-honeypot" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="locale" value="en">
+        </form>
+      </div>
     </div>
 
     <div class="footer-main">
@@ -93,3 +120,27 @@
 
   </div>
 </footer>
+
+{{/* Brevo's own signup-form script: reads window.LOCALE/*_MESSAGE globals
+     and binds to the #sib-form markup above to submit via AJAX and toggle
+     #error-message/#success-message instead of navigating away. */}}
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+  window.INVALID_NUMBER = "The information provided is invalid. Please review the field format and try again.";
+  window.INVALID_DATE = "Please enter a valid date";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected',
+      selectedOption: '{quantity} selected',
+      selectedOptions: '{quantity} selected',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>

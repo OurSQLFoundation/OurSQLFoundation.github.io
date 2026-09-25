@@ -36,15 +36,72 @@
   }
 }
 
+.footer-newsletter-form-container {
+  flex: 1;
+  max-width: 480px;
+  min-width: 280px;
+}
+
+.footer-newsletter-message {
+  display: none;
+  font-size: 0.8125rem;
+  border-radius: 8px;
+  padding: 0.625rem 0.875rem;
+  margin-bottom: 0.625rem;
+
+  // Brevo's script toggles this modifier class (not inline style) to reveal
+  // whichever panel applies after a submit — it ships its own stylesheet
+  // that defines this rule, which we don't load, so we define it ourselves.
+  &.sib-form-message-panel--active {
+    display: block;
+  }
+
+  &--error {
+    color: #ff8080;
+    background: rgba(#ff4949, 0.12);
+    border: 1px solid rgba(#ff4949, 0.3);
+  }
+
+  &--success {
+    color: #4ade80;
+    background: rgba(#13ce66, 0.12);
+    border: 1px solid rgba(#13ce66, 0.3);
+  }
+}
+
 .footer-newsletter-form {
   display: flex;
   gap: 0.625rem;
   flex-wrap: wrap;
-  flex: 1;
-  max-width: 480px;
-  min-width: 280px;
+  align-items: flex-start;
 
-  input {
+  .footer-newsletter-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .footer-newsletter-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .footer-newsletter-field-error {
+    display: block;
+    font-size: 0.75rem;
+    color: #ff8080;
+    margin-top: 0.375rem;
+    min-height: 0;
+  }
+
+  .footer-newsletter-honeypot {
+    display: none;
+  }
+
+  input#EMAIL {
     font-family: $font-sans;
     font-size: 0.9375rem;
     color: $off-white;
@@ -52,11 +109,17 @@
     border: 1px solid rgba($accent, 0.35);
     border-radius: 8px;
     padding: 0.875rem 1.125rem;
-    flex: 1;
-    min-width: 0;
+    width: 100%;
 
     &::placeholder { color: darken($muted, 8%); }
-    &:disabled { cursor: not-allowed; }
+  }
+
+  .sib-form-block__button-with-loader {
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    .sib-hide-loader-icon { display: none; }
   }
 }
 
