@@ -36,7 +36,7 @@ We do not knowingly collect more information than is necessary for the purposes 
 We use the information we collect to:
 
 - Respond to inquiries submitted through the Contact Us form.
-- Send newsletters and updates to subscribers, and manage those communications through Mailchimp.
+- Send newsletters and updates to subscribers, and manage those communications through Brevo.
 - Maintain and update contact and relationship records in our CRM.
 - Understand how visitors use the Site and improve its content and performance, using Google Analytics and Plausible.
 - Process form submissions collected via third-party form tools (such as Typeform or Google Forms) for specific initiatives (e.g., event registration, surveys, membership interest forms).
@@ -54,7 +54,7 @@ We work with the following categories of third-party service providers, who proc
 
 - **Google Analytics** — website analytics
 - **Plausible** — website analytics
-- **Mailchimp** — email newsletter delivery and management
+- **Brevo** — email newsletter delivery and management
 - **CRM provider** — contact and relationship management
 - **Typeform / Google Forms** (or similar) — specific form-based data collection (e.g., event registration, surveys)
 
