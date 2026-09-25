@@ -23,4 +23,4 @@ images:
 
 All Things Open brings together thousands of developers and technology professionals in Raleigh, NC to explore open source tools, processes, and communities — with keynote speakers, 100+ sessions across multiple tracks, extended workshops, and deep-dive sessions. The 2026 edition also includes four free co-located events: the Community Leadership Summit, Inclusion & Diversity Summit, Accessibility Summit, and an MLH AI Hackathon.
 
-All Things Open (the organizer) is a Certified B Corporation.
+
