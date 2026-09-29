@@ -1,0 +1,19 @@
+{{/*
+  Whether a page should be indexed by search engines. Used by head.html
+  (meta robots) and the sitemap template so the two never disagree.
+
+  Taxonomy overview pages (/pricing/, /levels/, ...) and most facet term
+  pages (/pricing/free/, /countries/brazil/, ...) are thin filter views of
+  the same resources, so they are noindex (links on them are still
+  followed). Subcategory terms with at least 3 resources are kept — those
+  are real topical landing pages ("Monitoring & Observability", ...).
+  Any page can override with `robots: noindex` in front matter.
+*/}}
+{{ $indexable := true }}
+{{ if eq .Kind "taxonomy" }}
+  {{ $indexable = false }}
+{{ else if eq .Kind "term" }}
+  {{ $indexable = and (eq .Data.Plural "subcategories") (ge (len .Pages) 3) }}
+{{ end }}
+{{ with .Params.robots }}{{ if in . "noindex" }}{{ $indexable = false }}{{ end }}{{ end }}
+{{ return $indexable }}

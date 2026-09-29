@@ -14,7 +14,7 @@
 {{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 
 {{/* ── Robots ── */}}
-<meta name="robots" content="index, follow">
+<meta name="robots" content="{{ if partial "seo/indexable.html" . }}index{{ else }}noindex{{ end }}, follow">
 
 {{/* ── Feed auto-discovery (only present on pages that actually have one, e.g. /blog/) ── */}}
 {{ range .AlternativeOutputFormats }}
