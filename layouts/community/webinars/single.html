@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{ $isPast := and (not .Date.IsZero) (.Date.Before now) }}
+{{ $imgRes := "" }}
+{{ with .Params.images }}
+  {{ $imgFile := index . 0 }}
+  {{ $imgRes = $.Resources.Get $imgFile }}
+{{ end }}
+
+{{ $primaryLabel := "" }}
+{{ $primaryURL := "" }}
+{{ if and $isPast .Params.recording_url }}
+  {{ $primaryLabel = "Watch recording" }}
+  {{ $primaryURL = .Params.recording_url }}
+{{ else if and (not $isPast) .Params.registration_url }}
+  {{ $primaryLabel = "Register" }}
+  {{ $primaryURL = .Params.registration_url }}
+{{ end }}
+
+<article class="webinar-single about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/community/">Community</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="/community/webinars/">Webinars</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  {{ with $imgRes }}
+  {{ $hero := .Fit "1200x627 jpg q85" }}
+  <div class="webinar-hero-image-wrap">
+    <img src="{{ $hero.RelPermalink }}" alt="" class="webinar-hero-image" width="{{ $hero.Width }}" height="{{ $hero.Height }}">
+  </div>
+  {{ end }}
+
+  <header class="webinar-header">
+    <div class="webinar-meta-row">
+      <span class="webinar-meta-badge">Webinar</span>
+      {{ if $isPast }}<span class="status-chip">Past event</span>{{ end }}
+      <span class="webinar-meta-date">{{ .Date.Format "January 2, 2006" }}{{ with .Params.time_display }} · {{ . }}{{ end }}</span>
+    </div>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.speakers }}
+    <ul class="webinar-speakers">
+      {{ range . }}
+      <li class="webinar-speaker">
+        {{ if .profile }}
+        <a href="{{ .profile }}" class="webinar-speaker-name">{{ .name }}</a>
+        {{ else if .linkedin }}
+        <a href="{{ .linkedin }}" class="webinar-speaker-name" target="_blank" rel="noopener">{{ .name }}</a>
+        {{ else }}
+        <span class="webinar-speaker-name">{{ .name }}</span>
+        {{ end }}
+        {{ with .role }}<span class="webinar-speaker-role">{{ . }}</span>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    <div class="about-cta-row">
+      {{ with $primaryURL }}<a href="{{ . }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">{{ $primaryLabel }}</a>{{ end }}
+      {{ with .Params.talk_url }}<a href="{{ . }}" class="about-btn about-btn--secondary" target="_blank" rel="noopener">Talk details</a>{{ end }}
+    </div>
+  </header>
+
+  <div class="post-content webinar-content">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="/community/webinars/" class="back-link">← Back to Webinars</a>
+  </footer>
+
+</article>
+{{ end }}

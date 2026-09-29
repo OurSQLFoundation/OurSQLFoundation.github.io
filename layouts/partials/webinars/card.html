@@ -1,0 +1,27 @@
+{{/* Shared webinar card, used by the Upcoming and Past grids on the
+     Webinars list page. Every future webinar page renders through this
+     same partial, so the grid stays consistent as more get added. */}}
+{{ $page := . }}
+{{ $isPast := and (not .Date.IsZero) (.Date.Before now) }}
+{{ $imgRes := "" }}
+{{ with .Params.images }}
+  {{ $imgFile := index . 0 }}
+  {{ $imgRes = $page.Resources.Get $imgFile }}
+{{ end }}
+
+<a href="{{ .RelPermalink }}" class="webinar-card">
+  {{ with $imgRes }}
+  {{ $thumb := .Fill "480x252 jpg q80" }}
+  <div class="webinar-card-image-wrap">
+    <img src="{{ $thumb.RelPermalink }}" alt="" class="webinar-card-image" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+    {{ if $isPast }}<span class="status-chip webinar-card-status">Past</span>{{ end }}
+  </div>
+  {{ end }}
+  <div class="webinar-card-body">
+    <span class="webinar-card-date">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.time_display }} · {{ . }}{{ end }}</span>
+    <h3 class="webinar-card-title">{{ .Title }}</h3>
+    {{ with .Params.speakers }}
+    <p class="webinar-card-speakers">{{ range $i, $s := . }}{{ if $i }} &amp; {{ end }}{{ $s.name }}{{ end }}</p>
+    {{ end }}
+  </div>
+</a>
