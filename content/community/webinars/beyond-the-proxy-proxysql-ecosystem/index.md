@@ -9,10 +9,13 @@ images:
 speakers:
   - name: "René Cannaò"
     role: "CEO, ProxySQL"
+    photo: "speaker-rene.jpg"
+    profile: "/resources/member-directory/people/rene-cannao/"
     linkedin: "https://www.linkedin.com/in/renecannao/"
   - name: "Alkin Tezuysal"
     role: "Chief Strategy Officer, ProxySQL"
-    profile: "/resources/member-directory/alkin-tezuysal/"
+    photo: "speaker-alkin.jpg"
+    profile: "/resources/member-directory/people/alkin-tezuysal/"
     linkedin: "https://www.linkedin.com/in/askdba/"
 ---
 

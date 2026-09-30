@@ -9,7 +9,8 @@ images:
 speakers:
   - name: "Daniel Guzmán Burgos"
     role: "Creator of dbtrail"
-    profile: "/resources/member-directory/daniel-guzman-burgos/"
+    photo: "speaker-daniel.jpg"
+    profile: "/resources/member-directory/people/daniel-guzman-burgos/"
     linkedin: "https://www.linkedin.com/in/danielmauricioguzman/"
 ---
 
