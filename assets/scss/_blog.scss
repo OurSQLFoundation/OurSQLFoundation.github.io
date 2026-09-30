@@ -240,6 +240,21 @@
       margin: 2.5rem 0;
     }
 
+    blockquote {
+      margin: 1.75rem 0;
+      padding: 1.25rem 1.5rem;
+      background: $dark-card;
+      border-left: 3px solid $accent;
+      border-radius: 0 10px 10px 0;
+
+      p {
+        font-size: 1.0625rem;
+        font-style: italic;
+        color: $off-white;
+        margin: 0;
+      }
+    }
+
     .post-hero-image {
       width: 100%;
       border-radius: 10px;
@@ -268,6 +283,17 @@
         color: $muted;
         text-align: center;
         margin-top: 0.75rem;
+      }
+
+      &.figure--logo {
+        margin: 0 0 0.75rem;
+
+        img {
+          width: 56px;
+          height: 56px;
+          object-fit: cover;
+          border-radius: 12px;
+        }
       }
     }
   }

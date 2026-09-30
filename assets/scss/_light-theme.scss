@@ -1184,6 +1184,11 @@
 
       figure img { border-color: #dde3ed; }
       figure figcaption { color: #64748b; }
+
+      blockquote {
+        background: #f6f8fc;
+        p { color: #0f172a; }
+      }
     }
 
     .post-footer .back-link {
