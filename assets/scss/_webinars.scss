@@ -1,0 +1,188 @@
+// Community > Webinars — list grid + single-page hero, built from the
+// site's existing component language (about-page, resources-breadcrumb,
+// resources-category-eyebrow, status-chip, post-content) so this reads as
+// the same site rather than a bolted-on section.
+
+.webinar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.webinar-empty-state {
+  margin-top: 1rem;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+
+  p {
+    font-size: 0.9375rem;
+    color: $muted;
+    line-height: 1.6;
+    margin: 0;
+
+    a { color: $accent; text-decoration: none; &:hover { text-decoration: underline; } }
+  }
+}
+
+// ── Card (list page) ──
+.webinar-card {
+  display: flex;
+  flex-direction: column;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.3);
+    box-shadow: 0 6px 24px rgba($accent, 0.07);
+    transform: translateY(-2px);
+  }
+}
+
+.webinar-card-image-wrap {
+  position: relative;
+  border-bottom: 1px solid $dark-border;
+  background: $dark-surface;
+}
+
+.webinar-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 627;
+  object-fit: cover;
+}
+
+.webinar-card-status {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: $dark-bg;
+}
+
+.webinar-card-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.webinar-card-date {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: $accent;
+  margin-bottom: 0.5rem;
+}
+
+.webinar-card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: $off-white;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.webinar-card-speakers {
+  font-size: 0.875rem;
+  color: $muted;
+  margin: 0;
+}
+
+// ── Single webinar page ──
+.webinar-header {
+  max-width: 720px;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font-size: clamp(1.625rem, 4vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: $off-white;
+    margin: 0 0 1.25rem;
+  }
+}
+
+.webinar-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.webinar-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 100px;
+  padding: 0.25rem 0.7rem;
+}
+
+.webinar-meta-date {
+  font-size: 0.875rem;
+  color: $muted;
+  font-variant-numeric: tabular-nums;
+}
+
+.webinar-speakers {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.webinar-speaker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.webinar-speaker-photo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba($accent, 0.4);
+  flex-shrink: 0;
+}
+
+.webinar-speaker-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.webinar-speaker-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+  text-decoration: none;
+}
+
+a.webinar-speaker-name {
+  color: $accent;
+  &:hover { text-decoration: underline; }
+}
+
+.webinar-speaker-role {
+  font-size: 0.8125rem;
+  color: $muted;
+}
+
+.webinar-content {
+  max-width: 720px;
+}

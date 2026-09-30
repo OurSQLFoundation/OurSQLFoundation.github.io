@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{/* .Params.images (the banner) is deliberately not rendered on the page —
+     it's kept only as the OG/social-share image (see head.html), since a
+     full-width banner reads as too heavy inline. Speaker photos take its
+     place here instead. */}}
+{{ $isPast := and (not .Date.IsZero) (.Date.Before now) }}
+
+{{ $primaryLabel := "" }}
+{{ $primaryURL := "" }}
+{{ if and $isPast .Params.recording_url }}
+  {{ $primaryLabel = "Watch recording" }}
+  {{ $primaryURL = .Params.recording_url }}
+{{ else if and (not $isPast) .Params.registration_url }}
+  {{ $primaryLabel = "Register" }}
+  {{ $primaryURL = .Params.registration_url }}
+{{ end }}
+
+<article class="webinar-single about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/community/">Community</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="/community/webinars/">Webinars</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <header class="webinar-header">
+    <div class="webinar-meta-row">
+      <span class="webinar-meta-badge">Webinar</span>
+      {{ if $isPast }}<span class="status-chip">Past event</span>{{ end }}
+      <span class="webinar-meta-date">{{ .Date.Format "January 2, 2006" }}{{ with .Params.time_display }} · {{ . }}{{ end }}</span>
+    </div>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.speakers }}
+    {{ $page := $ }}
+    <ul class="webinar-speakers">
+      {{ range . }}
+      <li class="webinar-speaker">
+        {{ $photoRes := "" }}
+        {{ with .photo }}{{ $photoRes = $page.Resources.Get . }}{{ end }}
+        {{ with $photoRes }}
+        {{ $avatar := .Fill "96x96 jpg q85" }}
+        <img src="{{ $avatar.RelPermalink }}" alt="" class="webinar-speaker-photo" width="96" height="96" loading="lazy">
+        {{ end }}
+        <div class="webinar-speaker-info">
+          {{ if .profile }}
+          <a href="{{ .profile }}" class="webinar-speaker-name">{{ .name }}</a>
+          {{ else if .linkedin }}
+          <a href="{{ .linkedin }}" class="webinar-speaker-name" target="_blank" rel="noopener">{{ .name }}</a>
+          {{ else }}
+          <span class="webinar-speaker-name">{{ .name }}</span>
+          {{ end }}
+          {{ with .role }}<span class="webinar-speaker-role">{{ . }}</span>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    <div class="about-cta-row">
+      {{ with $primaryURL }}<a href="{{ . }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">{{ $primaryLabel }}</a>{{ end }}
+    </div>
+  </header>
+
+  <div class="post-content webinar-content">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="/community/webinars/" class="back-link">← Back to Webinars</a>
+  </footer>
+
+</article>
+{{ end }}

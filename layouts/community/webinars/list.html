@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $now := now }}
+{{ $upcoming := where .Pages "Date" ">=" $now }}
+{{ $past := where .Pages "Date" "<" $now }}
+{{ $upcoming = $upcoming.ByDate }}
+{{ $past = $past.ByDate.Reverse }}
+
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/community/">Community</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>Webinars</span>
+  </nav>
+
+  <div class="about-hero about-prose">
+    <h1>{{ .Title }}</h1>
+    <p class="about-hero-sub">{{ .Description }}</p>
+  </div>
+
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Upcoming</span>
+    {{ if $upcoming }}
+    <div class="webinar-grid">
+      {{ range $upcoming }}{{ partial "webinars/card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <div class="webinar-empty-state">
+      <p>No upcoming webinars scheduled right now — check back soon, or follow {{ with $.Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener">Slack</a>{{ else }}our Slack{{ end }} for announcements.</p>
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="about-block">
+    <span class="resources-category-eyebrow">Past</span>
+    {{ if $past }}
+    <div class="webinar-grid">
+      {{ range $past }}{{ partial "webinars/card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <div class="webinar-empty-state">
+      <p>No past webinars yet — this is a new series, and recordings will show up here after each session.</p>
+    </div>
+    {{ end }}
+  </div>
+
+</div>
+{{ end }}
