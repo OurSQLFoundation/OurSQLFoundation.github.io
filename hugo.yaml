@@ -36,6 +36,7 @@ params:
     category_id: "DIC_kwDOSeSzss4DFPF-"
 
 buildFuture: true
+enableRobotsTXT: true
 
 markup:
   goldmark:
