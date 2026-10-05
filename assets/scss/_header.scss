@@ -195,6 +195,18 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   z-index: 10;
 
+  // Invisible bridge over the margin-top gap: without it the cursor leaves
+  // the hovered .nav-item--dropdown on its way down (easy to do with a
+  // touchpad) and the menu closes before an item can be reached.
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    right: 0;
+    height: 0.5rem;
+  }
+
   a {
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
@@ -291,6 +303,8 @@
     background: none;
     padding: 0 0 0 1rem;
     margin: 0;
+
+    &::before { display: none; }
 
     a {
       padding: 0.625rem 1rem;
