@@ -21,17 +21,31 @@
 <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }} — {{ $.Title }}">
 {{ end }}
 
-{{/* ── OG image: front matter → default social cover ── */}}
+{{/* ── OG image: `image` → first of `images` → default social cover ── */}}
 {{ $ogImage := "" }}
+{{ $ogW := 1200 }}
+{{ $ogH := 630 }}
 {{ if .Params.image }}
   {{ $res := resources.Get .Params.image }}
   {{ if not $res }}{{ $res = .Resources.Get .Params.image }}{{ end }}
   {{ with $res }}
     {{ $ogImage = (. | fingerprint).Permalink }}
   {{ end }}
-{{ else if .Params.images }}
-  {{ $ogImage = absURL (index .Params.images 0) }}
-{{ else }}
+{{ end }}
+{{ if and (not $ogImage) .Params.images }}
+  {{/* `images` entries are filenames inside the page's own bundle (logo.png, banner.jpg,
+       photo.jpg…), so they must go through .Resources — absURL on a bare filename
+       points at the site root and 404s. */}}
+  {{ $file := index .Params.images 0 }}
+  {{ $res := .Resources.Get $file }}
+  {{ if not $res }}{{ $res = resources.Get (strings.TrimPrefix "/" $file) }}{{ end }}
+  {{ with $res }}
+    {{ $ogImage = (. | fingerprint).Permalink }}
+    {{ $ogW = .Width }}
+    {{ $ogH = .Height }}
+  {{ end }}
+{{ end }}
+{{ if not $ogImage }}
   {{ $cover := resources.Get "images/social_cover.jpg" }}
   {{ if $cover }}
     {{ $ogImage = ($cover | fingerprint).Permalink }}
@@ -47,8 +61,8 @@
 <meta property="og:locale" content="en_US">
 {{ with $ogImage }}
 <meta property="og:image" content="{{ . }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="{{ $ogW }}">
+<meta property="og:image:height" content="{{ $ogH }}">
 {{ end }}
 
 {{/* ── Article meta (blog posts only) ── */}}
@@ -60,7 +74,7 @@
 {{ end }}
 
 {{/* ── Twitter Card ── */}}
-<meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:card" content="{{ if and $ogImage (ge (div (float $ogW) (float $ogH)) 1.4) }}summary_large_image{{ else }}summary{{ end }}">
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta name="twitter:description" content="{{ $desc }}">
 {{ with $ogImage }}<meta name="twitter:image" content="{{ . }}">{{ end }}
