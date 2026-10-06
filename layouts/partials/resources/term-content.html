@@ -72,7 +72,7 @@
         {{ end }}
         {{ with .Params.subcategories }}
         <div class="resource-tags">
-          {{ range . }}<a href="{{ "/subcategories/" | relURL }}{{ . | urlize }}/" class="resource-tag">{{ . }}</a>{{ end }}
+          {{ range . }}<a href="{{ partialCached "resources/term-url.html" (dict "path" "subcategories" "value" .) "subcategories" . }}" class="resource-tag">{{ . }}</a>{{ end }}
         </div>
         {{ end }}
       </div>
