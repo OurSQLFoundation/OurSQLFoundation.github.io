@@ -1,0 +1,19 @@
+{{/*
+  Returns the URL of a taxonomy term page. Input: dict "path" "value", e.g.
+  (dict "path" "subcategories" "value" "Database Management & GUI").
+
+  Don't build these links with `urlize`: Hugo names the generated term
+  directory differently from what `urlize` returns whenever the value has
+  punctuation ("Database Management & GUI" is generated at
+  /subcategories/database-management--gui/, `urlize` gives
+  database-management-gui), so every such link 404s. Asking the term page for
+  its own RelPermalink can't drift out of sync with what Hugo emits.
+*/}}
+{{ $url := "" }}
+{{ with site.GetPage (printf "/%s" .path) }}
+  {{ range .Pages }}
+    {{ if eq (lower .Title) (lower $.value) }}{{ $url = .RelPermalink }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if not $url }}{{ $url = printf "/%s/%s/" .path (.value | urlize) | relURL }}{{ end }}
+{{ return $url }}
