@@ -11,6 +11,8 @@ roles:
 - Author
 - Speaker
 - Contributor
+images:
+- photo.jpg
 ---
 
 Baron Schwartz is a database performance and scalability expert, known online as Xaprb. He is a co-author of *High Performance MySQL* (see the [3rd edition](/resources/books/high-performance-mysql-3rd/)) and the original author of [innotop](/resources/software/innotop/), the terminal monitor for MySQL. He also created Maatkit and Aspersa, the two toolkits that Percona forked in 2011 to become [Percona Toolkit](/resources/software/percona-toolkit/).
