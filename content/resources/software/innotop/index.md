@@ -21,6 +21,6 @@ innotop is a "top" clone for MySQL: a command-line monitor that refreshes contin
 
 It can watch many servers at once and aggregate across them, is fully customizable (it even has a plugin interface), and can also run non-interactively for pipe-and-filter use in scripts. The manual is embedded in the program itself and is available through `perldoc` and `man`. It's written in Perl, needs only a handful of common modules (DBI, DBD::mysql, Term::ReadKey, and Time::HiRes), and is packaged for Debian, Ubuntu, Gentoo, and FreeBSD.
 
-The tool was originally written by Baron Schwartz in 2006 and remains actively maintained on GitHub — the 1.16.0 release (May 2026) reworked query `EXPLAIN` support and added `EXPLAIN ANALYZE`, following earlier releases that added MySQL 8.0 and 9.x compatibility, SSL, and Group Replication support. Its user-statistics mode also surfaces the table and index statistics added by Percona Server and MariaDB.
+The tool was originally written by [Baron Schwartz](/resources/member-directory/people/baron-schwartz/) in 2006 and remains actively maintained on GitHub — the 1.16.0 release (May 2026) reworked query `EXPLAIN` support and added `EXPLAIN ANALYZE`, following earlier releases that added MySQL 8.0 and 9.x compatibility, SSL, and Group Replication support. Its user-statistics mode also surfaces the table and index statistics added by Percona Server and MariaDB.
 
 It's released under the GPL-2.0 license (the source also offers the Perl Artistic License as an alternative).
