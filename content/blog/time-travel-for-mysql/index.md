@@ -12,9 +12,9 @@ hero_image: false
 
 I have been working with databases for almost 20 years, ten of them at Percona. To be honest, a lot of that time was not really "working" with databases. It was suffering with them. Especially in one moment: when somebody comes to you and says, "I think I deleted something I should not."
 
-You know this moment. An UPDATE with the wrong WHERE. A DELETE typed in the wrong terminal tab. It touched 40 rows, maybe 200. Not a disaster for the business, but a disaster for your evening.
+You know this moment. An `UPDATE` with the wrong `WHERE`. A `DELETE` typed in the wrong terminal tab. It touched 40 rows, maybe 200. Not a disaster for the business, but a disaster for your evening.
 
-The options are not nice. Restore a full backup somewhere and replay binlogs until just before the bad statement. Or open mysqlbinlog and start digging: find the right files, find the position, decode, grep, and map @1, @2, @3 back to column names by hand, because the binlog doesn't have them. For a few rows. Hours of work.
+The options are not nice. Restore a full backup somewhere and replay binlogs until just before the bad statement. Or open `mysqlbinlog` and start digging: find the right files, find the position, decode, grep, and map `@1`, `@2`, `@3` back to column names by hand, because the binlog doesn't have them. For a few rows. Hours of work.
 
 And all this time the old values were right there. With row-based binlog and full row image, MySQL already writes the before and after image of every changed row. The data was never the problem. Finding it fast and putting it back correctly was the problem.
 
@@ -22,9 +22,9 @@ But there is a case where even the data is not there.
 
 ## The deletes your binlog never saw
 
-Take a normal schema: a speakers table, child tables like talks, and talks has its own children. Everything is connected with ON DELETE CASCADE.
+Take a normal schema: a `speakers` table, child tables like `talks`, and `talks` has its own children. Everything is connected with `ON DELETE CASCADE`.
 
-You delete one speaker. MySQL answers: 1 row affected.
+You delete one speaker. MySQL answers: `1 row affected`.
 
 In my test schema, that one statement removed 12 rows.
 
@@ -41,7 +41,7 @@ On **October 15, 2026, at 10:00 AM ET / 16:00 CEST**, I will do a mostly live de
 - break some data on purpose, and then find exactly which rows changed and when
 - look at a table as it was at a moment in the past, with plain SQL
 - get back the cascade-deleted rows that MySQL doesn't tell you about
-- survive an ALTER TABLE that happened between the mistake and the recovery
+- survive an `ALTER TABLE` that happened between the mistake and the recovery
 - check if the captured history can be trusted *before* you use it for recovery (please don't skip this step in real life)
 - and yes, ask an AI agent in plain English to fix a delete for us, and see what it does
 
