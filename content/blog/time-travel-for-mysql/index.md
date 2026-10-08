@@ -50,5 +50,3 @@ All of it with [dbtrail](/resources/software/dbtrail/), an open source tool I wr
 I will also talk honestly about where this approach doesn't fit and what you should still keep doing the old way.
 
 [**Register here**](https://us06web.zoom.us/webinar/register/WN_AYk4qjMBTU2ofrY_hkpXvQ), and bring your worst recovery story. I'm sure I have a worse one.
-
-*Daniel Guzmán Burgos, creator of dbtrail*
