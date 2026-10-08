@@ -1202,6 +1202,32 @@
     }
   }
 
+  // Member Directory: featured link + adopters table
+  .resources-featured-link {
+    background: #ffffff;
+    border-color: rgba(2, 114, 165, 0.3);
+    &:hover { border-color: rgba(2, 114, 165, 0.6); }
+  }
+  .resources-featured-link-title { color: #0f172a; }
+  .resources-featured-link-desc { color: #64748b; }
+  .resources-featured-link-cta { color: #0272a5; }
+
+  .adopters-search {
+    background: #ffffff;
+    border-color: #dde3ed;
+    color: #0f172a;
+  }
+  .adopters-count { color: #64748b; }
+  .adopters-table-wrap { background: #ffffff; border-color: #dde3ed; }
+  .adopters-table {
+    th { background: #f1f4f9; color: #64748b; border-bottom-color: #dde3ed; }
+    td { color: #0f172a; border-bottom-color: #dde3ed; }
+    tbody tr:hover td { background: #f6f8fc; }
+    .adopters-usecase { color: #334155; }
+    .adopters-ref a { color: #0272a5; }
+    @media (max-width: 768px) { tr { border-bottom-color: #dde3ed; } }
+  }
+
   .author-card {
     background: #ffffff;
     border-color: #dde3ed;
