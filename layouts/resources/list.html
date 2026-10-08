@@ -127,6 +127,16 @@
     {{ with .Description }}<p class="resources-section-desc">{{ . }}</p>{{ end }}
   </div>
 
+  {{ with .Params.featured_link }}
+  <a href="{{ .url }}" class="resources-featured-link">
+    <span class="resources-featured-link-text">
+      <span class="resources-featured-link-title">{{ .title }}</span>
+      {{ with .description }}<span class="resources-featured-link-desc">{{ . }}</span>{{ end }}
+    </span>
+    <span class="resources-featured-link-cta">View the list →</span>
+  </a>
+  {{ end }}
+
   {{ $pages := .Pages }}
   {{ if eq .Params.sort "date" }}
     {{ $pages = $pages.ByDate.Reverse }}

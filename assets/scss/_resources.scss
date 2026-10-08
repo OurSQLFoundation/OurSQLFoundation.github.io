@@ -1950,3 +1950,162 @@ body.sheet-open {
     overflow: hidden;
   }
 }
+
+// ── Member Directory: featured link banner ─────────────────────────────────
+
+.resources-featured-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  background: $dark-card;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.6);
+    box-shadow: 0 6px 24px rgba($accent, 0.07);
+  }
+
+  @media (max-width: $break-md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.resources-featured-link-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.resources-featured-link-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: $off-white;
+}
+
+.resources-featured-link-desc {
+  font-size: 0.9rem;
+  color: $muted;
+}
+
+.resources-featured-link-cta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $accent;
+  white-space: nowrap;
+}
+
+// ── Member Directory: MySQL Adopters table ─────────────────────────────────
+
+.adopters-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.adopters-search {
+  flex: 1 1 280px;
+  max-width: 420px;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  font-size: 0.9375rem;
+  color: $off-white;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+    border-color: rgba($accent, 0.6);
+  }
+}
+
+.adopters-count {
+  font-size: 0.875rem;
+  color: $muted;
+}
+
+.adopters-table-wrap {
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.adopters-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+
+  th {
+    text-align: left;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $muted;
+    background: $dark-surface;
+    border-bottom: 1px solid $dark-border;
+  }
+
+  td {
+    padding: 0.95rem 1.1rem;
+    vertical-align: top;
+    color: $off-white;
+    line-height: 1.55;
+    border-bottom: 1px solid $dark-border;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba($accent, 0.03); }
+  tr[hidden] { display: none; }
+
+  .adopters-company { font-weight: 600; white-space: nowrap; }
+  .adopters-industry { white-space: nowrap; }
+  .adopters-usecase { color: lighten($muted, 28%); }
+  .adopters-ref { white-space: nowrap; }
+
+  .adopters-ref a {
+    color: $accent;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+
+  @media (max-width: $break-md) {
+    thead { display: none; }
+
+    tbody, tr, td { display: block; }
+
+    tr {
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid $dark-border;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    td {
+      padding: 0.2rem 0;
+      border-bottom: none;
+      white-space: normal !important;
+    }
+
+    .adopters-company { font-size: 1.0625rem; }
+    .adopters-industry { margin: 0.15rem 0 0.35rem; }
+    .adopters-ref { margin-top: 0.4rem; }
+  }
+}
+
+.adopters-note {
+  margin-top: 1.5rem;
+  color: $muted;
+}
