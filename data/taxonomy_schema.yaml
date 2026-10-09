@@ -60,7 +60,7 @@ saas:
     - key: cloud_provider
       path: cloud-providers
       label: Cloud provider
-      values: [AWS, Azure, GCP, DigitalOcean, Vultr, Multi-Cloud, Private Cloud]
+      values: [AWS, Azure, GCP, Oracle Cloud, DigitalOcean, Vultr, Multi-Cloud, Private Cloud]
     - key: compliance
       path: compliance
       label: Compliance
