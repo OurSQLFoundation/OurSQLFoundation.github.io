@@ -92,7 +92,7 @@ The full description (Markdown body, under the front matter) renders as the "Abo
 
 **`content/resources/saas/`** — subcategories: Managed Databases · Monitoring SaaS · Backup & Recovery SaaS · Migration & Replication SaaS · Developer Platforms · Security & Compliance SaaS
 ```yaml
-cloud-providers: ["AWS"]        # AWS, Azure, GCP, Oracle Cloud, DigitalOcean, Vultr, Multi-Cloud, Private Cloud
+cloud-providers: ["AWS"]        # AWS, Azure, GCP, DigitalOcean, Vultr, Multi-Cloud, Private Cloud
 compliance: ["SOC 2"]           # SOC 2, HIPAA, GDPR, PCI DSS
 pricing: ["Pay-as-you-go"]      # Pay-as-you-go, Subscription, Free Tier Available
 compatibility: ["MySQL"]        # MySQL, MariaDB, Percona Server, TiDB, Vitess

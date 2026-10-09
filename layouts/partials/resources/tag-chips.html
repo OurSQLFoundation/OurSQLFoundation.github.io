@@ -34,6 +34,6 @@
 {{ end }}
 {{ with $chips }}
 <div class="resource-tags">
-  {{ range . }}<a href="{{ printf "/%s/" .path | relURL }}{{ .value | urlize }}/" class="resource-tag">{{ .value }}</a>{{ end }}
+  {{ range . }}<a href="{{ partialCached "resources/term-url.html" . .path .value }}" class="resource-tag">{{ .value }}</a>{{ end }}
 </div>
 {{ end }}

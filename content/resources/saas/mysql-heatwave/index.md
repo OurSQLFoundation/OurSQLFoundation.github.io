@@ -1,13 +1,13 @@
 ---
 title: "MySQL HeatWave"
-link: "https://www.oracle.com/mysql/heatwave/"
-description: "Oracle's fully managed MySQL cloud database service, combining transaction processing, real-time analytics, machine learning, and generative AI in one engine without ETL duplication — available on OCI, AWS, and Azure."
+link: "https://www.oracle.com/mysql/"
+description: "Oracle's fully managed MySQL cloud database with a built-in in-memory query accelerator for real-time analytics, generative AI, and ML — deployable on OCI, AWS, and Azure."
 subcategories:
   - Managed Databases
 cloud-providers:
-  - Oracle Cloud
   - AWS
   - Azure
+  - Multi-Cloud
 pricing:
   - Pay-as-you-go
 compatibility:
@@ -16,6 +16,6 @@ images:
   - logo.png
 ---
 
-MySQL HeatWave is developed, managed, and supported by the MySQL team inside Oracle as a fully managed, Oracle Cloud Infrastructure–native service, and is also available natively on AWS and, via Oracle Database Service for Azure, on Microsoft Azure. Oracle automates provisioning, backup and recovery, and database/OS patching, while customers manage their own data, schema design, and access policies.
+MySQL HeatWave is Oracle's fully managed MySQL database service built around an in-memory query accelerator that runs real-time analytics directly on transactional data, without extracting it into a separate analytics database. The same service adds in-database large language models, a vector store, and machine learning for building generative-AI and ML applications against MySQL data, plus a Lakehouse capability for querying data held in object storage alongside the transactional and analytical engines.
 
-Because it's built on the same MySQL engine, workloads are fully compatible with on-premises MySQL — letting teams keep OLTP applications on-premises and offload analytics, machine learning, and GenAI workloads to HeatWave in the cloud, or run the whole stack there. The HeatWave engine adds in-memory analytics acceleration, a Lakehouse feature for querying data directly from object storage, and built-in generative AI and machine learning without moving data to a separate analytics platform.
+It can be deployed on Oracle Cloud Infrastructure (OCI), Amazon Web Services (AWS), or Microsoft Azure, billed on a pay-as-you-go, per-hour compute and storage basis, with a free 30-day, $300-credit trial for new users.
