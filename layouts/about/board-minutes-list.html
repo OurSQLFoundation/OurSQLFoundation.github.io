@@ -12,14 +12,13 @@
 
   <span class="newsroom-eyebrow">Governance</span>
   <h1>{{ .Title }}</h1>
-  <p class="page-intro">Minutes of meetings of the <a href="/about/founding-board/">Board of Directors</a> of the OurSQL Foundation. Public versions leave out confidential and internal administrative matters.</p>
+  <p class="page-intro">Minutes of meetings of the <a href="/about/founding-board/">Board of Directors</a> of the OurSQL Foundation.</p>
 
   <div class="press-card-list">
     {{ range .Pages.ByDate.Reverse }}
     <a href="{{ .RelPermalink }}" class="press-card">
       <div class="press-card-meta">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-        <span class="press-card-meta-sep">·</span><span>Public version</span>
       </div>
       <h2 class="press-card-title">{{ .Title }}</h2>
       {{ with .Description }}<p class="press-card-desc">{{ . }}</p>{{ end }}

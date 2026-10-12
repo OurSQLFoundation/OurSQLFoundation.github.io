@@ -3,10 +3,10 @@ title: "Minutes of the Board of Directors — June 11, 2026"
 url: "/about/founding-board/minutes/2026-06-11/"
 layout: "board-minutes"
 date: 2026-06-11
-description: "Public version of the minutes of the OurSQL Foundation Board of Directors meeting held by videoconference on June 11, 2026."
+description: "Minutes of the OurSQL Foundation Board of Directors meeting held by videoconference on June 11, 2026."
 ---
 
-OurSQL Foundation, a Delaware nonprofit nonstock corporation. Meeting of the Board of Directors, held by videoconference on June 11, 2026. This public version omits confidential and internal administrative matters.
+OurSQL Foundation, a Delaware nonprofit nonstock corporation. Meeting of the Board of Directors, held by videoconference on June 11, 2026.
 
 ## 1. Call to order and quorum
 
