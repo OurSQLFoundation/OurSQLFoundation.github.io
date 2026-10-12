@@ -1,0 +1,28 @@
+{{/* A single set of Board minutes, using the blog's article typography. */}}
+{{ define "main" }}
+<article class="post-layout">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/founding-board/">Founding Board</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+  </nav>
+
+  <header class="post-header">
+    <div class="post-tags"><span class="tag">Board minutes</span></div>
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <span>OurSQL Foundation</span>
+      <span class="dot"></span>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  <div class="post-footer">
+    <a href="{{ .Parent.RelPermalink }}" class="back-link">← All board minutes</a>
+  </div>
+</article>
+{{ end }}

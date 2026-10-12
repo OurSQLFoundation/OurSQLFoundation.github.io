@@ -1,0 +1,30 @@
+{{/* Board of Directors minutes — one card per meeting, newest first.
+     Reuses the press-release card list. */}}
+{{ define "main" }}
+<div class="page-layout news-page">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/about/mission-vision/">About</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <a href="/about/founding-board/">Founding Board</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <span class="newsroom-eyebrow">Governance</span>
+  <h1>{{ .Title }}</h1>
+  <p class="page-intro">Minutes of meetings of the <a href="/about/founding-board/">Board of Directors</a> of the OurSQL Foundation.</p>
+
+  <div class="press-card-list">
+    {{ range .Pages.ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="press-card">
+      <div class="press-card-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      </div>
+      <h2 class="press-card-title">{{ .Title }}</h2>
+      {{ with .Description }}<p class="press-card-desc">{{ . }}</p>{{ end }}
+      <span class="press-card-link">Read the minutes →</span>
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
