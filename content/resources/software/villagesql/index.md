@@ -28,4 +28,4 @@ VillageSQL is **in alpha**: its README says it is meant for development and test
 
 It currently tracks MySQL 8.4 and 9.7, and a Percona Server 8.4 build is published alongside the MySQL ones. You can install it with a shell installer, a Docker image (`villagesql/server`, for both Intel and ARM, with tags for the Percona 8.4 build and for MySQL 9.7), or by building from source on Debian, Ubuntu, or macOS.
 
-The server is released under the GPL-2.0 license, the same as MySQL, and is free for any use. It is developed by VillageSQL Inc., founded in 2025. Tomas Ulin, who is Village Oracle at VillageSQL, is the [Treasurer of the OurSQL Foundation](/resources/member-directory/people/tomas-ulin/), and the project lists the Foundation on its own site as one it supports.
+The server is released under the GPL-2.0 license, the same as MySQL, and is free for any use. It is developed by VillageSQL Inc., founded in 2025. The project lists the OurSQL Foundation on its own site as one it supports.
