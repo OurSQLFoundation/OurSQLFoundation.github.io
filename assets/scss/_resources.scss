@@ -498,6 +498,13 @@
   color: $off-white;
 }
 
+.resource-author-link {
+  color: $accent;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
 .resource-meta-source {
   font-size: 0.75rem;
   font-weight: 600;
