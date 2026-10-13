@@ -44,7 +44,9 @@
          catalog page when a matching resource already exists (company_url /
          project_url); otherwise it renders as plain text. */}}
     {{ if in .Params.subcategories "People" }}
-    {{ if or .Params.company .Params.project }}
+    {{/* Books in the catalog that list this person as an author */}}
+    {{ $books := where (where .Site.RegularPages "Params.authors" "intersect" (slice .Title)) "Params.subcategories" "intersect" (slice "Books") }}
+    {{ if or .Params.company .Params.project $books }}
     <div class="person-meta">
       {{ with .Params.company }}
       <div class="person-meta-row">
@@ -58,6 +60,12 @@
         {{ with $.Params.project_url }}<a href="{{ . }}" class="person-meta-link">{{ $.Params.project }}</a>{{ else }}<span class="person-meta-value">{{ . }}</span>{{ end }}
       </div>
       {{ end }}
+      {{ with $books }}
+      <div class="person-meta-row">
+        <span class="person-meta-label">{{ if gt (len .) 1 }}Books{{ else }}Book{{ end }}</span>
+        <span class="person-meta-value">{{ range $i, $b := .ByTitle }}{{ if $i }}, {{ end }}<a href="{{ $b.RelPermalink }}" class="person-meta-link">{{ $b.Title }}</a>{{ end }}</span>
+      </div>
+      {{ end }}
     </div>
     {{ end }}
     {{ end }}
@@ -65,7 +73,7 @@
     {{/* Metadata */}}
     {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.format .Params.city .Params.countries .Date }}
     <div class="resource-card-meta">
-      {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
+      {{ with .Params.authors }}<span class="resource-meta-author">{{ partial "resources/author-links.html" . }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
       {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
       {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
       {{ with .Params.format }}<span class="resource-meta-badge resource-meta-badge--{{ . | urlize }}">{{ if eq . "online" }}Online{{ else }}In-person{{ end }}</span>{{ end }}
