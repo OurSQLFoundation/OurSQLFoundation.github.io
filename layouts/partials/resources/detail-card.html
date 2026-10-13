@@ -207,7 +207,7 @@
           {{ with $val }}
           <div class="resource-detail-panel-row">
             <span class="resource-detail-panel-label">{{ $f.label }}</span>
-            <span class="resource-detail-panel-value">{{ . }}</span>
+            <span class="resource-detail-panel-value">{{ if $f.people }}{{ partial "resources/author-links.html" $raw }}{{ else }}{{ . }}{{ end }}</span>
           </div>
           {{ end }}
 

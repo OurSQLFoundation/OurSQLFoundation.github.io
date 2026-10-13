@@ -127,6 +127,16 @@
     {{ with .Description }}<p class="resources-section-desc">{{ . }}</p>{{ end }}
   </div>
 
+  {{ with .Params.featured_link }}
+  <a href="{{ .url }}" class="resources-featured-link">
+    <span class="resources-featured-link-text">
+      <span class="resources-featured-link-title">{{ .title }}</span>
+      {{ with .description }}<span class="resources-featured-link-desc">{{ . }}</span>{{ end }}
+    </span>
+    <span class="resources-featured-link-cta">View the list →</span>
+  </a>
+  {{ end }}
+
   {{ $pages := .Pages }}
   {{ if eq .Params.sort "date" }}
     {{ $pages = $pages.ByDate.Reverse }}
@@ -294,7 +304,7 @@
             {{ with .Description }}<p class="resource-card-desc">{{ . }}</p>{{ end }}
             {{ if or .Params.authors .Params.author .Params.year .Params.source .Params.city .Params.countries .Date }}
             <div class="resource-card-meta">
-              {{ with .Params.authors }}<span class="resource-meta-author">{{ delimit . ", " }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
+              {{ with .Params.authors }}<span class="resource-meta-author">{{ partial "resources/author-links.html" . }}</span>{{ else }}{{ with .Params.author }}<span class="resource-meta-author">{{ . }}</span>{{ end }}{{ end }}
               {{ with .Params.year }}<span class="resource-card-date">{{ . }}</span>{{ end }}
               {{ with .Params.source }}<span class="resource-meta-source">{{ . }}</span>{{ end }}
               {{ $loc := slice }}

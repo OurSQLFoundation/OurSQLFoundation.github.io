@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{/* MySQL Adopters — a table of organizations running MySQL in production,
+     driven by the `adopters` list in the page's front matter. */}}
+<div class="resources-section adopters-page">
+  <div class="resources-section-header">
+    <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+      <a href="/resources/">Resources</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>{{ .Title }}</span>
+    </nav>
+    <h1 class="resources-section-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="resources-section-desc">{{ . }}</p>{{ end }}
+  </div>
+
+  {{ $rows := .Params.adopters }}
+
+  <div class="adopters-toolbar">
+    <input type="search" id="adopters-search" class="adopters-search" placeholder="Search by company, industry, or use case…" autocomplete="off" aria-label="Search adopters">
+    <div class="adopters-count" id="adopters-count" aria-live="polite">{{ len $rows }} organizations</div>
+  </div>
+
+  <div class="adopters-table-wrap">
+    <table class="adopters-table" id="adopters-table">
+      <thead>
+        <tr>
+          <th scope="col">Company</th>
+          <th scope="col">Industry</th>
+          <th scope="col">Use case</th>
+          <th scope="col">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $rows }}
+        <tr data-search="{{ printf "%s %s %s" .company .industry .use_case | lower }}">
+          <td class="adopters-company" data-label="Company">{{ .company }}</td>
+          <td class="adopters-industry" data-label="Industry"><span class="resource-tag">{{ .industry }}</span></td>
+          <td class="adopters-usecase" data-label="Use case">{{ .use_case }}</td>
+          <td class="adopters-ref" data-label="Reference"><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .reference }} →</a></td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+    <div class="empty-state" id="adopters-empty" hidden>
+      <h3>No organizations match your search</h3>
+    </div>
+  </div>
+
+  {{ with .Content }}<div class="adopters-note post-content">{{ . }}</div>{{ end }}
+
+  <div class="resources-suggest-footer">
+    <a href="/resources/contribute/" class="resource-suggest-btn">Suggest an adopter</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('adopters-search');
+  var rows = document.querySelectorAll('#adopters-table tbody tr');
+  var count = document.getElementById('adopters-count');
+  var empty = document.getElementById('adopters-empty');
+  var table = document.getElementById('adopters-table');
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase(), n = 0;
+    rows.forEach(function (r) {
+      var show = !q || r.getAttribute('data-search').indexOf(q) !== -1;
+      r.hidden = !show;
+      if (show) n++;
+    });
+    count.textContent = n + (n === 1 ? ' organization' : ' organizations');
+    empty.hidden = n !== 0;
+    table.hidden = n === 0;
+  });
+})();
+</script>
+{{ end }}

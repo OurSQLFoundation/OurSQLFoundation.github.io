@@ -88,7 +88,7 @@ books:
   fields:
     - {key: category, label: Category, type: category}
     - {key: subcategory, label: Subcategory, type: subcategory}
-    - {key: authors, label: Authors, type: text, param: authors, list: true}
+    - {key: authors, label: Authors, type: text, param: authors, list: true, people: true}
     - {key: year, label: Year, type: text, param: year}
     - {key: website, label: Website, type: domain_link, param: link}
     - {key: last_reviewed, label: "Last reviewed", type: last_reviewed, param: last_reviewed}

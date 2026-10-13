@@ -7,4 +7,8 @@ sort: title
 title: Member Directory
 weight: 8
 count_label: "Members · Adopters · People"
+featured_link:
+  title: "MySQL Adopters"
+  description: "Organizations running MySQL in production, each backed by a public source."
+  url: "/member-directory/adopters/"
 ---

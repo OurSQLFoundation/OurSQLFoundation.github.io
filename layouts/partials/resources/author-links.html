@@ -1,0 +1,21 @@
+{{/*
+  Renders a list of author names, linking each one to their People profile
+  in the Member Directory when a profile with exactly that title exists.
+  Input: a list of author names.
+*/}}
+{{ $people := slice }}
+{{ with site.GetPage "/resources/member-directory" }}
+  {{ $people = where .Pages "Params.subcategories" "intersect" (slice "People") }}
+{{ end }}
+{{ $out := slice }}
+{{ range . }}
+  {{ $name := . }}
+  {{ $link := "" }}
+  {{ range $people }}{{ if eq .Title $name }}{{ $link = .RelPermalink }}{{ end }}{{ end }}
+  {{ if $link }}
+    {{ $out = $out | append (printf `<a href="%s" class="resource-author-link">%s</a>` $link ($name | htmlEscape)) }}
+  {{ else }}
+    {{ $out = $out | append ($name | htmlEscape) }}
+  {{ end }}
+{{ end }}
+{{ delimit $out ", " | safeHTML }}
