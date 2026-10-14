@@ -6,6 +6,8 @@ tags:
 - Interview
 author: "Maria Nesterova"
 author_page: "/resources/member-directory/maria-nesterova"
+image: "cover.jpg"
+hero_image: false
 interview:
   guest_page: "/resources/member-directory/zongzhi-chen"
   interviewer_page: "/resources/member-directory/maria-nesterova"
