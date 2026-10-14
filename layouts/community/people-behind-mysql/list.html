@@ -1,0 +1,34 @@
+{{/* People Behind MySQL — interview cards. Interviews are blog articles
+     (tagged "Interview") with an `interview` block in front matter; they are
+     collected here from the whole site, newest interview first. */}}
+{{ define "main" }}
+{{ $interviews := where site.RegularPages "Params.interview" "!=" nil }}
+{{ $interviews = sort $interviews "Params.interview.interview_date" "desc" }}
+
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/community/">Community</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <div class="about-hero about-prose">
+    <h1>{{ .Title }}</h1>
+    <p class="about-hero-sub">{{ .Description }}</p>
+  </div>
+
+  <div class="about-block">
+    {{ if $interviews }}
+    <div class="interview-grid">
+      {{ range $interviews }}{{ partial "interviews/card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <div class="webinar-empty-state">
+      <p>The first interviews are on their way — check back soon.</p>
+    </div>
+    {{ end }}
+  </div>
+
+</div>
+{{ end }}

@@ -1203,6 +1203,19 @@
     }
   }
 
+  // People Behind MySQL
+  .interview-card, .interview-strip { background: #ffffff; border-color: #dde3ed; }
+  .interview-card:hover { border-color: rgba(2, 114, 165, 0.4); }
+  .interview-card-people { background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), rgba(0, 200, 255, 0.02) 70%); border-bottom-color: #dde3ed; }
+  .interview-card-footer { border-top-color: #dde3ed; }
+  .interview-avatar { border-color: #ffffff; background: #eef2f7; }
+  .interview-avatar--initials { color: #0272a5; background: rgba(0, 200, 255, 0.16); }
+  .interview-card-guest, .interview-card-title, .interview-strip-line { color: #0f172a; }
+  .interview-card-role, .interview-card-desc, .interview-strip-sub { color: #64748b; }
+  .interview-card-date, .interview-card-cta, .interview-strip-line a { color: #0272a5; }
+  .interview-format { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
+  .interview-strip-btn { background: #0272a5; color: #ffffff; }
+
   // Member Directory: featured link + adopters table
   .resources-featured-link {
     background: #ffffff;

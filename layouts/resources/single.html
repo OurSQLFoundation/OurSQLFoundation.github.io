@@ -46,7 +46,11 @@
     {{ if in .Params.subcategories "People" }}
     {{/* Books in the catalog that list this person as an author */}}
     {{ $books := where (where .Site.RegularPages "Params.authors" "intersect" (slice .Title)) "Params.subcategories" "intersect" (slice "Books") }}
-    {{ if or .Params.company .Params.project $books }}
+    {{/* Interviews (People Behind MySQL) where this person is the guest */}}
+    {{ $slug := path.Base (strings.TrimSuffix "/" (path.Dir .File.Path)) }}
+    {{ $guestPath := printf "/resources/member-directory/%s" $slug }}
+    {{ $interviews := where site.RegularPages "Params.interview.guest_page" $guestPath }}
+    {{ if or .Params.company .Params.project $books $interviews }}
     <div class="person-meta">
       {{ with .Params.company }}
       <div class="person-meta-row">
@@ -58,6 +62,12 @@
       <div class="person-meta-row">
         <span class="person-meta-label">Project</span>
         {{ with $.Params.project_url }}<a href="{{ . }}" class="person-meta-link">{{ $.Params.project }}</a>{{ else }}<span class="person-meta-value">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+      {{ with $interviews }}
+      <div class="person-meta-row">
+        <span class="person-meta-label">Interview</span>
+        <span class="person-meta-value">{{ range $i, $iv := .ByDate.Reverse }}{{ if $i }}, {{ end }}<a href="{{ $iv.RelPermalink }}" class="person-meta-link">{{ $iv.Title }}</a>{{ end }}</span>
       </div>
       {{ end }}
       {{ with $books }}

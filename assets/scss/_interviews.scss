@@ -1,0 +1,213 @@
+// Community > People Behind MySQL — interview cards on the list page and the
+// interview strip on the article. Built on the webinar card language so it
+// reads as the same site.
+
+.interview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+// ── Avatars (interviewer + guest, overlapping) ──
+.interview-card-avatars {
+  --av: 64px;
+  display: inline-flex;
+  flex-shrink: 0;
+
+  .interview-avatar + .interview-avatar { margin-left: calc(var(--av) * -0.28); }
+}
+
+.interview-avatar {
+  width: var(--av, 64px);
+  height: var(--av, 64px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid $dark-card;
+  background: $dark-surface;
+  flex-shrink: 0;
+
+  &--initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(var(--av, 64px) * 0.34);
+    font-weight: 700;
+    color: $accent;
+    background: rgba($accent, 0.14);
+  }
+}
+
+// ── Card ──
+.interview-card {
+  display: flex;
+  flex-direction: column;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.3);
+    box-shadow: 0 6px 24px rgba($accent, 0.07);
+    transform: translateY(-2px);
+
+    .interview-card-cta { color: lighten($accent, 8%); }
+  }
+}
+
+.interview-card-people {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  background: linear-gradient(135deg, rgba($accent, 0.1), rgba($accent, 0.02) 70%);
+  border-bottom: 1px solid $dark-border;
+}
+
+.interview-card-names {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.interview-card-guest {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $off-white;
+}
+
+.interview-card-role {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+
+.interview-card-body {
+  flex: 1;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.interview-card-date {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: $accent;
+  margin-bottom: 0.5rem;
+}
+
+.interview-card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: $off-white;
+  margin: 0 0 0.5rem;
+}
+
+.interview-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: $muted;
+  margin: 0;
+}
+
+.interview-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  border-top: 1px solid $dark-border;
+}
+
+.interview-card-cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+// ── Format badges (Text / Video / Audio) ──
+.interview-formats {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.interview-format {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 100px;
+  padding: 0.2rem 0.6rem;
+}
+
+// ── Strip at the top of the interview article ──
+.interview-strip {
+  --av: 52px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+
+  .interview-card-avatars { --av: 52px; }
+}
+
+.interview-strip-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.interview-strip-line {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+
+  a { color: $accent; text-decoration: none; &:hover { text-decoration: underline; } }
+}
+
+.interview-strip-sub {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin-top: 0.15rem;
+
+  a { color: inherit; text-decoration: underline; &:hover { color: $accent; } }
+}
+
+.interview-strip-formats {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.interview-strip-btn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $dark-bg;
+  background: $accent;
+  border-radius: 100px;
+  padding: 0.25rem 0.8rem;
+  text-decoration: none;
+
+  &:hover { background: lighten($accent, 8%); }
+}
