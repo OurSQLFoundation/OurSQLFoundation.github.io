@@ -9,6 +9,9 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  // `clip` hides horizontal overflow without turning <body> into a scroll
+  // container, which would break `position: sticky` (e.g. the event page nav).
+  overflow-x: clip;
 }
 
 body {
@@ -35,6 +38,7 @@ img {
 @import "community";
 @import "webinars";
 @import "interviews";
+@import "event-landing";
 @import "home";
 @import "showcase";
 @import "footer";

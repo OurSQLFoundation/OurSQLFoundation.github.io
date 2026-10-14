@@ -23,6 +23,12 @@
           <a href="/news/press-releases/">Press Releases</a>
         </div>
       </div>
+      <div class="nav-item nav-item--dropdown{{ if or (hasPrefix .RelPermalink "/events") (hasPrefix .RelPermalink "/resources/events") }} active{{ end }}">
+        <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Events</button>
+        <div class="nav-dropdown-menu">
+          <a href="/resources/events/">Events Calendar</a>
+        </div>
+      </div>
       <div class="nav-item nav-item--dropdown{{ if hasPrefix .RelPermalink "/community" }} active{{ end }}">
         <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Community</button>
         <div class="nav-dropdown-menu">
@@ -33,7 +39,7 @@
           {{ with .Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener">Slack ↗</a>{{ end }}
         </div>
       </div>
-      <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) }}active{{ end }}">Resources</a>
+      <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) (not (hasPrefix .RelPermalink "/resources/events")) }}active{{ end }}">Resources</a>
       <a href="/resources/contribute/" class="nav-cta">Suggest a resource</a>
     </nav>
 

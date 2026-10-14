@@ -1,0 +1,46 @@
+---
+title: "DuckDB × MySQL Day"
+description: "DuckDB × MySQL Day. A free online conference by OurSQL Foundation, November 17, 2026. Explore fast analytics for MySQL with the people building it."
+hero_description: "A one-day online conference on bringing fast analytics to MySQL: columnar engines, analytical replication, Parquet, and the road to HTAP — from the people building it."
+date: 2026-11-17
+url: "/events/duckdb-mysql-day/"
+layout: "duckdb-mysql-day"
+# Set this to the real registration link when it exists; until then the
+# Register buttons open a "details coming soon" dialog.
+registration_url: ""
+strip:
+  - {icon: "↗", label: "SAVE THE DATE", value: "November 17, 2026"}
+  - {icon: "◎", label: "JOIN FROM ANYWHERE", value: "Online conference"}
+  - {icon: "✳", label: "OPEN TO EVERYONE", value: "Free to attend", yellow: true}
+about:
+  heading: "Where MySQL meets in-process analytics"
+  lead: "MySQL runs the transactions. Analytics has always meant another system bolted on the side."
+  intro: "DuckDB × MySQL Day brings together engineers from across the MySQL ecosystem to show what changes when a fast columnar engine sits right next to your MySQL data."
+  topics:
+    - {title: "Columnar engines on MySQL", text: "How DuckDB-based engines work alongside InnoDB, and where they fit."}
+    - {title: "Analytical replication", text: "Streaming MySQL changes into DuckDB and Parquet files for analysis."}
+    - {title: "The road to HTAP", text: "Twenty years of analytics on MySQL — and what DuckDB changes now."}
+speakers_intro: "Practitioners from Percona, Alibaba, MariaDB and dbtrail — more speakers to be announced."
+speakers:
+  - {name: "Vadim Tkachenko", company: "Percona", role: "Co-founder", photo: "vadim-tkachenko.jpg"}
+  - {name: "Zongzhi Chen", company: "Alibaba", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg"}
+  - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg"}
+  - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp"}
+schedule_label: "Approximate schedule · EST / CET"
+schedule:
+  - {est: "10:00–10:45", cet: "16:00–16:45", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
+  - {est: "10:45–11:30", cet: "16:45–17:30", track: "Columnar engines", title: "When MySQL meets DuckDB: Best practices for columnar engines on MySQL", speaker: "Zongzhi Chen"}
+  - {est: "11:30–12:15", cet: "17:30–18:15", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
+  - {est: "12:15–13:00", cet: "18:15–19:00", track: "More to come", title: "Talk title to be announced", speaker: "Roman Nozdrin"}
+schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
+topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics"]
+register:
+  eyebrow: "November 17, 2026 · Online · Free"
+  heading: "Ready to join us?"
+  text: "Registration is free. Save your spot and get the schedule and joining link straight to your inbox."
+involved_heading: "Three ways to be part of it"
+involved:
+  - {label: "FREE EVENT", title: "Register to attend", text: "Online, free, and open to everyone working with MySQL and analytics.", action: "Register now →", register: true}
+  - {label: "SPONSORSHIP OPEN", title: "Become a sponsor", text: "Put your company in front of engineers who run MySQL and care about analytics.", action: "contact@oursqlfoundation.org →", url: "mailto:contact@oursqlfoundation.org"}
+  - {label: "COMMUNITY", title: "Join the conversation", text: "Ask speakers questions and meet the community before and after the event in our Slack.", action: "Join Slack →", url: "https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA"}
+---
