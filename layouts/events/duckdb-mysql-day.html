@@ -1,0 +1,127 @@
+{{/*
+  DuckDB × MySQL Day landing page. Built from the supplied standalone HTML;
+  its styles live in assets/scss/_event-landing.scss, scoped under
+  .dmd-landing (and every class prefixed dmd-) so nothing leaks into the rest
+  of the site. Text, speakers and the schedule come from the page's front
+  matter. While registration_url is empty, every Register button opens the
+  "coming soon" dialog; set it and they become plain links.
+*/}}
+{{ define "main" }}
+{{ $reg := .Params.registration_url }}
+{{ $page := . }}
+<div class="dmd-landing">
+
+  <section class="dmd-hero"><div class="dmd-wrap">
+    <div class="dmd-breadcrumbs"><a href="/">Home</a><span>/</span><a href="/resources/events/">Events</a><span>/</span><span>{{ .Title }}</span></div>
+    <div class="dmd-hero-grid dmd-hero-original">
+      <div class="dmd-hero-copy">
+        <h1>DuckDB <span class="dmd-cross">×</span><br>MySQL <span class="dmd-gradient">Day</span><span class="dmd-title-dot">.</span></h1>
+        <p class="dmd-hero-desc">{{ .Params.hero_description }}</p>
+        <div class="dmd-hero-actions">
+          {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">Register for free <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>Register for free <span>↗</span></button>{{ end }}
+          <a class="dmd-text-link" href="#schedule">Schedule <span>↓</span></a>
+        </div>
+      </div>
+      {{ partial "events/duckdb-hero-art.html" . }}
+    </div>
+    <div class="dmd-event-strip">
+      {{ range .Params.strip }}<div><span class="dmd-strip-icon{{ if .yellow }} dmd-yellow{{ end }}">{{ .icon }}</span><p><small>{{ .label }}</small><strong>{{ .value }}</strong></p></div>{{ end }}
+      <a href="#speakers" class="dmd-strip-last">Meet the speakers <span>↓</span></a>
+    </div>
+  </div></section>
+
+  <div class="dmd-event-nav"><div class="dmd-wrap">
+    <a href="#about">01 <span>About</span></a><a href="#speakers">02 <span>Speakers</span></a><a href="#schedule">03 <span>Program</span></a><a href="#community">04 <span>Get involved</span></a>
+    {{ if $reg }}<a class="dmd-nav-register" href="{{ $reg }}" target="_blank" rel="noopener">Save your spot ↗</a>{{ else }}<button data-register>Save your spot ↗</button>{{ end }}
+  </div></div>
+
+  {{ with .Params.about }}
+  <section id="about" class="dmd-section dmd-about dmd-wrap">
+    <div class="dmd-about-heading"><p class="dmd-eyebrow">About the event</p><h2>{{ .heading }}</h2><p>{{ .lead }}</p></div>
+    <div class="dmd-about-body"><p>{{ .intro }}</p>
+      <div class="dmd-topic-rows">
+        {{ range $i, $t := .topics }}<div><span>{{ printf "%02d" (add $i 1) }}</span><p><b>{{ $t.title }}</b><small>{{ $t.text }}</small></p><span>↗</span></div>{{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ $speakers := .Params.speakers }}
+  <section id="speakers" class="dmd-speakers-section"><div class="dmd-wrap dmd-section">
+    <div class="dmd-section-heading"><div><p class="dmd-eyebrow">Speakers</p><h2>Meet the Speakers</h2></div><p>{{ .Params.speakers_intro }}</p></div>
+    <div class="dmd-speaker-grid">
+      {{ range $i, $s := $speakers }}
+      {{ $photo := $page.Resources.Get $s.photo }}
+      <a class="dmd-person" href="#talk-{{ $i }}" aria-label="View talk by {{ $s.name }}">
+        <div class="dmd-portrait">{{ with $photo }}{{ $img := .Fill "420x420 jpg q85" }}<img src="{{ $img.RelPermalink }}" alt="{{ $s.name }}" width="420" height="420" loading="lazy">{{ end }}<span class="dmd-photo-index">{{ printf "%02d" (add $i 1) }} / SPEAKER</span><span class="dmd-person-arrow">↗</span></div>
+        <div class="dmd-person-text"><p class="dmd-company">{{ $s.company }}</p><h3>{{ $s.name }}</h3><p class="dmd-role">{{ $s.role }}</p></div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="dmd-speaker-bottom"><span><i></i> More speakers to be announced</span></div>
+  </div></section>
+
+  <section id="schedule" class="dmd-section dmd-wrap dmd-schedule">
+    <div class="dmd-section-heading"><div><p class="dmd-eyebrow">The Schedule</p><h2>Schedule at a Glance</h2></div></div>
+    <p class="dmd-schedule-draft">{{ .Params.schedule_label }}</p>
+    <div class="dmd-agenda">
+      {{ range $i, $t := .Params.schedule }}
+      {{ $sp := dict }}
+      {{ range $speakers }}{{ if eq .name $t.speaker }}{{ $sp = . }}{{ end }}{{ end }}
+      <article class="dmd-talk" id="talk-{{ $i }}">
+        <div class="dmd-talk-num"><span class="dmd-time-est">{{ $t.est }}<small>EST</small></span><span class="dmd-time-cet">{{ $t.cet }}<small>CET</small></span></div>
+        <div class="dmd-talk-content"><span class="dmd-eyebrow">{{ $t.track }}</span><h3>{{ $t.title }}</h3>
+          <div class="dmd-talk-person">{{ with $sp.photo }}{{ with $page.Resources.Get . }}{{ $av := .Fill "96x96 jpg q85" }}<img src="{{ $av.RelPermalink }}" alt="" width="48" height="48" loading="lazy">{{ end }}{{ end }}<span>{{ $t.speaker }}<small>{{ $sp.company }}</small></span></div>
+        </div>
+        <span class="dmd-talk-arrow" aria-hidden="true">↗</span>
+      </article>
+      {{ end }}
+    </div>
+    <p class="dmd-schedule-note">{{ .Params.schedule_note }}</p>
+    <div class="dmd-topics">{{ range .Params.topic_tags }}<span>{{ . }}</span>{{ end }}</div>
+  </section>
+
+  {{ with .Params.register }}
+  <section class="dmd-register-section" id="register"><div class="dmd-wrap dmd-register-inner">
+    <div><p class="dmd-eyebrow">{{ .eyebrow }}</p><h2>{{ .heading }}</h2><p>{{ .text }}</p></div>
+    {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">Register for free <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>Register for free <span>↗</span></button>{{ end }}
+  </div><span class="dmd-register-orbit" aria-hidden="true"></span></section>
+  {{ end }}
+
+  <section id="community" class="dmd-section dmd-wrap dmd-community">
+    <div class="dmd-community-heading"><p class="dmd-eyebrow">Get Involved</p><h2>{{ .Params.involved_heading }}</h2></div>
+    <div class="dmd-community-grid">
+      {{ range .Params.involved }}
+      <div class="dmd-community-option"><span class="dmd-eyebrow">{{ .label }}</span><h3>{{ .title }}</h3><p>{{ .text }}</p>
+        {{ if .register }}{{ if $reg }}<a class="dmd-community-action" href="{{ $reg }}" target="_blank" rel="noopener">{{ .action }}</a>{{ else }}<button class="dmd-community-action" data-register>{{ .action }}</button>{{ end }}{{ else }}<a class="dmd-community-action" href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>{{ .action }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ if not $reg }}
+  <dialog id="registration">
+    <button class="dmd-close" aria-label="Close registration information">×</button>
+    <p class="dmd-eyebrow">DUCKDB × MYSQL DAY</p>
+    <h2>You’re in the<br>right place.</h2>
+    <p>Registration details are coming soon. Join the OurSQL community for event updates, or contact the organizers.</p>
+    <a class="dmd-button dmd-primary" href="mailto:contact@oursqlfoundation.org?subject=DuckDB%20%C3%97%20MySQL%20Day%20registration">Contact the organizers ↗</a>
+  </dialog>
+  <script>
+  (function () {
+    var dialog = document.getElementById('registration');
+    if (!dialog || !dialog.showModal) return;
+    document.querySelectorAll('[data-register]').forEach(function (b) { b.addEventListener('click', function () { dialog.showModal(); }); });
+    dialog.querySelector('.dmd-close').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) {
+        var r = dialog.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+      }
+    });
+  })();
+  </script>
+  {{ end }}
+
+</div>
+{{ end }}

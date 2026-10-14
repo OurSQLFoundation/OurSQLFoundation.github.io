@@ -1,0 +1,378 @@
+// DuckDB × MySQL Day landing — converted from the supplied standalone HTML.
+// Every selector is scoped under .dmd-landing and every class is prefixed
+// dmd-, so none of it can touch the rest of the site.
+
+.dmd-landing{margin:0;background:#0d0f1a;color:#e8e8f0;font-family:Inter,Arial,sans-serif;font-size:15px;line-height:1.6}
+.dmd-landing button, .dmd-landing a{-webkit-tap-highlight-color:transparent}
+.dmd-landing a{color:inherit;text-decoration:none}
+.dmd-landing button{font:inherit;cursor:pointer}
+.dmd-landing button, .dmd-landing a{touch-action:manipulation}
+.dmd-landing button:focus-visible, .dmd-landing a:focus-visible{outline:2px solid #ffe655;outline-offset:6px}
+.dmd-landing button{border:0}
+.dmd-landing img{max-width:100%;display:block}
+.dmd-landing .dmd-wrap{width:#{"min(1240px,calc(100% - 100px))"};margin:auto}
+.dmd-landing .dmd-gradient{background:linear-gradient(100deg,#00c8ff,#60a5fa 55%,#a78bfa);background-clip:text;-webkit-background-clip:text;color:transparent}
+.dmd-landing .dmd-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;display:flex;gap:12px;align-items:center;margin:0 0 25px;color:#8c9bb9}
+.dmd-landing .dmd-eyebrow i, .dmd-landing .dmd-speaker-bottom i{width:6px;height:6px;border-radius:50%;background:#00c8ff;display:inline-block}
+.dmd-landing .dmd-breadcrumbs{display:flex;gap:12px;color:#72788f;font-size:10px;padding:27px 0}
+.dmd-landing .dmd-breadcrumbs span:last-child{color:#b5b9cd}
+.dmd-landing .dmd-hero{overflow:hidden}
+.dmd-landing .dmd-hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;align-items:center;min-height:610px}
+.dmd-landing .dmd-hero-copy{padding:28px 0 50px;position:relative;z-index:1}
+.dmd-landing h1{font-size:#{"clamp(65px,6.6vw,96px)"};font-weight:900;line-height:1.01;letter-spacing:-6px;margin:0 0 26px}
+.dmd-landing .dmd-cross{font-weight:400;color:#8791a6}
+.dmd-landing .dmd-title-dot{color:#ffe655}
+.dmd-landing .dmd-hero-sub{font-size:27px;line-height:1.35;letter-spacing:-.6px;font-weight:600;margin:0 0 18px}
+.dmd-landing .dmd-hero-desc{font-size:14px;line-height:1.8;color:#9399af;max-width:460px;margin:0 0 30px}
+.dmd-landing .dmd-hero-actions{display:flex;align-items:center;gap:27px}
+.dmd-landing .dmd-button{display:inline-flex;align-items:center;justify-content:center;gap:35px;min-height:51px;padding:14px 23px;border-radius:5px;font-weight:700;font-size:13px;transition:transform .2s,background .2s}
+.dmd-landing .dmd-button:hover{transform:translateY(-2px)}
+.dmd-landing .dmd-primary{background:#00c8ff;color:#06101e}
+.dmd-landing .dmd-primary:hover{background:#72deff}
+.dmd-landing .dmd-text-link{font-size:12px;font-weight:600}
+.dmd-landing .dmd-text-link span{margin-left:10px}
+.dmd-landing .dmd-mini-speakers{display:flex;align-items:center;gap:19px;margin-top:38px;font-size:8px;letter-spacing:1px;color:#697189}
+.dmd-landing .dmd-mini-speakers b{font-size:12px;letter-spacing:-.2px;color:#9299ae}
+.dmd-landing .dmd-hero-art{position:relative;height:560px;margin-right:-60px;isolation:isolate}
+.dmd-landing .dmd-art-grid{position:absolute;inset:0;background-image:linear-gradient(#2a2d3a55 1px,transparent 1px),linear-gradient(90deg,#2a2d3a55 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse,#000,transparent 68%)}
+.dmd-landing .dmd-flow-art{position:absolute;width:115%;max-width:none;top:-20px;left:-30px;filter:drop-shadow(0 20px 25px #03050d)}
+.dmd-landing .dmd-orbit{border:1px solid #383147;border-radius:50%;position:absolute;width:470px;height:470px;top:30px;left:20px;transform:rotate(-30deg) scaleY(.68);opacity:.6}
+.dmd-landing .dmd-orbit.dmd-two{transform:rotate(35deg) scaleY(.8);border-color:#223652}
+.dmd-landing .dmd-engine{position:absolute;z-index:3;display:flex;gap:13px;align-items:center;border:1px solid #374255;border-radius:11px;padding:15px 21px;background:#111625;box-shadow:0 20px 45px #0007;min-width:175px;font-size:23px;font-weight:700;line-height:1.3}
+.dmd-landing .dmd-engine small{display:block;font-size:7px;font-weight:600;letter-spacing:1.3px;margin-top:5px;color:#8d9ab0}
+.dmd-landing .dmd-mysql{top:60px;left:5px;transform:rotate(-7deg)}
+.dmd-landing .dmd-duck{bottom:82px;right:28px;transform:rotate(7deg)}
+.dmd-landing .dmd-engine-symbol{font-size:38px;color:#60b9f4;font-weight:400}
+.dmd-landing .dmd-duck-icon{position:relative;background:#ffe655;width:40px;height:40px;display:block;border-radius:50%}
+.dmd-landing .dmd-duck-icon:after{content:'';position:absolute;background:#ffe655;width:17px;height:13px;right:-10px;top:14px;border-radius:0 8px 8px 0}
+.dmd-landing .dmd-duck-icon i{width:5px;height:5px;background:#111625;border-radius:50%;position:absolute;top:10px;right:9px}
+.dmd-landing .dmd-duck>span:last-child{margin-left:4px}
+.dmd-landing .dmd-art-note{position:absolute;bottom:9px;left:105px;font-size:8px;letter-spacing:2px;color:#656f86}
+.dmd-landing .dmd-art-spark{position:absolute;right:72px;top:22px;color:#ffe655;font-size:31px}
+.dmd-landing .dmd-event-strip{display:flex;align-items:center;border-top:1px solid #2a2d40;border-bottom:1px solid #2a2d40;min-height:106px;margin:12px 0 42px}
+.dmd-landing .dmd-event-strip>div{display:flex;align-items:center;gap:16px;flex:1}
+.dmd-landing .dmd-event-strip p{margin:0}
+.dmd-landing .dmd-event-strip small{font-size:8px;letter-spacing:1.4px;color:#8a91a8;display:block;margin-bottom:5px}
+.dmd-landing .dmd-event-strip strong{font-size:15px;font-weight:600}
+.dmd-landing .dmd-strip-icon{font-size:26px;color:#89b5f4}
+.dmd-landing .dmd-strip-icon.dmd-yellow{color:#ffe655}
+.dmd-landing .dmd-strip-last{font-size:11px;color:#b6bed3}
+.dmd-landing .dmd-strip-last span{margin-left:20px;color:#00c8ff}
+.dmd-landing .dmd-event-nav{border-bottom:1px solid #252938;position:sticky;top:0;background:#0d0f1aee;backdrop-filter:blur(16px);z-index:10}
+.dmd-landing .dmd-event-nav .dmd-wrap{display:flex;align-items:center;gap:44px;min-height:62px}
+.dmd-landing .dmd-event-nav a{font-size:9px;color:#65728e;display:flex;gap:10px;align-items:center}
+.dmd-landing .dmd-event-nav a span{font-size:12px;color:#b2b9ce}
+.dmd-landing .dmd-event-nav a:hover span, .dmd-landing .dmd-event-nav a.dmd-active span{color:#00c8ff}
+.dmd-landing .dmd-event-nav button, .dmd-landing .dmd-event-nav a.dmd-nav-register{margin-left:auto;background:none;color:#00c8ff;font-size:11px;font-weight:600}
+.dmd-landing .dmd-section{padding-top:100px;padding-bottom:100px}
+.dmd-landing h2{font-size:#{"clamp(35px,3.5vw,51px)"};line-height:1.12;letter-spacing:-2px;font-weight:900;margin:0 0 26px}
+.dmd-landing h3{line-height:1.3;letter-spacing:-.6px}
+.dmd-landing .dmd-about{display:grid;grid-template-columns:1fr 1fr;gap:100px}
+.dmd-landing .dmd-about-heading>p:last-child{max-width:355px;color:#969eb4;font-size:16px;line-height:1.8}
+.dmd-landing .dmd-about-body>p{color:#929bb3;font-size:14px;line-height:1.85;margin:0 0 17px}
+.dmd-landing .dmd-about-body .dmd-lead{font-size:21px;color:#e8e8f0;font-weight:600;margin-top:40px}
+.dmd-landing .dmd-topic-rows{margin-top:27px}
+.dmd-landing .dmd-topic-rows>div{display:flex;align-items:center;gap:20px;border-top:1px solid #2a2c3e;padding:18px 0}
+.dmd-landing .dmd-topic-rows>div>span{color:#5fa4d4;font-size:11px}
+.dmd-landing .dmd-topic-rows>div>span:last-child{margin-left:auto;font-size:18px}
+.dmd-landing .dmd-topic-rows p{margin:0}
+.dmd-landing .dmd-topic-rows b{font-size:14px;font-weight:600}
+.dmd-landing .dmd-topic-rows small{display:block;font-size:11px;color:#868fa6;margin-top:5px}
+.dmd-landing .dmd-speakers-section{background:#121521;border-block:1px solid #252938}
+.dmd-landing .dmd-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:42px}
+.dmd-landing .dmd-section-heading h2{margin-bottom:0}
+.dmd-landing .dmd-section-heading>p{color:#8f98ae;font-size:13px;line-height:1.8;margin:0 0 3px}
+.dmd-landing .dmd-speaker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.dmd-landing .dmd-person .dmd-portrait{aspect-ratio:1/1.08;position:relative;overflow:hidden;background:#242b3d}
+.dmd-landing .dmd-portrait img{height:100%;width:100%;object-fit:cover;filter:grayscale(1);transition:filter .3s,transform .3s}
+.dmd-landing .dmd-person:hover img{filter:grayscale(0);transform:scale(1.03)}
+.dmd-landing .dmd-portrait:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,#0b1027a8);pointer-events:none}
+.dmd-landing .dmd-photo-index{position:absolute;bottom:15px;left:16px;z-index:1;font-size:8px;letter-spacing:1px;color:#fff}
+.dmd-landing .dmd-person-arrow{position:absolute;right:12px;bottom:11px;color:#fff;font-size:22px;z-index:1}
+.dmd-landing .dmd-person-text{border-top:2px solid #5d83c1;margin-top:0;padding-top:19px}
+.dmd-landing .dmd-person:nth-child(2) .dmd-person-text{border-color:#00c8ff}
+.dmd-landing .dmd-person:nth-child(3) .dmd-person-text{border-color:#a78bfa}
+.dmd-landing .dmd-person:nth-child(4) .dmd-person-text{border-color:#ffe655}
+.dmd-landing .dmd-company{font-size:10px;color:#84b5f8;text-transform:uppercase;letter-spacing:1.1px;font-weight:700;margin:0 0 9px}
+.dmd-landing .dmd-person h3{font-size:20px;margin:0 0 8px;letter-spacing:-.5px}
+.dmd-landing .dmd-role{font-size:11px;color:#8791a9;margin:0}
+.dmd-landing .dmd-speaker-bottom{display:flex;justify-content:space-between;margin-top:36px;border-top:1px solid #2b3041;padding-top:22px;font-size:11px;color:#8791a9}
+.dmd-landing .dmd-speaker-bottom i{margin-right:10px}
+.dmd-landing .dmd-speaker-bottom p{margin:0}
+.dmd-landing .dmd-program-date{display:flex;flex-direction:column;gap:10px;text-align:right;font-size:12px;color:#919db7;padding-bottom:5px}
+.dmd-landing .dmd-program-date b{font-size:17px;color:#e8e8f0;letter-spacing:1px}
+.dmd-landing .dmd-agenda{border-top:1px solid #383b50}
+.dmd-landing .dmd-talk{display:grid;grid-template-columns:105px 1fr 30px;gap:32px;padding:35px 0;border-bottom:1px solid #2d3043;scroll-margin-top:85px}
+.dmd-landing .dmd-talk:target .dmd-talk-content h3{color:#83cbff}
+.dmd-landing .dmd-talk-num{font-size:27px;font-weight:500;color:#5e6680}
+.dmd-landing .dmd-talk-num span{display:block;font-size:10px;color:#8a94aa;letter-spacing:1px;margin-top:15px}
+.dmd-landing .dmd-talk .dmd-eyebrow{font-size:9px;letter-spacing:1.5px;color:#76b7f2;margin:0 0 12px}
+.dmd-landing .dmd-talk h3{font-size:24px;font-weight:600;max-width:800px;margin:0 0 21px;line-height:1.35}
+.dmd-landing .dmd-talk-person{display:flex;align-items:center;gap:10px}
+.dmd-landing .dmd-talk-person img{width:30px;height:30px;object-fit:cover;filter:grayscale(1);border-radius:50%}
+.dmd-landing .dmd-talk-person span{font-size:11px;color:#b1bbd0}
+.dmd-landing .dmd-talk-person small{margin-left:15px;color:#74809a;font-size:10px}
+.dmd-landing .dmd-talk-arrow{font-size:23px;color:#707b95;padding-top:26px}
+.dmd-landing .dmd-schedule-note{font-size:11px;color:#8e99b1;margin:25px 0 40px}
+.dmd-landing .dmd-topics{display:flex;flex-wrap:wrap;gap:10px}
+.dmd-landing .dmd-topics span{border:1px solid #30374b;border-radius:30px;font-size:10px;color:#a0afc9;padding:6px 15px}
+.dmd-landing .dmd-topics span:first-child{color:#ffe655;border-color:#625b32}
+.dmd-landing .dmd-register-section{position:relative;overflow:hidden;background:linear-gradient(110deg,#142640,#252344);border-block:1px solid #3d4564}
+.dmd-landing .dmd-register-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:45px;padding-block:67px}
+.dmd-landing .dmd-register-inner h2{font-size:45px;line-height:1.2}
+.dmd-landing .dmd-register-inner h2 span{color:#93bdf3}
+.dmd-landing .dmd-register-inner p:last-child{color:#a1aec9;font-size:13px;margin-bottom:0}
+.dmd-landing .dmd-register-inner .dmd-eyebrow{color:#a5bde3}
+.dmd-landing .dmd-register-orbit{border:55px solid #787fe117;width:570px;height:570px;border-radius:50%;position:absolute;right:130px;top:-150px;transform:rotate(-30deg) scaleY(.55)}
+.dmd-landing .dmd-community{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:65px}
+.dmd-landing .dmd-community h2{font-size:38px}
+.dmd-landing .dmd-community p{font-size:13px;color:#8f9cb5;line-height:1.8}
+.dmd-landing .dmd-community-option{border-top:1px solid #3c425b;padding-top:22px;display:flex;flex-direction:column;align-items:flex-start}
+.dmd-landing .dmd-community-icon{color:#7eacfa;font-size:22px}
+.dmd-landing .dmd-community-option h3{font-size:20px;margin:17px 0 0}
+.dmd-landing .dmd-community-option strong{font-size:12px;color:#71c9ff;margin-top:14px}
+.dmd-landing .dmd-community-option:hover{border-color:#00c8ff}
+.dmd-landing dialog{width:#{"min(490px,calc(100% - 35px))"};background:#151b2b;color:#e8e8f0;border:1px solid #4b5772;border-radius:14px;padding:45px;box-shadow:0 30px 100px #0008}
+.dmd-landing dialog::backdrop{background:#050715c9;backdrop-filter:blur(5px)}
+.dmd-landing dialog h2{font-size:37px}
+.dmd-landing dialog p{font-size:14px;color:#a5b2cc}
+.dmd-landing .dmd-close{position:absolute;right:15px;top:10px;color:#a7bad7;font-size:25px;background:none}
+.dmd-landing .dmd-dialog-note{font-size:10px!important;margin-top:24px!important;color:#7f8ba4!important}
+@media (min-width:1600px){.dmd-landing .dmd-hero-grid{min-height:680px}
+.dmd-landing .dmd-hero-art{height:610px}}
+@media (max-width:1100px){.dmd-landing .dmd-wrap{width:calc(100% - 56px)}
+.dmd-landing .dmd-hero-art{margin-right:-30px;height:490px}
+.dmd-landing .dmd-hero-grid{grid-template-columns:1.12fr 1fr}
+.dmd-landing h1{letter-spacing:-4px}
+.dmd-landing .dmd-engine{font-size:18px;padding:12px 15px;min-width:155px}
+.dmd-landing .dmd-duck{right:12px;bottom:100px}
+.dmd-landing .dmd-mysql{left:5px;top:45px}
+.dmd-landing .dmd-art-note{left:30px}
+.dmd-landing .dmd-hero-actions{gap:18px}
+.dmd-landing .dmd-hero-actions .dmd-button{gap:20px}
+.dmd-landing .dmd-mini-speakers{gap:12px}
+.dmd-landing .dmd-section{padding-block:75px}
+.dmd-landing .dmd-about{gap:55px}
+.dmd-landing .dmd-speaker-grid{gap:16px}
+.dmd-landing .dmd-person h3{font-size:17px}
+.dmd-landing .dmd-community{gap:35px}
+.dmd-landing .dmd-register-inner h2{font-size:37px}
+.dmd-landing .dmd-event-strip strong{font-size:13px}
+.dmd-landing .dmd-strip-last{display:none}
+.dmd-landing .dmd-talk h3{font-size:22px}}
+@media (max-width:760px){.dmd-landing .dmd-wrap{width:calc(100% - 40px)}
+.dmd-landing .dmd-breadcrumbs{font-size:9px;padding:22px 0}
+.dmd-landing .dmd-hero-grid{display:flex;flex-direction:column;align-items:stretch}
+.dmd-landing .dmd-hero-copy{padding:20px 0 0}
+.dmd-landing .dmd-hero .dmd-eyebrow{font-size:9px}
+.dmd-landing h1{font-size:74px;letter-spacing:-4px}
+.dmd-landing .dmd-hero-sub{font-size:24px}
+.dmd-landing .dmd-hero-desc{max-width:100%;font-size:13px}
+.dmd-landing .dmd-hero-actions{gap:24px;flex-wrap:wrap}
+.dmd-landing .dmd-mini-speakers{font-size:7px;gap:16px;margin-top:29px}
+.dmd-landing .dmd-mini-speakers b{font-size:10px}
+.dmd-landing .dmd-hero-art{height:390px;max-width:500px;width:100%;margin:16px auto 0}
+.dmd-landing .dmd-flow-art{width:105%;top:-45px;left:-10px}
+.dmd-landing .dmd-orbit{width:320px;height:320px;left:35px;top:20px}
+.dmd-landing .dmd-mysql{top:20px;left:10px}
+.dmd-landing .dmd-duck{bottom:45px;right:10px}
+.dmd-landing .dmd-art-spark{right:15px;top:0}
+.dmd-landing .dmd-art-note{bottom:6px;left:70px;font-size:7px}
+.dmd-landing .dmd-event-strip{margin:8px 0 25px;min-height:90px;gap:18px}
+.dmd-landing .dmd-event-strip>div{gap:0;align-items:flex-start}
+.dmd-landing .dmd-strip-icon{display:none}
+.dmd-landing .dmd-event-strip small{font-size:6px;letter-spacing:.7px}
+.dmd-landing .dmd-event-strip strong{font-size:11px;line-height:1.4;display:block}
+.dmd-landing .dmd-event-nav .dmd-wrap{gap:0;justify-content:space-between;min-height:56px}
+.dmd-landing .dmd-event-nav a{font-size:7px;gap:5px}
+.dmd-landing .dmd-event-nav a span{font-size:10px}
+.dmd-landing .dmd-event-nav button, .dmd-landing .dmd-event-nav a.dmd-nav-register{display:none}
+.dmd-landing .dmd-section{padding-block:60px}
+.dmd-landing .dmd-about{grid-template-columns:1fr;gap:12px}
+.dmd-landing .dmd-about-body .dmd-lead{margin-top:0}
+.dmd-landing .dmd-about-heading>p:last-child{max-width:100%;font-size:14px}
+.dmd-landing .dmd-eyebrow{font-size:9px;letter-spacing:1.5px;margin-bottom:20px}
+.dmd-landing h2{font-size:37px;letter-spacing:-1.6px}
+.dmd-landing .dmd-section-heading{align-items:flex-start;flex-direction:column;gap:22px;margin-bottom:30px}
+.dmd-landing .dmd-section-heading>p{font-size:12px}
+.dmd-landing .dmd-speaker-grid{grid-template-columns:1fr 1fr;gap:28px 16px}
+.dmd-landing .dmd-person h3{font-size:16px}
+.dmd-landing .dmd-person-text{padding-top:13px}
+.dmd-landing .dmd-company{font-size:8px}
+.dmd-landing .dmd-role{font-size:10px}
+.dmd-landing .dmd-photo-index{font-size:6px;left:10px}
+.dmd-landing .dmd-speaker-bottom{font-size:9px;gap:20px}
+.dmd-landing .dmd-speaker-bottom p{display:none}
+.dmd-landing .dmd-program-date{text-align:left;gap:5px}
+.dmd-landing .dmd-program-date b{font-size:13px}
+.dmd-landing .dmd-program-date span{font-size:10px}
+.dmd-landing .dmd-talk{grid-template-columns:32px 1fr;gap:16px;padding:26px 0}
+.dmd-landing .dmd-talk-num{font-size:19px}
+.dmd-landing .dmd-talk-num span{font-size:8px}
+.dmd-landing .dmd-talk-arrow{display:none}
+.dmd-landing .dmd-talk h3{font-size:19px;letter-spacing:-.4px}
+.dmd-landing .dmd-talk-person span{font-size:10px}
+.dmd-landing .dmd-talk-person small{display:block;margin:0}
+.dmd-landing .dmd-talk .dmd-eyebrow{font-size:8px}
+.dmd-landing .dmd-schedule-note{font-size:10px}
+.dmd-landing .dmd-topics{gap:7px}
+.dmd-landing .dmd-topics span{font-size:9px;padding:5px 11px}
+.dmd-landing .dmd-register-inner{flex-direction:column;align-items:flex-start;padding-block:50px;gap:25px}
+.dmd-landing .dmd-register-inner h2{font-size:34px}
+.dmd-landing .dmd-register-inner p:last-child{font-size:12px}
+.dmd-landing .dmd-register-inner .dmd-button{width:100%}
+.dmd-landing .dmd-community{grid-template-columns:1fr;gap:35px}
+.dmd-landing .dmd-community-option h3{margin:7px 0 0}
+.dmd-landing .dmd-community-option p{max-width:400px}
+.dmd-landing .dmd-community-icon{display:none}
+.dmd-landing .dmd-community-option strong{margin-top:7px}
+.dmd-landing dialog{padding:35px 25px}
+.dmd-landing dialog .dmd-button{font-size:12px;gap:12px}}
+@media (prefers-reduced-motion:reduce){.dmd-landing *:before, .dmd-landing *:after{transition:none!important}}
+.dmd-landing .dmd-mysql-mark{width:56px;height:auto;filter:brightness(1.8)}
+.dmd-landing{font-size:16px;font-weight:400}
+.dmd-landing .dmd-wrap{width:#{"min(1200px,calc(100% - 64px))"}}
+.dmd-landing h1, .dmd-landing h2, .dmd-landing h3{font-weight:600}
+.dmd-landing h2{font-size:#{"clamp(28px,3vw,40px)"};line-height:1.2;letter-spacing:-1.1px}
+.dmd-landing h3{letter-spacing:-.3px}
+.dmd-landing .dmd-eyebrow{font-size:12px;letter-spacing:.5px;font-weight:500;color:#95a1b9}
+.dmd-landing .dmd-button{font-size:14px;font-weight:500;border-radius:8px}
+.dmd-landing .dmd-text-link{font-size:14px;font-weight:500}
+.dmd-landing .dmd-event-nav{top:64px}
+.dmd-landing .dmd-event-nav a span{font-weight:400}
+.dmd-landing .dmd-event-nav button, .dmd-landing .dmd-event-nav a.dmd-nav-register{font-weight:500}
+.dmd-landing .dmd-hero-v2{display:block;min-height:0;padding-top:32px}
+.dmd-landing .dmd-hero-v2 .dmd-hero-copy{text-align:center;padding:20px 0 8px}
+.dmd-landing .dmd-hero-v2 .dmd-eyebrow{justify-content:center;text-transform:none;font-size:14px;color:#96a8c3;margin-bottom:23px}
+.dmd-landing .dmd-hero-v2 h1{font-size:#{"clamp(46px,5.8vw,82px)"};font-weight:700;line-height:1.15;letter-spacing:-3px;margin-bottom:25px}
+.dmd-landing .dmd-hero-v2 .dmd-cross{font-weight:300;color:#91a1be;margin-inline:7px}
+.dmd-landing .dmd-hero-v2 .dmd-hero-desc{max-width:790px;margin:0 auto 28px;font-size:17px;line-height:1.75;color:#a7b0c5}
+.dmd-landing .dmd-hero-v2 .dmd-hero-actions{justify-content:center;gap:28px}
+.dmd-landing .dmd-banner-visual{position:relative;max-width:980px;margin:0 auto;height:225px}
+.dmd-landing .dmd-banner-visual>svg{width:100%;height:100%;display:block}
+.dmd-landing .dmd-visual-label{position:absolute;display:flex;gap:10px;align-items:center;font-size:14px;color:#a1afc5;bottom:10px}
+.dmd-landing .dmd-mysql-label{left:12%}
+.dmd-landing .dmd-duck-label{right:13%}
+.dmd-landing .dmd-visual-label img{width:40px;height:28px;object-fit:contain}
+.dmd-landing .dmd-visual-label .dmd-duck-icon{width:20px;height:20px}
+.dmd-landing .dmd-visual-label .dmd-duck-icon:after{width:8px;height:7px;right:-5px;top:7px}
+.dmd-landing .dmd-visual-label .dmd-duck-icon i{width:3px;height:3px;right:4px;top:5px}
+.dmd-landing .dmd-duck-label>span:last-child{margin-left:4px}
+.dmd-landing .dmd-event-strip{margin-top:25px;margin-bottom:30px}
+.dmd-landing .dmd-event-strip strong{font-weight:500}
+.dmd-landing .dmd-event-strip small{font-weight:400}
+.dmd-landing .dmd-section{padding-block:80px}
+.dmd-landing .dmd-about{gap:80px;align-items:start}
+.dmd-landing .dmd-about-heading>p:last-child{font-size:16px}
+.dmd-landing .dmd-about-body{padding-top:44px}
+.dmd-landing .dmd-about-body>p{font-size:15px}
+.dmd-landing .dmd-topic-rows b{font-weight:500;font-size:15px}
+.dmd-landing .dmd-topic-rows small{font-size:12px;line-height:1.6}
+.dmd-landing .dmd-section-heading>p{max-width:440px;font-size:14px;line-height:1.8}
+.dmd-landing .dmd-company{font-size:11px;font-weight:500;text-transform:none;letter-spacing:.3px}
+.dmd-landing .dmd-person h3{font-size:21px;font-weight:500}
+.dmd-landing .dmd-role{font-size:12px}
+.dmd-landing .dmd-speaker-bottom{font-size:12px}
+.dmd-landing .dmd-talk{grid-template-columns:160px 1fr 25px;gap:35px;padding-block:32px}
+.dmd-landing .dmd-talk h3{font-size:24px;font-weight:500;line-height:1.45}
+.dmd-landing .dmd-talk .dmd-eyebrow{font-size:11px;font-weight:400;letter-spacing:.3px}
+.dmd-landing .dmd-talk-num{padding-top:2px}
+.dmd-landing .dmd-talk-num .dmd-time-est, .dmd-landing .dmd-talk-num .dmd-time-cet{font-size:15px;font-weight:400;letter-spacing:0;line-height:1.5;margin:0 0 12px;color:#d4dbea;font-variant-numeric:tabular-nums}
+.dmd-landing .dmd-talk-num .dmd-time-cet{color:#8e9db6}
+.dmd-landing .dmd-talk-num small{font-size:10px;display:block;margin-top:2px;letter-spacing:.8px}
+.dmd-landing .dmd-talk-person span{font-size:12px}
+.dmd-landing .dmd-talk-person small{font-size:11px}
+.dmd-landing .dmd-schedule-draft{color:#8999b4;font-size:12px;margin:-8px 0 20px}
+.dmd-landing .dmd-schedule-note{font-size:12px}
+.dmd-landing .dmd-register-inner h2{font-size:42px;font-weight:600;letter-spacing:-1.2px}
+.dmd-landing .dmd-register-inner>div{max-width:700px}
+.dmd-landing .dmd-register-inner p:last-child{font-size:16px;max-width:620px}
+.dmd-landing .dmd-register-inner .dmd-eyebrow{font-size:13px;letter-spacing:.2px}
+.dmd-landing .dmd-community{display:block}
+.dmd-landing .dmd-community h2{font-size:36px;font-weight:600}
+.dmd-landing .dmd-community-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.dmd-landing .dmd-community-heading{margin-bottom:35px}
+.dmd-landing .dmd-community-option{border-top:1px solid #3c425b;padding:24px 0 0;align-items:stretch}
+.dmd-landing .dmd-community-option .dmd-eyebrow{font-size:10px;letter-spacing:1px;margin:0 0 14px}
+.dmd-landing .dmd-community-option h3{font-size:23px;font-weight:500;margin:0 0 15px}
+.dmd-landing .dmd-community-option p{font-size:15px;margin:0 0 24px;flex:1}
+.dmd-landing .dmd-community-action{border:0;background:none;padding:0;text-align:left;font-size:13px;font-weight:500;color:#6ecbff;overflow-wrap:anywhere}
+.dmd-landing .dmd-talk{scroll-margin-top:140px}
+[data-theme="light"] .dmd-landing{background:#f8f9fc;color:#0f172a}
+[data-theme="light"] .dmd-landing h1, [data-theme="light"] .dmd-landing h2, [data-theme="light"] .dmd-landing h3{color:#0f172a}
+[data-theme="light"] .dmd-landing .dmd-hero-desc, [data-theme="light"] .dmd-landing .dmd-about-heading>p:last-child, [data-theme="light"] .dmd-landing .dmd-about-body>p, [data-theme="light"] .dmd-landing .dmd-community p, [data-theme="light"] .dmd-landing .dmd-section-heading>p{color:#64748b}
+[data-theme="light"] .dmd-landing .dmd-speakers-section{background:#eef2f8;border-color:#dde3ed}
+[data-theme="light"] .dmd-landing .dmd-event-nav{background:#f8f9fcf0;border-color:#dde3ed}
+[data-theme="light"] .dmd-landing .dmd-event-nav a span{color:#475569}
+[data-theme="light"] .dmd-landing .dmd-event-strip, [data-theme="light"] .dmd-landing .dmd-agenda, [data-theme="light"] .dmd-landing .dmd-talk, [data-theme="light"] .dmd-landing .dmd-topic-rows>div, [data-theme="light"] .dmd-landing .dmd-speaker-bottom{border-color:#d6deeb}
+[data-theme="light"] .dmd-landing .dmd-register-section{background:linear-gradient(110deg,#e4f3ff,#ece7fd);border-color:#d6deeb}
+[data-theme="light"] .dmd-landing .dmd-register-inner p, [data-theme="light"] .dmd-landing .dmd-register-inner .dmd-eyebrow{color:#64748b}
+[data-theme="light"] .dmd-landing .dmd-time-est, [data-theme="light"] .dmd-landing .dmd-talk-person span{color:#334155}
+[data-theme="light"] .dmd-landing .dmd-company, [data-theme="light"] .dmd-landing .dmd-community-action, [data-theme="light"] .dmd-landing .dmd-text-link{color:#007ca8}
+[data-theme="light"] .dmd-landing .dmd-banner-visual circle{fill:#f8f9fc}
+[data-theme="light"] .dmd-landing .dmd-visual-label, [data-theme="light"] .dmd-landing .dmd-eyebrow{color:#64748b}
+[data-theme="light"] .dmd-landing .dmd-topics span{color:#475569;border-color:#cbd5e1}
+[data-theme="light"] .dmd-landing .dmd-topics span:first-child{color:#887000}
+[data-theme="light"] .dmd-landing .dmd-breadcrumbs span:last-child{color:#475569}
+[data-theme="light"] .dmd-landing .dmd-role, [data-theme="light"] .dmd-landing .dmd-speaker-bottom, [data-theme="light"] .dmd-landing .dmd-schedule-note, [data-theme="light"] .dmd-landing .dmd-schedule-draft{color:#64748b}
+@media (max-width:1000px){.dmd-landing .dmd-hero-v2 h1{font-size:64px}
+.dmd-landing .dmd-hero-v2 .dmd-hero-desc{max-width:700px}
+.dmd-landing .dmd-section{padding-block:65px}
+.dmd-landing .dmd-community-grid{gap:25px}
+.dmd-landing .dmd-community-action{font-size:12px}
+.dmd-landing .dmd-person h3{font-size:18px}
+.dmd-landing .dmd-talk h3{font-size:22px}
+.dmd-landing .dmd-about{gap:45px}
+.dmd-landing .dmd-register-inner{gap:32px}
+.dmd-landing .dmd-register-inner>div{max-width:65%}}
+@media (max-width:760px){.dmd-landing .dmd-wrap{width:calc(100% - 40px)}
+.dmd-landing .dmd-hero-v2{padding-top:8px}
+.dmd-landing .dmd-hero-v2 .dmd-hero-copy{padding-top:12px}
+.dmd-landing .dmd-hero-v2 h1{font-size:#{"clamp(38px,8vw,58px)"};letter-spacing:-1.7px}
+.dmd-landing .dmd-hero-v2 .dmd-cross{margin-inline:0}
+.dmd-landing .dmd-hero-v2 .dmd-hero-desc{font-size:15px;line-height:1.75}
+.dmd-landing .dmd-hero-v2 .dmd-eyebrow{font-size:12px}
+.dmd-landing .dmd-hero-v2 .dmd-hero-actions{gap:24px}
+.dmd-landing .dmd-banner-visual{height:150px;margin-inline:-15px}
+.dmd-landing .dmd-visual-label{font-size:10px;bottom:3px;gap:6px}
+.dmd-landing .dmd-visual-label img{width:30px;height:23px}
+.dmd-landing .dmd-visual-label .dmd-duck-icon{transform:scale(.7)}
+.dmd-landing .dmd-event-strip{margin-top:20px}
+.dmd-landing .dmd-event-strip strong{font-size:12px}
+.dmd-landing .dmd-event-strip small{font-size:7px;line-height:1.5}
+.dmd-landing .dmd-section{padding-block:55px}
+.dmd-landing .dmd-about{gap:5px}
+.dmd-landing .dmd-about-body{padding-top:5px}
+.dmd-landing .dmd-section-heading>p{font-size:13px}
+.dmd-landing .dmd-person h3{font-size:17px}
+.dmd-landing .dmd-role{font-size:11px}
+.dmd-landing .dmd-talk{grid-template-columns:95px 1fr;gap:16px}
+.dmd-landing .dmd-talk h3{font-size:18px}
+.dmd-landing .dmd-talk-num .dmd-time-est, .dmd-landing .dmd-talk-num .dmd-time-cet{font-size:12px;white-space:nowrap}
+.dmd-landing .dmd-talk-num small{font-size:9px}
+.dmd-landing .dmd-talk .dmd-eyebrow{font-size:10px}
+.dmd-landing .dmd-schedule-draft{margin-top:0;font-size:11px}
+.dmd-landing .dmd-register-inner>div{max-width:100%}
+.dmd-landing .dmd-register-inner h2{font-size:34px}
+.dmd-landing .dmd-register-inner p:last-child{font-size:15px}
+.dmd-landing .dmd-community-grid{grid-template-columns:1fr;gap:30px}
+.dmd-landing .dmd-community h2{font-size:32px}
+.dmd-landing .dmd-community-option h3{font-size:22px}
+.dmd-landing .dmd-community-action{font-size:14px}
+.dmd-landing .dmd-community-option p{margin-bottom:20px}
+.dmd-landing .dmd-speaker-bottom{font-size:11px}}
+.dmd-landing{font-synthesis:none;font-weight:400}
+.dmd-landing :where(p,a,button,span,small,strong,b,label,input,li,div){font-weight:400!important}
+.dmd-landing :is(h1,h2,h3,h4,h5,h6), .dmd-landing :is(h1,h2,h3,h4,h5,h6) *{font-weight:700!important}
+.dmd-landing .dmd-hero-original h1{font-size:#{"clamp(65px,6.6vw,96px)"};line-height:1.04;letter-spacing:-5px;margin-bottom:30px}
+.dmd-landing .dmd-hero-original .dmd-hero-copy{padding-top:30px;padding-bottom:45px}
+.dmd-landing .dmd-hero-original .dmd-hero-desc{font-size:16px;line-height:1.8;max-width:460px;margin:0 0 30px;color:#a7b0c5}
+.dmd-landing .dmd-hero-original{min-height:600px}
+@media (max-width:1100px){.dmd-landing .dmd-hero-original h1{letter-spacing:-4px}
+.dmd-landing .dmd-hero-original .dmd-hero-desc{font-size:15px}}
+@media (max-width:760px){.dmd-landing .dmd-hero-original{min-height:0}
+.dmd-landing .dmd-hero-original h1{font-size:72px;letter-spacing:-4px}
+.dmd-landing .dmd-hero-original .dmd-hero-copy{padding:20px 0 0}
+.dmd-landing .dmd-hero-original .dmd-hero-desc{max-width:100%}
+.dmd-landing .dmd-hero-original .dmd-hero-art{margin-top:10px}}
+[data-theme="light"] .dmd-landing .dmd-hero-original .dmd-hero-desc{color:#64748b}
