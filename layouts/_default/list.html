@@ -17,7 +17,7 @@
     {{ $imgRes := $page.Resources.Get . }}
     {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
     {{ with $imgRes }}
-    {{ $thumb := .Fill "680x382 jpg q85" }}
+    {{ $thumb := .Fill "680x357 jpg q85" }}
     <div class="post-card-image-wrap">
       <img src="{{ $thumb.RelPermalink }}" alt="" class="post-card-image" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
     </div>
