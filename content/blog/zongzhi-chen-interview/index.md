@@ -11,7 +11,6 @@ hero_image: false
 interview:
   guest_page: "/resources/member-directory/zongzhi-chen"
   interviewer_page: "/resources/member-directory/maria-nesterova"
-  interview_date: 2026-09-29
   video_url: ""
   audio_url: ""
 ---

@@ -29,7 +29,6 @@
     {{ with .Params.interview }}
     {{ $guest := $.Site.GetPage .guest_page }}
     {{ $interviewer := $.Site.GetPage .interviewer_page }}
-    {{ $when := $.Date }}{{ with .interview_date }}{{ $when = time.AsTime . }}{{ end }}
     <div class="interview-strip">
       <span class="interview-card-avatars">
         {{ partial "interviews/avatar.html" (dict "page" $interviewer "size" 56) }}
@@ -40,7 +39,7 @@
           Interview with {{ with $guest }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
           {{ with $interviewer }} by <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
         </span>
-        <span class="interview-strip-sub">Recorded {{ $when.Format "January 2, 2006" }} · <a href="/community/people-behind-mysql/">People Behind MySQL</a></span>
+        <span class="interview-strip-sub"><a href="/community/people-behind-mysql/">People Behind MySQL</a></span>
       </div>
       <div class="interview-strip-formats">
         {{ partial "interviews/formats.html" $ }}

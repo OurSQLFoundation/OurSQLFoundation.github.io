@@ -3,7 +3,7 @@
      collected here from the whole site, newest interview first. */}}
 {{ define "main" }}
 {{ $interviews := where site.RegularPages "Params.interview" "!=" nil }}
-{{ $interviews = sort $interviews "Params.interview.interview_date" "desc" }}
+{{ $interviews = $interviews.ByDate.Reverse }}
 
 <div class="about-page">
 

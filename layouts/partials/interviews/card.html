@@ -4,8 +4,6 @@
 {{ $iv := .Params.interview }}
 {{ $guest := site.GetPage $iv.guest_page }}
 {{ $interviewer := site.GetPage $iv.interviewer_page }}
-{{ $when := .Date }}
-{{ with $iv.interview_date }}{{ $when = time.AsTime . }}{{ end }}
 <a href="{{ .RelPermalink }}" class="interview-card">
   <div class="interview-card-people">
     <span class="interview-card-avatars">
@@ -17,7 +15,7 @@
     </span>
   </div>
   <div class="interview-card-body">
-    <span class="interview-card-date">Interview · {{ $when.Format "January 2, 2006" }}</span>
+    <span class="interview-card-date">{{ .Date.Format "January 2, 2006" }}</span>
     <h3 class="interview-card-title">{{ .Title }}</h3>
     {{ with .Description }}<p class="interview-card-desc">{{ . | truncate 150 }}</p>{{ end }}
   </div>
