@@ -1,0 +1,26 @@
+{{/* Interview card for the People Behind MySQL list. The interview itself is
+     a blog article carrying an `interview` block in its front matter; this
+     card just points at it. Context: the interview page. */}}
+{{ $iv := .Params.interview }}
+{{ $guest := site.GetPage $iv.guest_page }}
+{{ $interviewer := site.GetPage $iv.interviewer_page }}
+<a href="{{ .RelPermalink }}" class="interview-card">
+  <div class="interview-card-people">
+    <span class="interview-card-avatars">
+      {{ partial "interviews/avatar.html" (dict "page" $interviewer "size" 72) }}
+      {{ partial "interviews/avatar.html" (dict "page" $guest "size" 72) }}
+    </span>
+    <span class="interview-card-names">
+      {{ with $guest }}<span class="interview-card-guest">{{ .Title }}</span>{{ with .Params.role }}<span class="interview-card-role">{{ . }}</span>{{ end }}{{ end }}
+    </span>
+  </div>
+  <div class="interview-card-body">
+    <span class="interview-card-date">{{ .Date.Format "January 2, 2006" }}</span>
+    <h3 class="interview-card-title">{{ .Title }}</h3>
+    {{ with .Description }}<p class="interview-card-desc">{{ . | truncate 150 }}</p>{{ end }}
+  </div>
+  <div class="interview-card-footer">
+    <span class="interview-formats">{{ partial "interviews/formats.html" . }}</span>
+    <span class="interview-card-cta">Read →</span>
+  </div>
+</a>

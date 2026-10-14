@@ -1,0 +1,7 @@
+{{/* Format badges for an interview: Text is always there (the interview is a
+     blog article); Video and Audio appear when a URL is set in front matter.
+     Context: the interview page. With "links" true they become buttons. */}}
+{{ $iv := .Params.interview }}
+<span class="interview-format interview-format--text"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>Text</span>
+{{ with $iv.video_url }}<span class="interview-format interview-format--video"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="14" height="14" rx="2"/><polygon points="22 8 16 12 22 16 22 8"/></svg>Video</span>{{ end }}
+{{ with $iv.audio_url }}<span class="interview-format interview-format--audio"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Audio</span>{{ end }}

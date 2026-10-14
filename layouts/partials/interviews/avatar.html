@@ -1,0 +1,16 @@
+{{/* Round avatar for a People page: its first image, or an initials tile.
+     Context: dict "page" (a People page, may be nil) "size" (px, default 96). */}}
+{{ $p := .page }}
+{{ $size := .size | default 96 }}
+{{ with $p }}
+  {{ $img := "" }}
+  {{ with .Params.images }}{{ $img = $p.Resources.Get (index . 0) }}{{ end }}
+  {{ if $img }}
+    {{ $a := $img.Fill (printf "%dx%d jpg q85" (mul $size 2) (mul $size 2)) }}
+    <img src="{{ $a.RelPermalink }}" alt="{{ $p.Title }}" class="interview-avatar" width="{{ $size }}" height="{{ $size }}" loading="lazy">
+  {{ else }}
+    {{ $initials := "" }}
+    {{ range split $p.Title " " }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+    <span class="interview-avatar interview-avatar--initials" aria-hidden="true">{{ $initials }}</span>
+  {{ end }}
+{{ end }}

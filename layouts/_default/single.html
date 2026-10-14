@@ -26,6 +26,28 @@
       <span>{{ .ReadingTime }} min read</span>
     </div>
     {{ end }}
+    {{ with .Params.interview }}
+    {{ $guest := $.Site.GetPage .guest_page }}
+    {{ $interviewer := $.Site.GetPage .interviewer_page }}
+    <div class="interview-strip">
+      <span class="interview-card-avatars">
+        {{ partial "interviews/avatar.html" (dict "page" $interviewer "size" 56) }}
+        {{ partial "interviews/avatar.html" (dict "page" $guest "size" 56) }}
+      </span>
+      <div class="interview-strip-text">
+        <span class="interview-strip-line">
+          Interview with {{ with $guest }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+          {{ with $interviewer }} by <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+        </span>
+        <span class="interview-strip-sub"><a href="/community/people-behind-mysql/">People Behind MySQL</a></span>
+      </div>
+      <div class="interview-strip-formats">
+        {{ partial "interviews/formats.html" $ }}
+        {{ with .video_url }}<a href="{{ . }}" class="interview-strip-btn" target="_blank" rel="noopener">Watch ↗</a>{{ end }}
+        {{ with .audio_url }}<a href="{{ . }}" class="interview-strip-btn" target="_blank" rel="noopener">Listen ↗</a>{{ end }}
+      </div>
+    </div>
+    {{ end }}
   </header>
 
   <div class="post-content">
@@ -52,12 +74,32 @@
     {{ end }}
     {{ end }}
     <div class="author-card-body">
-      <span class="author-card-label">Written by</span>
+      <span class="author-card-label">{{ if $.Params.interview }}Interview by{{ else }}Written by{{ end }}</span>
       <span class="author-card-name">{{ .Title }}</span>
       {{ with .Params.role }}<span class="author-card-role">{{ . }}</span>{{ end }}
       <span class="author-card-link">View profile in the Member Directory →</span>
     </div>
   </a>
+  {{ end }}
+
+  {{ with $.Params.interview }}
+  {{ $guestPage := $.Site.GetPage .guest_page }}
+  {{ with $guestPage }}
+  <a href="{{ .RelPermalink }}" class="author-card">
+    {{ with .Params.images }}
+    {{ with $guestPage.Resources.Get (index . 0) }}
+    {{ $avatar := .Fill "96x96 jpg" }}
+    <img src="{{ $avatar.RelPermalink }}" alt="" class="author-card-photo" width="96" height="96" loading="lazy">
+    {{ end }}
+    {{ end }}
+    <div class="author-card-body">
+      <span class="author-card-label">Guest</span>
+      <span class="author-card-name">{{ .Title }}</span>
+      {{ with .Params.role }}<span class="author-card-role">{{ . }}</span>{{ end }}
+      <span class="author-card-link">View profile in the Member Directory →</span>
+    </div>
+  </a>
+  {{ end }}
   {{ end }}
 
   {{ if $isBlog }}
