@@ -56,7 +56,7 @@
     {{ $imgRes := $.Resources.Get . }}
     {{ if not $imgRes }}{{ $imgRes = resources.Get (strings.TrimPrefix "/" .) }}{{ end }}
     {{ with $imgRes }}
-    {{ $hero := .Fill "1400x788 jpg q85" }}
+    {{ $hero := .Resize "1400x jpg q85" }}
     <img src="{{ $hero.RelPermalink }}" alt="" class="post-hero-image" width="{{ $hero.Width }}" height="{{ $hero.Height }}">
     {{ end }}
     {{ end }}

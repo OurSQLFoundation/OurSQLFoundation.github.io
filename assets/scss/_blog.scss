@@ -61,7 +61,8 @@
   .post-card-image {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    // Same ratio as the 1200×630 share covers, so they are not cropped
+    aspect-ratio: 1200 / 630;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
