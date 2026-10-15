@@ -3,11 +3,14 @@
   its styles live in assets/scss/_event-landing.scss, scoped under
   .dmd-landing (and every class prefixed dmd-) so nothing leaks into the rest
   of the site. Text, speakers and the schedule come from the page's front
-  matter. While registration_url is empty, every Register button opens the
-  "coming soon" dialog; set it and they become plain links.
+  matter. Every Register button opens a pop-up with the registration widget
+  (registration_widget in front matter, loaded on first open). Without a
+  widget, registration_url turns them into plain links, and without that they
+  open a "coming soon" dialog.
 */}}
 {{ define "main" }}
 {{ $reg := .Params.registration_url }}
+{{ if .Params.registration_widget }}{{ $reg = "" }}{{ end }}
 {{ $page := . }}
 <div class="dmd-landing">
 
@@ -99,7 +102,34 @@
     </div>
   </section>
 
-  {{ if not $reg }}
+  {{ $widget := .Params.registration_widget }}
+  {{ if $widget }}
+  <dialog id="registration" class="dmd-dialog-widget" aria-label="Register for {{ .Title }}">
+    <button class="dmd-close" aria-label="Close registration form">×</button>
+    <div class="dmd-hopin-container" id="registration-widget" data-src="{{ $widget }}"></div>
+  </dialog>
+  <script>
+  (function () {
+    var dialog = document.getElementById('registration');
+    var box = document.getElementById('registration-widget');
+    if (!dialog || !dialog.showModal) return;
+    function load() {
+      if (box.firstChild) return;
+      // Load the registration form on first open only, and pass any query
+      // string (e.g. UTM tags) through to it.
+      var iframe = document.createElement('iframe');
+      iframe.src = box.getAttribute('data-src') + window.location.search.replace('?', '&');
+      iframe.title = 'Registration form';
+      box.appendChild(iframe);
+    }
+    document.querySelectorAll('[data-register]').forEach(function (b) {
+      b.addEventListener('click', function () { load(); dialog.showModal(); });
+    });
+    dialog.querySelector('.dmd-close').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+  })();
+  </script>
+  {{ else if not $reg }}
   <dialog id="registration">
     <button class="dmd-close" aria-label="Close registration information">×</button>
     <p class="dmd-eyebrow">DUCKDB × MYSQL DAY</p>
