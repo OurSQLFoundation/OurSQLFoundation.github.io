@@ -376,3 +376,56 @@
 .dmd-landing .dmd-hero-original .dmd-hero-desc{max-width:100%}
 .dmd-landing .dmd-hero-original .dmd-hero-art{margin-top:10px}}
 [data-theme="light"] .dmd-landing .dmd-hero-original .dmd-hero-desc{color:#64748b}
+
+// Registration pop-up that embeds the external registration widget.
+.dmd-landing dialog.dmd-dialog-widget {
+  width: #{"min(760px, calc(100% - 24px))"};
+  max-width: none;
+  max-height: #{"calc(100vh - 24px)"};
+  padding: 0;
+  overflow: hidden;
+}
+
+.dmd-landing dialog.dmd-dialog-widget .dmd-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 22px;
+  color: #ffffff;
+  background: rgba(21, 27, 43, 0.85);
+  border-radius: 50%;
+}
+
+.dmd-landing .dmd-hopin-container {
+  height: #{"min(82vh, 820px)"};
+  background: #ffffff;
+}
+
+.dmd-landing .dmd-hopin-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+// On phones the registration form gets the whole screen.
+@media (max-width: 640px) {
+  .dmd-landing dialog.dmd-dialog-widget {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+  }
+
+  .dmd-landing dialog.dmd-dialog-widget .dmd-hopin-container {
+    height: 100%;
+  }
+}

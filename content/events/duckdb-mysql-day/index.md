@@ -5,8 +5,13 @@ hero_description: "A one-day online conference on bringing fast analytics to MyS
 date: 2026-11-17
 url: "/events/duckdb-mysql-day/"
 layout: "duckdb-mysql-day"
-# Set this to the real registration link when it exists; until then the
-# Register buttons open a "details coming soon" dialog.
+# Image used when the page is shared on social networks.
+images:
+  - cover.jpg
+# Registration widget (RingCentral Events). Every Register button opens it in a
+# pop-up. If it is ever empty, registration_url is used as a plain link, and if
+# that is empty too the buttons open a "details coming soon" dialog.
+registration_widget: "https://registration.events.ringcentral.com/widgets/registration/duckdb-x-mysql-day?widget_id=TWGSBGd5cEk7rk05fmBYgD7SA"
 registration_url: ""
 strip:
   - {icon: "↗", label: "SAVE THE DATE", value: "November 17, 2026"}
@@ -31,7 +36,7 @@ schedule:
   - {est: "10:00–10:45", cet: "16:00–16:45", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
   - {est: "10:45–11:30", cet: "16:45–17:30", track: "Columnar engines", title: "When MySQL meets DuckDB: Best practices for columnar engines on MySQL", speaker: "Zongzhi Chen"}
   - {est: "11:30–12:15", cet: "17:30–18:15", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
-  - {est: "12:15–13:00", cet: "18:15–19:00", track: "More to come", title: "Talk title to be announced", speaker: "Roman Nozdrin"}
+  - {est: "12:15–13:00", cet: "18:15–19:00", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin"}
 schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics"]
 register:
