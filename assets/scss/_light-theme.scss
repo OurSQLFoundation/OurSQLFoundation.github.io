@@ -1203,6 +1203,16 @@
     }
   }
 
+  // Past webinar: recording + slides
+  .webinar-media-title { color: #0f172a; }
+  .webinar-video { border-color: #dde3ed; }
+  .webinar-media-note { color: #64748b; a { color: #0272a5; } }
+  .slides-viewer { background: #ffffff; border-color: #dde3ed; }
+  .slides-bar { border-top-color: #dde3ed; }
+  .slides-count { color: #64748b; }
+  .slides-nav { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
+  .slides-btn { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
+
   // People Behind MySQL
   .interview-card, .interview-strip { background: #ffffff; border-color: #dde3ed; }
   .interview-card:hover { border-color: rgba(2, 114, 165, 0.4); }
