@@ -186,3 +186,127 @@ a.webinar-speaker-name {
 .webinar-content {
   max-width: 720px;
 }
+
+// ── Past webinar: embedded recording + slide viewer ──
+.webinar-media {
+  max-width: 880px;
+  margin: 0 0 3rem;
+  scroll-margin-top: 90px;
+}
+
+.webinar-media-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 1rem;
+}
+
+.webinar-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.webinar-media-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  color: $muted;
+
+  a { color: $accent; text-decoration: none; &:hover { text-decoration: underline; } }
+}
+
+.slides-viewer {
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.slides-stage {
+  position: relative;
+  aspect-ratio: 1400 / 788;
+  background: #ffffff;
+  outline-offset: -3px;
+
+  &:focus-visible { outline: 2px solid $accent; }
+  &:fullscreen { display: flex; align-items: center; justify-content: center; background: #000; aspect-ratio: auto; }
+}
+
+.slides-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slides-stage:fullscreen .slides-img { max-height: 100vh; }
+
+.slides-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slides-nav {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 50%;
+  font-size: 1.375rem;
+  line-height: 1;
+  color: $accent;
+  background: $accent-glow;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover, &:focus-visible { background: rgba($accent, 0.22); }
+}
+
+.slides-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid $dark-border;
+}
+
+.slides-count {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: $muted;
+}
+
+.slides-actions {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.slides-btn {
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover { background: rgba($accent, 0.22); }
+}

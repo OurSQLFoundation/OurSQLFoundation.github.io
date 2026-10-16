@@ -4,6 +4,11 @@ description: "A bad UPDATE hit a handful of rows. Do you really need to restore 
 date: 2026-10-15
 time_display: "10:00 AM ET · 16:00 CEST"
 registration_url: "https://us06web.zoom.us/webinar/register/WN_AYk4qjMBTU2ofrY_hkpXvQ"
+# Past-event materials: the recording is embedded from YouTube, and the slides
+# (pre-rendered pages in slides/, plus the PDF) get an on-site viewer.
+video_url: "https://youtu.be/pSDL0zWVr0M"
+video_id: "pSDL0zWVr0M"
+slides_pdf: "mysql-time-travel-slides.pdf"
 images:
   - banner.jpg
 speakers:

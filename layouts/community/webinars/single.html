@@ -7,7 +7,13 @@
 
 {{ $primaryLabel := "" }}
 {{ $primaryURL := "" }}
-{{ if and $isPast .Params.recording_url }}
+{{ $videoID := .Params.video_id }}
+{{ $slides := sort (.Resources.Match "slides/*.jpg") "Name" }}
+{{ $pdf := "" }}{{ with .Params.slides_pdf }}{{ $pdf = $.Resources.Get . }}{{ end }}
+{{ if and $isPast $videoID }}
+  {{ $primaryLabel = "Watch recording" }}
+  {{ $primaryURL = "#recording" }}
+{{ else if and $isPast .Params.recording_url }}
   {{ $primaryLabel = "Watch recording" }}
   {{ $primaryURL = .Params.recording_url }}
 {{ else if and (not $isPast) .Params.registration_url }}
@@ -61,11 +67,90 @@
     {{ end }}
 
     <div class="about-cta-row">
-      {{ with $primaryURL }}<a href="{{ . }}" class="about-btn about-btn--primary" target="_blank" rel="noopener">{{ $primaryLabel }}</a>{{ end }}
+      {{ with $primaryURL }}<a href="{{ . }}" class="about-btn about-btn--primary"{{ if not (hasPrefix . "#") }} target="_blank" rel="noopener"{{ end }}>{{ $primaryLabel }}</a>{{ end }}
+      {{ if $slides }}<a href="#slides" class="about-btn about-btn--secondary">View slides</a>{{ end }}
     </div>
   </header>
 
+  {{ if and $isPast $videoID }}
+  <section class="webinar-media" id="recording" aria-labelledby="recording-title">
+    <h2 id="recording-title" class="webinar-media-title">Recording</h2>
+    <div class="webinar-video">
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ $videoID }}?rel=0" title="{{ .Title }} — recording" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    {{ with .Params.video_url }}<p class="webinar-media-note"><a href="{{ . }}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>{{ end }}
+  </section>
+  {{ end }}
+
+  {{ if $slides }}
+  <section class="webinar-media" id="slides" aria-labelledby="slides-title">
+    <h2 id="slides-title" class="webinar-media-title">Slides</h2>
+    {{ $slideURLs := slice }}
+    {{ range $slides }}{{ $slideURLs = $slideURLs | append .RelPermalink }}{{ end }}
+    <div class="slides-viewer">
+      <div class="slides-stage" tabindex="0" aria-label="Slides, use the left and right arrow keys to move between them">
+        {{ $first := index $slides 0 }}
+        <img class="slides-img" src="{{ $first.RelPermalink }}" alt="Slide 1 of {{ len $slides }}" width="1400" height="788">
+      </div>
+      <div class="slides-bar">
+        <span class="slides-pager">
+          <button type="button" class="slides-nav slides-nav--prev" aria-label="Previous slide" hidden>‹</button>
+          <span class="slides-count" aria-live="polite">1 / {{ len $slides }}</span>
+          <button type="button" class="slides-nav slides-nav--next" aria-label="Next slide" hidden>›</button>
+        </span>
+        <span class="slides-actions">
+          <button type="button" class="slides-btn slides-btn--fullscreen" hidden>Full screen</button>
+          {{ with $pdf }}<a href="{{ .RelPermalink }}" class="slides-btn" download>Download PDF</a>{{ end }}
+        </span>
+      </div>
+    </div>
+    <noscript><p class="webinar-media-note">Turn on JavaScript to flip through the slides here{{ with $pdf }}, or <a href="{{ .RelPermalink }}" download>download the PDF</a>{{ end }}.</p></noscript>
+  </section>
+  <script type="application/json" id="slides-data">{{ $slideURLs | jsonify | safeJS }}</script>
+  <script>
+  (function () {
+    var v = document.querySelector('.slides-viewer');
+    if (!v) return;
+    var urls = JSON.parse(document.getElementById('slides-data').textContent);
+    var n = urls.length, i = 0;
+    var img = v.querySelector('.slides-img'), count = v.querySelector('.slides-count');
+    var stage = v.querySelector('.slides-stage');
+    var prev = v.querySelector('.slides-nav--prev'), next = v.querySelector('.slides-nav--next');
+    var fs = v.querySelector('.slides-btn--fullscreen');
+    prev.hidden = next.hidden = false;
+    if (stage.requestFullscreen) fs.hidden = false;
+    function show(k) {
+      i = (k + n) % n;
+      img.src = urls[i];
+      img.alt = 'Slide ' + (i + 1) + ' of ' + n;
+      count.textContent = (i + 1) + ' / ' + n;
+      // warm the cache for the neighbours
+      [urls[(i + 1) % n], urls[(i - 1 + n) % n]].forEach(function (u) { var p = new Image(); p.src = u; });
+    }
+    prev.addEventListener('click', function () { show(i - 1); });
+    next.addEventListener('click', function () { show(i + 1); });
+    stage.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+    });
+    var x0 = null;
+    stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+    fs.addEventListener('click', function () {
+      if (document.fullscreenElement) document.exitFullscreen(); else stage.requestFullscreen();
+    });
+    show(0);
+  })();
+  </script>
+  {{ end }}
+
   <div class="post-content webinar-content">
+    {{ if or (and $isPast $videoID) $slides }}<h2 class="webinar-media-title">About the session</h2>{{ end }}
     {{ .Content }}
   </div>
 
