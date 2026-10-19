@@ -55,7 +55,8 @@
     <div class="dmd-speaker-grid{{ if gt (len $speakers) 4 }} dmd-speaker-grid--many{{ end }}">
       {{ range $i, $s := $speakers }}
       {{ $photo := $page.Resources.Get $s.photo }}
-      <a class="dmd-person" href="#talk-{{ $i }}" aria-label="View talk by {{ $s.name }}">
+      {{ $ti := $i }}{{ range $k, $t := $page.Params.schedule }}{{ if eq $t.speaker $s.name }}{{ $ti = $k }}{{ end }}{{ end }}
+      <a class="dmd-person" href="#talk-{{ $ti }}" aria-label="View talk by {{ $s.name }}">
         <div class="dmd-portrait">{{ with $photo }}{{ $img := .Fill "420x420 jpg q85" }}<img src="{{ $img.RelPermalink }}" alt="{{ $s.name }}" width="420" height="420" loading="lazy">{{ else }}{{ $ini := "" }}{{ range split $s.name " " }}{{ $ini = printf "%s%s" $ini (substr . 0 1) }}{{ end }}<span class="dmd-portrait-initials" aria-hidden="true">{{ $ini }}</span>{{ end }}<span class="dmd-photo-index">{{ printf "%02d" (add $i 1) }} / SPEAKER</span><span class="dmd-person-arrow">↗</span></div>
         <div class="dmd-person-text"><p class="dmd-company">{{ $s.company }}</p><h3>{{ $s.name }}</h3><p class="dmd-role">{{ $s.role }}</p></div>
       </a>
