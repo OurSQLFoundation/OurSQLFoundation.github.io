@@ -52,11 +52,11 @@
   {{ $speakers := .Params.speakers }}
   <section id="speakers" class="dmd-speakers-section"><div class="dmd-wrap dmd-section">
     <div class="dmd-section-heading"><div><p class="dmd-eyebrow">Speakers</p><h2>Meet the Speakers</h2></div><p>{{ .Params.speakers_intro }}</p></div>
-    <div class="dmd-speaker-grid">
+    <div class="dmd-speaker-grid{{ if gt (len $speakers) 4 }} dmd-speaker-grid--many{{ end }}">
       {{ range $i, $s := $speakers }}
       {{ $photo := $page.Resources.Get $s.photo }}
       <a class="dmd-person" href="#talk-{{ $i }}" aria-label="View talk by {{ $s.name }}">
-        <div class="dmd-portrait">{{ with $photo }}{{ $img := .Fill "420x420 jpg q85" }}<img src="{{ $img.RelPermalink }}" alt="{{ $s.name }}" width="420" height="420" loading="lazy">{{ end }}<span class="dmd-photo-index">{{ printf "%02d" (add $i 1) }} / SPEAKER</span><span class="dmd-person-arrow">↗</span></div>
+        <div class="dmd-portrait">{{ with $photo }}{{ $img := .Fill "420x420 jpg q85" }}<img src="{{ $img.RelPermalink }}" alt="{{ $s.name }}" width="420" height="420" loading="lazy">{{ else }}{{ $ini := "" }}{{ range split $s.name " " }}{{ $ini = printf "%s%s" $ini (substr . 0 1) }}{{ end }}<span class="dmd-portrait-initials" aria-hidden="true">{{ $ini }}</span>{{ end }}<span class="dmd-photo-index">{{ printf "%02d" (add $i 1) }} / SPEAKER</span><span class="dmd-person-arrow">↗</span></div>
         <div class="dmd-person-text"><p class="dmd-company">{{ $s.company }}</p><h3>{{ $s.name }}</h3><p class="dmd-role">{{ $s.role }}</p></div>
       </a>
       {{ end }}
@@ -72,9 +72,9 @@
       {{ $sp := dict }}
       {{ range $speakers }}{{ if eq .name $t.speaker }}{{ $sp = . }}{{ end }}{{ end }}
       <article class="dmd-talk" id="talk-{{ $i }}">
-        <div class="dmd-talk-num"><span class="dmd-time-est">{{ $t.est }}<small>EST</small></span><span class="dmd-time-cet">{{ $t.cet }}<small>CET</small></span></div>
+        <div class="dmd-talk-num">{{ if $t.est }}<span class="dmd-time-est">{{ $t.est }}<small>EST</small></span><span class="dmd-time-cet">{{ $t.cet }}<small>CET</small></span>{{ else }}<span class="dmd-time-est dmd-time-tba">Time to be announced</span>{{ end }}</div>
         <div class="dmd-talk-content"><span class="dmd-eyebrow">{{ $t.track }}</span><h3>{{ $t.title }}</h3>
-          <div class="dmd-talk-person">{{ with $sp.photo }}{{ with $page.Resources.Get . }}{{ $av := .Fill "96x96 jpg q85" }}<img src="{{ $av.RelPermalink }}" alt="" width="48" height="48" loading="lazy">{{ end }}{{ end }}<span>{{ $t.speaker }}<small>{{ $sp.company }}</small></span></div>
+          <div class="dmd-talk-person">{{ $avatar := "" }}{{ with $sp.photo }}{{ $avatar = $page.Resources.Get . }}{{ end }}{{ with $avatar }}{{ $av := .Fill "96x96 jpg q85" }}<img src="{{ $av.RelPermalink }}" alt="" width="48" height="48" loading="lazy">{{ else }}{{ $ini := "" }}{{ range split $t.speaker " " }}{{ $ini = printf "%s%s" $ini (substr . 0 1) }}{{ end }}<b class="dmd-avatar-initials" aria-hidden="true">{{ $ini }}</b>{{ end }}<span>{{ if $sp.profile }}<a href="{{ $sp.profile }}" class="dmd-talk-person-link">{{ $t.speaker }}</a>{{ else }}{{ $t.speaker }}{{ end }}<small>{{ $sp.company }}</small></span></div>
         </div>
         <span class="dmd-talk-arrow" aria-hidden="true">↗</span>
       </article>

@@ -429,3 +429,42 @@
     height: 100%;
   }
 }
+
+// Speakers without a photo yet, and slots without a time yet.
+.dmd-landing .dmd-portrait-initials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: #00c8ff;
+  background: linear-gradient(135deg, #1b2540, #12182b);
+}
+
+.dmd-landing .dmd-talk-person .dmd-avatar-initials {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #00c8ff;
+  background: #1b2540;
+}
+
+.dmd-landing .dmd-talk-person .dmd-talk-person-link:hover { text-decoration: underline; }
+.dmd-landing .dmd-talk-num .dmd-time-tba { font-size: 13px; line-height: 1.4; color: #8e9db6; }
+.dmd-landing .dmd-person:nth-child(5) .dmd-person-text { border-color: #00c8ff; }
+.dmd-landing .dmd-person:nth-child(6) .dmd-person-text { border-color: #a78bfa; }
+
+@media (min-width: 1001px) {
+  .dmd-landing .dmd-speaker-grid.dmd-speaker-grid--many { grid-template-columns: repeat(3, 1fr); }
+}
+
+[data-theme="light"] .dmd-landing .dmd-portrait-initials { color: #0272a5; background: linear-gradient(135deg, #e3eaf6, #f1f5fb); }
+[data-theme="light"] .dmd-landing .dmd-talk-person .dmd-avatar-initials { color: #0272a5; background: #e3eaf6; }
+[data-theme="light"] .dmd-landing .dmd-talk-num .dmd-time-tba { color: #64748b; }
