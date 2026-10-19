@@ -31,6 +31,12 @@
 {{ $upcomingEvents = first 3 $upcomingEvents }}
 {{ $showEvents := false }} {{/* flip to `gt (len $upcomingEvents) 0` to bring the Upcoming events column back */}}
 
+{{/* Featured upcoming event: any page flagged home_featured whose date is still ahead. */}}
+{{ $featured := "" }}
+{{ range sort (where .Site.RegularPages "Params.home_featured" true) "Date" "asc" }}
+  {{ if and (not $featured) (ge .Date now) }}{{ $featured = . }}{{ end }}
+{{ end }}
+
 {{ $newsPages := slice }}
 {{ with .Site.GetPage "/blog" }}
   {{ range .Pages }}{{ $newsPages = $newsPages | append . }}{{ end }}
@@ -181,7 +187,7 @@
 <hr class="home-divider">
 
 <!-- News & Events -->
-{{ if $newsPages }}
+{{ if or $newsPages $featured }}
 <section class="section section-dark">
   <div class="container">
     <div class="section-header section-header--left">
@@ -189,6 +195,28 @@
       <h2>What's happening in the community</h2>
       <p>From conference talks to community calls — see what's coming up and catch up on what you've missed.</p>
     </div>
+
+    {{ with $featured }}
+    <div class="home-subhead-row">
+      <span class="home-subhead">Upcoming event</span>
+      <a href="/resources/events/" class="home-subhead-link">View all events →</a>
+    </div>
+    {{ $cover := "" }}
+    {{ with .Params.images }}{{ $cover = $featured.Resources.Get (index . 0) }}{{ end }}
+    <a href="{{ .RelPermalink }}" class="home-feature">
+      {{ with $cover }}
+      {{ $img := .Fill "960x504 jpg q85" }}
+      <span class="home-feature-media"><img src="{{ $img.RelPermalink }}" alt="" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy"></span>
+      {{ end }}
+      <span class="home-feature-body">
+        <span class="home-feature-kicker">{{ .Date.Format "January 2, 2006" }}{{ with .Params.home_meta }} · {{ . }}{{ end }}</span>
+        <span class="home-feature-title">{{ .Title }}</span>
+        <span class="home-feature-desc">{{ .Params.hero_description | default .Description }}</span>
+        <span class="home-feature-cta">See speakers and schedule →</span>
+      </span>
+    </a>
+    <hr class="home-dash-divider">
+    {{ end }}
 
     {{ if $showEvents }}
     {{ with $upcomingEvents }}
@@ -209,6 +237,7 @@
     {{ end }}
     {{ end }}
 
+    {{ if $newsPages }}
     <div class="home-subhead-row">
       <span class="home-subhead">Latest news</span>
       <a href="/news/press-releases/" class="home-subhead-link">View all news →</a>
@@ -223,6 +252,7 @@
       </a>
       {{ end }}
     </div>
+    {{ end }}
   </div>
 </section>
 
