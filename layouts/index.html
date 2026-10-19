@@ -49,14 +49,107 @@
 
 {{ $slack := .Site.Params.social.slack }}
 
-<!-- Hero -->
-<section class="hero hero--minimal">
-  <h1 class="hero-title">The Future of the <span class="gradient-text">MySQL Ecosystem</span></h1>
-  <p class="hero-description">A vendor-neutral nonprofit bringing together the MySQL ecosystem to share knowledge, collaborate openly, and build a strong, sustainable future.</p>
-  <div class="hero-actions">
-    <a href="/community/get-involved/" class="btn btn-primary">Join the Foundation</a>
-    <a href="/resources/" class="btn btn-outline">Explore the ecosystem →</a>
+<!-- Hero carousel: the upcoming-event announcement first (when a page is flagged
+     home_featured and still ahead), then the mission statement. With only one slide it
+     renders as a plain hero, without controls. -->
+{{ $slideCount := 1 }}{{ if $featured }}{{ $slideCount = 2 }}{{ end }}
+<section class="hero hero--minimal hero-carousel" data-count="{{ $slideCount }}" aria-roledescription="carousel" aria-label="Featured">
+  <div class="hero-slides">
+    {{ with $featured }}
+    {{ $art := .Resources.Get "hero-illustration.svg" }}
+    <div class="hero-slide hero-slide--event is-active" role="group" aria-roledescription="slide" aria-label="1 of 2">
+      <div class="hero-event-copy">
+        <span class="hero-event-kicker">Upcoming event · {{ .Date.Format "January 2, 2006" }}{{ with .Params.home_meta }} · {{ . }}{{ end }}</span>
+        <h2 class="hero-event-title">DuckDB <span class="hero-event-x">×</span> MySQL <span class="gradient-text">Day</span><span class="hero-event-dot">.</span></h2>
+        <p class="hero-event-desc">{{ .Params.hero_description | default .Description }}</p>
+        <div class="hero-actions hero-actions--left">
+          <a href="{{ .RelPermalink }}#register" class="btn btn-primary">Register for free</a>
+          <a href="{{ .RelPermalink }}#schedule" class="btn btn-outline">See the schedule →</a>
+        </div>
+      </div>
+      {{ with $art }}
+      <div class="hero-event-art"><img src="{{ .RelPermalink }}" alt="MySQL and DuckDB cards connected by data flows" width="800" height="790" decoding="async"></div>
+      {{ end }}
+    </div>
+    {{ end }}
+    <div class="hero-slide hero-slide--mission{{ if not $featured }} is-active{{ end }}"{{ if $featured }} role="group" aria-roledescription="slide" aria-label="2 of 2"{{ end }}>
+      <h1 class="hero-title">The Future of the <span class="gradient-text">MySQL Ecosystem</span></h1>
+      <p class="hero-description">A vendor-neutral nonprofit bringing together the MySQL ecosystem to share knowledge, collaborate openly, and build a strong, sustainable future.</p>
+      <div class="hero-actions">
+        <a href="/community/get-involved/" class="btn btn-primary">Join the Foundation</a>
+        <a href="/resources/" class="btn btn-outline">Explore the ecosystem →</a>
+      </div>
+    </div>
   </div>
+  {{ if $featured }}
+  <div class="hero-controls">
+    <button type="button" class="hero-ctrl hero-ctrl--prev" aria-label="Previous slide" hidden>‹</button>
+    <div class="hero-dots" role="tablist" aria-label="Choose a slide"></div>
+    <button type="button" class="hero-ctrl hero-ctrl--next" aria-label="Next slide" hidden>›</button>
+    <button type="button" class="hero-ctrl hero-ctrl--pause" aria-label="Pause automatic slide change" hidden>❚❚</button>
+  </div>
+  <script>
+  (function () {
+    var root = document.querySelector('.hero-carousel');
+    if (!root) return;
+    var slides = [].slice.call(root.querySelectorAll('.hero-slide'));
+    if (slides.length < 2) return;
+    var dots = root.querySelector('.hero-dots');
+    var prev = root.querySelector('.hero-ctrl--prev'), next = root.querySelector('.hero-ctrl--next'), pause = root.querySelector('.hero-ctrl--pause');
+    var i = 0, timer = null, userPaused = false, hovering = false;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var buttons = slides.map(function (s, k) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'hero-dot'; b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Slide ' + (k + 1) + ' of ' + slides.length);
+      b.addEventListener('click', function () { show(k); restart(); });
+      dots.appendChild(b); return b;
+    });
+    function show(k) {
+      i = (k + slides.length) % slides.length;
+      slides.forEach(function (s, n) {
+        var on = n === i;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        [].forEach.call(s.querySelectorAll('a, button'), function (el) { el.tabIndex = on ? 0 : -1; });
+        buttons[n].setAttribute('aria-selected', on ? 'true' : 'false');
+        buttons[n].classList.toggle('is-active', on);
+      });
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() { stop(); if (!reduce && !userPaused && !hovering && !document.hidden) timer = setInterval(function () { show(i + 1); }, 8000); }
+    function restart() { start(); }
+    prev.hidden = next.hidden = false;
+    prev.addEventListener('click', function () { show(i - 1); restart(); });
+    next.addEventListener('click', function () { show(i + 1); restart(); });
+    if (!reduce) {
+      pause.hidden = false;
+      pause.addEventListener('click', function () {
+        userPaused = !userPaused;
+        pause.textContent = userPaused ? '▶' : '❚❚';
+        pause.setAttribute('aria-label', userPaused ? 'Resume automatic slide change' : 'Pause automatic slide change');
+        start();
+      });
+    }
+    root.addEventListener('mouseenter', function () { hovering = true; stop(); });
+    root.addEventListener('mouseleave', function () { hovering = false; start(); });
+    root.addEventListener('focusin', function () { hovering = true; stop(); });
+    root.addEventListener('focusout', function () { hovering = false; start(); });
+    document.addEventListener('visibilitychange', start);
+    var x0 = null;
+    root.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) { show(i + (dx < 0 ? 1 : -1)); restart(); }
+      x0 = null;
+    });
+    root.classList.add('is-ready');
+    show(0);
+    start();
+  })();
+  </script>
+  {{ end }}
 </section>
 
 <!-- What We Do -->

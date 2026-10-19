@@ -84,6 +84,11 @@
 
   .hero-title       { color: #0f172a; }
   .hero-description { color: #64748b; }
+  .hero-event-title { color: #0f172a; .hero-event-x { color: #64748b; } }
+  .hero-event-desc { color: #64748b; }
+  .hero-event-kicker { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
+  .hero-dot { background: rgba(15, 23, 42, 0.32); &.is-active { background: #0272a5; } }
+  .hero-ctrl { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
 
   .page-layout {
     .page-intro { color: #64748b; border-bottom-color: #dde3ed; }
