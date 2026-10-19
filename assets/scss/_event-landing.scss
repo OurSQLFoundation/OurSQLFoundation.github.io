@@ -468,3 +468,13 @@
 [data-theme="light"] .dmd-landing .dmd-portrait-initials { color: #0272a5; background: linear-gradient(135deg, #e3eaf6, #f1f5fb); }
 [data-theme="light"] .dmd-landing .dmd-talk-person .dmd-avatar-initials { color: #0272a5; background: #e3eaf6; }
 [data-theme="light"] .dmd-landing .dmd-talk-num .dmd-time-tba { color: #64748b; }
+
+// Hero illustration (SVG image) instead of the old CSS/SVG artwork.
+.dmd-landing .dmd-hero-art--image .dmd-hero-illustration {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
