@@ -468,3 +468,30 @@
 [data-theme="light"] .dmd-landing .dmd-portrait-initials { color: #0272a5; background: linear-gradient(135deg, #e3eaf6, #f1f5fb); }
 [data-theme="light"] .dmd-landing .dmd-talk-person .dmd-avatar-initials { color: #0272a5; background: #e3eaf6; }
 [data-theme="light"] .dmd-landing .dmd-talk-num .dmd-time-tba { color: #64748b; }
+
+// Hero illustration (SVG image) instead of the old CSS/SVG artwork.
+.dmd-landing .dmd-hero-art--image .dmd-hero-illustration {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
+
+// Desktop: a compact hero so the date strip (Save the date / Online / Free) is
+// visible without scrolling on a laptop screen; the section nav below it may
+// sit on the second screen.
+@media (min-width: 1001px) {
+  .dmd-landing .dmd-breadcrumbs { padding: 16px 0; }
+  .dmd-landing .dmd-hero-grid { min-height: 0; }
+  .dmd-landing .dmd-hero-art { height: 510px; }
+  .dmd-landing .dmd-hero-original h1 {
+    font-size: #{"clamp(54px, 5.2vw, 78px)"};
+    letter-spacing: -3.5px;
+    margin-bottom: 20px;
+  }
+  .dmd-landing .dmd-hero-original .dmd-hero-copy { padding-top: 10px; padding-bottom: 20px; }
+  .dmd-landing .dmd-hero-original .dmd-hero-desc { font-size: 15px; line-height: 1.7; margin-bottom: 22px; }
+  .dmd-landing .dmd-event-strip { min-height: 84px; margin: 8px 0 44px; }
+}
