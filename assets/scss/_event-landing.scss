@@ -479,12 +479,13 @@
   object-position: right center;
 }
 
-// Desktop: a more compact hero so the date strip (Save the date / Online / Free)
-// is visible without scrolling on a laptop screen.
+// Desktop: a compact hero so the date strip (Save the date / Online / Free) is
+// visible without scrolling on a laptop screen; the section nav below it may
+// sit on the second screen.
 @media (min-width: 1001px) {
   .dmd-landing .dmd-breadcrumbs { padding: 16px 0; }
   .dmd-landing .dmd-hero-grid { min-height: 0; }
-  .dmd-landing .dmd-hero-art { height: 430px; }
+  .dmd-landing .dmd-hero-art { height: 510px; }
   .dmd-landing .dmd-hero-original h1 {
     font-size: #{"clamp(54px, 5.2vw, 78px)"};
     letter-spacing: -3.5px;
@@ -492,5 +493,5 @@
   }
   .dmd-landing .dmd-hero-original .dmd-hero-copy { padding-top: 10px; padding-bottom: 20px; }
   .dmd-landing .dmd-hero-original .dmd-hero-desc { font-size: 15px; line-height: 1.7; margin-bottom: 22px; }
-  .dmd-landing .dmd-event-strip { min-height: 84px; margin: 8px 0 28px; }
+  .dmd-landing .dmd-event-strip { min-height: 84px; margin: 8px 0 44px; }
 }

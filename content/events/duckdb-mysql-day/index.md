@@ -1,7 +1,7 @@
 ---
 title: "DuckDB × MySQL Day"
 description: "DuckDB × MySQL Day. A free online conference by OurSQL Foundation, November 17, 2026. Explore fast analytics for MySQL with the people building it."
-hero_description: "A one-day online conference on bringing fast analytics to MySQL: columnar engines, analytical replication, Parquet, and the road to HTAP — from the people building it."
+hero_description: "A one-day online conference on bringing fast analytics to MySQL and MariaDB: columnar engines, analytical replication, Parquet, and the road to HTAP — from the people building it."
 date: 2026-11-17
 url: "/events/duckdb-mysql-day/"
 layout: "duckdb-mysql-day"
