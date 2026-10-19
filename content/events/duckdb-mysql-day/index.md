@@ -30,17 +30,17 @@ speakers:
   - {name: "Vadim Tkachenko", company: "Percona", role: "Co-founder", photo: "vadim-tkachenko.jpg", profile: "/resources/member-directory/people/vadim-tkachenko/"}
   - {name: "Henrik Ingo", company: "Oracle", role: "MySQL Community Architect", photo: "henrik-ingo.jpg", profile: "/resources/member-directory/people/henrik-ingo/"}
   - {name: "Zongzhi Chen", company: "Alibaba", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
-  - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
-  - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp"}
   - {name: "Dominic Preuss", company: "VillageSQL", role: "Founder & CEO", photo: "dominic-preuss.jpg", profile: "/resources/member-directory/people/dominic-preuss/"}
+  - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp"}
+  - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
 schedule_label: "Approximate schedule · EST / CET"
 schedule:
   - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
   - {est: "10:30–11:00", cet: "16:30–17:00", track: "More to come", title: "Talk title to be announced", speaker: "Henrik Ingo"}
   - {est: "11:00–11:30", cet: "17:00–17:30", track: "Columnar engines", title: "When MySQL meets DuckDB: Best practices for columnar engines on MySQL", speaker: "Zongzhi Chen"}
-  - {est: "11:30–12:00", cet: "17:30–18:00", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
+  - {est: "11:30–12:00", cet: "17:30–18:00", track: "Extensions", title: "Implementing DuckDB inside MySQL as a VillageSQL extension", speaker: "Dominic Preuss"}
   - {est: "12:00–12:30", cet: "18:00–18:30", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin"}
-  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Extensions", title: "Implementing DuckDB inside MySQL as a VillageSQL extension", speaker: "Dominic Preuss"}
+  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
 schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics"]
 register:
