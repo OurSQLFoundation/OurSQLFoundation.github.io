@@ -242,6 +242,16 @@
   .home-event-title { color: #0f172a; }
   .home-event-meta { color: #94a3b8; }
 
+  .home-feature {
+    background: #ffffff;
+    border-color: #dde3ed;
+    &:hover { border-color: rgba(0, 200, 255, 0.5); }
+  }
+  .home-feature-media { background: #eef2f7; }
+  .home-feature-kicker, .home-feature-cta { color: #0272a5; }
+  .home-feature-title { color: #0f172a; }
+  .home-feature-desc { color: #64748b; }
+
   .home-news-card {
     background: #ffffff;
     border-color: #dde3ed;

@@ -5,6 +5,10 @@ hero_description: "A one-day online conference on bringing fast analytics to MyS
 date: 2026-11-17
 url: "/events/duckdb-mysql-day/"
 layout: "duckdb-mysql-day"
+# Shown as the upcoming-event announcement in the homepage's News & Events block
+# until the event date has passed.
+home_featured: true
+home_meta: "Online · Free"
 # Image used when the page is shared on social networks.
 images:
   - cover.jpg

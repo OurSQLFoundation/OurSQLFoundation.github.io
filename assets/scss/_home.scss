@@ -317,3 +317,69 @@ $c-purple: #a78bfa;
   color: $off-white;
   line-height: 1.4;
 }
+
+// ── Featured upcoming event (News & Events) ──
+.home-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.35);
+    box-shadow: 0 6px 24px rgba($accent, 0.08);
+
+    .home-feature-cta { text-decoration: underline; }
+  }
+
+  @media (max-width: $break-lg) { grid-template-columns: 1fr; }
+}
+
+.home-feature-media {
+  display: block;
+  background: $dark-surface;
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+}
+
+.home-feature-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.75rem 2rem;
+
+  @media (max-width: $break-md) { padding: 1.25rem; }
+}
+
+.home-feature-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.home-feature-title {
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: $off-white;
+}
+
+.home-feature-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $muted;
+}
+
+.home-feature-cta {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $accent;
+}
