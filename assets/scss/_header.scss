@@ -279,6 +279,15 @@
     margin-left: 0;
     z-index: 99;
 
+    // The open menu is taller than a phone screen (every group is expanded),
+    // and a fixed element can't be scrolled by the page — so it scrolls itself.
+    max-height: calc(100vh - 64px);
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+
     &.open {
       display: flex;
     }
