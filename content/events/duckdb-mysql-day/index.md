@@ -42,7 +42,7 @@ schedule:
   - {est: "12:00–12:30", cet: "18:00–18:30", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin"}
   - {est: "12:30–13:00", cet: "18:30–19:00", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
 schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
-topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics"]
+topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics", "VillageSQL"]
 register:
   eyebrow: "November 17, 2026 · Online · Free"
   heading: "Ready to join us?"
