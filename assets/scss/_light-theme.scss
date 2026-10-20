@@ -1228,6 +1228,22 @@
   .slides-nav { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
   .slides-btn { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
 
+  // MySQL in Practice
+  .case-card, .case-strip, .case-company, .case-cta { background: #ffffff; border-color: #dde3ed; }
+  .case-card:hover { border-color: rgba(2, 114, 165, 0.4); }
+  .case-card-company { background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), rgba(0, 200, 255, 0.02) 70%); border-bottom-color: #dde3ed; }
+  .case-card-footer { border-top-color: #dde3ed; }
+  .case-card-logo, .case-strip-logo, .case-company-logo { border-color: #dde3ed; }
+  .case-card-company-name, .case-card-title, .case-card-author-name, .case-strip-line, .case-company-name, .case-cta-title { color: #0f172a; }
+  .case-card-desc, .case-card-meta, .case-strip-sub, .case-company-desc, .case-cta-desc { color: #64748b; }
+  .case-card-kicker, .case-card-cta, .case-strip-line a { color: #0272a5; }
+  .case-strip-btn { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
+  .case-strip-btn--primary { color: #ffffff; background: #0272a5; border-color: #0272a5; }
+  .resource-case-link { background: #ffffff; border-color: #dde3ed; border-left-color: #00c8ff; &:hover { background: #f8f9fc; } }
+  .resource-case-title { color: #0f172a; }
+  .post-author-role { color: #64748b; }
+  .resource-case-meta { color: #64748b; }
+
   // People Behind MySQL
   .interview-card, .interview-strip { background: #ffffff; border-color: #dde3ed; }
   .interview-card:hover { border-color: rgba(2, 114, 165, 0.4); }

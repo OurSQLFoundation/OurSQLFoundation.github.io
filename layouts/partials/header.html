@@ -16,7 +16,7 @@
           <a href="/about/brand-guidelines/">Brand Guidelines</a>
         </div>
       </div>
-      <div class="nav-item nav-item--dropdown{{ if or (hasPrefix .RelPermalink "/news") (hasPrefix .RelPermalink "/blog") }} active{{ end }}">
+      <div class="nav-item nav-item--dropdown{{ if and (or (hasPrefix .RelPermalink "/news") (hasPrefix .RelPermalink "/blog")) (not .Params.case_study) }} active{{ end }}">
         <button type="button" class="nav-dropdown-trigger" aria-expanded="false">News</button>
         <div class="nav-dropdown-menu">
           <a href="/blog/">Blog</a>
@@ -40,7 +40,13 @@
           {{ with .Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener">Slack ↗</a>{{ end }}
         </div>
       </div>
-      <a href="/resources/" class="{{ if and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) (not (hasPrefix .RelPermalink "/resources/events")) }}active{{ end }}">Resources</a>
+      <div class="nav-item nav-item--dropdown{{ if or .Params.case_study (and (hasPrefix .RelPermalink "/resources") (not (hasPrefix .RelPermalink "/resources/contribute")) (not (hasPrefix .RelPermalink "/resources/events"))) }} active{{ end }}">
+        <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Resources</button>
+        <div class="nav-dropdown-menu">
+          <a href="/resources/">OurSQL Universe</a>
+          <a href="/resources/mysql-in-practice/">MySQL in Practice</a>
+        </div>
+      </div>
       <a href="/resources/contribute/" class="nav-cta">Suggest a resource</a>
     </nav>
 

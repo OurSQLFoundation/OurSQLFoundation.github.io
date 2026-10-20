@@ -1,0 +1,15 @@
+{{/* On a catalog page (e.g. a company in Services): the MySQL in Practice case studies
+     that name this page as their company. Context: the catalog page. */}}
+{{ $path := .Path }}
+{{ $cases := where (where site.RegularPages "Params.case_study" "!=" nil) "Params.case_study.company_page" $path }}
+{{ with $cases }}
+<div class="resource-case-box">
+  <span class="resources-category-eyebrow">MySQL in Practice</span>
+  {{ range .ByDate.Reverse }}
+  <a href="{{ .RelPermalink }}" class="resource-case-link">
+    <span class="resource-case-title">{{ .Title }}</span>
+    <span class="resource-case-meta">Case study · {{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} · by {{ . }}{{ end }}</span>
+  </a>
+  {{ end }}
+</div>
+{{ end }}

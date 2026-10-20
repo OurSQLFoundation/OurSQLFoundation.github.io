@@ -1,0 +1,6 @@
+{{/* Builds a tracked link to a company's own site for MySQL in Practice case studies:
+     the company sees where the traffic came from.
+     Context: dict "url" (the company URL) and "content" (a placement label, e.g.
+     "header" or "footer-<article slug>"). Returns the URL with UTM parameters. */}}
+{{ $sep := "?" }}{{ if strings.Contains .url "?" }}{{ $sep = "&" }}{{ end }}
+{{ return printf "%s%sutm_source=oursqlfoundation&utm_medium=referral&utm_campaign=mysql-in-practice&utm_content=%s" .url $sep .content }}
