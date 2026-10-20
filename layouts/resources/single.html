@@ -50,7 +50,9 @@
     {{ $slug := path.Base (strings.TrimSuffix "/" (path.Dir .File.Path)) }}
     {{ $guestPath := printf "/resources/member-directory/%s" $slug }}
     {{ $interviews := where site.RegularPages "Params.interview.guest_page" $guestPath }}
-    {{ if or .Params.company .Params.project $books $interviews }}
+    {{/* MySQL in Practice case studies this person wrote */}}
+    {{ $cases := where (where site.RegularPages "Params.case_study" "!=" nil) "Params.author_page" $guestPath }}
+    {{ if or .Params.company .Params.project $books $interviews $cases }}
     <div class="person-meta">
       {{ with .Params.company }}
       <div class="person-meta-row">
@@ -62,6 +64,12 @@
       <div class="person-meta-row">
         <span class="person-meta-label">Project</span>
         {{ with $.Params.project_url }}<a href="{{ . }}" class="person-meta-link">{{ $.Params.project }}</a>{{ else }}<span class="person-meta-value">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+      {{ with $cases }}
+      <div class="person-meta-row">
+        <span class="person-meta-label">Case study</span>
+        <span class="person-meta-value">{{ range $i, $c := .ByDate.Reverse }}{{ if $i }}, {{ end }}<a href="{{ $c.RelPermalink }}" class="person-meta-link">{{ $c.Title }}</a>{{ end }}</span>
       </div>
       {{ end }}
       {{ with $interviews }}

@@ -1,0 +1,240 @@
+// Resources > MySQL in Practice — case-study cards on the list page, the company
+// strip and "About the company" box on the article, and the reverse link on catalog
+// pages. Built on the interview-card language.
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+// ── Card ──
+.case-card {
+  display: flex;
+  flex-direction: column;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.3);
+    box-shadow: 0 6px 24px rgba($accent, 0.07);
+    transform: translateY(-2px);
+
+    .case-card-cta { color: lighten($accent, 8%); }
+  }
+}
+
+.case-card-company {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  background: linear-gradient(135deg, rgba($accent, 0.1), rgba($accent, 0.02) 70%);
+  border-bottom: 1px solid $dark-border;
+}
+
+.case-card-logo,
+.case-strip-logo,
+.case-company-logo {
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid $dark-border;
+  object-fit: contain;
+}
+
+.case-card-logo { width: 56px; height: 56px; }
+
+.case-card-company-text { display: flex; flex-direction: column; min-width: 0; }
+
+.case-card-kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.case-card-company-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: $off-white;
+  margin-top: 0.1rem;
+}
+
+.case-card-body { flex: 1; padding: 1.25rem 1.25rem 1rem; }
+
+.case-card-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: $off-white;
+  margin: 0 0 0.6rem;
+}
+
+.case-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: $muted;
+  margin: 0;
+}
+
+.case-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid $dark-border;
+}
+
+.case-card-author { display: inline-flex; align-items: center; gap: 0.6rem; min-width: 0; }
+
+.case-card-author-text { display: flex; flex-direction: column; min-width: 0; }
+
+.case-card-author-name { font-size: 0.8125rem; font-weight: 600; color: $off-white; }
+
+.case-card-meta { font-size: 0.75rem; color: $muted; }
+
+.case-card-cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+// ── Company strip under the article title ──
+.case-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+}
+
+.case-strip-logo { width: 56px; height: 56px; }
+
+.case-strip-text { display: flex; flex-direction: column; flex: 1 1 200px; min-width: 0; }
+
+.case-strip-line {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $off-white;
+
+  a { color: $accent; text-decoration: none; &:hover { text-decoration: underline; } }
+}
+
+.case-strip-sub {
+  font-size: 0.8125rem;
+  color: $muted;
+  margin-top: 0.15rem;
+
+  a { color: inherit; text-decoration: underline; &:hover { color: $accent; } }
+}
+
+.case-strip-links { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.case-strip-btn {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  background: $accent-glow;
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  text-decoration: none;
+
+  &:hover { background: rgba($accent, 0.22); }
+
+  &--primary {
+    color: $dark-bg;
+    background: $accent;
+    border-color: $accent;
+
+    &:hover { background: lighten($accent, 8%); }
+  }
+}
+
+// ── "About the company" box at the end of the article ──
+.case-company {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding: 1.75rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 14px;
+
+  @media (max-width: $break-md) { flex-direction: column; padding: 1.25rem; }
+}
+
+.case-company-logo { width: 72px; height: 72px; }
+
+.case-company-body { display: flex; flex-direction: column; min-width: 0; }
+
+.case-company-name { font-size: 1.0625rem; font-weight: 700; color: $off-white; }
+
+.case-company-desc { font-size: 0.875rem; line-height: 1.6; color: $muted; margin: 0.4rem 0 0; }
+
+.case-company-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+// ── "Share your case" strip on the list page ──
+.case-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 1.75rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+}
+
+.case-cta-title { font-size: 1.0625rem; font-weight: 700; color: $off-white; margin: 0 0 0.3rem; }
+
+.case-cta-desc { font-size: 0.875rem; line-height: 1.6; color: $muted; margin: 0; max-width: 560px; }
+
+// ── Reverse link on a catalog page ──
+.resource-case-box { margin-top: 1.5rem; }
+
+.resource-case-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.6rem;
+  padding: 0.9rem 1.1rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-left: 2px solid $accent;
+  border-radius: 0 8px 8px 0;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover { background: $dark-surface; }
+}
+
+.resource-case-title { font-size: 0.9375rem; font-weight: 600; color: $off-white; line-height: 1.4; }
+
+.resource-case-meta { font-size: 0.8125rem; color: $muted; }
+
+.case-card-author { --av: 36px; }
+
+.post-author-role { font-size: 0.8125rem; color: $muted; }
+
+// Long single-line snippets (e.g. error messages) wrap instead of scrolling sideways.
+.post-content pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

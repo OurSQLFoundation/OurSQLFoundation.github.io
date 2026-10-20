@@ -1,0 +1,42 @@
+{{/* MySQL in Practice — case studies from teams and experts. They are blog articles
+     (tagged "Case Study") with a `case_study` block in front matter, collected here
+     from the whole site, newest first. */}}
+{{ define "main" }}
+{{ $cases := where site.RegularPages "Params.case_study" "!=" nil }}
+{{ $cases = $cases.ByDate.Reverse }}
+
+<div class="about-page">
+
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/resources/">Resources</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <div class="about-hero about-prose">
+    <h1>{{ .Title }}</h1>
+    <p class="about-hero-sub">{{ .Description }}</p>
+  </div>
+
+  <div class="about-block">
+    {{ if $cases }}
+    <div class="case-grid">
+      {{ range $cases }}{{ partial "case-studies/card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <div class="webinar-empty-state"><p>The first case studies are on their way — check back soon.</p></div>
+    {{ end }}
+  </div>
+
+  <div class="about-block">
+    <div class="case-cta">
+      <div>
+        <p class="case-cta-title">Share your case</p>
+        <p class="case-cta-desc">Running MySQL in production and learned something worth passing on? We publish case studies from teams and experts, with credit and a link back to your company.</p>
+      </div>
+      <a href="mailto:contact@oursqlfoundation.org?subject=MySQL%20in%20Practice%20case%20study" class="about-btn about-btn--secondary">Pitch a case study →</a>
+    </div>
+  </div>
+
+</div>
+{{ end }}
