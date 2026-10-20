@@ -6,6 +6,8 @@ tags:
 - Case Study
 author: "Eugene Dimov"
 author_page: "/resources/member-directory/eugene-dimov"
+image: "cover.jpg"
+hero_image: false
 case_study:
   company_page: "/resources/services/ivinco"
   company_name: "Ivinco"
