@@ -9,6 +9,8 @@ subcategories:
 - People
 roles:
 - Author
+images:
+- photo.jpg
 ---
 
 Eugene Dimov is an Infrastructure Engineer at [Ivinco](/resources/services/ivinco/). He designs and maintains production bare-metal and container platforms, specializing in distributed storage, observability, and large migrations of production databases.
