@@ -122,6 +122,8 @@ The elegant part of this bug is that every participant behaves reasonably. Only 
 
 On the donor, that account was used only by local monitoring scripts, so the fix was small: we dropped the user, and the problem was gone. (By the way, if you are wondering what would happen to the primary if it restarted with that account present: it would lose its GTID history for external replication).
 
+> **Update, 21 October 2026.** Kento Takeuchi of the MOCO team answered in [cybozu-go/moco#952](https://github.com/cybozu-go/moco/issues/952). He wrote that this is expected behavior and a restriction on the donor's side. MOCO does not expect a root user without a password. The team will state this restriction in its documentation ([cybozu-go/moco-agent#125](https://github.com/cybozu-go/moco-agent/issues/125)). Both issues are now closed. If you clone from an external donor, make sure it has no `root@localhost` without a password.
+
 ## What to take away
 
 **Audit all client connection endpoints.** Not only "who connects, and to which address", but also a plan for the case when you miss someone, and they keep using the old address.
