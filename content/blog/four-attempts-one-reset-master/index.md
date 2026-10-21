@@ -14,8 +14,6 @@ case_study:
   company_url: "https://www.ivinco.com/"
 ---
 
-*How We Migrated a Terabyte of Production MySQL to Kubernetes (MOCO)*
-
 Historically, we had four bare-metal MySQL clusters. Over time, we merged them into two: the big one (750 GB data directory, ~50 databases, largest table 100 GB) and a small one (200 GB data directory) with specific transaction isolation requirements.
 
 On bare-metal, we ran Percona Server 8.0.x across 3 servers with 768 GB RAM for the big cluster and 2 servers with 128 GB RAM for the small one. But daily operations shifted (this post focuses primarily on the big cluster): the CPUs of the big cluster were idle almost 95% of the time on average, and the whole data directory fit into the server's RAM, so it was reduced to 384 GB without a performance penalty. Further experiments showed that it could potentially handle the load with even less RAM.
