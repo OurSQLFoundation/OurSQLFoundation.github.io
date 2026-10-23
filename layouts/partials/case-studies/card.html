@@ -1,0 +1,31 @@
+{{/* Case-study card for the MySQL in Practice list. The case study itself is a blog
+     article carrying a `case_study` block in its front matter. Context: the article. */}}
+{{ $cs := .Params.case_study }}
+{{ $company := site.GetPage $cs.company_page }}
+{{ $authorPage := site.GetPage .Params.author_page }}
+<a href="{{ .RelPermalink }}" class="case-card">
+  <div class="case-card-company">
+    {{ with $company }}{{ with .Params.images }}{{ with $company.Resources.Get (index . 0) }}
+    {{ $logo := .Fill "112x112 png" }}
+    <img src="{{ $logo.RelPermalink }}" alt="" class="case-card-logo" width="56" height="56" loading="lazy">
+    {{ end }}{{ end }}{{ end }}
+    <span class="case-card-company-text">
+      <span class="case-card-kicker">Case study</span>
+      <span class="case-card-company-name">{{ $cs.company_name | default $company.Title }}</span>
+    </span>
+  </div>
+  <div class="case-card-body">
+    <h3 class="case-card-title">{{ .Title }}</h3>
+    {{ with .Description }}<p class="case-card-desc">{{ . | truncate 190 }}</p>{{ end }}
+  </div>
+  <div class="case-card-footer">
+    <span class="case-card-author">
+      {{ partial "interviews/avatar.html" (dict "page" $authorPage "size" 32) }}
+      <span class="case-card-author-text">
+        <span class="case-card-author-name">{{ with $authorPage }}{{ .Title }}{{ else }}{{ .Params.author }}{{ end }}</span>
+        <span class="case-card-meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</span>
+      </span>
+    </span>
+    <span class="case-card-cta">Read →</span>
+  </div>
+</a>

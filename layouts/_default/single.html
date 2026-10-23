@@ -17,6 +17,7 @@
     <div class="post-meta">
       {{ with $authorPage }}
       <a href="{{ .RelPermalink }}" class="post-author">{{ .Title }}</a>
+      {{ if $.Params.case_study }}{{ with .Params.role }}<span class="post-author-role">{{ . }}</span>{{ end }}{{ end }}
       {{ else }}
       <span class="post-author">{{ with .Params.author }}{{ . }}{{ else }}OurSQL Foundation{{ end }}</span>
       {{ end }}
@@ -24,6 +25,25 @@
       <span>{{ .Date.Format "January 2, 2006" }}</span>
       <span class="dot"></span>
       <span>{{ .ReadingTime }} min read</span>
+    </div>
+    {{ end }}
+    {{ with .Params.case_study }}
+    {{ $company := $.Site.GetPage .company_page }}
+    {{ $name := .company_name | default $company.Title }}
+    {{ $site := .company_url | default $company.Params.link }}
+    <div class="case-strip">
+      {{ with $company }}{{ with .Params.images }}{{ with $company.Resources.Get (index . 0) }}
+      {{ $logo := .Fill "112x112 png" }}
+      <img src="{{ $logo.RelPermalink }}" alt="" class="case-strip-logo" width="56" height="56">
+      {{ end }}{{ end }}{{ end }}
+      <div class="case-strip-text">
+        <span class="case-strip-line">Case study from {{ with $company }}<a href="{{ .RelPermalink }}">{{ $name }}</a>{{ else }}{{ $name }}{{ end }}</span>
+        <span class="case-strip-sub"><a href="/resources/mysql-in-practice/">MySQL in Practice</a></span>
+      </div>
+      <div class="case-strip-links">
+        {{ with $company }}<a href="{{ .RelPermalink }}" class="case-strip-btn">{{ $name }} in the catalog</a>{{ end }}
+        {{ with $site }}<a href="{{ partial "case-studies/company-link.html" (dict "url" . "content" (printf "article-header-%s" $.File.ContentBaseName)) }}" class="case-strip-btn case-strip-btn--primary" target="_blank" rel="noopener">Visit {{ $name }} ↗</a>{{ end }}
+      </div>
     </div>
     {{ end }}
     {{ with .Params.interview }}
@@ -82,6 +102,27 @@
   </a>
   {{ end }}
 
+  {{ with $.Params.case_study }}
+  {{ $company := $.Site.GetPage .company_page }}
+  {{ $name := .company_name | default $company.Title }}
+  {{ $site := .company_url | default $company.Params.link }}
+  <aside class="case-company">
+    {{ with $company }}{{ with .Params.images }}{{ with $company.Resources.Get (index . 0) }}
+    {{ $logo := .Fill "144x144 png" }}
+    <img src="{{ $logo.RelPermalink }}" alt="" class="case-company-logo" width="72" height="72" loading="lazy">
+    {{ end }}{{ end }}{{ end }}
+    <div class="case-company-body">
+      <span class="author-card-label">About the company</span>
+      <span class="case-company-name">{{ $name }}</span>
+      {{ with $company }}{{ with .Description }}<p class="case-company-desc">{{ . }}</p>{{ end }}{{ end }}
+      <div class="case-company-links">
+        {{ with $company }}<a href="{{ .RelPermalink }}" class="case-strip-btn">See {{ $name }} in the catalog →</a>{{ end }}
+        {{ with $site }}<a href="{{ partial "case-studies/company-link.html" (dict "url" . "content" (printf "article-footer-%s" $.File.ContentBaseName)) }}" class="case-strip-btn case-strip-btn--primary" target="_blank" rel="noopener">Visit {{ $name }} ↗</a>{{ end }}
+      </div>
+    </div>
+  </aside>
+  {{ end }}
+
   {{ with $.Params.interview }}
   {{ $guestPage := $.Site.GetPage .guest_page }}
   {{ with $guestPage }}
@@ -104,7 +145,7 @@
 
   {{ if $isBlog }}
   <footer class="post-footer">
-    <a href="/blog/" class="back-link">← Back to Blog</a>
+    {{ if .Params.case_study }}<a href="/resources/mysql-in-practice/" class="back-link">← Back to MySQL in Practice</a>{{ else }}<a href="/blog/" class="back-link">← Back to Blog</a>{{ end }}
   </footer>
   {{ end }}
 

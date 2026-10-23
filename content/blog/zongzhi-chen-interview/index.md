@@ -1,6 +1,6 @@
 ---
 title: "“MySQL Is Still the Backbone”: Zongzhi Chen on Hot Rows, PolarDB, and the Agent Era"
-description: "Zongzhi Chen of Alibaba Cloud on why China runs on MySQL, what Singles Day does to a database, and what MySQL has to change before AI agents pick the next default."
+description: "Zongzhi Chen, an individual MySQL contributor, on why China runs on MySQL, what Singles Day does to a database, and what MySQL has to change before AI agents pick the next default."
 date: 2026-10-14
 tags:
 - Interview
@@ -15,7 +15,7 @@ interview:
   audio_url: ""
 ---
 
-*Zongzhi Chen leads the cloud RDS team at Alibaba Cloud. He was a core member of the team that shipped the first release of PolarDB, created the open source Redis-compatible database Pika, and sits on the Founding Board of the OurSQL Foundation. We talked about why China runs on MySQL, what Singles Day does to a database, and what MySQL has to change before AI agents pick the next default.*
+*Zongzhi Chen is an individual MySQL contributor who has worked on the MySQL source code for more than 10 years. He was a core member of the team that shipped the first release of PolarDB, created the open source Redis-compatible database Pika, and sits on the Founding Board of the OurSQL Foundation. We talked about why China runs on MySQL, what Singles Day does to a database, and what MySQL has to change before AI agents pick the next default. Views expressed are his own and do not represent his employer.*
 
 ## From Redis to the storage engine
 
