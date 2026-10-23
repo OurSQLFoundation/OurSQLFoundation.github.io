@@ -14,6 +14,8 @@ case_study:
   company_url: "https://www.ivinco.com/"
 ---
 
+<p class="update-banner"><strong>Update, October 23, 2026:</strong> The MOCO maintainers at Cybozu responded to this case. <a href="#maintainers-response">Read their comment →</a></p>
+
 Historically, we had four bare-metal MySQL clusters. Over time, we merged them into two: the big one (750 GB data directory, ~50 databases, largest table 100 GB) and a small one (200 GB data directory) with specific transaction isolation requirements.
 
 On bare-metal, we ran Percona Server 8.0.x across 3 servers with 768 GB RAM for the big cluster and 2 servers with 128 GB RAM for the small one. But daily operations shifted (this post focuses primarily on the big cluster): the CPUs of the big cluster were idle almost 95% of the time on average, and the whole data directory fit into the server's RAM, so it was reduced to 384 GB without a performance penalty. Further experiments showed that it could potentially handle the load with even less RAM.
@@ -133,3 +135,33 @@ On the donor, that account was used only by local monitoring scripts, so the fix
 **Rebuilding a replica is an event for production, not a background task.** Since MOCO configures semi-synchronous replication, it will always clone a new replica from the current primary. Operating at the raw block layer does not eliminate I/O competition: on shared hybrid storage, aggressive clone throughput demands significant storage performance headroom to keep production latency stable.
 
 **A physical clone copies the raw system tables as-is, inheriting the donor's legacy state:** accounts, grants, and leftover system schemas. At the same time, don't rely solely on your familiar bare-metal configuration: MOCO overrides critical runtime variables to enforce cluster orchestration, silently ignoring conflicting directives in your custom ConfigMap (see ConstMycnf in pkg/mycnf/generator.go).
+
+{{% guest-comment id="maintainers-response" %}}
+
+## Response from the MOCO maintainers
+
+After publication, we asked the MOCO maintainers at Cybozu to comment on the issues described above. Their response is published in full, with their permission.
+
+### 1. On Hardcoded VIPs and Network Endpoints
+
+Discovering hardcoded IPs late in a migration is a classic headache that many engineers experience. While this challenge is not specific to MOCO, networking is always a major topic in Kubernetes. In public cloud environments, you get networks that are deeply integrated with VPCs. In self-hosted environments, however, you must select and design your own network stack. At Cybozu, we went through a lot of trial and error before adopting **Cilium**. If readers are interested in our infrastructure journey, CNCF published a [case study about it](https://www.cncf.io/case-studies/cybozu/).
+
+### 2. On Ceph and Storage Performance
+
+We completely agree that operating and tuning Software-Defined Storage (SDS) like Ceph for high-write database workloads is very difficult. Instead of redundant network storage, we run local SSDs on each node provisioned by **[TopoLVM](https://github.com/topolvm/topolvm)**. Local SSDs eliminate the operational complexity of SDS and deliver high IOPS with very low latency. The trade-off is that data is tied to a specific node; if a node dies, the local data is lost. However, this is precisely why MOCO was created: **it is designed to auto-heal replicas when nodes fail**, making local SSDs a practical and reliable choice.
+
+### 3. On `root@localhost` and `RESET MASTER`
+
+This was definitely an unexpected corner case for us. While we stand by the requirement from an architectural standpoint, we are genuinely sympathetic to the time and effort spent debugging such a tricky issue! To support reliable auto-healing, a MySQL pod must be able to initialize safely and idempotently at any time. Checking for a passwordless `root@localhost` was our method to detect a brand-new instance, which unintentionally conflicted with an external donor that kept that account. We will document this restriction, but we welcome suggestions from the community on how to handle this more cleanly without breaking idempotent auto-healing.
+
+### 4. On `ConstMycnf` and Overridden Settings
+
+This is a very fair critique, and we have some regrets about our early development choices here. While some parameters are strictly required for MOCO's orchestration and semi-synchronous replication to work correctly, others were simply carried over from Cybozu’s production settings at the time. We believe users should have more control over settings that MOCO does not strictly require. Kento Takeuchi is currently working on reviewing these parameters to separate mandatory settings from user-configurable ones (apologies for the slow progress on this).
+
+Thank you again for spotlighting MOCO and creating space for this constructive conversation. We look forward to continued collaboration with the OurSQL Foundation and the broader open source community.
+
+<p class="guest-comment-signature">— Sho Iizuka, Site Reliability Engineer, on behalf of the MOCO maintainers, Cybozu</p>
+
+<p class="guest-comment-cta">Have an idea for how MOCO could detect a brand-new instance without breaking idempotent auto-healing? The maintainers are open to suggestions: join the discussion in <a href="https://github.com/cybozu-go/moco-agent/issues/123">cybozu-go/moco-agent#123</a>.</p>
+
+{{% /guest-comment %}}

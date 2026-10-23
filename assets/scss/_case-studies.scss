@@ -238,3 +238,65 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+// ── Update banner (top of an article) and framed guest comment (end of article) ──
+.post-content .update-banner {
+  margin: 0 0 2rem;
+  padding: 0.875rem 1.25rem;
+  background: rgba($accent, 0.08);
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: $off-white;
+
+  strong { color: $white; }
+  a { font-weight: 600; white-space: nowrap; }
+}
+
+.post-content .guest-comment {
+  margin: 3rem 0 2rem;
+  padding: 1.75rem 2rem 1.5rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-left: 4px solid $accent;
+  border-radius: 12px;
+  scroll-margin-top: 88px;
+
+  > :last-child { margin-bottom: 0; }
+
+  .guest-comment-label {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $accent;
+    background: rgba($accent, 0.1);
+    border: 1px solid rgba($accent, 0.3);
+    border-radius: 999px;
+  }
+
+  h2 { margin-top: 0; }
+  h3 { font-size: 1.125rem; margin: 1.75rem 0 0.5rem; }
+
+  .guest-comment-signature {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: $white;
+  }
+
+  .guest-comment-cta {
+    margin: 1.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid $dark-border;
+    font-size: 0.9375rem;
+    color: $off-white;
+  }
+}
+
+@media (max-width: 600px) {
+  .post-content .guest-comment { padding: 1.25rem 1.25rem 1.125rem; }
+}

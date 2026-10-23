@@ -1242,6 +1242,8 @@
   .resource-case-title { color: #0f172a; }
   .post-author-role { color: #64748b; }
   .resource-case-meta { color: #64748b; }
+  .post-content .update-banner { background: rgba(2, 114, 165, 0.07); border-color: rgba(2, 114, 165, 0.3); color: #334155; strong { color: #0f172a; } }
+  .post-content .guest-comment { background: #ffffff; border-color: #dde3ed; border-left-color: #00c8ff; .guest-comment-label { color: #0272a5; background: rgba(2, 114, 165, 0.08); border-color: rgba(2, 114, 165, 0.3); } .guest-comment-signature { color: #0f172a; } .guest-comment-cta { border-top-color: #dde3ed; color: #334155; } }
 
   // People Behind MySQL
   .interview-card, .interview-strip { background: #ffffff; border-color: #dde3ed; }
