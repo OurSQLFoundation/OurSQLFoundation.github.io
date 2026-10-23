@@ -1,0 +1,6 @@
+{{/* A comment by someone other than the article's author, set apart in a framed block.
+     Usage: {{% guest-comment id="anchor" %}} markdown {{% /guest-comment %}} */}}
+<section class="guest-comment"{{ with .Get "id" }} id="{{ . }}"{{ end }}>
+  <span class="guest-comment-label">Guest comment</span>
+{{ .Inner }}
+</section>
