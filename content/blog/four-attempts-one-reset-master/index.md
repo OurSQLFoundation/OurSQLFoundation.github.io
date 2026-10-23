@@ -162,6 +162,4 @@ Thank you again for spotlighting MOCO and creating space for this constructive c
 
 <p class="guest-comment-signature">— Sho Iizuka, Site Reliability Engineer, on behalf of the MOCO maintainers, Cybozu</p>
 
-<p class="guest-comment-cta">Have an idea for how MOCO could detect a brand-new instance without breaking idempotent auto-healing? The maintainers are open to suggestions: join the discussion in <a href="https://github.com/cybozu-go/moco-agent/issues/123">cybozu-go/moco-agent#123</a>.</p>
-
 {{% /guest-comment %}}
