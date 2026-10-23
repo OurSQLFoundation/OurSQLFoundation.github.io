@@ -204,7 +204,7 @@ def generate_image(title: str, description: str, label: str, out_path: str):
     # Logo — centred top
     if os.path.exists(LOGO_PATH):
         logo = Image.open(LOGO_PATH).convert("RGBA")
-        lh = 44
+        lh = 68
         logo = logo.resize((int(logo.width * lh / logo.height), lh), Image.LANCZOS)
         lx = (W - logo.width) // 2
         img.paste(logo, (lx, PAD_Y), logo)
@@ -270,7 +270,7 @@ def generate_book_image(title: str, authors: list, cover_path: str, out_path: st
     text_w   = cover_x - GAP - PAD_X
 
     # Logo — top left
-    add_logo(img, LOGO_PATH, PAD_X, PAD_Y, max_height=36)
+    add_logo(img, LOGO_PATH, PAD_X, PAD_Y, max_height=56)
 
     # Break title at commas for cleaner display
     title_display = title.replace(", ", ",\n")
@@ -378,7 +378,7 @@ def generate_section_image_with_covers(title: str, description: str, label: str,
     text_w = W - PAD_X - COVER_AREA_W - GAP - PAD_X
 
     # Logo
-    add_logo(img, LOGO_PATH, PAD_X, PAD_Y, max_height=36)
+    add_logo(img, LOGO_PATH, PAD_X, PAD_Y, max_height=56)
 
     # Measure content to vertically centre in left column
     title_font, title_lines = fit_title_font(title, text_w, 200,
