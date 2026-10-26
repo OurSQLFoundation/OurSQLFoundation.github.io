@@ -1,0 +1,130 @@
+// A single large image with a full-screen view (layouts/_default/image-view.html).
+
+.map-page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 120px 2rem 80px;
+}
+
+.map-header {
+  margin: 1rem 0 1.5rem;
+
+  h1 { margin-bottom: 0.5rem; }
+}
+
+.map-lead {
+  max-width: 760px;
+  font-size: 1.125rem;
+  color: $muted;
+  margin: 0;
+}
+
+.map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $accent;
+  background: rgba($accent, 0.08);
+  border: 1px solid rgba($accent, 0.3);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover { background: rgba($accent, 0.16); }
+}
+
+.map-btn--primary {
+  color: #05121a;
+  background: $accent;
+  border-color: $accent;
+
+  &:hover { background: lighten($accent, 8%); }
+}
+
+.map-stage {
+  position: relative;
+  margin: 0;
+  border: 1px solid $dark-border;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+  }
+
+  .map-close { display: none; }
+
+  // Full-window view: the map fits the screen, a click zooms to its native size.
+  &.is-full {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    border: 0;
+    border-radius: 0;
+    overflow: auto;
+    background: #0b0e17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .map-close {
+      display: flex;
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &.is-zoomed {
+      display: block;
+
+      img {
+        max-width: none;
+        max-height: none;
+        width: 2000px;
+        cursor: zoom-out;
+      }
+    }
+  }
+}
+
+html.map-locked { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .map-page { padding: 96px 1rem 56px; }
+  .map-btn { flex: 1 1 auto; justify-content: center; }
+}
