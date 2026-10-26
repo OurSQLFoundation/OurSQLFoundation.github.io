@@ -6,6 +6,7 @@ description: "A distributed SQL ecosystem that adds data sharding, read/write sp
 subcategories:
   - Proxies & Traffic Management
   - Database Software
+  - Sharding & Horizontal Scaling
 compatibility:
   - MySQL
 deployment:
