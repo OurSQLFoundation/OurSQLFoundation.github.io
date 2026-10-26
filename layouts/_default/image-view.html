@@ -1,0 +1,73 @@
+{{/* A single large image (a map or diagram) with a full-screen view.
+     Front matter: map_image (file in the page bundle), map_alt. Open the page with #full
+     to land straight in the full-screen view. */}}
+{{ define "main" }}
+{{ $img := .Resources.GetMatch (.Params.map_image | default "map.webp") }}
+<div class="map-page">
+  <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+    <a href="/resources/">Resources</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span>{{ .Title }}</span>
+  </nav>
+
+  <header class="map-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="map-lead">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ with $img }}
+  <div class="map-toolbar">
+    <button type="button" class="map-btn map-btn--primary" id="map-fullscreen">Full screen</button>
+    <a href="{{ .RelPermalink }}" class="map-btn" target="_blank" rel="noopener">Open the image ↗</a>
+    <a href="{{ .RelPermalink }}" class="map-btn" download>Download</a>
+    <a href="/resources/software/" class="map-btn">Browse the tools →</a>
+  </div>
+
+  <figure class="map-stage" id="map-stage">
+    <button type="button" class="map-close" id="map-close" aria-label="Close full screen">✕</button>
+    <img src="{{ .RelPermalink }}" alt="{{ $.Params.map_alt }}" width="{{ .Width }}" height="{{ .Height }}" id="map-img">
+  </figure>
+  {{ end }}
+</div>
+
+<script>
+(function () {
+  var stage = document.getElementById('map-stage');
+  if (!stage) return;
+  var openBtn = document.getElementById('map-fullscreen');
+  var closeBtn = document.getElementById('map-close');
+  var img = document.getElementById('map-img');
+
+  function open() {
+    stage.classList.add('is-full');
+    document.documentElement.classList.add('map-locked');
+    if (stage.requestFullscreen) { try { stage.requestFullscreen().catch(function () {}); } catch (e) {} }
+    if (location.hash !== '#full') history.replaceState(null, '', '#full');
+  }
+  function close() {
+    stage.classList.remove('is-full', 'is-zoomed');
+    document.documentElement.classList.remove('map-locked');
+    if (document.fullscreenElement && document.exitFullscreen) { try { document.exitFullscreen(); } catch (e) {} }
+    if (location.hash === '#full') history.replaceState(null, '', location.pathname + location.search);
+  }
+
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  img.addEventListener('click', function () {
+    if (!stage.classList.contains('is-full')) { open(); return; }
+    stage.classList.toggle('is-zoomed');
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && stage.classList.contains('is-full')) close(); });
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && stage.classList.contains('is-full')) close();
+  });
+
+  // Landing on /#full shows the map filling the window (browsers only allow the
+  // true full-screen mode after a click, so this uses the in-page full-window view).
+  if (location.hash === '#full') {
+    stage.classList.add('is-full');
+    document.documentElement.classList.add('map-locked');
+  }
+})();
+</script>
+{{ end }}
