@@ -41,6 +41,7 @@ body:
         - Backup & Recovery
         - Data Warehouse & Analytics
         - Replication & High Availability
+        - Sharding & Horizontal Scaling
         - Proxies & Traffic Management
         - Connectors & Drivers
         - Database Management & GUI

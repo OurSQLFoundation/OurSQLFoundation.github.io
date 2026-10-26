@@ -5,6 +5,7 @@ link: https://vitess.io/
 github: vitessio/vitess
 subcategories:
 - Database Software
+- Sharding & Horizontal Scaling
 compatibility:
 - MySQL
 deployment:

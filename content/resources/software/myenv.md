@@ -4,7 +4,7 @@ description: "MyEnv is an environment to run and operate several different MySQL
 link: "https://www.fromdual.com/software/fromdual-myenv/"
 github: "FromDual/MyEnv"
 subcategories:
-  - "Operations"
+  - "DevOps & Deployment"
   - "Database Management & GUI"
 compatibility:
   - MySQL

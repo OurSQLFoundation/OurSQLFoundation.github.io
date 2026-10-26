@@ -6,6 +6,7 @@ description: "A distributed relational database from Ant Group with a MySQL-comp
 subcategories:
   - Database Software
   - Data Warehouse & Analytics
+  - Sharding & Horizontal Scaling
 compatibility:
   - MySQL
 deployment:

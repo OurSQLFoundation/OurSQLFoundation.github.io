@@ -5,6 +5,7 @@ description: "Oracle's official shared-nothing, in-memory distributed storage en
 subcategories:
   - Database Software
   - Replication & High Availability
+  - Sharding & Horizontal Scaling
 compatibility:
   - MySQL
 deployment:

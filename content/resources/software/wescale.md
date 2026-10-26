@@ -4,6 +4,7 @@ link: "https://github.com/wesql/wescale"
 description: "An open-source MySQL database proxy forked from Vitess — adds transparent read-write splitting, non-blocking declarative DDL, and connection scaling for application developers."
 subcategories:
   - Proxies & Traffic Management
+  - Sharding & Horizontal Scaling
 compatibility:
   - MySQL
 deployment:

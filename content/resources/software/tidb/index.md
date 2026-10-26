@@ -6,6 +6,7 @@ description: "An open-source, distributed SQL database with MySQL wire-protocol 
 subcategories:
   - Database Software
   - Data Warehouse & Analytics
+  - Sharding & Horizontal Scaling
 compatibility:
   - MySQL
   - TiDB
