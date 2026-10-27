@@ -29,7 +29,7 @@ about:
     - {title: "Columnar engines on MySQL", text: "How DuckDB-based engines work alongside InnoDB, and where they fit."}
     - {title: "Analytical replication", text: "Streaming MySQL changes into DuckDB and Parquet files for analysis."}
     - {title: "The road to HTAP", text: "Twenty years of analytics on MySQL — and what DuckDB changes now."}
-speakers_intro: "Practitioners from OurSQL Foundation, Alibaba, MariaDB, VillageSQL and dbtrail — more speakers to be announced."
+speakers_intro: "Practitioners from OurSQL Foundation, Percona, Alibaba, MariaDB, VillageSQL and dbtrail — more speakers to be announced."
 speakers:
   - {name: "Vadim Tkachenko", company: "OurSQL Foundation", role: "President", photo: "vadim-tkachenko.jpg", profile: "/resources/member-directory/people/vadim-tkachenko/"}
   - {name: "Zongzhi Chen", company: "Alibaba", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
