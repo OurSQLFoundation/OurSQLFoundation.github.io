@@ -37,6 +37,7 @@ speakers:
   - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp", profile: "/resources/member-directory/people/roman-nozdrin/"}
   - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
   - {name: "Evgeniy Patlan", company: "Percona", role: "Sr. Build/Release Engineer", photo: "evgeniy-patlan.jpg", profile: "/resources/member-directory/people/evgeniy-patlan/"}
+  - {name: "Peter Zaitsev", company: "Percona", role: "Co-Founder", photo: "peter-zaitsev.jpg", profile: "/resources/member-directory/people/peter-zaitsev/"}
 schedule_label: "Approximate schedule · EST / CET"
 schedule:
   - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
