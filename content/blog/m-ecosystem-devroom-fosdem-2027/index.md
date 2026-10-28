@@ -6,6 +6,7 @@ tags:
 - Announcement
 author: "Maria Nesterova"
 author_page: "/resources/member-directory/maria-nesterova"
+image: "cover.jpg"
 hero_image: false
 ---
 
@@ -20,11 +21,7 @@ If you've been to FOSDEM before, you probably know the "MariaDB, MySQL & Friends
 Database servers, yes — but also the storage engines, connectors, proxies, and tools that people actually build on every day.
 
 - **When:** Sunday, January 31, 2027
-- **Where:** FOSDEM, Brussels (the conference itself runs January 30–31)
-
-## Why we're excited
-
-We're happy to be one of the co-organizers and to help make space for this conversation.
+- **Where:** the ULB Solbosch campus in Brussels, Belgium (the conference itself runs January 30–31)
 
 ## Got a talk in you?
 
