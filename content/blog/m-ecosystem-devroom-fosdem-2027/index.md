@@ -7,7 +7,6 @@ tags:
 author: "Maria Nesterova"
 author_page: "/resources/member-directory/maria-nesterova"
 image: "cover.jpg"
-hero_image: false
 ---
 
 Good news for everyone who spends their days (and sometimes nights) with MySQL and its relatives: at FOSDEM 2027, we'll all be in the same room.
