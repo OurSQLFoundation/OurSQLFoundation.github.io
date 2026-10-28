@@ -3,6 +3,7 @@ title: "What Is the Fastest Database? Open-Source Benchmarking with HammerDB"
 description: "Benchmark numbers are easy to produce and hard to trust. Steve Shaw, creator of HammerDB, shows how an open, standard benchmark suite makes database performance results comparable and reproducible — and what's new in HammerDB v6.0."
 date: 2026-12-03
 time_display: "10:00 AM ET · 16:00 CET"
+registration_url: "https://us06web.zoom.us/webinar/register/WN_vxFUnMo2T8W82JYzm9j8fA"
 images:
   - banner.jpg
 speakers:
