@@ -1,0 +1,119 @@
+{{ define "main" }}
+{{/*
+  Events calendar. Every dated page in this section is serialised into a
+  small JSON blob; static/js/events-calendar.js renders the Upcoming / Past
+  tabs, the month calendar, the list, and the category + facet filters in the
+  browser, so "upcoming" is always relative to the visitor's today, not the
+  day the site was built. The noscript block keeps a plain list for crawlers
+  and no-JS visitors.
+*/}}
+{{ $schema := index .Site.Data.taxonomy_schema "events" }}
+{{ $events := slice }}
+{{ $undated := slice }}
+{{ range .Pages.ByDate }}
+  {{ if .Date.IsZero }}
+    {{ $undated = $undated | append . }}
+  {{ else }}
+    {{ $page := . }}
+    {{ $end := .Date }}
+    {{ with .Params.date_end }}{{ $end = time.AsTime . }}{{ end }}
+    {{ $fmt := "" }}
+    {{ with index .Params "event-formats" }}{{ $fmt = index . 0 }}{{ end }}
+    {{ $thumb := "" }}
+    {{ with .Params.images }}
+      {{ $f := index . 0 }}
+      {{ $res := $page.Resources.Get $f }}
+      {{ if not $res }}{{ $res = resources.Get (strings.TrimPrefix "/" $f) }}{{ end }}
+      {{ with $res }}{{ if ne .MediaType.SubType "svg" }}{{ $thumb = (.Fit "120x120").RelPermalink }}{{ end }}{{ end }}
+    {{ end }}
+    {{ $events = $events | append (dict
+      "t" .Title
+      "u" .RelPermalink
+      "l" (.Params.link | default "")
+      "x" (.Description | default "")
+      "d" (.Date.Format "2006-01-02")
+      "e" ($end.Format "2006-01-02")
+      "f" $fmt
+      "city" (.Params.city | default "")
+      "c" (.Params.countries | default slice)
+      "s" (.Params.subcategories | default slice)
+      "o" (.Params.organizers | default slice)
+      "i" $thumb
+    ) }}
+  {{ end }}
+{{ end }}
+
+<div class="resources-section ev-page">
+  <div class="resources-section-header">
+    <nav class="resources-breadcrumb" aria-label="Breadcrumb">
+      <a href="/resources/">Resources</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>{{ .Title }}</span>
+    </nav>
+    <h1 class="resources-section-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="resources-section-desc">{{ . }}</p>{{ end }}
+  </div>
+
+  <div id="ev-app" class="ev-app">
+    <div class="ev-toolbar">
+      <div class="ev-tabs" role="tablist" aria-label="Upcoming or past events">
+        <button type="button" role="tab" class="ev-tab" data-tab="upcoming">Upcoming <span class="ev-tab-count" data-count="upcoming"></span></button>
+        <button type="button" role="tab" class="ev-tab" data-tab="past">Past <span class="ev-tab-count" data-count="past"></span></button>
+      </div>
+      <div class="ev-view-toggle" role="group" aria-label="View">
+        <button type="button" class="ev-view-btn" data-view="calendar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><line x1="8" y1="2.5" x2="8" y2="6.5"/><line x1="16" y1="2.5" x2="16" y2="6.5"/></svg>
+          Calendar
+        </button>
+        <button type="button" class="ev-view-btn" data-view="list">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>
+          List
+        </button>
+      </div>
+    </div>
+
+    <div class="ev-filters">
+      <div class="ev-cats" data-role="cats" aria-label="Category"></div>
+      <div class="ev-facets">
+        <label class="ev-select"><span>Format</span><select data-facet="f"><option value="">All</option></select></label>
+        <label class="ev-select"><span>Organizer</span><select data-facet="o"><option value="">All</option></select></label>
+        <label class="ev-select"><span>Country</span><select data-facet="c"><option value="">All</option></select></label>
+        <button type="button" class="ev-clear" data-action="clear" hidden>Clear filters</button>
+      </div>
+    </div>
+
+    <div class="ev-calendar" data-role="calendar" hidden>
+      <div class="ev-cal-head">
+        <div class="ev-cal-nav">
+          <button type="button" class="ev-nav-btn" data-nav="-1" aria-label="Previous month">‹</button>
+          <button type="button" class="ev-nav-btn" data-nav="1" aria-label="Next month">›</button>
+          <button type="button" class="ev-today-btn" data-nav="today">Today</button>
+        </div>
+        <h2 class="ev-cal-title" data-role="month-title" aria-live="polite"></h2>
+      </div>
+      <div class="ev-weekdays" aria-hidden="true"></div>
+      <div class="ev-grid" data-role="grid"></div>
+    </div>
+
+    <div class="ev-results" data-role="results" aria-live="polite"></div>
+
+    <noscript>
+      <ul class="ev-static">
+        {{ range $events }}<li><a href="{{ .u }}">{{ .t }}</a> — {{ .d }}{{ if ne .d .e }} to {{ .e }}{{ end }}</li>{{ end }}
+      </ul>
+    </noscript>
+  </div>
+
+  <div class="ev-footer">
+    {{ range $undated }}
+    {{ $p := . }}
+    {{ with .Params.link }}<a href="{{ . }}" class="ev-footer-link" target="_blank" rel="noopener">Also see: {{ $p.Title }} ↗</a>{{ end }}
+    {{ end }}
+    <a href="/resources/contribute/" class="resource-suggest-btn">Suggest an event</a>
+  </div>
+
+  <script type="application/json" id="ev-data">{{ dict "events" $events "categories" ($schema.subcategories | default slice) | jsonify | safeJS }}</script>
+</div>
+
+<script src="{{ "js/events-calendar.js" | relURL }}" defer></script>
+{{ end }}

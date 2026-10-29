@@ -1,0 +1,480 @@
+// ── Events calendar (/resources/events/) ───────────────────────────────────
+// Markup: layouts/resources/events-calendar.html · behaviour: static/js/events-calendar.js
+
+.ev-c--foundation-events        { --evc: #00c8ff; }
+.ev-c--community-calls          { --evc: #34d399; }
+.ev-c--webinars                 { --evc: #a78bfa; }
+.ev-c--meetups                  { --evc: #ff8a4c; }
+.ev-c--conferences              { --evc: #5b9bff; }
+.ev-c--partner-member-events    { --evc: #f472b6; }
+.ev-c--past-events-recordings   { --evc: #94a3b8; }
+.ev-c--none                     { --evc: #6b6b80; }
+
+.ev-app { min-height: 20rem; }
+
+// Toolbar: tabs + view toggle
+.ev-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $dark-border;
+  margin-bottom: 1.25rem;
+}
+
+.ev-tabs { display: flex; gap: 0.25rem; }
+
+.ev-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $muted;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover { color: $off-white; }
+  &--active { color: $off-white; border-bottom-color: $accent; }
+}
+
+.ev-tab-count {
+  display: inline-block;
+  min-width: 1.5rem;
+  margin-left: 0.3rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 100px;
+  background: rgba($off-white, 0.08);
+  font-size: 0.75rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.ev-tab--active .ev-tab-count { background: $accent-glow; color: $accent; }
+
+.ev-view-toggle {
+  display: inline-flex;
+  padding: 3px;
+  margin-bottom: 0.5rem;
+  background: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 10px;
+}
+
+.ev-view-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 0;
+  background: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $muted;
+  cursor: pointer;
+
+  &:hover { color: $off-white; }
+  &--active { background: $dark-card; color: $accent; box-shadow: 0 0 0 1px rgba($accent, 0.25); }
+}
+
+// Filters: category pills + facet selects
+.ev-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.ev-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.ev-cat {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid $dark-border;
+  background: $dark-surface;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $off-white;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &:hover { border-color: var(--evc, $accent); }
+  &--active {
+    border-color: var(--evc, $accent);
+    background: rgba($accent, 0.12);
+    @supports (background: color-mix(in srgb, red, blue)) {
+      background: color-mix(in srgb, var(--evc, #00c8ff) 18%, transparent);
+    }
+  }
+}
+
+.ev-cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--evc, $accent);
+}
+
+.ev-cat-count { color: $muted; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+.ev-facets { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
+
+.ev-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $muted;
+
+  select {
+    appearance: none;
+    min-width: 9.5rem;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid $dark-border;
+    border-radius: 8px;
+    background: $dark-surface url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b80' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 0.7rem center;
+    color: $off-white;
+    font: inherit;
+    font-size: 0.875rem;
+    text-transform: none;
+    letter-spacing: 0;
+    cursor: pointer;
+
+    &:focus-visible { outline: 2px solid $accent; outline-offset: 1px; }
+  }
+}
+
+.ev-clear {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.5rem 0.25rem;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $accent;
+  cursor: pointer;
+
+  &[hidden] { display: none; }
+  &:hover { text-decoration: underline; }
+}
+
+// Calendar
+.ev-calendar {
+  margin-bottom: 2rem;
+  border: 1px solid $dark-border;
+  border-radius: 14px;
+  background: $dark-surface;
+  overflow: hidden;
+
+  &[hidden] { display: none; }
+}
+
+.ev-cal-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid $dark-border;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.ev-cal-title { margin: 0; font-size: 1.25rem; color: $off-white; }
+
+.ev-cal-nav { display: flex; gap: 0.4rem; }
+
+.ev-nav-btn, .ev-today-btn {
+  appearance: none;
+  height: 34px;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  background: $dark-card;
+  color: $off-white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover { border-color: $accent; color: $accent; }
+}
+.ev-nav-btn { width: 34px; font-size: 1.25rem; line-height: 1; }
+.ev-today-btn { padding: 0 0.9rem; font-size: 0.875rem; }
+
+.ev-weekdays, .ev-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+
+.ev-weekdays {
+  border-bottom: 1px solid $dark-border;
+
+  span {
+    padding: 0.55rem 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $muted;
+  }
+}
+
+.ev-cell {
+  position: relative;
+  min-height: 6.5rem;
+  padding: 0.4rem 0.45rem 0.5rem;
+  border-right: 1px solid $dark-border;
+  border-bottom: 1px solid $dark-border;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:nth-child(7n) { border-right: 0; }
+  &:hover { background: rgba($off-white, 0.03); }
+  &:focus-visible { outline: 2px solid $accent; outline-offset: -2px; }
+  &--out { opacity: 0.4; }
+  &--selected { background: $accent-glow; box-shadow: inset 0 0 0 2px $accent; }
+}
+
+.ev-cell-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $off-white;
+  font-variant-numeric: tabular-nums;
+}
+.ev-cell--today .ev-cell-num { background: $accent; color: $dark-bg; }
+
+.ev-chips { display: flex; flex-direction: column; gap: 3px; margin-top: 0.3rem; }
+
+.ev-chip {
+  display: block;
+  padding: 2px 6px;
+  border-left: 3px solid var(--evc, $accent);
+  border-radius: 4px;
+  background: rgba($off-white, 0.06);
+  @supports (background: color-mix(in srgb, red, blue)) {
+    background: color-mix(in srgb, var(--evc, #00c8ff) 16%, transparent);
+  }
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: $off-white;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover { text-decoration: underline; }
+}
+
+.ev-more { font-size: 0.6875rem; font-weight: 600; color: $muted; padding-left: 4px; }
+
+.ev-dots { display: none; gap: 3px; margin-top: 0.3rem; justify-content: center;
+
+  i { width: 6px; height: 6px; border-radius: 50%; background: var(--evc, $accent); }
+}
+
+// Results (list view + calendar day/month panel)
+.ev-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.ev-results-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+.ev-month-heading {
+  margin: 1.25rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $off-white;
+
+  &:first-child { margin-top: 0; }
+}
+.ev-results-head .ev-month-heading { margin: 0; }
+
+.ev-card {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid $dark-border;
+  border-left: 3px solid var(--evc, $accent);
+  border-radius: 12px;
+  background: $dark-card;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover { border-color: var(--evc, $accent); }
+
+  @media (max-width: $break-md) {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+}
+
+.ev-card-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 10px;
+  background: rgba($off-white, 0.05);
+  line-height: 1.1;
+  text-align: center;
+}
+.ev-card-month { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--evc, $accent); }
+.ev-card-day { font-size: 1.5rem; font-weight: 700; color: $off-white; font-variant-numeric: tabular-nums; }
+.ev-card-until { font-size: 0.6875rem; color: $muted; font-variant-numeric: tabular-nums; }
+
+.ev-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+
+  a { color: $off-white; text-decoration: none; &:hover { color: $accent; } }
+}
+
+.ev-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.9rem;
+  font-size: 0.8125rem;
+  color: $muted;
+}
+
+.ev-badge {
+  padding: 0.12rem 0.55rem;
+  border-radius: 100px;
+  border: 1px solid;
+  font-size: 0.6875rem;
+  font-weight: 700;
+
+  &--online { color: #34d399; border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.08); }
+  &--in-person, &--hybrid { color: $accent; border-color: rgba($accent, 0.3); background: $accent-glow; }
+}
+
+.ev-card-desc { margin: 0.55rem 0 0; font-size: 0.875rem; line-height: 1.6; color: $off-white; opacity: 0.85; }
+
+.ev-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+
+.ev-tag {
+  padding: 0.12rem 0.6rem;
+  border-radius: 100px;
+  border: 1px solid var(--evc, $dark-border);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--evc, $muted);
+}
+
+.ev-card-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+
+.ev-link-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba($accent, 0.4);
+  background: $accent-glow;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover { border-color: $accent; }
+  &--ghost { background: none; border-color: $dark-border; color: $off-white; &:hover { border-color: $accent; color: $accent; } }
+}
+
+.ev-card-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px;
+
+  @media (max-width: $break-md) { display: none; }
+}
+
+.ev-empty-inline { margin: 0; padding: 1.5rem 0; color: $muted; }
+
+.ev-empty { text-align: center; padding: 4rem 1rem; color: $muted;
+  h3 { margin: 0 0 0.4rem; font-weight: 600; color: $off-white; }
+  p { margin: 0; }
+}
+
+.ev-static { color: $off-white; line-height: 1.8; a { color: $accent; } }
+
+.ev-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $dark-border;
+}
+.ev-footer-link { color: $accent; text-decoration: none; font-weight: 600; &:hover { text-decoration: underline; } }
+
+// Phones: dots instead of titles in the grid, the list below does the talking
+@media (max-width: $break-md) {
+  .ev-cal-head { padding: 0.75rem; }
+  .ev-cal-title { font-size: 1.0625rem; }
+  .ev-weekdays span { padding: 0.45rem 0; text-align: center; font-size: 0.625rem; letter-spacing: 0.04em; }
+  .ev-cell { min-height: 3.6rem; padding: 0.3rem 0.1rem; text-align: center; }
+  .ev-chips { display: none; }
+  .ev-dots { display: flex; }
+  .ev-select select { min-width: 8rem; }
+}
+
+// ── Light theme ──
+[data-theme="light"] {
+  .ev-toolbar, .ev-calendar, .ev-cal-head, .ev-weekdays, .ev-cell, .ev-footer { border-color: #dde3ed; }
+  .ev-tab { color: #64748b; &:hover { color: #0f172a; } &--active { color: #0f172a; } }
+  .ev-tab-count { background: #eef2f7; }
+  .ev-tab--active .ev-tab-count { background: rgba(0, 153, 204, 0.12); color: #0077a8; }
+  .ev-view-toggle { background: #eef2f7; border-color: #dde3ed; }
+  .ev-view-btn { color: #64748b; &:hover { color: #0f172a; } &--active { background: #fff; color: #0077a8; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12); } }
+  .ev-cat { background: #fff; border-color: #dde3ed; color: #334155; &--active { color: #0f172a; } }
+  .ev-cat-count { color: #94a3b8; }
+  .ev-select { color: #64748b; select { background-color: #fff; border-color: #dde3ed; color: #0f172a; } }
+  .ev-clear { color: #0077a8; }
+  .ev-calendar { background: #fff; }
+  .ev-cal-title { color: #0f172a; }
+  .ev-nav-btn, .ev-today-btn { background: #fff; border-color: #dde3ed; color: #334155; &:hover { border-color: #0077a8; color: #0077a8; } }
+  .ev-cell:hover { background: #f4f7fb; }
+  .ev-cell--selected { background: rgba(0, 153, 204, 0.08); box-shadow: inset 0 0 0 2px #0099cc; }
+  .ev-cell-num { color: #0f172a; }
+  .ev-cell--today .ev-cell-num { background: #0099cc; color: #fff; }
+  .ev-chip { color: #0f172a; background: #eef2f7; }
+  .ev-more { color: #64748b; }
+  .ev-month-heading, .ev-card-day, .ev-empty h3 { color: #0f172a; }
+  .ev-card { background: #fff; border-color: #dde3ed; }
+  .ev-card-date { background: #f4f7fb; }
+  .ev-card-title a { color: #0f172a; &:hover { color: #0077a8; } }
+  .ev-card-desc { color: #334155; opacity: 1; }
+  .ev-card-meta, .ev-card-until { color: #64748b; }
+  .ev-link-btn { color: #0077a8; border-color: rgba(0, 119, 168, 0.35); background: rgba(0, 153, 204, 0.08);
+    &--ghost { background: none; border-color: #dde3ed; color: #334155; } }
+  .ev-card-img { border: 1px solid #dde3ed; }
+  .ev-footer-link { color: #0077a8; }
+  .ev-static { color: #334155; a { color: #0077a8; } }
+}
