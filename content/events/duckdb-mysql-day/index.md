@@ -36,8 +36,8 @@ speakers:
   - {name: "Dominic Preuss", company: "VillageSQL", role: "Founder & CEO", photo: "dominic-preuss.jpg", profile: "/resources/member-directory/people/dominic-preuss/"}
   - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp", profile: "/resources/member-directory/people/roman-nozdrin/"}
   - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
-  - {name: "Evgeniy Patlan", company: "Percona", role: "Sr. Build/Release Engineer", photo: "evgeniy-patlan.jpg", profile: "/resources/member-directory/people/evgeniy-patlan/"}
   - {name: "Peter Zaitsev", company: "Percona", role: "Co-Founder", photo: "peter-zaitsev.jpg", profile: "/resources/member-directory/people/peter-zaitsev/"}
+  - {name: "Evgeniy Patlan", company: "Percona", role: "Sr. Build/Release Engineer", photo: "evgeniy-patlan.jpg", profile: "/resources/member-directory/people/evgeniy-patlan/"}
 schedule_label: "Approximate schedule · EST / CET"
 schedule:
   - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
@@ -45,7 +45,8 @@ schedule:
   - {est: "11:00–11:30", cet: "17:00–17:30", track: "Extensions", title: "Implementing DuckDB inside MySQL as a VillageSQL extension", speaker: "Dominic Preuss"}
   - {est: "11:30–12:00", cet: "17:30–18:00", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin"}
   - {est: "12:00–12:30", cet: "18:00–18:30", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
-  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan"}
+  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Getting started", title: "DuckDB for MySQL Old Timers", speaker: "Peter Zaitsev"}
+  - {est: "13:00–13:30", cet: "19:00–19:30", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan"}
 schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics", "VillageSQL"]
 register:
