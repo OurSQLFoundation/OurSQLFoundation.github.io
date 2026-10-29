@@ -5,6 +5,7 @@ icon: calendar
 image: images/og/resources-events-1200x630.png
 sort: date
 title: Events
+layout: events-calendar
 weight: 6
 count_unit: upcoming
 count_mode: upcoming
