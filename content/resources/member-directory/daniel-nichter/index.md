@@ -9,6 +9,8 @@ roles:
 - Author
 - Contributor
 - Speaker
+images:
+- photo.jpg
 ---
 
 Daniel Nichter is a DBA and software engineer who started optimizing MySQL performance in 2004 and soon created [hackmysql.com](https://hackmysql.com/) to share information and tools about MySQL. He spent eight years at Percona working on [Percona Toolkit](/resources/software/percona-toolkit/), and worked on Percona Monitoring and Management during his final year there. His earlier tools, among them mysqlreport, mysqlsla, and mysqlsniffer, were for several years a de facto standard. The O'Reilly author note also lists him as a MySQL Community Award winner and conference speaker.
