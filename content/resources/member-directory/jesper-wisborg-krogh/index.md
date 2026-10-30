@@ -9,6 +9,8 @@ roles:
 - Author
 - DBA
 - Speaker
+images:
+- photo.jpg
 ---
 
 Jesper Wisborg Krogh has worked with MySQL since 2006 as an SQL developer, a database administrator, and for more than eight years as part of the Oracle MySQL Support team. He earned a PhD in computational chemistry before moving to MySQL and software development. He has spoken at MySQL Connect and Oracle OpenWorld, regularly blogs about MySQL, and has authored around 800 documents in the Oracle Knowledge Base. He has also contributed to the sys schema and to four Oracle Certified Professional exams for MySQL 5.6 to 8.0.
