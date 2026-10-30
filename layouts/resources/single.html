@@ -28,7 +28,7 @@
   </div>
   {{ else if $isPerson }}
   {{ $initials := "" }}
-  {{ range split $.Title " " }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+  {{ range split $.Title " " }}{{ if findRE `^\pL` . }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}{{ end }}
   <div class="resource-single-image-col">
     <div class="resource-single-img resource-single-img--placeholder" aria-hidden="true">{{ $initials }}</div>
   </div>

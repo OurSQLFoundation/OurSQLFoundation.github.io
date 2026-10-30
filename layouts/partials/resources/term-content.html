@@ -50,7 +50,7 @@
       </a>
       {{ else if $isPerson }}
       {{ $initials := "" }}
-      {{ range split $pageTitle " " }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+      {{ range split $pageTitle " " }}{{ if findRE `^\pL` . }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}{{ end }}
       <a href="{{ .RelPermalink }}" class="resource-card-image-wrap resource-card-image-wrap--portrait">
         <div class="resource-card-image resource-card-image--placeholder" aria-hidden="true">{{ $initials }}</div>
       </a>
