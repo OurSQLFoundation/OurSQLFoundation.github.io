@@ -8,6 +8,8 @@ subcategories:
 roles:
 - Author
 - Developer
+images:
+- photo.jpg
 ---
 
 Bill Karwin has been a software engineer for over thirty years, developing and supporting applications, libraries, and servers, and consulting for leading technology companies. Throughout his career he has shared his knowledge to help other programmers succeed. He has answered thousands of questions, which gives him a perspective on the SQL mistakes that most commonly cause problems.
