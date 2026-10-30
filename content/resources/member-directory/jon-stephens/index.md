@@ -7,6 +7,8 @@ subcategories:
 - People
 roles:
 - Author
+images:
+- photo.jpg
 ---
 
 Jon Stephens is a technical writer who worked on the MySQL documentation team, where he substantially expanded the NDB Cluster section of the [MySQL Reference Manual](/resources/books/mysql-reference-manual/). He co-wrote, and edited, the *MySQL 5.1 Cluster DBA Certification Study Guide* (2007) with Mike Kruckenberg, Roland Bouman, Stewart Smith, and Solomon Chang.

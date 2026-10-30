@@ -7,6 +7,8 @@ subcategories:
 - People
 roles:
 - Contributor
+images:
+- photo.jpg
 ---
 
 Jaime Lichauco is a member of the MySQL community. TODO: add a short bio.

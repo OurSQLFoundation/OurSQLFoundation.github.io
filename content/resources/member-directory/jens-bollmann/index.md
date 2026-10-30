@@ -8,6 +8,8 @@ subcategories:
 roles:
 - Consultant
 - Speaker
+images:
+- photo.jpg
 ---
 
 Jens Bollmann began his MySQL career in MySQL's Professional Services group in 2005, and went on to work as a consultant and instructor at Oracle and MariaDB. As a Principal Customer Engineer, he works with customers on performance tuning, high-availability setups, and migrations.

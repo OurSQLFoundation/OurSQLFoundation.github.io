@@ -7,6 +7,8 @@ subcategories:
 - People
 roles:
 - Contributor
+images:
+- photo.jpg
 ---
 
 John Smiley is a member of the MySQL community. TODO: add a short bio.
