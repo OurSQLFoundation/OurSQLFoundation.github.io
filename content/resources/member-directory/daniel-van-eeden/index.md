@@ -10,6 +10,8 @@ subcategories:
 roles:
 - Contributor
 - Developer
+images:
+- photo.jpg
 ---
 
 Daniël van Eeden works on a range of MySQL-related projects and writes about databases on his blog. He created the [MySQL History Graph](/resources/books/mysql-history-graph/), a set of diagrams of MySQL's version history and its forks, generated with GraphViz and open to edits and pull requests on GitHub.
