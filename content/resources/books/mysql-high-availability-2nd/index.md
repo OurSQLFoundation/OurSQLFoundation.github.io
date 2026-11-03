@@ -19,6 +19,8 @@ audiences:
   - Advanced
 pricing:
   - Paid
+images:
+  - cover.png
 ---
 
 *MySQL High Availability: Tools for Building Robust Data Centers* covers building highly available MySQL deployments with replication and related tooling. The second edition was updated for changes in MySQL's tools, covering versions up to 5.5 along with several 5.6 features.
