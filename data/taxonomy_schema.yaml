@@ -185,6 +185,7 @@ community:
     - Blog Aggregators
     - Blogs
     - Podcasts & Videos
+    - User Groups & Meetups
   facets:
     - key: platform
       path: platforms

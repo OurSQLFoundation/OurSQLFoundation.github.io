@@ -161,7 +161,7 @@ recording_url: "https://..."     # optional — becomes the primary "Watch recor
 ```
 Whether an event is upcoming or past is computed from `date` (compared to today), never a field you set by hand — it drives the "Past event" badge in the hero and which of the fields above are actually shown.
 
-**`content/resources/community/`** — subcategories: Forums · Slack, Discord & IRC · Mailing Lists · Reddit & Social · Blog Aggregators · Blogs · Podcasts & Videos
+**`content/resources/community/`** — subcategories: Forums · Slack, Discord & IRC · Mailing Lists · Reddit & Social · Blog Aggregators · Blogs · Podcasts & Videos · User Groups & Meetups
 ```yaml
 platforms: ["Forum"]             # Forum, Slack, Discord, Mailing List, Reddit, Meetup, YouTube, Podcast
 languages: ["English"]           # English, Spanish, Portuguese, German, Chinese, Other
