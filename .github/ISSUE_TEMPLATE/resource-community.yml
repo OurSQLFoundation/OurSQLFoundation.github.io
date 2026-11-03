@@ -34,7 +34,9 @@ body:
         - Mailing Lists
         - Reddit & Social
         - Blog Aggregators
+        - Blogs
         - Podcasts & Videos
+        - User Groups & Meetups
     validations:
       required: true
   - type: input
