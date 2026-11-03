@@ -4,7 +4,7 @@ description: An open letter initiative calling for a vendor-neutral foundation t
   Foundation.
 link: https://3306-db.org/
 subcategories:
-- Blog Aggregators
+- Blogs
 languages:
 - English
 access:

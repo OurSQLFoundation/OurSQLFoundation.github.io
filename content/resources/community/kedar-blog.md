@@ -3,7 +3,7 @@ description: A long-running MySQL blog by Kedar Vaijanapurkar covering DBA tips,
   tuning, and practical database administration.
 link: https://kedar.nitty-witty.com/blog/
 subcategories:
-- Blog Aggregators
+- Blogs
 languages:
 - English
 access:
