@@ -19,8 +19,10 @@ audiences:
   - Advanced
 pricing:
   - Paid
+images:
+  - cover.png
 ---
 
-*Pro MySQL NDB Cluster* covers MySQL NDB Cluster from concepts and architecture through installation, daily maintenance (backups and restores, upgrades and downgrades, security), and monitoring. It also covers developing applications against NDB Cluster from Java, memcached, C++, and SQL, troubleshooting application performance, and enterprise features such as MySQL NDB Cluster Manager.
+*Pro MySQL NDB Cluster: Master the MySQL Cluster Lifecycle* covers MySQL NDB Cluster from concepts and architecture through installation, daily maintenance (backups and restores, upgrades and downgrades, security), and monitoring. It also covers developing applications against NDB Cluster from Java, memcached, C++, and SQL, troubleshooting application performance, and enterprise features such as MySQL NDB Cluster Manager.
 
 Both authors worked on Oracle's MySQL Support team. Published by Apress in 2017.
