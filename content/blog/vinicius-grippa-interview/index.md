@@ -1,6 +1,6 @@
 ---
 title: "Vinicius Grippa: “MySQL Is Not Dead, But It Needs Physiotherapy”"
-description: "Vinicius Grippa of ReadySet, creator of MyFlames and Oracle ACE Director, on what MySQL still lacks, AI agents as a new kind of client, Oracle's shift toward the community, and building MySQL Brazil."
+description: "Vinicius Grippa of Readyset, creator of MyFlames and Oracle ACE Director, on what MySQL still lacks, AI agents as a new kind of client, Oracle's shift toward the community, and building MySQL Brazil."
 date: 2026-11-04
 tags:
 - Interview
@@ -17,7 +17,7 @@ interview:
 
 *In January, Vinicius Grippa [publicly asked whether MySQL was dead](https://comunidademysql.com.br/mysql-abandonado-fud-realidade-oracle/). Ten months later we asked him again and talked through what MySQL does well, what it's still missing, and who is filling the gaps.*
 
-*Grippa spent years in Percona Support, a job where, in his words, you learn "the community, open source, the technology itself, and how software evolves" all at once. Today he works at ReadySet, a caching layer for MySQL and Postgres. He also maintains the open source tool MyFlames, is an Oracle ACE Director, and helps run the MySQL community in Brazil.*
+*Grippa spent years in Percona Support, a job where, in his words, you learn "the community, open source, the technology itself, and how software evolves" all at once. Today he works at Readyset, a caching layer for MySQL and Postgres. He also maintains the open source tool MyFlames, is an Oracle ACE Director, and helps run the MySQL community in Brazil.*
 
 ## What MySQL has and what it lacks
 
@@ -29,13 +29,13 @@ On the teams' side, the most common issue is performance, specifically query per
 
 What I'd call MySQL's fault is its flexibility. If I compare it to a programming language, MySQL is close to C. It gives you a lot of power, but you need to know how to work with it.
 
-**Teams use components such as ProxySQL for routing and Redis or ReadySet for caching. When do you see those layers as a response to MySQL’s limitations, and when are they simply part of building a larger system?**
+**Teams use components such as ProxySQL for routing and Redis or Readyset for caching. When do you see those layers as a response to MySQL’s limitations, and when are they simply part of building a larger system?**
 
-I can't say it's a MySQL issue or a MySQL limitation. Look at the other side. Postgres uses extensions to expand its range of features, and it has its own caching tools that compete with ReadySet. Redis sits in front of Postgres, MariaDB and most other databases too. For MySQL we have ProxySQL; for Postgres there's PgBouncer; MariaDB has MaxScale.
+I can't say it's a MySQL issue or a MySQL limitation. Look at the other side. Postgres uses extensions to expand its range of features, and it has its own caching tools that compete with Readyset. Redis sits in front of Postgres, MariaDB and most other databases too. For MySQL we have ProxySQL; for Postgres there's PgBouncer; MariaDB has MaxScale.
 
 It's the same with cloud providers, and AWS is probably the most classic example. You have RDS, then RDS Proxy, multiple Availability Zones, replicas you can scale behind endpoints, load balancers. Any architecture that starts hitting limits starts looking for components that can sustain the growth. I think that's perfectly normal.
 
-**At ReadySet you work with both MySQL and Postgres. Honestly, when would you start a project on Postgres, and where does MySQL still win?**
+**At Readyset you work with both MySQL and Postgres. Honestly, when would you start a project on Postgres, and where does MySQL still win?**
 
 Today, in terms of AI integration, Postgres is ahead. It supports extensions, and the pgvector extension, which adds vector search, has done a good job of bringing AI into the database.
 
@@ -53,7 +53,7 @@ When I say it should be done, I don't mean the extensions. I mean making MySQL f
 
 VillageSQL is a great example. From what I understand (and correct me if I'm wrong), its ultimate intent is to provide extensions similar to the ones Postgres has and make them available in MySQL. Not a copy-paste, and not by modifying MySQL itself. If Oracle made that part of the core more flexible, VillageSQL's work would become way, way easier: it could plug in more easily and more transparently. Oracle needs to be more ecosystem-friendly, so tools and other companies can connect.
 
-As for building it ourselves, that's already happening. At ReadySet, we want a good cache for MySQL, so we are building it ourselves; we are not waiting for Oracle. The ecosystem is big enough to let other companies work with MySQL and, of course, make money and work in the industry as well.
+As for building it ourselves, that's already happening. At Readyset, we want a good cache for MySQL, so we are building it ourselves; we are not waiting for Oracle. The ecosystem is big enough to let other companies work with MySQL and, of course, make money and work in the industry as well.
 
 ## MyFlames: what EXPLAIN doesn't show
 
@@ -113,7 +113,7 @@ The community itself is more than ten years old. I joined six or seven years ago
 
 A community always requires someone to organize it, centralize it and help promote it. It's literally voluntary work. If no one does it, the community vanishes: there are no events, no promotion, nothing. And it's not only me: other people in the community write blog posts, speak, and promote it. You need a group of people taking care of it.
 
-What helps is, again, being an Oracle ACE Director. It brings a lot of potential to the community. Oracle can provide the venue if you want to do a meetup or a session. It opens connections with other companies that sponsor, come to speak, or pay for a coffee break. Percona has been involved since I started the meetups, before they became a conference. Then ReadySet came in, ProxySQL, then Oracle. You need people, and companies behind them, interested in sponsoring and promoting it.
+What helps is, again, being an Oracle ACE Director. It brings a lot of potential to the community. Oracle can provide the venue if you want to do a meetup or a session. It opens connections with other companies that sponsor, come to speak, or pay for a coffee break. Percona has been involved since I started the meetups, before they became a conference. Then Readyset came in, ProxySQL, then Oracle. You need people, and companies behind them, interested in sponsoring and promoting it.
 
 But it really takes effort. It's like a relationship: if you don't put effort into it every day, people lose interest, the love disappears, and then you realize it's gone. The focus now is continuation: passing it along to someone else, finding more people who are interested and have the love you need to put into it. At the end of the day, maintaining it takes a lot of your time.
 
