@@ -9,6 +9,7 @@ speakers:
   - name: "Marcelo Altmann"
     role: "Senior Software Engineer, Readyset"
     photo: "speaker-marcelo.jpg"
+    profile: "/resources/member-directory/people/marcelo-altmann/"
 ---
 
 The MySQL Query Cache was once one of the most recognizable performance features in MySQL. It was deprecated and eventually removed because it couldn't scale on modern multicore systems. Does that mean query caching itself is a bad idea?
