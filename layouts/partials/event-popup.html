@@ -1,0 +1,53 @@
+{{/* Announcement pop-up for the featured event (DuckDB × MySQL Day). Slides in at
+     the bottom left of any page after 10 seconds, links to the event page, and
+     stays dismissed for a week once closed or clicked. Not rendered on the event
+     page itself or once the event date has passed. Text comes from the event
+     page's front matter; timing and dismissal live in the inline script. */}}
+{{ $ev := site.GetPage "/events/duckdb-mysql-day" }}
+{{ if and $ev (now.Before ($ev.Date.AddDate 0 0 1)) (ne $.RelPermalink $ev.RelPermalink) }}
+{{ $cover := $ev.Resources.GetMatch "cover.jpg" }}
+<aside class="ev-popup" id="event-popup" hidden aria-label="Event announcement" data-id="duckdb-mysql-day" data-end="{{ $ev.Date.AddDate 0 0 1 | time.Format "2006-01-02T00:00:00Z" }}">
+  <button type="button" class="ev-popup-close" aria-label="Close announcement">&times;</button>
+  <a href="{{ $ev.RelPermalink }}" class="ev-popup-link">
+    {{ with $cover }}{{ $img := .Resize "640x q80" }}<img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" class="ev-popup-img" loading="lazy">{{ end }}
+    <span class="ev-popup-body">
+      <span class="ev-popup-kicker">{{ $ev.Date.Format "January 2" }} · {{ with $ev.Params.home_meta }}{{ . }}{{ else }}Online{{ end }}</span>
+      <span class="ev-popup-title">{{ $ev.Title }}</span>
+      <span class="ev-popup-text">A one-day online conference on fast analytics for MySQL.</span>
+      <span class="ev-popup-cta">See the speakers &amp; register →</span>
+    </span>
+  </a>
+</aside>
+<script>
+  (function () {
+    var el = document.getElementById('event-popup');
+    if (!el) return;
+    var key = 'ev-popup-dismissed-' + el.getAttribute('data-id');
+    var week = 7 * 24 * 60 * 60 * 1000;
+    try {
+      var t = parseInt(localStorage.getItem(key), 10);
+      if (t && Date.now() - t < week) return;
+    } catch (e) {}
+    var end = Date.parse(el.getAttribute('data-end'));
+    if (end && Date.now() > end) return;
+
+    function dismiss() {
+      try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+      el.classList.remove('is-visible');
+      setTimeout(function () { el.hidden = true; }, 400);
+    }
+    el.querySelector('.ev-popup-close').addEventListener('click', dismiss);
+    el.querySelector('.ev-popup-link').addEventListener('click', function () {
+      try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+    });
+    el.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismiss(); });
+
+    setTimeout(function () {
+      el.hidden = false;
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { el.classList.add('is-visible'); });
+      });
+    }, 10000);
+  })();
+</script>
+{{ end }}
