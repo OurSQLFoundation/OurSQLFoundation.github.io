@@ -4,6 +4,11 @@ description: "ProxySQL has grown well beyond a proxy. René and Alkin cover MySQ
 date: 2026-11-03
 time_display: "10:00 AM ET · 16:00 CET"
 registration_url: "https://us06web.zoom.us/webinar/register/WN_X82k7xu-STmLLTln6NjTHw"
+# Past-event materials: the recording is embedded from YouTube, and the slides
+# (pre-rendered pages in slides/, plus the PDF) get an on-site viewer.
+video_url: "https://youtu.be/arOJ9ia_zws"
+video_id: "arOJ9ia_zws"
+slides_pdf: "beyond-the-proxy-slides.pdf"
 images:
   - banner.jpg
 speakers:
