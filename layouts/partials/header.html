@@ -23,19 +23,19 @@
           <a href="/news/press-releases/">Press Releases</a>
         </div>
       </div>
-      <div class="nav-item nav-item--dropdown{{ if or (hasPrefix .RelPermalink "/events") (hasPrefix .RelPermalink "/resources/events") }} active{{ end }}">
+      <div class="nav-item nav-item--dropdown{{ if or (hasPrefix .RelPermalink "/events") (hasPrefix .RelPermalink "/resources/events") (hasPrefix .RelPermalink "/community/webinars") }} active{{ end }}">
         <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Events</button>
         <div class="nav-dropdown-menu">
           <a href="/resources/events/">Events Calendar</a>
+          <a href="/community/webinars/">OurSQL Webinars</a>
           <a href="/events/duckdb-mysql-day/">DuckDB × MySQL Day</a>
         </div>
       </div>
-      <div class="nav-item nav-item--dropdown{{ if hasPrefix .RelPermalink "/community" }} active{{ end }}">
+      <div class="nav-item nav-item--dropdown{{ if and (hasPrefix .RelPermalink "/community") (not (hasPrefix .RelPermalink "/community/webinars")) }} active{{ end }}">
         <button type="button" class="nav-dropdown-trigger" aria-expanded="false">Community</button>
         <div class="nav-dropdown-menu">
           <a href="/community/get-involved/">Get Involved</a>
           <a href="/community/join-membership/">Join / Membership</a>
-          <a href="/community/webinars/">Webinars</a>
           <a href="/community/people-behind-mysql/">People Behind MySQL</a>
           {{ with .Site.Params.social.slack }}<a href="{{ . }}" target="_blank" rel="noopener">Slack ↗</a>{{ end }}
         </div>
