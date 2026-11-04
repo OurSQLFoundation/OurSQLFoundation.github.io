@@ -12,12 +12,14 @@ speakers:
     profile: "/resources/member-directory/people/marcelo-altmann/"
 ---
 
-The MySQL Query Cache was once one of the most recognizable performance features in MySQL. It was deprecated and eventually removed because it couldn't scale on modern multicore systems. Does that mean query caching itself is a bad idea?
+Remember the MySQL Query Cache? It used to be one of the most recognizable performance features around. It got deprecated and eventually pulled because it couldn’t keep up on modern multicore systems.
 
-In this session, Marcelo Altmann revisits why the original Query Cache failed, why traditional key/value caches became the dominant solution, and how [Readyset](/resources/software/readyset/) combines ideas from both approaches to overcome many of their historical limitations. He covers:
+So is query caching just a bad idea? Not really.
 
-- the anatomy of reads in MySQL and PostgreSQL
+In this session, Marcelo Altmann looks at why the original Query Cache fell apart, why key/value caches took over instead, and how [Readyset](/resources/software/readyset/) pulls ideas from both to get around a lot of their old problems. He covers:
+
+- how reads actually work in MySQL and PostgreSQL
 - cache invalidation strategies
-- how transparent query caches deliver low-latency reads while maintaining correctness
+- how transparent query caches keep reads fast without breaking correctness
 
-Marcelo has almost 20 years of experience with MySQL, has contributed code fixes to MySQL itself, and is part of the Oracle ACE program.
+Marcelo has close to 20 years with MySQL, has contributed code fixes to MySQL itself, and is part of the Oracle ACE program.
