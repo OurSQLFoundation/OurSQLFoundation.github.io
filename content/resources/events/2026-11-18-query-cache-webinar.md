@@ -14,8 +14,9 @@ event-formats:
 - Online
 organizers:
 - OurSQL Foundation
+registration_url: "https://us06web.zoom.us/webinar/register/WN_UloQfglkSwuzsfgRGFPXwA"
 ---
 
 A free online session from the OurSQL Foundation, on **November 18, 2026, at 10:00 AM ET / 16:00 CET**. Marcelo Altmann, Senior Software Engineer at [Readyset](/resources/software/readyset/), revisits why the MySQL Query Cache failed, why key/value caches took over, and how Readyset combines ideas from both to deliver low-latency reads while maintaining correctness.
 
-Full details are on the [webinar page](/community/webinars/mysql-query-cache/).
+Full details and registration are on the [webinar page](/community/webinars/mysql-query-cache/).
