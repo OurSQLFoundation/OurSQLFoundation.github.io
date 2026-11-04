@@ -1,6 +1,7 @@
 {{/* Announcement pop-up for the featured event (DuckDB × MySQL Day). Slides in at
-     the bottom left of any page after 10 seconds, links to the event page, and
-     stays dismissed for a week once closed or clicked. Not rendered on the event
+     the bottom left of any page after 10 seconds and links to the event page.
+     Closing it (or clicking through) hides it for the rest of that visit only
+     (sessionStorage), so it shows again on the next visit. Not rendered on the event
      page itself or once the event date has passed. Text comes from the event
      page's front matter; timing and dismissal live in the inline script. */}}
 {{ $ev := site.GetPage "/events/duckdb-mysql-day" }}
@@ -23,30 +24,27 @@
     var el = document.getElementById('event-popup');
     if (!el) return;
     var key = 'ev-popup-dismissed-' + el.getAttribute('data-id');
-    var week = 7 * 24 * 60 * 60 * 1000;
     try {
-      var t = parseInt(localStorage.getItem(key), 10);
-      if (t && Date.now() - t < week) return;
+      if (sessionStorage.getItem(key)) return;
     } catch (e) {}
     var end = Date.parse(el.getAttribute('data-end'));
     if (end && Date.now() > end) return;
 
     function dismiss() {
-      try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+      try { sessionStorage.setItem(key, '1'); } catch (e) {}
       el.classList.remove('is-visible');
       setTimeout(function () { el.hidden = true; }, 400);
     }
     el.querySelector('.ev-popup-close').addEventListener('click', dismiss);
     el.querySelector('.ev-popup-link').addEventListener('click', function () {
-      try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+      try { sessionStorage.setItem(key, '1'); } catch (e) {}
     });
     el.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismiss(); });
 
     setTimeout(function () {
       el.hidden = false;
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { el.classList.add('is-visible'); });
-      });
+      void el.offsetWidth; // flush styles so the slide-in transition runs
+      el.classList.add('is-visible');
     }, 10000);
   })();
 </script>
