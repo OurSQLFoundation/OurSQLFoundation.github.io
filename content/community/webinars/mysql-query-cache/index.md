@@ -3,6 +3,7 @@ title: "What Happened to the MySQL Query Cache?"
 description: "The MySQL Query Cache was removed because it couldn't scale on modern multicore systems. Marcelo Altmann of Readyset asks whether query caching itself was the mistake, and how a transparent cache can keep reads fast and correct."
 date: 2026-11-18
 time_display: "10:00 AM ET · 16:00 CET"
+registration_url: "https://us06web.zoom.us/webinar/register/WN_UloQfglkSwuzsfgRGFPXwA"
 images:
   - banner.jpg
 speakers:
