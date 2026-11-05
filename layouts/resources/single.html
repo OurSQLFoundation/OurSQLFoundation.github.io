@@ -108,6 +108,10 @@
 
     {{ with .Content }}<div class="resource-single-content">{{ . }}</div>{{ end }}
 
+    {{/* Event participation — People entries, built from the event pages plus the
+         profile's own `events` list (see partials/person-events.html). */}}
+    {{ if in .Params.subcategories "People" }}{{ partial "person-events.html" . }}{{ end }}
+
     {{ with .Params.link }}
     <a href="{{ . }}" class="resource-visit-btn resource-visit-btn--large" target="_blank" rel="noopener noreferrer">
       Visit resource →

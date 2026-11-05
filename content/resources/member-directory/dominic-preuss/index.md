@@ -17,6 +17,4 @@ images:
 
 Dominic Preuss is the founder of [VillageSQL](/resources/software/villagesql/), where he is Village Steward — the CEO. VillageSQL is an open source, drop-in replacement tracking fork of MySQL that adds an extension framework for custom data types and functions. According to the company's team page, Dominic spent the last decade building databases for developers at Google and Amazon.
 
-At [DuckDB × MySQL Day](/events/duckdb-mysql-day/) he presents *Implementing DuckDB inside MySQL as a VillageSQL extension*.
-
 **Connect:** [VillageSQL team](https://www.villagesql.com/about)

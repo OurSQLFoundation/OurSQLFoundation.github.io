@@ -18,4 +18,6 @@ compatibility:
 foundation-status:
 - Foundation Member
 title: Percona
+images:
+- logo.png
 ---

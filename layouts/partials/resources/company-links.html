@@ -1,0 +1,65 @@
+{{/* On a catalog page for a company: its people (People pages whose company_url
+     points here), plus their interviews and webinars on this site.
+     Renders nothing for a page no People entry names as its company. Case
+     studies are handled separately by case-studies.html, keyed to the company
+     rather than to its people. Blog posts by these people are deliberately left
+     out: an author can write for the Foundation, not for their employer.
+     Context: the catalog page. */}}
+{{ $self := .RelPermalink }}
+{{ $people := where (where site.RegularPages "Params.company_url" "!=" nil) "Params.company_url" $self }}
+{{ with $people }}
+  {{ $paths := slice }}
+  {{ $urls := slice }}
+  {{ range . }}
+    {{ $paths = $paths | append .Path }}
+    {{ $urls = $urls | append .RelPermalink }}
+  {{ end }}
+
+  <div class="resource-case-box">
+    <span class="resources-category-eyebrow">People from {{ (index . 0).Params.company }}</span>
+    <div class="resource-people-list">
+      {{ range .ByTitle }}
+      <a href="{{ .RelPermalink }}" class="resource-person-link">
+        {{ partial "interviews/avatar.html" (dict "page" . "size" 44) }}
+        <span class="resource-person-text">
+          <span class="resource-case-title">{{ .Title }}</span>
+          {{ with .Params.role }}<span class="resource-case-meta">{{ . }}</span>{{ end }}
+        </span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with where site.RegularPages "Params.interview.guest_page" "in" $paths }}
+  <div class="resource-case-box">
+    <span class="resources-category-eyebrow">{{ if gt (len .) 1 }}Interviews{{ else }}Interview{{ end }}</span>
+    {{ range .ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="resource-case-link">
+      <span class="resource-case-title">{{ .Title }}</span>
+      <span class="resource-case-meta">Interview · {{ .Date.Format "January 2, 2006" }}</span>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ $webinars := slice }}
+  {{ with site.GetPage "/community/webinars" }}
+    {{ range .RegularPages.ByDate.Reverse }}
+      {{ $w := . }}
+      {{ $match := false }}
+      {{ range .Params.speakers }}{{ if in $urls .profile }}{{ $match = true }}{{ end }}{{ end }}
+      {{ if $match }}{{ $webinars = $webinars | append $w }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ with $webinars }}
+  <div class="resource-case-box">
+    <span class="resources-category-eyebrow">{{ if gt (len .) 1 }}Webinars{{ else }}Webinar{{ end }}</span>
+    {{ range . }}
+    <a href="{{ .RelPermalink }}" class="resource-case-link">
+      <span class="resource-case-title">{{ .Title }}</span>
+      <span class="resource-case-meta">Webinar · {{ .Date.Format "January 2, 2006" }}{{ with .Params.speakers }} · {{ range $i, $s := . }}{{ if $i }} &amp; {{ end }}{{ $s.name }}{{ end }}{{ end }}</span>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+{{ end }}

@@ -29,15 +29,16 @@ about:
     - {title: "Columnar engines on MySQL", text: "How DuckDB-based engines work alongside InnoDB, and where they fit."}
     - {title: "Analytical replication", text: "Streaming MySQL changes into DuckDB and Parquet files for analysis."}
     - {title: "The road to HTAP", text: "Twenty years of analytics on MySQL — and what DuckDB changes now."}
-speakers_intro: "Practitioners from OurSQL Foundation, Percona, Alibaba, MariaDB, VillageSQL and dbtrail — more speakers to be announced."
+speakers_intro: "Practitioners from OurSQL Foundation, Percona, MariaDB, VillageSQL, dbtrail and ProxySQL, plus individual MySQL contributors — more speakers to be announced."
 speakers:
   - {name: "Vadim Tkachenko", company: "OurSQL Foundation", role: "President", photo: "vadim-tkachenko.jpg", profile: "/resources/member-directory/people/vadim-tkachenko/"}
-  - {name: "Zongzhi Chen", company: "Alibaba", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
+  - {name: "Zongzhi Chen", company: "Individual MySQL Contributor", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
   - {name: "Dominic Preuss", company: "VillageSQL", role: "Founder & CEO", photo: "dominic-preuss.jpg", profile: "/resources/member-directory/people/dominic-preuss/"}
   - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp", profile: "/resources/member-directory/people/roman-nozdrin/"}
   - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
   - {name: "Peter Zaitsev", company: "Percona", role: "Co-Founder", photo: "peter-zaitsev.jpg", profile: "/resources/member-directory/people/peter-zaitsev/"}
   - {name: "Evgeniy Patlan", company: "Percona", role: "Sr. Build/Release Engineer", photo: "evgeniy-patlan.jpg", profile: "/resources/member-directory/people/evgeniy-patlan/"}
+  - {name: "René Cannaò", company: "ProxySQL", role: "CEO", photo: "rene-cannao.jpg", profile: "/resources/member-directory/people/rene-cannao/"}
 schedule_label: "Approximate schedule · EST / CET"
 schedule:
   - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
@@ -47,6 +48,7 @@ schedule:
   - {est: "12:00–12:30", cet: "18:00–18:30", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
   - {est: "12:30–13:00", cet: "18:30–19:00", track: "Getting started", title: "DuckDB for MySQL Old Timers", speaker: "Peter Zaitsev"}
   - {est: "13:00–13:30", cet: "19:00–19:30", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan"}
+  - {est: "13:30–14:00", cet: "19:30–20:00", track: "Proxy layer", title: "ProxySQL Welcomes DuckDB", speaker: "René Cannaò"}
 schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics", "VillageSQL"]
 register:

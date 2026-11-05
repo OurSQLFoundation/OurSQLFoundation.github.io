@@ -1,12 +1,12 @@
 ---
 title: "MinervaDB"
-link: "https://minervadb.com"
-github: "MinervaDB"
-description: "A boutique, vendor-neutral database infrastructure consultancy offering 24/7 consulting, support, and remote/managed DBA services for MySQL, MariaDB, and other open-source databases."
+link: "https://minervadb.com/"
+description: "A vendor-neutral database infrastructure company offering consulting, 24×7 support, and remote DBA services across MySQL, MariaDB, and many other database engines."
 subcategories:
   - Consulting
   - Support
   - Managed Services
+  - Performance Tuning
 delivery:
   - Remote
 countries:
@@ -14,10 +14,11 @@ countries:
 compatibility:
   - MySQL
   - MariaDB
+  - Galera
 images:
   - logo.png
 ---
 
-MinervaDB is an independent, vendor-neutral database infrastructure consultancy founded by Shiv Iyer, offering consulting, 24/7 support, and remote/managed DBA services for MySQL, MariaDB, PostgreSQL, MyRocks, and ClickHouse. It describes itself as a boutique firm rather than a generalist IT services provider, with a distributed, globally remote team serving clients internationally.
+MinervaDB is a vendor-neutral database consulting and operations company founded by Shiv Iyer. MySQL and MariaDB are two of many engines it works with, alongside PostgreSQL, SQL Server, Oracle, MongoDB, ClickHouse, and the major cloud database services.
 
-On GitHub, the MinervaDB team publishes the open-source tooling behind its day-to-day MySQL and Percona Server work — XtraBackup automation scripts, Sysbench/TPCC benchmarking kits, and a mirrored set of Percona's package repositories — alongside similar utilities for PostgreSQL and MongoDB.
+For the MySQL family, it lists InnoDB tuning, Group Replication and Galera cluster design, ProxySQL routing, and online schema changes. Its 24×7 support and remote DBA services come with a stated 15-minute response for the most severe incidents and a written root cause after every outage.
