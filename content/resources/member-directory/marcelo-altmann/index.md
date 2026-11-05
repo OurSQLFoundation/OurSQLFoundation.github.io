@@ -13,10 +13,6 @@ roles:
 images:
 - photo.jpg
 events:
-  - name: "OurSQL Foundation webinar: What Happened to the MySQL Query Cache?"
-    url: "/community/webinars/mysql-query-cache/"
-    date: "November 18, 2026"
-    role: "Speaker"
   - name: "Percona Live 2026, Amsterdam"
     role: "Speaker"
   - name: "MySQL conferences and events"
