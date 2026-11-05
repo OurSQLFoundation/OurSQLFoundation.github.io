@@ -12,8 +12,12 @@ roles:
 - Speaker
 images:
 - photo.jpg
+events:
+  - name: "devopsdays Dallas"
+    date: "2025"
+    role: "Speaker"
 ---
 
-David (Dave) Stokes is a Community Manager at [DBeaver](/resources/software/dbeaver/) and a recognized expert in open source databases. He is the author of [*MySQL and JSON: A Practical Programming Guide*](/resources/books/mysql-and-json/) (McGraw-Hill, 2018), a step-by-step guide to using JSON with MySQL that covers the MySQL Document Store and GeoJSON. He spoke at devopsdays Dallas 2025.
+David (Dave) Stokes is a Community Manager at [DBeaver](/resources/software/dbeaver/) and a recognized expert in open source databases. He is the author of [*MySQL and JSON: A Practical Programming Guide*](/resources/books/mysql-and-json/) (McGraw-Hill, 2018), a step-by-step guide to using JSON with MySQL that covers the MySQL Document Store and GeoJSON.
 
 **Connect:** [LinkedIn](https://www.linkedin.com/in/davidmstokes/) · [GitHub](https://github.com/davestokes)

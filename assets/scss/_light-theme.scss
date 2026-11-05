@@ -314,6 +314,12 @@
   .person-meta-value { color: #0f172a; }
   .person-meta-link { color: #0272a5; }
 
+  .person-events { border-top-color: #dde3ed; }
+  .person-events-title { color: #94a3b8; }
+  .person-event-name, .person-event-detail { color: #0f172a; }
+  .person-event-date, .person-event-role { color: #64748b; }
+  .person-event-role { border-color: #dde3ed; }
+
   .resource-visit-btn {
     &:hover {
       color: #0272a5;

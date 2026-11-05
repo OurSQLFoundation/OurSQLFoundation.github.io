@@ -108,6 +108,25 @@
 
     {{ with .Content }}<div class="resource-single-content">{{ . }}</div>{{ end }}
 
+    {{/* Event participation — People entries. Each item in the `events` front
+         matter list has a name and optional url, date, role and detail; it
+         lives there rather than in the bio text. */}}
+    {{ with .Params.events }}
+    <section class="person-events" aria-labelledby="person-events-title">
+      <h2 class="person-events-title" id="person-events-title">Event participation</h2>
+      <ul class="person-events-list">
+        {{ range . }}
+        <li class="person-event">
+          <span class="person-event-name">{{ if .url }}<a href="{{ .url }}" class="person-meta-link">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</span>
+          {{ with .date }}<span class="person-event-date">{{ . }}</span>{{ end }}
+          {{ with .role }}<span class="person-event-role">{{ . }}</span>{{ end }}
+          {{ with .detail }}<span class="person-event-detail">{{ . }}</span>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+
     {{ with .Params.link }}
     <a href="{{ . }}" class="resource-visit-btn resource-visit-btn--large" target="_blank" rel="noopener noreferrer">
       Visit resource →
