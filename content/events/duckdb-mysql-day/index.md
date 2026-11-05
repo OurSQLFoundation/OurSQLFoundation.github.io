@@ -29,10 +29,10 @@ about:
     - {title: "Columnar engines on MySQL", text: "How DuckDB-based engines work alongside InnoDB, and where they fit."}
     - {title: "Analytical replication", text: "Streaming MySQL changes into DuckDB and Parquet files for analysis."}
     - {title: "The road to HTAP", text: "Twenty years of analytics on MySQL — and what DuckDB changes now."}
-speakers_intro: "Practitioners from OurSQL Foundation, Percona, Alibaba, MariaDB, VillageSQL, dbtrail and ProxySQL — more speakers to be announced."
+speakers_intro: "Practitioners from OurSQL Foundation, Percona, MariaDB, VillageSQL, dbtrail and ProxySQL, plus individual MySQL contributors — more speakers to be announced."
 speakers:
   - {name: "Vadim Tkachenko", company: "OurSQL Foundation", role: "President", photo: "vadim-tkachenko.jpg", profile: "/resources/member-directory/people/vadim-tkachenko/"}
-  - {name: "Zongzhi Chen", company: "Alibaba", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
+  - {name: "Zongzhi Chen", company: "Individual MySQL Contributor", role: "Senior Technical Expert", photo: "zongzhi-chen.jpg", profile: "/resources/member-directory/people/zongzhi-chen/"}
   - {name: "Dominic Preuss", company: "VillageSQL", role: "Founder & CEO", photo: "dominic-preuss.jpg", profile: "/resources/member-directory/people/dominic-preuss/"}
   - {name: "Roman Nozdrin", company: "MariaDB", role: "Architect / Staff Developer", photo: "roman-nozdrin.webp", profile: "/resources/member-directory/people/roman-nozdrin/"}
   - {name: "Daniel Guzmán Burgos", company: "dbtrail", role: "Creator", photo: "daniel-guzman-burgos.jpg", profile: "/resources/member-directory/people/daniel-guzman-burgos/"}
