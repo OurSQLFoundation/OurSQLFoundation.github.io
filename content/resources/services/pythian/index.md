@@ -12,4 +12,6 @@ countries:
 compatibility:
 - MySQL
 title: Pythian
+images:
+- logo.png
 ---
