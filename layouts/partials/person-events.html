@@ -1,0 +1,64 @@
+{{/* Event participation on a People profile. Built automatically from the site's
+     own event pages — speakers of DuckDB × MySQL Day (the talk title comes from
+     the page's schedule) and speakers of OurSQL Foundation webinars, matched on
+     their `profile` link — plus the profile's own `events` front matter list for
+     everything else (name, optional url, date, role, detail). A manual item is
+     skipped when an automatic one already points at the same url. Context: the
+     profile page. */}}
+{{ $me := strings.TrimSuffix "/" .RelPermalink }}
+{{ $auto := slice }}
+
+{{ with site.GetPage "/events/duckdb-mysql-day" }}
+  {{ $ev := . }}
+  {{ range .Params.speakers }}
+    {{ if and .profile (eq (strings.TrimSuffix "/" .profile) $me) }}
+      {{ $name := .name }}
+      {{ $talk := "" }}
+      {{ range $ev.Params.schedule }}{{ if eq .speaker $name }}{{ $talk = .title }}{{ end }}{{ end }}
+      {{ $auto = $auto | append (dict "name" $ev.Title "url" $ev.RelPermalink "time" $ev.Date "role" "Speaker" "detail" $talk) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ with site.GetPage "/community/webinars" }}
+  {{ range .RegularPages }}
+    {{ $w := . }}
+    {{ range .Params.speakers }}
+      {{ if and .profile (eq (strings.TrimSuffix "/" .profile) $me) }}
+        {{ $auto = $auto | append (dict "name" (printf "OurSQL Foundation webinar: %s" $w.Title) "url" $w.RelPermalink "time" $w.Date "role" "Speaker" "detail" "") }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $auto = sort $auto "time" "desc" }}
+{{ $autoURLs := slice }}
+{{ range $auto }}{{ $autoURLs = $autoURLs | append .url }}{{ end }}
+{{ $manual := slice }}
+{{ range .Params.events }}
+  {{ if not (and .url (in $autoURLs .url)) }}{{ $manual = $manual | append . }}{{ end }}
+{{ end }}
+
+{{ if or $auto $manual }}
+<section class="person-events" aria-labelledby="person-events-title">
+  <h2 class="person-events-title" id="person-events-title">Event participation</h2>
+  <ul class="person-events-list">
+    {{ range $auto }}
+    <li class="person-event">
+      <span class="person-event-name"><a href="{{ .url }}" class="person-meta-link">{{ .name }}</a></span>
+      <span class="person-event-date">{{ .time.Format "January 2, 2006" }}</span>
+      <span class="person-event-role">{{ .role }}</span>
+      {{ with .detail }}<span class="person-event-detail">{{ . }}</span>{{ end }}
+    </li>
+    {{ end }}
+    {{ range $manual }}
+    <li class="person-event">
+      <span class="person-event-name">{{ if .url }}<a href="{{ .url }}" class="person-meta-link">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</span>
+      {{ with .date }}<span class="person-event-date">{{ . }}</span>{{ end }}
+      {{ with .role }}<span class="person-event-role">{{ . }}</span>{{ end }}
+      {{ with .detail }}<span class="person-event-detail">{{ . }}</span>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

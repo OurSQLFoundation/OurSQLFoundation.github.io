@@ -14,11 +14,6 @@ roles:
 images:
 - photo.jpg
 events:
-  - name: "DuckDB × MySQL Day"
-    url: "/events/duckdb-mysql-day/"
-    date: "November 17, 2026"
-    role: "Speaker"
-    detail: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine"
   - name: "MariaDB Fest, Brussels"
     date: "2025"
     role: "Speaker"
