@@ -13,7 +13,7 @@ subcategories:
 event-formats:
 - Online
 organizers:
-- Community
+- MariaDB Foundation
 registration_url: "https://luma.com/ewss2pk3"
 ---
 

@@ -174,7 +174,7 @@ events:
     - key: organizer
       path: organizers
       label: Organizer
-      values: [OurSQL Foundation, Community, Member & Partner]
+      values: [OurSQL Foundation, Community, Member & Partner, MariaDB Foundation]
 
 community:
   subcategories:
