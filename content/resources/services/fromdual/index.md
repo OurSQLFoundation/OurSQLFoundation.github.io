@@ -18,4 +18,6 @@ compatibility:
 - MariaDB
 - Percona Server
 - Galera Cluster
+images:
+- logo.png
 ---

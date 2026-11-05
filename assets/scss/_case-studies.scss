@@ -229,6 +229,32 @@
 
 .resource-case-meta { font-size: 0.8125rem; color: $muted; }
 
+// People at a company, on its catalog page
+.resource-people-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.resource-person-link {
+  --av: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover { background: $dark-surface; }
+}
+
+.resource-person-text { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+
 .case-card-author { --av: 36px; }
 
 .post-author-role { font-size: 0.8125rem; color: $muted; }
