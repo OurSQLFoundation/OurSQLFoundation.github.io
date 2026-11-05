@@ -150,7 +150,7 @@ city: "Amsterdam"                 # optional, only for in-person events — omit
 countries: ["Netherlands"]       # a country name, or "Global" for an online/worldwide event
 event_year: ["2026"]
 event-formats: ["In-Person"]     # In-Person, Online, Hybrid
-organizers: ["Community"]        # OurSQL Foundation, Community, Member & Partner — also the
+organizers: ["Community"]        # OurSQL Foundation, Community, Member & Partner, MariaDB Foundation — also the
                                   # detail page's "Organizer" row
 online_url: "https://..."        # optional — shown as a Details-panel "Online" link
 registration_url: "https://..."  # optional — becomes the primary "Register" button for an
