@@ -4,12 +4,25 @@
 {{ $authorPage := "" }}
 {{ if $isBlog }}{{ with .Params.author_page }}{{ $authorPage = $.Site.GetPage . }}{{ end }}{{ end }}
 
-<article class="post-layout">
+<article class="post-layout{{ if .Params.digest }} post-layout--digest{{ end }}">
 
   <header class="post-header">
+    {{/* OurSQL Digest issues carry a `digest` block (issue, period, tagline, and
+         sections: id + short label). It sets them apart from the Newsletter:
+         own masthead, accent colour, numbered sections and an "In this issue"
+         list that jumps to each section's anchor. */}}
+    {{ with .Params.digest }}
+    <div class="digest-masthead">
+      <span class="digest-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h11M4 17h7"/></svg>
+      </span>
+      <span class="digest-masthead-name">OurSQL <strong>Digest</strong></span>
+      <span class="digest-masthead-issue">{{ with .issue }}Issue {{ printf "%02d" . }} · {{ end }}{{ .period }}</span>
+    </div>
+    {{ end }}
     {{ with .Params.tags }}
     <div class="post-tags">
-      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ range . }}<span class="tag tag--{{ . | urlize }}">{{ . }}</span>{{ end }}
     </div>
     {{ end }}
     <h1>{{ .Title }}</h1>
@@ -27,6 +40,15 @@
       <span>{{ .ReadingTime }} min read</span>
     </div>
     {{ end }}
+    {{ with .Params.digest }}{{ with .tagline }}<p class="digest-tagline">{{ . }}</p>{{ end }}
+    {{ with .sections }}
+    <nav class="digest-toc" aria-label="In this issue">
+      <span class="digest-toc-label">In this issue</span>
+      <ul>
+        {{ range $i, $s := . }}<li><a href="#{{ $s.id }}"><span class="digest-toc-n">{{ printf "%02d" (add $i 1) }}</span>{{ $s.label }}</a></li>{{ end }}
+      </ul>
+    </nav>
+    {{ end }}{{ end }}
     {{ with .Params.case_study }}
     {{ $company := $.Site.GetPage .company_page }}
     {{ $name := .company_name | default $company.Title }}
