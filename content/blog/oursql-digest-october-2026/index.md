@@ -189,6 +189,6 @@ The ones worth knowing about, by date:
 
 If you found this useful, please forward it to a colleague, especially the one who still thinks MySQL news is one release note per quarter. If we missed something that matters (I'm sure we did), drop it into \#news in [our Slack](https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA), it will go into the next one.
 
-And if your company runs on MySQL and you think somebody should take care of this whole ecosystem, well, that's literally us. [Come talk to us about membership](https://oursqlfoundation.org/).
+And if your company runs on MySQL and you think somebody should take care of this whole ecosystem, well, that's literally us. [Come talk to us about membership](https://oursqlfoundation.org/community/join-membership/).
 
 See you in November, Maria
