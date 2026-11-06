@@ -1,12 +1,12 @@
 // ── OurSQL Digest ───────────────────────────────────────────────────────────
-// The monthly digest is its own product next to the Newsletter: amber accent
+// The monthly digest is its own product next to the Newsletter: violet accent
 // instead of the site's cyan, a masthead, numbered sections with anchors, and
 // a framed "Why it matters" block. Imported last so the light-theme rules at
 // the bottom of this file win over the generic light theme.
 
-$digest:        #ffb020;
-$digest-ink:    #1b1300;
-$digest-deep:   #9a5b00;   // readable amber on light backgrounds
+$digest:        #a78bfa;
+$digest-ink:    #160c33;
+$digest-deep:   #6d4ae0;   // readable violet on light backgrounds
 
 // "Why it matters" block (shortcode) — used inside Digest issues
 .digest-why {
@@ -33,7 +33,7 @@ $digest-deep:   #9a5b00;   // readable amber on light backgrounds
   p:last-child { margin-bottom: 0; }
 }
 
-// Blog list: Digest cards carry the amber accent
+// Blog list: Digest cards carry the violet accent
 .post-card--digest {
   border-color: rgba($digest, 0.4) !important;
 
@@ -154,11 +154,6 @@ $digest-deep:   #9a5b00;   // readable amber on light backgrounds
   .post-content {
     counter-reset: digest-section;
 
-    a {
-      text-decoration-color: rgba($digest, 0.45);
-      &:hover { text-decoration-color: $digest; }
-    }
-
     // Numbered sections, each with its own anchor
     h2 {
       counter-increment: digest-section;
@@ -233,33 +228,32 @@ $digest-deep:   #9a5b00;   // readable amber on light backgrounds
 
 [data-theme="light"] {
   .digest-why {
-    background: #fff8e8;
-    border-color: #f0d9a4;
-    border-left-color: #e29a00;
+    background: #f6f3ff;
+    border-color: #ddd3fb;
+    border-left-color: #8b5cf6;
   }
   .digest-why-label { color: $digest-deep; }
   .digest-why-body p { color: #0f172a; }
 
-  .post-card--digest { border-color: #f0d9a4 !important; &:hover { border-color: #e29a00 !important; } }
+  .post-card--digest { border-color: #ddd3fb !important; &:hover { border-color: #8b5cf6 !important; } }
   .post-card-tag--digest { color: $digest-deep !important; }
 
   .digest-masthead {
-    background: linear-gradient(90deg, #fff1cf, #fffaf0);
-    border-color: #f0d9a4;
+    background: linear-gradient(90deg, #ece6ff, #f8f6ff);
+    border-color: #ddd3fb;
   }
   .digest-masthead-name { color: #0f172a; strong { color: $digest-deep; } }
   .digest-masthead-issue, .digest-toc-n { color: $digest-deep; }
   .digest-tagline { color: #334155; opacity: 1; }
-  .digest-toc a { color: #334155; border-color: #f0d9a4; &:hover { background: #fff1cf; border-color: #e29a00; } }
+  .digest-toc a { color: #334155; border-color: #ddd3fb; &:hover { background: #ece6ff; border-color: #8b5cf6; } }
 
   .post-layout--digest {
-    .post-header { border-bottom-color: #f0d9a4; }
-    .post-header .post-tags .tag--digest { color: $digest-deep; background: #fff1cf; border-color: #f0d9a4; }
+    .post-header { border-bottom-color: #ddd3fb; }
+    .post-header .post-tags .tag--digest { color: $digest-deep; background: #ece6ff; border-color: #ddd3fb; }
     .post-content {
-      a { text-decoration-color: rgba($digest-deep, 0.5); }
-      h2 { border-top-color: #f0d9a4; &::before { color: $digest-deep; } }
+      h2 { border-top-color: #ddd3fb; &::before { color: $digest-deep; } }
       table {
-        th { color: $digest-deep; border-bottom-color: #f0d9a4; }
+        th { color: $digest-deep; border-bottom-color: #ddd3fb; }
         th, td { border-bottom-color: #dde3ed; }
         td:first-child { color: #0f172a; }
       }
