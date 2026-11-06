@@ -1,0 +1,268 @@
+// ── OurSQL Digest ───────────────────────────────────────────────────────────
+// The monthly digest is its own product next to the Newsletter: amber accent
+// instead of the site's cyan, a masthead, numbered sections with anchors, and
+// a framed "Why it matters" block. Imported last so the light-theme rules at
+// the bottom of this file win over the generic light theme.
+
+$digest:        #ffb020;
+$digest-ink:    #1b1300;
+$digest-deep:   #9a5b00;   // readable amber on light backgrounds
+
+// "Why it matters" block (shortcode) — used inside Digest issues
+.digest-why {
+  margin: 1.75rem 0 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba($digest, 0.08);
+  border: 1px solid rgba($digest, 0.28);
+  border-left: 4px solid $digest;
+  border-radius: 0 12px 12px 0;
+}
+
+.digest-why-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $digest;
+}
+
+.digest-why-body {
+  p { margin: 0 0 0.75rem; color: $white; }
+  p:last-child { margin-bottom: 0; }
+}
+
+// Blog list: Digest cards carry the amber accent
+.post-card--digest {
+  border-color: rgba($digest, 0.4) !important;
+
+  &:hover { border-color: $digest !important; }
+}
+
+.post-card-tag--digest { color: $digest !important; }
+
+// Masthead + "In this issue"
+.digest-masthead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(90deg, rgba($digest, 0.16), rgba($digest, 0.04));
+  border: 1px solid rgba($digest, 0.32);
+  border-radius: 12px;
+}
+
+.digest-mark {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: $digest;
+  color: $digest-ink;
+}
+
+.digest-masthead-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: $white;
+
+  strong { color: $digest; font-weight: 800; }
+}
+
+.digest-masthead-issue {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $digest;
+  text-align: right;
+}
+
+.digest-tagline {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  color: $off-white;
+  opacity: 0.8;
+}
+
+.digest-toc {
+  margin-top: 1.5rem;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.625rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: $off-white;
+    text-decoration: none;
+    border: 1px solid rgba($digest, 0.3);
+    border-radius: 100px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+
+    &:hover { background: rgba($digest, 0.14); border-color: $digest; }
+  }
+}
+
+.digest-toc-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.digest-toc-n {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: $digest;
+}
+
+// The issue itself
+.post-layout--digest {
+  // Let the grid column shrink below the "Coming up" table's natural width, so
+  // the table scrolls sideways instead of widening the whole page on phones.
+  & > * { min-width: 0; }
+
+  .post-header { border-bottom-color: rgba($digest, 0.3); }
+
+  .post-header .post-tags .tag--digest {
+    color: $digest;
+    background: rgba($digest, 0.12);
+    border-color: rgba($digest, 0.35);
+  }
+
+  .post-header .post-meta .post-author[href]:hover { color: $digest; }
+
+  .post-content {
+    counter-reset: digest-section;
+
+    a {
+      text-decoration-color: rgba($digest, 0.45);
+      &:hover { text-decoration-color: $digest; }
+    }
+
+    // Numbered sections, each with its own anchor
+    h2 {
+      counter-increment: digest-section;
+      margin: 3.25rem 0 1rem;
+      padding: 1.25rem 0 0;
+      font-size: 1.5rem;
+      line-height: 1.3;
+      border-bottom: 0;
+      border-top: 2px solid rgba($digest, 0.35);
+      scroll-margin-top: 96px;
+
+      &::before {
+        content: counter(digest-section, decimal-leading-zero);
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        color: $digest;
+      }
+
+      .anchor-link {
+        margin-left: 0.5rem;
+        font-weight: 400;
+        color: $muted;
+        text-decoration: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+
+        &:hover { color: $digest; }
+        &:focus-visible { opacity: 1; }
+      }
+
+      &:hover .anchor-link { opacity: 1; }
+    }
+
+    // The "Coming up" table scrolls sideways on narrow screens
+    table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+
+      th, td {
+        padding: 0.625rem 0.875rem;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid $dark-border;
+      }
+
+      th {
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: $digest;
+        border-bottom: 2px solid rgba($digest, 0.4);
+        white-space: nowrap;
+      }
+
+      td:first-child { white-space: nowrap; font-weight: 600; color: $white; }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .digest-masthead { flex-wrap: wrap; row-gap: 0.25rem; }
+  .digest-masthead-issue { margin-left: 0; flex-basis: 100%; text-align: left; }
+}
+
+[data-theme="light"] {
+  .digest-why {
+    background: #fff8e8;
+    border-color: #f0d9a4;
+    border-left-color: #e29a00;
+  }
+  .digest-why-label { color: $digest-deep; }
+  .digest-why-body p { color: #0f172a; }
+
+  .post-card--digest { border-color: #f0d9a4 !important; &:hover { border-color: #e29a00 !important; } }
+  .post-card-tag--digest { color: $digest-deep !important; }
+
+  .digest-masthead {
+    background: linear-gradient(90deg, #fff1cf, #fffaf0);
+    border-color: #f0d9a4;
+  }
+  .digest-masthead-name { color: #0f172a; strong { color: $digest-deep; } }
+  .digest-masthead-issue, .digest-toc-n { color: $digest-deep; }
+  .digest-tagline { color: #334155; opacity: 1; }
+  .digest-toc a { color: #334155; border-color: #f0d9a4; &:hover { background: #fff1cf; border-color: #e29a00; } }
+
+  .post-layout--digest {
+    .post-header { border-bottom-color: #f0d9a4; }
+    .post-header .post-tags .tag--digest { color: $digest-deep; background: #fff1cf; border-color: #f0d9a4; }
+    .post-content {
+      a { text-decoration-color: rgba($digest-deep, 0.5); }
+      h2 { border-top-color: #f0d9a4; &::before { color: $digest-deep; } }
+      table {
+        th { color: $digest-deep; border-bottom-color: #f0d9a4; }
+        th, td { border-bottom-color: #dde3ed; }
+        td:first-child { color: #0f172a; }
+      }
+    }
+  }
+}

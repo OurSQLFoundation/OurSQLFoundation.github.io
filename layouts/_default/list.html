@@ -11,7 +11,7 @@
   {{ $page := . }}
   {{ $authorPage := "" }}
   {{ with .Params.author_page }}{{ $authorPage = $.Site.GetPage . }}{{ end }}
-  <div class="post-card">
+  <div class="post-card{{ if in .Params.tags "Digest" }} post-card--digest{{ end }}">
     <a href="{{ .RelPermalink }}" class="post-card-link-overlay" aria-label="{{ .Title }}"></a>
     {{ with $page.Params.image }}
     {{ $imgRes := $page.Resources.Get . }}
@@ -24,7 +24,7 @@
     {{ end }}
     {{ end }}
     <div class="post-card-body">
-      <span class="post-card-tag">{{ with .Params.tags }}{{ index . 0 }}{{ else }}News{{ end }}</span>
+      <span class="post-card-tag{{ with .Params.tags }}{{ if in . "Digest" }} post-card-tag--digest{{ end }}{{ end }}">{{ with .Params.tags }}{{ index . 0 }}{{ else }}News{{ end }}</span>
       <div class="post-card-title">{{ .Title }}</div>
       <div class="post-card-excerpt">{{ .Summary | truncate 140 }}</div>
       <div class="post-card-meta">
