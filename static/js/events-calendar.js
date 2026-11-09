@@ -59,6 +59,7 @@
     view: q.get('view') === 'list' ? 'list' : 'calendar',
     cat: q.get('cat') || '',
     f: q.get('format') || '', o: q.get('org') || '', c: q.get('country') || '',
+    q: q.get('q') || '',
     month: null, day: ''
   };
   var m = /^(\d{4})-(\d{2})$/.exec(q.get('month') || '');
@@ -73,7 +74,19 @@
   var resBox = $('[data-role=results]');
 
   // ── Filtering ────────────────────────────────────────────────────────────
+  // Search: every word must appear in the event's title, description, place,
+  // category, organizer or format. Accents are ignored ("montreal" = "Montréal").
+  function norm(s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function terms() { return norm(state.q).split(/\s+/).filter(Boolean); }
+  function matchesSearch(ev, words) {
+    if (!words.length) return true;
+    if (ev._h == null) {
+      ev._h = norm([ev.t, ev.x, ev.city, ev.f].concat(ev.c || [], ev.s || [], ev.o || []).join(' '));
+    }
+    return words.every(function (w) { return ev._h.indexOf(w) !== -1; });
+  }
   function passesFacets(ev, skipCat) {
+    if (state.q && !matchesSearch(ev, terms())) return false;
     if (!skipCat && state.cat && (ev.s || []).indexOf(state.cat) < 0) return false;
     if (state.f && ev.f !== state.f) return false;
     if (state.o && (ev.o || []).indexOf(state.o) < 0) return false;
@@ -112,6 +125,7 @@
     if (state.f) p.set('format', state.f);
     if (state.o) p.set('org', state.o);
     if (state.c) p.set('country', state.c);
+    if (state.q.trim()) p.set('q', state.q.trim());
     if (state.view === 'calendar' && state.month) p.set('month', state.month.y + '-' + pad(state.month.m + 1));
     var s = p.toString();
     try { history.replaceState(null, '', window.location.pathname + (s ? '?' + s : '')); } catch (e) {}
@@ -321,9 +335,18 @@
   $$('.ev-view-btn').forEach(function (b) {
     b.addEventListener('click', function () { state.view = b.dataset.view; state.day = ''; render(); });
   });
+  var searchBox = $('#ev-search');
+  if (searchBox) {
+    searchBox.value = state.q;
+    searchBox.addEventListener('input', function () { state.q = searchBox.value; state.day = ''; render(); });
+    searchBox.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && searchBox.value) { searchBox.value = ''; state.q = ''; state.day = ''; render(); }
+    });
+  }
   $('[data-action=clear]').addEventListener('click', function () {
-    state.cat = state.f = state.o = state.c = ''; state.day = '';
+    state.cat = state.f = state.o = state.c = state.q = ''; state.day = '';
     $$('select[data-facet]').forEach(function (s) { s.value = ''; });
+    if (searchBox) searchBox.value = '';
     render();
   });
 
@@ -342,7 +365,7 @@
       var on = b.dataset.view === state.view;
       b.classList.toggle('ev-view-btn--active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-    var filtered = state.cat || state.f || state.o || state.c;
+    var filtered = state.cat || state.f || state.o || state.c || state.q.trim();
     $('[data-action=clear]').hidden = !filtered;
 
     renderCats();
@@ -357,7 +380,7 @@
       if (!list.length) {
         var e = el('div', 'ev-empty');
         e.appendChild(el('h3', null, 'No ' + (state.tab === 'past' ? 'past' : 'upcoming') + ' events match'));
-        e.appendChild(el('p', null, filtered ? 'Try clearing a filter.' : 'Check back soon.'));
+        e.appendChild(el('p', null, filtered ? 'Try a different search or clear a filter.' : 'Check back soon.'));
         resBox.appendChild(e);
       } else {
         resBox.appendChild(renderList(list));

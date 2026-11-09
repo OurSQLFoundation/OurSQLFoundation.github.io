@@ -16,6 +16,33 @@
   // ── State ──────────────────────────────────────────────────────────────
   var selectedCategory = null;           // subcategory value, or null for "All"
   var selectedFacets = {};               // { facetPath: Set(values) }
+  var searchInput = document.getElementById('resources-section-search');
+  var terms = [];                        // normalised search words, all must match
+
+  // Lower-case and strip accents so "rene" finds "René"
+  function norm(s) {
+    return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  // Searchable text per card: title, description, people/company text from the
+  // index, and every category / facet value.
+  var haystack = {};
+  cards.forEach(function (card) {
+    var r = index[card.dataset.url] || {};
+    var parts = [card.dataset.title, card.dataset.description, r.q, (r.subcategories || []).join(' ')];
+    Object.keys(r.facets || {}).forEach(function (k) { parts.push((r.facets[k] || []).join(' ')); });
+    haystack[card.dataset.url] = norm(parts.join(' '));
+  });
+
+  function matchesSearch(url) {
+    if (!terms.length) return true;
+    var h = haystack[url] || '';
+    return terms.every(function (t) { return h.indexOf(t) !== -1; });
+  }
+
+  function setQuery(value) {
+    terms = norm(value).split(/\s+/).filter(Boolean);
+  }
 
   function facetSet(path) {
     if (!selectedFacets[path]) selectedFacets[path] = {};
@@ -50,7 +77,7 @@
     var visibleCount = 0;
     cards.forEach(function (card) {
       var url = card.dataset.url;
-      var visible = matches(index[url]);
+      var visible = matches(index[url]) && matchesSearch(url);
       card.hidden = !visible;
       if (visible) visibleCount++;
     });
@@ -145,7 +172,42 @@
   function clearAll() {
     selectedCategory = null;
     selectedFacets = {};
+    if (searchInput) searchInput.value = '';
+    setQuery('');
     render();
+  }
+
+  // ── Search box ─────────────────────────────────────────────────────────
+  // The query lives in ?q= so a search can be shared or bookmarked.
+  function syncQueryString() {
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var v = searchInput ? searchInput.value.trim() : '';
+      if (v) p.set('q', v); else p.delete('q');
+      var s = p.toString();
+      history.replaceState(null, '', window.location.pathname + (s ? '?' + s : '') + window.location.hash);
+    } catch (e) {}
+  }
+
+  if (searchInput) {
+    try {
+      var initial = new URLSearchParams(window.location.search).get('q');
+      if (initial) { searchInput.value = initial; setQuery(initial); }
+    } catch (e) {}
+    searchInput.addEventListener('input', function () {
+      setQuery(searchInput.value);
+      render();
+      syncQueryString();
+    });
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && searchInput.value) {
+        e.stopPropagation();
+        searchInput.value = '';
+        setQuery('');
+        render();
+        syncQueryString();
+      }
+    });
   }
 
   // ── Category clicks ────────────────────────────────────────────────────

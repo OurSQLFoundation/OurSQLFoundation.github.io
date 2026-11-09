@@ -914,6 +914,17 @@
     &:focus { border-color: rgba(0, 200, 255, 0.45); }
   }
 
+  .section-search-icon { color: #94a3b8; }
+  .section-search-input {
+    background: #ffffff;
+    border-color: #dde3ed;
+    color: #0f172a;
+
+    &::placeholder { color: #94a3b8; }
+
+    &:focus { border-color: rgba(0, 200, 255, 0.45); }
+  }
+
   .resources-search-results {
     background: #ffffff;
     border-color: #dde3ed;
