@@ -181,10 +181,20 @@
       {{ $vals := index $page.Params . }}
       {{ if $vals }}{{ $pageFacets = merge $pageFacets (dict . $vals) }}{{ end }}
     {{ end }}
+    {{/* Extra text the search box matches besides title, description and facet
+         values (those are read from the card / facets): people and companies. */}}
+    {{ $searchText := printf "%s %s %s %s %s %s"
+      (delimit ($page.Params.authors | default slice) " ")
+      ($page.Params.author | default "")
+      ($page.Params.company | default "")
+      ($page.Params.project | default "")
+      ($page.Params.role | default "")
+      (delimit (slice ($page.Params.city | default "") (delimit ($page.Params.countries | default slice) " ")) " ") }}
     {{ $resourceIndex = $resourceIndex | append (dict
       "url" $page.RelPermalink
       "subcategories" ($page.Params.subcategories | default slice)
       "facets" $pageFacets
+      "q" $searchText
     ) }}
   {{ end }}
 
@@ -222,6 +232,14 @@
 
     {{/* ── Content column ── */}}
     <div class="resources-content">
+
+      {{ if $pages }}
+      {{/* Live search within this category (static/js/resource-filters.js) */}}
+      <div class="section-search">
+        <svg class="section-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="resources-section-search" class="section-search-input" placeholder="Search {{ .Title }}…" autocomplete="off" aria-label="Search {{ .Title }}">
+      </div>
+      {{ end }}
 
       <div class="filter-toolbar">
         <div class="filter-toolbar-count" data-role="result-count">{{ len $pages }} resources</div>
@@ -332,8 +350,8 @@
       </div>
 
       <div class="empty-state" data-role="no-match-state" hidden>
-        <h3>No resources match your filters</h3>
-        <p><button type="button" class="resource-visit-btn" data-action="clear-all">Clear all filters</button></p>
+        <h3>No resources match your search or filters</h3>
+        <p><button type="button" class="resource-visit-btn" data-action="clear-all">Clear search and filters</button></p>
       </div>
 
       {{ else }}
