@@ -1,8 +1,8 @@
 ---
 title: "MySQL Workbench"
 link: "https://mysqlworkbench.org"
-github: "mysql/mysql-workbench"
-description: "Oracle's official graphical tool for MySQL — SQL development, visual data modeling with forward/reverse engineering, server administration, and migration from other RDBMS engines."
+github: "mysql/mysql-shell-plugins"
+description: "Oracle's official desktop application for developing, administering, and migrating MySQL databases, rebuilt in version 26 on MySQL Shell."
 subcategories:
   - Database Management & GUI
 compatibility:
@@ -13,6 +13,8 @@ images:
   - logo.png
 ---
 
-MySQL Workbench covers five main areas: SQL development through a built-in SQL Editor with connection management; data modeling, where it can reverse- and forward-engineer between a live database and an ER diagram and edit tables, indexes, triggers, and views through a Table Editor; server administration, including user management, backup and recovery, and a real-time performance dashboard; data migration from Microsoft SQL Server, Microsoft Access, Sybase ASE, SQLite, PostgreSQL, and other RDBMSes into MySQL; and MySQL Enterprise features such as Enterprise Backup, Firewall, and Audit for supported deployments.
+MySQL Workbench is the MySQL team's graphical tool for working with MySQL servers. It includes a rich SQL editor, database administration and maintenance tools, and migration tools, with the backend for the MySQL Migration Assistant included in its GUI plugin.
 
-It fully supports MySQL server versions 5.6 and higher, ships prebuilt binaries for Windows, macOS, and Linux, and is developed by the MySQL team at Oracle. The Community edition is released under GPLv2 with additional permissions, and its source is mirrored on GitHub as snapshots of Oracle's internal repository at each release.
+Starting with version 26.7 in 2026, Workbench is a new application rather than an update of the old one: an Electron app with a Preact frontend and a Python backend running in MySQL Shell, developed in the `mysql/mysql-shell-plugins` repository alongside MySQL Shell plugins for MySQL REST Service, MySQL Schema Management, and MySQL Database Service on Oracle Cloud Infrastructure. The previous C++-based MySQL Workbench 8 is end-of-life, and its `mysql/mysql-workbench` repository now holds only that retired version.
+
+Workbench is part of the MySQL Community distribution, released by the MySQL team at Oracle under GPLv2 with additional permissions, and ships its own MySQL Shell runtime.
