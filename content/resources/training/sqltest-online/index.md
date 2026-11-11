@@ -20,6 +20,8 @@ languages:
 - Portuguese
 - Chinese
 - Other
+images:
+  - logo.png
 ---
 
 SQLtest.online is a free platform for learning and practicing SQL in the browser. Its question bank of practice tasks runs from basic SELECT queries to analytical problems with window functions and CTEs, and every task is checked automatically: the query runs on a real database and the result is compared with the expected one. Tasks use real engines and sample databases, including Sakila on MySQL and a University database on MariaDB, alongside PostgreSQL, SQL Server, SQLite, DuckDB, and others.
