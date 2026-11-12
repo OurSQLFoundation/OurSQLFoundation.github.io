@@ -11,10 +11,11 @@ countries:
   - Global
 compatibility:
   - MariaDB
+  - Galera
 images:
   - logo.png
 ---
 
 The commercial MariaDB company sells services around its own database. Technical support comes in Standard and Premium levels, with 24×7 coverage for urgent issues, a first response to critical issues in as little as 15 minutes, and access to urgent hotfix builds.
 
-Other services include consulting on architecture and performance, migrations to MariaDB from Oracle, MySQL, and other databases, a named Technical Account Manager, cloud and AI enablement, and Managed Operations for running MariaDB environments. Its managed database product is listed separately as [MariaDB Cloud](/resources/saas/mariadb-cloud/).
+Other services include consulting on architecture and performance, migrations to MariaDB from Oracle, MySQL, and other databases, a named Technical Account Manager, cloud and AI enablement, and Managed Operations for running MariaDB environments. Since acquiring Codership, the company behind Galera Cluster, in 2025, MariaDB also handles commercial Galera support; the support page on galeracluster.com now leads to MariaDB. Its managed database product is listed separately as [MariaDB Cloud](/resources/saas/mariadb-cloud/).
