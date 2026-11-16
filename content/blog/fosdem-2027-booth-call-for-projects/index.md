@@ -6,6 +6,7 @@ tags:
 - Announcement
 author: "Maria Nesterova"
 author_page: "/resources/member-directory/maria-nesterova"
+image: "cover.jpg"
 hero_image: false
 ---
 
