@@ -59,4 +59,4 @@ The last two talks are the reality check, and honestly the ones I would send to 
 Being vendor-neutral means we can put them on one stage for one day and let *you* compare. We are not going to pick a winner before the speakers show their results, and honestly not after either. That is the whole point of OurSQL Foundation, really: make sure the ecosystem has the full picture.
 
 ## Join us
-It's free and online, starting 09:00 EST / 15:00 CET on November 17. [Register here](/events/duckdb-mysql-day/) to get the schedule and link by email. If you have questions for the speakers, bring them to our [Slack](https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA).
+It's free and online, starting 10:00 EST / 16:00 CET on November 17. [Register here](/events/duckdb-mysql-day/) to get the schedule and link by email. If you have questions for the speakers, bring them to our [Slack](https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA).
