@@ -1,0 +1,18 @@
+{{/* Contents block: the post's own second-level headings as numbered links.
+     A post without a top-level heading gets Hugo's nameless root entry, so
+     look inside it. */}}
+{{ $label := .Params.toc_label | default "Contents" }}
+{{ $items := slice }}
+{{ range .Fragments.Headings }}
+  {{ if .ID }}{{ $items = $items | append . }}
+  {{ else }}{{ range .Headings }}{{ $items = $items | append . }}{{ end }}{{ end }}
+{{ end }}
+{{ with $items }}
+<nav class="post-toc" aria-label="{{ $label }}">
+  <span class="post-toc-label">{{ $label }}</span>
+  <ol class="post-toc-list">
+    {{ range . }}<li><a href="#{{ .ID }}">{{ .Title | safeHTML }}</a></li>
+    {{ end }}
+  </ol>
+</nav>
+{{ end }}
