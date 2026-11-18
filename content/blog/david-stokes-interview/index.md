@@ -12,7 +12,7 @@ toc_label: "In this interview"
 interview:
   guest_page: "/resources/member-directory/david-stokes"
   interviewer_page: "/resources/member-directory/maria-nesterova"
-  video_url: ""
+  video_url: "https://youtu.be/Mo1MGBzYsfI"
   audio_url: ""
 ---
 

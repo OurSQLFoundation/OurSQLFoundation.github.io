@@ -1,0 +1,11 @@
+{{/* Embedded YouTube player for an interview with a YouTube video_url
+     (youtu.be/ID, youtube.com/watch?v=ID or youtube.com/embed/ID). Uses the
+     privacy-enhanced domain and loads lazily. Context: the interview page. */}}
+{{ $url := .Params.interview.video_url | default "" }}
+{{ $m := findRESubmatch `(?:youtu\.be/|[?&]v=|/embed/)([A-Za-z0-9_-]{11})` $url 1 }}
+{{ with $m }}
+{{ $id := index (index . 0) 1 }}
+<div class="interview-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ $id }}" title="Video: {{ $.Title }}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+{{ end }}
