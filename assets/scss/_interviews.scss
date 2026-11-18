@@ -211,3 +211,66 @@
 
   &:hover { background: lighten($accent, 8%); }
 }
+
+// ── Contents block for long posts ({{< toc >}} shortcode) ──
+.post-toc {
+  margin: 2rem 0 2.5rem;
+  padding: 1.25rem 1.5rem 1.4rem;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-left: 3px solid $accent;
+  border-radius: 12px;
+}
+
+.post-toc-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.post-toc-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
+
+  @media (min-width: 760px) { grid-template-columns: 1fr 1fr; }
+
+  li {
+    counter-increment: toc;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    padding: 0.4rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: $off-white;
+    text-decoration: none;
+
+    &::before {
+      content: counter(toc, decimal-leading-zero);
+      flex: none;
+      min-width: 1.35rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: $accent;
+    }
+
+    &:hover { color: $accent; }
+  }
+}
+
+// Beats the underline that links get inside post content
+.post-toc .post-toc-list a { text-decoration: none; }

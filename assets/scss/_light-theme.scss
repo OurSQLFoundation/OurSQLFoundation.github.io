@@ -1279,6 +1279,9 @@
   .interview-card-date, .interview-card-cta, .interview-strip-line a { color: #0272a5; }
   .interview-format { color: #0272a5; background: rgba(0, 200, 255, 0.08); border-color: rgba(0, 200, 255, 0.3); }
   .interview-strip-btn { background: #0272a5; color: #ffffff; }
+  .post-toc { background: #ffffff; border-color: #dde3ed; border-left-color: #0272a5; }
+  .post-toc-label { color: #64748b; }
+  .post-toc-list a { color: #0f172a; &::before { color: #0272a5; } &:hover { color: #0272a5; } }
 
   // Member Directory: featured link + adopters table
   .resources-featured-link {
