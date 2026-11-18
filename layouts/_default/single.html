@@ -4,7 +4,7 @@
 {{ $authorPage := "" }}
 {{ if $isBlog }}{{ with .Params.author_page }}{{ $authorPage = $.Site.GetPage . }}{{ end }}{{ end }}
 
-<article class="post-layout{{ if .Params.digest }} post-layout--digest{{ end }}">
+<article class="post-layout{{ if .Params.digest }} post-layout--digest{{ end }}{{ if .Params.interview }} post-layout--interview{{ end }}">
 
   <header class="post-header">
     {{/* OurSQL Digest issues carry a `digest` block (issue, period, tagline, and
