@@ -1,21 +1,31 @@
-{{/* Announcement pop-up for the featured event (DuckDB × MySQL Day). Slides in at
-     the bottom left of any page after 10 seconds and links to the event page.
-     Closing it (or clicking through) hides it for the rest of that visit only
-     (sessionStorage), so it shows again on the next visit. Not rendered on the event
-     page itself or once the event date has passed. Text comes from the event
-     page's front matter; timing and dismissal live in the inline script. */}}
-{{ $ev := site.GetPage "/events/duckdb-mysql-day" }}
-{{ if and $ev (now.Before ($ev.Date.AddDate 0 0 1)) (ne $.RelPermalink $ev.RelPermalink) }}
-{{ $cover := $ev.Resources.GetMatch "cover.jpg" }}
-<aside class="ev-popup" id="event-popup" hidden aria-label="Event announcement" data-id="duckdb-mysql-day" data-end="{{ $ev.Date.AddDate 0 0 1 | time.Format "2006-01-02T00:00:00Z" }}">
+{{/* Announcement pop-up. Slides in at the bottom left of any page after 10
+     seconds and links to the announced page. Closing it (or clicking through)
+     hides it for the rest of that visit only (sessionStorage), so it shows
+     again on the next visit. What it announces comes from data/popups.yaml:
+     the first entry that has not ended yet is shown, and never on the page it
+     links to. Timing and dismissal live in the inline script. */}}
+{{ $popup := dict }}
+{{ range site.Data.popups }}
+  {{ if not $popup }}
+    {{ $p := site.GetPage .page }}
+    {{ $end := time.AsTime .end }}
+    {{ if and $p (now.Before $end) (ne $.RelPermalink $p.RelPermalink) }}
+      {{ $popup = merge . (dict "pg" $p "endT" $end) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ with $popup }}
+{{ $pg := .pg }}
+{{ $cover := $pg.Resources.GetMatch "cover.jpg" }}
+<aside class="ev-popup" id="event-popup" hidden aria-label="Announcement" data-id="{{ .id }}" data-end="{{ .endT | time.Format "2006-01-02T00:00:00Z" }}">
   <button type="button" class="ev-popup-close" aria-label="Close announcement">&times;</button>
-  <a href="{{ $ev.RelPermalink }}" class="ev-popup-link">
+  <a href="{{ $pg.RelPermalink }}" class="ev-popup-link">
     {{ with $cover }}{{ $img := .Resize "640x q80" }}<img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" class="ev-popup-img" loading="lazy">{{ end }}
     <span class="ev-popup-body">
-      <span class="ev-popup-kicker">{{ $ev.Date.Format "January 2" }} · {{ with $ev.Params.home_meta }}{{ . }}{{ else }}Online{{ end }}</span>
-      <span class="ev-popup-title">{{ $ev.Title }}</span>
-      <span class="ev-popup-text">A one-day online conference on fast analytics for MySQL.</span>
-      <span class="ev-popup-cta">See the speakers &amp; register →</span>
+      <span class="ev-popup-kicker">{{ .kicker }}</span>
+      <span class="ev-popup-title">{{ .title }}</span>
+      <span class="ev-popup-text">{{ .text }}</span>
+      <span class="ev-popup-cta">{{ .cta }}</span>
     </span>
   </a>
 </aside>

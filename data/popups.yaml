@@ -1,0 +1,23 @@
+# Announcement pop-ups (bottom left, after 10 seconds; see
+# layouts/partials/event-popup.html). Only the FIRST entry that is still
+# running is shown, so list them in priority order.
+#
+#   id      stable key; closing a pop-up is remembered per id for that visit
+#   page    content page it links to; its cover.jpg is the picture
+#   end     first day it is NOT shown (so the last day it shows is the day before)
+#   kicker, title, text, cta   the copy
+- id: duckdb-mysql-day
+  page: /events/duckdb-mysql-day
+  end: "2026-11-18"
+  kicker: "November 17 · Online · Free"
+  title: "DuckDB × MySQL Day"
+  text: "A one-day online conference on fast analytics for MySQL."
+  cta: "See the speakers & register →"
+
+- id: fosdem-2027-booth
+  page: /blog/fosdem-2027-booth-call-for-projects
+  end: "2026-12-01"
+  kicker: "FOSDEM 2027 · Apply by November 30"
+  title: "Share our booth at FOSDEM 2027"
+  text: "We are inviting five open source MySQL-compatible projects, with up to $1,000 of support each."
+  cta: "Read more & apply →"
