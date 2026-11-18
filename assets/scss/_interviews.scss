@@ -274,3 +274,61 @@
 
 // Beats the underline that links get inside post content
 .post-toc .post-toc-list a { text-decoration: none; }
+
+// ── Reading aids for interview articles ──
+// Questions are the paragraphs that are bold from start to end. Setting them
+// apart (accent rule, larger, more air above) lets a long text be skimmed by
+// question.
+.post-layout--interview .post-content {
+  > p:has(> strong:only-child) {
+    margin: 2.25rem 0 0.875rem;
+    padding-left: 1rem;
+    border-left: 3px solid $accent;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: $off-white;
+  }
+
+  // The first question under a heading does not need the extra gap
+  h2 + p:has(> strong:only-child) { margin-top: 1.25rem; }
+}
+
+// Pull quote: one strong line lifted out of the text, set large
+.post-content .pullquote {
+  margin: 2.5rem 0;
+  padding: 1.75rem 0 1.5rem;
+  border-top: 1px solid rgba($accent, 0.35);
+  border-bottom: 1px solid rgba($accent, 0.35);
+
+  &::before {
+    content: "\201C";
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 0.75;
+    height: 2.2rem;
+    color: $accent;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: $off-white;
+
+    @media (max-width: 600px) { font-size: 1.25rem; }
+  }
+
+  footer {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $muted;
+  }
+}

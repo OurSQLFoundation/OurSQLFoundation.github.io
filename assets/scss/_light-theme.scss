@@ -1282,6 +1282,8 @@
   .post-toc { background: #ffffff; border-color: #dde3ed; border-left-color: #0272a5; }
   .post-toc-label { color: #64748b; }
   .post-toc-list a { color: #0f172a; &::before { color: #0272a5; } &:hover { color: #0272a5; } }
+  .post-layout--interview .post-content > p:has(> strong:only-child) { border-left-color: #0272a5; color: #0f172a; }
+  .post-content .pullquote { border-color: rgba(2, 114, 165, 0.35); &::before { color: #0272a5; } p { color: #0f172a; } footer { color: #64748b; } }
 
   // Member Directory: featured link + adopters table
   .resources-featured-link {

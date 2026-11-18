@@ -6,6 +6,7 @@ tags:
 - Interview
 author: "Maria Nesterova"
 author_page: "/resources/member-directory/maria-nesterova"
+image: "cover.jpg"
 hero_image: false
 toc_label: "In this interview"
 interview:
@@ -55,6 +56,8 @@ When Oracle arrived, Monty had already pretty much checked out of the day-to-day
 
 From the outside, I think many users benefited from the Oracle transition, because honestly the product became much better. But it was also obvious that we were the flea on the tail of the dog that was Oracle. I won't say we were benignly neglected, but we were an also-ran, not really part of the core of Oracle.
 
+{{< pullquote by="David Stokes" >}}We were the flea on the tail of the dog that was Oracle.{{< /pullquote >}}
+
 **What part of the MySQL AB culture would you bring back today?**
 
 We saw ourselves as pioneers, cutting new paths into unknown territory in data. So many people were doing things with the database that we had never thought of. It was amazing. We had a professional services team that was among the sharpest groups of people I have ever met. They really knew the product and knew how to work with customers. When they gave out some tidbit on how to optimize a query, it was manna from heaven: the real information from the people who really knew how it worked. It was really exciting.
@@ -91,6 +94,8 @@ I'm not as pessimistic about the future of MySQL and its branches as I was a yea
 
 To be honest, I left Oracle mainly because I saw HeatWave becoming Oracle's main focus. New features were being delivered either to improve HeatWave performance or to support Oracle Cloud Infrastructure. The generic Community Server was basically orphaned. It was very sad to see this wonderful product, loved by so many and still huge in many areas, abandoned on the ice to die.
 
+{{< pullquote by="David Stokes" >}}The generic Community Server was basically orphaned. It was very sad to see this wonderful product, loved by so many and still huge in many areas, abandoned on the ice to die.{{< /pullquote >}}
+
 But in the past year, efforts like VillageSQL, the OurSQL Foundation, and others have been quite positive. And of course Oracle has made a major turn: it wants to be more inclusive and a better steward of MySQL, and I think we are beginning to see the fruits of that.
 
 **Oracle now has a MySQL steering committee and promises more features in the Community Edition. Will it work?**
@@ -112,6 +117,8 @@ Postgres is also interesting in that it is run through mailing lists. When I was
 Here is something telling from North America. Microsoft used to run SQL Saturdays for SQL Server people. They have renamed them Data Saturdays and are actively encouraging people to speak about Postgres there. That is a seismic shift.
 
 A lot of people look at Postgres and say: maybe it is not as slick as some other options, but it has a lot going for it: it's free. I won't say "free as in speech" or "free as in beer". The phrase I like now is "free as in puppy": you get the puppy for free, but there are a lot of ongoing costs to keep it running and make it do what you want.
+
+{{< pullquote by="David Stokes" >}}Free as in puppy: you get the puppy for free, but there are a lot of ongoing costs to keep it running and make it do what you want.{{< /pullquote >}}
 
 Is that cheaper than running big Oracle, big DB2, or big SQL Server? More than likely. But those databases are so well established that I don't think we will see a quick move away from them. Still, if you look at the DB-Engines ranking, the only database moving up the chart is Postgres, and this past month it almost caught up with SQL Server. DB-Engines is not the best measure of popularity, but it is consistent, making it a useful benchmark. We'll see.
 
@@ -162,6 +169,8 @@ I tell people three things:
 
 Things move so fast that there will always be too much to learn at once. Forget about keeping up; try to keep even, and look into every new thing that comes out. When I was a manager, I told my people to spend an hour a week reading about what was new: not to master it, just to know what is out there. Today I would tell new developers to give it three or four hours a week, because so much is changing.
 
+{{< pullquote by="David Stokes" >}}Forget about keeping up; try to keep even, and look into every new thing that comes out.{{< /pullquote >}}
+
 **AI now does much of the work juniors used to learn on. How does a beginner get from junior to mid-level?**
 
 I hate to say it, but you are going to have to fight your way through the junior stage, sometimes against AI, sometimes with it. Look up Uncle Bob Martin, Eric Raymond, and Cal Evans: three old-time programmers who, I think, have the right attitude to incorporating AI. The genie is out of the bottle; AI is here to stay. Whether it helps or hurts us in the long run, I hope it helps.
@@ -180,6 +189,8 @@ First, we have to teach people why they need a database. MySQL has always been "
 
 It is much easier to keep bad data out of a database than to hunt it down and fix it later. Yet we don't teach the database as the golden source of truth; we treat it as a bucket we shove everything into, and when it doesn't work the way we want, we open another bucket.
 
+{{< pullquote by="David Stokes" >}}It is much easier to keep bad data out of a database than to hunt it down and fix it later.{{< /pullquote >}}
+
 AI makes this more urgent, and that is good news for old-school DBAs. AI is unreliable as an agent acting on your behalf, so I think we will have to put a lot more business logic and rules into the database itself, because AIs know how to cheat the edge cases.
 
 And one of the great things about MySQL is that every time I go to a show, people show me something I never thought of doing with a database, and nine times out of ten, they are doing it with MySQL.
@@ -189,3 +200,6 @@ And one of the great things about MySQL is that every time I go to a show, peopl
 **Finally: what advice would you give the OurSQL Foundation for its first year?**
 
 Nothing personal against the OurSQL Foundation, but our industry is plagued with foundations that exist to send out press releases and nothing else. Deliver, deliver, deliver. Be at FOSDEM and talk about what you are doing. Promote what is going on in the community. Run a regular newsletter: here is what the various players are doing; here is an article on LinkedIn you probably missed; here is a Reddit post with a good explanation of how databases do something. Teach the people who use databases what is happening in the MySQL world, and that MySQL is still a viable choice.
+
+
+{{< pullquote by="David Stokes" >}}Deliver, deliver, deliver. Be at FOSDEM and talk about what you are doing.{{< /pullquote >}}
