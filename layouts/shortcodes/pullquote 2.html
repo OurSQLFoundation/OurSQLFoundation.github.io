@@ -1,0 +1,7 @@
+{{/* Pull quote: one strong line lifted from the text and set large between
+     paragraphs. The same words stay in the article, so it is hidden from
+     screen readers. Usage: {{< pullquote by="David Stokes" >}}Quote.{{< /pullquote >}} */}}
+<aside class="pullquote" aria-hidden="true">
+  <p>{{ .Inner | strings.TrimSpace | markdownify }}</p>
+  {{ with .Get "by" }}<footer>{{ . }}</footer>{{ end }}
+</aside>

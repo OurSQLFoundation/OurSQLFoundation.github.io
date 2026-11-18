@@ -103,6 +103,7 @@
     {{ end }}
     {{ end }}
     {{ end }}
+    {{ if .Params.interview }}{{ partial "interviews/video-embed.html" . }}{{ end }}
     {{/* {{< toc >}} in a post leaves a marker; swap it for the contents block. */}}
     {{ $content := .Content }}
     {{ if strings.Contains (string $content) "<div data-post-toc></div>" }}
