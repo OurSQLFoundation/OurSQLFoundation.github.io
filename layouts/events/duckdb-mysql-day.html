@@ -12,6 +12,9 @@
 {{ $reg := .Params.registration_url }}
 {{ if .Params.registration_widget }}{{ $reg = "" }}{{ end }}
 {{ $page := . }}
+{{/* Button labels; set `buttons` in front matter to relabel them (e.g. once the event is over). */}}
+{{ $primary := .Params.buttons.primary | default "Register for free" }}
+{{ $navLabel := .Params.buttons.nav | default "Save your spot" }}
 <div class="dmd-landing">
 
   <section class="dmd-hero"><div class="dmd-wrap">
@@ -21,7 +24,7 @@
         <h1>DuckDB <span class="dmd-cross">×</span><br>MySQL <span class="dmd-gradient">Day</span><span class="dmd-title-dot">.</span></h1>
         <p class="dmd-hero-desc">{{ .Params.hero_description }}</p>
         <div class="dmd-hero-actions">
-          {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">Register for free <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>Register for free <span>↗</span></button>{{ end }}
+          {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">{{ $primary }} <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>{{ $primary }} <span>↗</span></button>{{ end }}
           <a class="dmd-text-link" href="#schedule">Schedule <span>↓</span></a>
         </div>
       </div>
@@ -35,7 +38,7 @@
 
   <div class="dmd-event-nav"><div class="dmd-wrap">
     <a href="#about">01 <span>About</span></a><a href="#speakers">02 <span>Speakers</span></a><a href="#schedule">03 <span>Program</span></a><a href="#community">04 <span>Get involved</span></a>
-    {{ if $reg }}<a class="dmd-nav-register" href="{{ $reg }}" target="_blank" rel="noopener">Save your spot ↗</a>{{ else }}<button data-register>Save your spot ↗</button>{{ end }}
+    {{ if $reg }}<a class="dmd-nav-register" href="{{ $reg }}" target="_blank" rel="noopener">{{ $navLabel }} ↗</a>{{ else }}<button data-register>{{ $navLabel }} ↗</button>{{ end }}
   </div></div>
 
   {{ with .Params.about }}
@@ -89,7 +92,7 @@
   {{ with .Params.register }}
   <section class="dmd-register-section" id="register"><div class="dmd-wrap dmd-register-inner">
     <div><p class="dmd-eyebrow">{{ .eyebrow }}</p><h2>{{ .heading }}</h2><p>{{ .text }}</p></div>
-    {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">Register for free <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>Register for free <span>↗</span></button>{{ end }}
+    {{ if $reg }}<a class="dmd-button dmd-primary" href="{{ $reg }}" target="_blank" rel="noopener">{{ $primary }} <span>↗</span></a>{{ else }}<button class="dmd-button dmd-primary" data-register>{{ $primary }} <span>↗</span></button>{{ end }}
   </div><span class="dmd-register-orbit" aria-hidden="true"></span></section>
   {{ end }}
 
@@ -106,7 +109,7 @@
 
   {{ $widget := .Params.registration_widget }}
   {{ if $widget }}
-  <dialog id="registration" class="dmd-dialog-widget" aria-label="Register for {{ .Title }}">
+  <dialog id="registration" class="dmd-dialog-widget" aria-label="{{ $primary }}: {{ .Title }}">
     <button class="dmd-close" aria-label="Close registration form">×</button>
     <div class="dmd-hopin-container" id="registration-widget" data-src="{{ $widget }}"></div>
   </dialog>

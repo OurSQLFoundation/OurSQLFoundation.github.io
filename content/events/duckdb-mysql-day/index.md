@@ -49,15 +49,18 @@ schedule:
   - {est: "12:30–13:00", cet: "18:30–19:00", track: "Getting started", title: "DuckDB for MySQL Old Timers", speaker: "Peter Zaitsev"}
   - {est: "13:00–13:30", cet: "19:00–19:30", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan"}
   - {est: "13:30–14:00", cet: "19:30–20:00", track: "Proxy layer", title: "ProxySQL Welcomes DuckDB", speaker: "René Cannaò"}
-schedule_note: "Tentative timings; subject to change. Register to get the final schedule as soon as it’s published."
+schedule_note: "Times are approximate."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics", "VillageSQL"]
+buttons:
+  primary: "Watch recordings"
+  nav: "Watch recordings"
 register:
   eyebrow: "November 17, 2026 · Online · Free"
-  heading: "Ready to join us?"
-  text: "Registration is free. Save your spot and get the schedule and joining link straight to your inbox."
+  heading: "Missed it? Catch up."
+  text: "The conference is over, but you can still watch the recordings."
 involved_heading: "Three ways to be part of it"
 involved:
-  - {label: "FREE EVENT", title: "Register to attend", text: "Online, free, and open to everyone working with MySQL and analytics.", action: "Register now →", register: true}
+  - {label: "FREE EVENT", title: "Watch the recordings", text: "Online, free, and open to everyone working with MySQL and analytics.", action: "Watch recordings →", register: true}
   - {label: "SPONSORSHIP OPEN", title: "Become a sponsor", text: "Put your company in front of engineers who run MySQL and care about analytics.", action: "contact@oursqlfoundation.org →", url: "mailto:contact@oursqlfoundation.org"}
   - {label: "COMMUNITY", title: "Join the conversation", text: "Ask speakers questions and meet the community before and after the event in our Slack.", action: "Join Slack →", url: "https://join.slack.com/t/oursqlfoundation/shared_invite/zt-480k6h62a-t0HalCPwvXUC_lpd4aNylA"}
 ---
