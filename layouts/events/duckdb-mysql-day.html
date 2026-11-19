@@ -80,6 +80,7 @@
         <div class="dmd-talk-num">{{ if $t.est }}<span class="dmd-time-est">{{ $t.est }}<small>EST</small></span><span class="dmd-time-cet">{{ $t.cet }}<small>CET</small></span>{{ else }}<span class="dmd-time-est dmd-time-tba">Time to be announced</span>{{ end }}</div>
         <div class="dmd-talk-content"><span class="dmd-eyebrow">{{ $t.track }}</span><h3>{{ $t.title }}</h3>
           <div class="dmd-talk-person">{{ $avatar := "" }}{{ with $sp.photo }}{{ $avatar = $page.Resources.Get . }}{{ end }}{{ with $avatar }}{{ $av := .Fill "96x96 jpg q85" }}<img src="{{ $av.RelPermalink }}" alt="" width="48" height="48" loading="lazy">{{ else }}{{ $ini := "" }}{{ range split $t.speaker " " }}{{ $ini = printf "%s%s" $ini (substr . 0 1) }}{{ end }}<b class="dmd-avatar-initials" aria-hidden="true">{{ $ini }}</b>{{ end }}<span>{{ if $sp.profile }}<a href="{{ $sp.profile }}" class="dmd-talk-person-link">{{ $t.speaker }}</a>{{ else }}{{ $t.speaker }}{{ end }}<small>{{ $sp.company }}</small></span></div>
+          {{ with $t.slides }}<a class="dmd-talk-slides" href="{{ . }}" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/></svg>Slides <small>{{ path.Ext . | strings.TrimPrefix "." | upper }}</small></a>{{ end }}
         </div>
         <span class="dmd-talk-arrow" aria-hidden="true">↗</span>
       </article>

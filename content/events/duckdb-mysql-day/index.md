@@ -18,7 +18,7 @@ images:
 registration_widget: "https://registration.events.ringcentral.com/widgets/registration/duckdb-x-mysql-day?widget_id=TWGSBGd5cEk7rk05fmBYgD7SA"
 registration_url: ""
 strip:
-  - {icon: "↗", label: "SAVE THE DATE", value: "November 17, 2026"}
+  - {icon: "↗", label: "PAST EVENT", value: "November 17, 2026"}
   - {icon: "◎", label: "JOIN FROM ANYWHERE", value: "Online conference"}
   - {icon: "✳", label: "OPEN TO EVERYONE", value: "Free to attend", yellow: true}
 about:
@@ -41,14 +41,14 @@ speakers:
   - {name: "René Cannaò", company: "ProxySQL", role: "CEO", photo: "rene-cannao.jpg", profile: "/resources/member-directory/people/rene-cannao/"}
 schedule_label: "Approximate schedule · EST / CET"
 schedule:
-  - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko"}
-  - {est: "10:30–11:00", cet: "16:30–17:00", track: "Columnar engines", title: "When MySQL meets DuckDB: Best practices for columnar engines on MySQL", speaker: "Zongzhi Chen"}
+  - {est: "10:00–10:30", cet: "16:00–16:30", track: "Opening talk", title: "Twenty Years of Bolting Analytics onto MySQL: Will DuckDB Finally Make It HTAP?", speaker: "Vadim Tkachenko", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-vadim-tkachenko.pdf"}
+  - {est: "10:30–11:00", cet: "16:30–17:00", track: "Columnar engines", title: "When MySQL meets DuckDB: Best practices for columnar engines on MySQL", speaker: "Zongzhi Chen", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-zongzhi-chen.pdf"}
   - {est: "11:00–11:30", cet: "17:00–17:30", track: "Extensions", title: "Implementing DuckDB inside MySQL as a VillageSQL extension", speaker: "Dominic Preuss"}
-  - {est: "11:30–12:00", cet: "17:30–18:00", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin"}
+  - {est: "11:30–12:00", cet: "17:30–18:00", track: "Storage engines", title: "When the Sea Lion Learns to Quack: DuckDB as a MariaDB Storage Engine", speaker: "Roman Nozdrin", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-roman-nozdrin.pdf"}
   - {est: "12:00–12:30", cet: "18:00–18:30", track: "Analytical replication", title: "MySQL analytical replication with DuckDB and Parquet files", speaker: "Daniel Guzmán Burgos"}
-  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Getting started", title: "DuckDB for MySQL Old Timers", speaker: "Peter Zaitsev"}
-  - {est: "13:00–13:30", cet: "19:00–19:30", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan"}
-  - {est: "13:30–14:00", cet: "19:30–20:00", track: "Proxy layer", title: "ProxySQL Welcomes DuckDB", speaker: "René Cannaò"}
+  - {est: "12:30–13:00", cet: "18:30–19:00", track: "Getting started", title: "DuckDB for MySQL Old Timers", speaker: "Peter Zaitsev", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-peter-zaitsev.pptx"}
+  - {est: "13:00–13:30", cet: "19:00–19:30", track: "Benchmarks", title: "Duck Hunt: An Independent Benchmark of DuckDB-Powered MySQL", speaker: "Evgeniy Patlan", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-evgeniy-patlan.pptx"}
+  - {est: "13:30–14:00", cet: "19:30–20:00", track: "Proxy layer", title: "ProxySQL Welcomes DuckDB", speaker: "René Cannaò", slides: "/files/duckdb-mysql-day/duckdb-mysql-day-rene-cannao.pdf"}
 schedule_note: "Times are approximate."
 topic_tags: ["DuckDB", "MySQL", "HTAP", "Parquet", "Columnar engines", "Open source analytics", "VillageSQL"]
 buttons:
