@@ -495,3 +495,8 @@
   .dmd-landing .dmd-hero-original .dmd-hero-desc { font-size: 15px; line-height: 1.7; margin-bottom: 22px; }
   .dmd-landing .dmd-event-strip { min-height: 84px; margin: 8px 0 44px; }
 }
+
+/* Link to a talk's slides under the speaker line */
+.dmd-landing .dmd-talk-slides{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 16px;font-size:13px;font-weight:600;color:#83cbff;text-decoration:none;border:1px solid rgba(131,203,255,.35);border-radius:999px;transition:background .2s,border-color .2s}
+.dmd-landing .dmd-talk-slides:hover{background:rgba(131,203,255,.12);border-color:#83cbff}
+.dmd-landing .dmd-talk-slides small{font-size:10px;font-weight:700;letter-spacing:.8px;color:#76b7f2;margin:0}
