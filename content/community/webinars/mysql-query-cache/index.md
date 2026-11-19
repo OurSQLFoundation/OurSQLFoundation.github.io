@@ -4,6 +4,10 @@ description: "The MySQL Query Cache was removed because it couldn't scale on mod
 date: 2026-11-18
 time_display: "10:00 AM ET · 16:00 CET"
 registration_url: "https://us06web.zoom.us/webinar/register/WN_UloQfglkSwuzsfgRGFPXwA"
+# Past-event materials: the recording is embedded from YouTube. Slides to come:
+# add pre-rendered pages in slides/ plus slides_pdf to get the on-site viewer.
+video_url: "https://youtu.be/MsojVGpFPtg"
+video_id: "MsojVGpFPtg"
 images:
   - banner.jpg
 speakers:
