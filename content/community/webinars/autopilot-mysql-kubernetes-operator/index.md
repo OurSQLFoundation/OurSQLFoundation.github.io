@@ -4,6 +4,9 @@ description: "Most MySQL clusters on Kubernetes run near-default configs. Kate O
 date: 2026-11-24
 time_display: "10:00 AM ET · 16:00 CET"
 registration_url: "https://us06web.zoom.us/webinar/register/WN_wsiPvCBvRn6U2nKd6-V5KA"
+video_url: "https://youtu.be/P0UzxmCwIyk"
+video_id: "P0UzxmCwIyk"
+slides_pdf: "stop-hand-tuning-mysql-slides.pdf"
 images:
   - banner.jpg
 speakers:
